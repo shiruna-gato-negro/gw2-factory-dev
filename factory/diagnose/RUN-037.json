@@ -1,4 +1,0 @@
-{
- "id": "RUN-037",
- "tests": ["tests/zz-probe-rai5b.test.cjs"]
-}

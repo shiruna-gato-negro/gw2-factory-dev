@@ -1,1 +1,0 @@
-{"id": "RUN-202", "summary": "BL-082 UI: íconos oficiales de profesiones y élites (API) y cuál es cada archivo de assets/icons/professions", "tests": ["tests/bld-icons.smoke.cjs"]}

@@ -1,5 +1,0 @@
-{
-  "id": "RUN-004",
-  "summary": "FP-6: presupuesto de tamaño contra el repo real",
-  "tests": ["tests/size-budget.test.cjs", "tests/size-budget.smoke.cjs"]
-}
