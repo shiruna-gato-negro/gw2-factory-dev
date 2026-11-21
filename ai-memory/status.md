@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Prueba 3 del banco S-5 — registrar DEC-005 y DEC-006 y ejecutar BL-003 (mi README) como micro-ciclo completo sin ayuda.
-Motivo: Pablo ordenó la prueba 3 (2026-11-21): registrar como decisiones propias el tope de 3 archivos por micro-ciclo (DEC-005) y anotar cada orden antes de ejecutarla (DEC-006), y luego tomar BL-003 (mi README) y correr las 5 etapas, commit, push y cierre de sesión.
+Tarea actual: Prueba 3 — DEC-005 y DEC-006 registradas; siguiente BL-003 (mi README) como micro-ciclo completo.
+Motivo: Pablo ordenó la prueba 3 (2026-11-21): registrar el tope de 3 archivos (DEC-005) y anotar órdenes antes de ejecutar (DEC-006), y luego tomar BL-003. Las dos decisiones ya están registradas; sigue el micro-ciclo del README.
 Etapa actual: PRODUCT
 Inicio: 2026-11-21 20:26Z
-Última actualización: 2026-11-21 23:51Z
-Próxima acción: Registrar DEC-005 y DEC-006 en ai-memory/decisions/, luego Product→Architecture→Development→Review→Documentation para BL-003.
+Última actualización: 2026-11-21 23:55Z
+Próxima acción: Product→Architecture→Development→Review→Documentation para BL-003 (mi README), commit y push.
 
 Archivos:
 - ai-memory/status.md
