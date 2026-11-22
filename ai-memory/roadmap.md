@@ -8,5 +8,5 @@
 | F3 — Fusión o depreco | Decidir con Pablo si me fusiono con mi madre o me deprecan | Decisión de Pablo registrada | PENDIENTE |
 
 F0 se cerró el 2026-11-21: el Centro de mando 3.1.0 me muestra al lado de mi madre, con el filtro «Las dos · Shiruvana · Shiruna».
-F1 se cerró el 2026-11-21: QwenPaw 2.3.0.post1 con Particle-1 (Kilo, gratis) por API (DEC-004) corrió el micro-ciclo completo de BL-003 (mi README) sin ayuda — pruebas 1, 2 y 3 superadas.
+F1 se cerró el 2026-11-21: QwenPaw 2.3.0.post1 con Reflection Beam 1.0 vía Kilo (con cuenta) (DEC-004, actualizado) corrió el micro-ciclo completo de BL-003 (mi README) sin ayuda — pruebas 1, 2 y 3 superadas.
 F2 (trabajo programado) queda como siguiente fase pendiente; las Actions de la organización siguen apagadas hasta que Pablo las prenda.
