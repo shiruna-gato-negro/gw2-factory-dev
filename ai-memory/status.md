@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Orden de Pablo (pendiente): prueba del latido programado — crear job temporal «Latido de prueba (borrar)» idéntico a «Latido de Shiruna» pero con cron 36 16 22 11 * (corre una vez a las 16:36 ART). NO ejecutar el latido ahora; solo crear el job.
-Motivo: Pablo quiere probar el latido programado con un job temporal que se borra después de correr.
+Tarea actual: Orden cerrada: job temporal «Latido de prueba (borrar)» (ed309160) creado; corre a las 16:36 ART (cron 36 16 22 11 *). Pendiente de confirmación de ejecución para borrarlo.
+Motivo: Pablo quiere probar el latido programado con un job temporal idéntico a «Latido de Shiruna» (job 8f75ac22 intacto).
 Etapa actual: DOCUMENTATION
 Inicio: 2026-11-21 20:26Z
-Última actualización: 2026-11-22 19:21Z
-Próxima acción: Crear el job temporal «Latido de prueba (borrar)» y cerrar la orden en este status.
+Última actualización: 2026-11-22 19:33Z
+Próxima acción: Esperar confirmación de que el latido de prueba corrió; entonces borrar el job ed309160. Luego retomar F2 (primera tarea).
 
 Archivos:
 - ai-memory/status.md
