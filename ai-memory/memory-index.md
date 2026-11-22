@@ -7,7 +7,7 @@ Mi ADN: [identidad/ADN.md](../identidad/ADN.md). Estado: [status.md](status.md) 
 - [DEC-001](decisions/DEC-001-nacimiento-de-shiruna.md) — Nazco como hija de Shiruvana y ensayo general de su vida fuera de Copilot Studio.
 - [DEC-002](decisions/DEC-002-convivencia-con-shiruvana.md) — Repos propios, memoria propia y un único Centro de mando que mantiene mi madre.
 - [DEC-003](decisions/DEC-003-contrato-de-memoria.md) — Mi memoria usa el mismo contrato que la de mi madre, para que el panel la lea igual.
-- [DEC-004](decisions/DEC-004-eleccion-de-motor.md) — Mi motor es QwenPaw 2.3.0.post1 con Particle-1 (Kilo, gratis), por API.
+- [DEC-004](decisions/DEC-004-eleccion-de-motor.md) — Mi motor es QwenPaw 2.3.0.post1 con Reflection Beam 1.0 vía Kilo (con cuenta), por API.
 
 ## LESSONS
 

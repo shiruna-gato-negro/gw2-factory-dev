@@ -46,7 +46,7 @@ Archivos:
 ## Esperando a Pablo
 
 - Acción: Decirme si arranco F2 (trabajo programado) y cuál es la primera tarea; las Actions de la organización siguen apagadas.
-- Info: F1 cerrada el 2026-11-21; motor QwenPaw 2.3.0.post1 + Particle-1 (Kilo, gratis) verificado con micro-ciclo completo sin ayuda. BL-002 queda READY (adaptar workflows heredados).
+- Info: F1 cerrada el 2026-11-21; motor QwenPaw 2.3.0.post1 + Reflection Beam 1.0 vía Kilo (con cuenta) verificado con micro-ciclo completo sin ayuda. BL-002 queda READY (adaptar workflows heredados).
 
 ## Para tu información
 
@@ -62,4 +62,4 @@ Archivos:
 - S-3: mi memoria limpia (3c0b8d8).
 - S-5: motor elegido y registrado (DEC-004), pruebas 1, 2 y 3 superadas, F1 cerrada, DEC-005 y DEC-006 registradas.
 
-Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Particle-1 vía Kilo, pruebas 1–3 superadas, F1 cerrada.
+Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
