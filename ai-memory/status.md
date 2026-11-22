@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: Rutina diaria ejecutada: backlog en dos listas, AGENTS.md actualizado, 3 jobs creados, latido 03:00 actualizado.
-Motivo: Orden de Shiruvana (vía Pablo) cumplida.
-Etapa actual: DOCUMENTATION (cerrada)
-Inicio: 2026-11-22 21:02Z
-Última actualización: 2026-11-22 21:15Z
-Próxima acción: Esperar decisión de Pablo sobre cuál BL arranca (BL-005..BL-008).
+Estado: EN CURSO
+Tarea actual: Orden de Shiruvana (vía Pablo): autonomía en mi repo, una sola cola READY, sección Ciclo continuo, jobs reorganizados. Anotada.
+Motivo: Orden de Shiruvana aprobada por Pablo.
+Etapa actual: PRODUCT
+Inicio: 2026-11-22 23:24Z
+Última actualización: 2026-11-22 23:24Z
+Próxima acción: Ejecutar la orden: reorganizar backlog, escribir Ciclo continuo en AGENTS.md, registrar decisión, cerrar.
 
 Archivos:
 - ai-memory/status.md
@@ -14,7 +14,7 @@ Archivos:
 
 ## Esperando a Pablo
 
-- [BL-005] Decisión: elegir cuál arranca (BL-005..BL-008)
+— (nada pendiente fuera de mi repo)
 
 ## Para tu información
 
