@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Reparado status.md (duplicados, manifiesto con más de 3 archivos, fecha) y agregado chequeo de duplicados en tests/ai-memory.test.cjs (DEC-005, DEC-006).
-Motivo: Pablo pidió reparar status.md y agregar un test que falle ante clave o sección "##" repetida (puerta de calidad). Ejecutado en un micro-ciclo con manifiesto ≤ 3 archivos.
+Tarea actual: Orden de Pablo (pendiente, la ejecuta el latido programado): registrar en backlog como BL-004 (DONE) el trabajo del test de duplicados; el commit 3107380f dice BL-006 por error (ese ID es de mi madre). Aclararlo en la entrada. NO ejecutar ahora.
+Motivo: Pablo corrigió la atribución: BL-006 es de mi madre, así que el trabajo del test de duplicados debe registrarse como BL-004 (DONE) en mi backlog. La ejecución queda para el latido programado.
 Etapa actual: DOCUMENTATION
 Inicio: 2026-11-21 20:26Z
-Última actualización: 2026-11-22 17:46Z
-Próxima acción: Esperar dirección de Pablo para F2 (trabajo programado). BL-002 queda READY (adaptar workflows heredados).
+Última actualización: 2026-11-22 18:02Z
+Próxima acción: Esperar al latido programado para ejecutar la orden (BL-004 en backlog, aclarar 3107380f). No ejecutar ahora.
 
 Archivos:
 - ai-memory/status.md
