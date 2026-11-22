@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: F1 cerrada — prueba 3 superada (micro-ciclo completo sin ayuda); F2 pendiente de dirección de Pablo.
-Motivo: QwenPaw 2.3.0.post1 con Particle-1 (Kilo, gratis) corrió el micro-ciclo completo de BL-003 (mi README) sin ayuda; pruebas 1, 2 y 3 superadas, BL-001 y BL-003 en DONE, DEC-005 y DEC-006 registradas. F1 cumple su criterio de salida.
-Etapa actual: DOCUMENTATION
+Tarea actual: Corrección — README sin estado duplicado (enlaza a status.md) y motor real es Reflection Beam 1.0 vía Kilo con cuenta (no Particle-1). Registrar.
+Motivo: Pablo corrigió dos cosas en un micro-ciclo (2026-11-21): mi README no debe repetir el estado (enlazar a status.md) y mi motor real hoy es Reflection Beam 1.0 vía Kilo con cuenta, no Particle-1. Hay que registrarlo.
+Etapa actual: PRODUCT
 Inicio: 2026-11-21 20:26Z
 Última actualización: 2026-11-21 23:59Z
-Próxima acción: Esperar dirección de Pablo para F2 (trabajo programado: disparadores automáticos y tareas nocturnas). BL-002 (adaptar workflows heredados) queda READY.
+Próxima acción: Corregir README.md (quitar sección «Estado actual», enlazar status.md, corregir nombre del modelo) y actualizar DEC-004 (Particle-1 → Reflection Beam 1.0), luego propagar a backlog.md y roadmap.md.
 
 Archivos:
 - ai-memory/status.md
