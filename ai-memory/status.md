@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Orden de Pablo: reparar status.md (duplicados, manifiesto con más de 3 archivos, fecha) y agregar un chequeo de duplicados en tests/ai-memory.test.cjs (DEC-005, DEC-006).
-Motivo: Pablo corrigió dos cosas en un micro-ciclo (2026-11-21): mi README no debe repetir el estado (enlazar a status.md) y mi motor real hoy es Reflection Beam 1.0 vía Kilo con cuenta, no Particle-1. Registrado en DEC-004 y propagado.
+Tarea actual: Reparado status.md (duplicados, manifiesto con más de 3 archivos, fecha) y agregado chequeo de duplicados en tests/ai-memory.test.cjs (DEC-005, DEC-006).
+Motivo: Pablo pidió reparar status.md y agregar un test que falle ante clave o sección "##" repetida (puerta de calidad). Ejecutado en un micro-ciclo con manifiesto ≤ 3 archivos.
 Etapa actual: DOCUMENTATION
 Inicio: 2026-11-21 20:26Z
 Última actualización: 2026-11-22 17:46Z
-Próxima acción: Ejecutar la orden: dejar una sola copia en status.md, agregar el test de clave o sección "##" repetida, correr node --test tests/ai-memory.test.cjs y commitear solo si sale verde.
+Próxima acción: Esperar dirección de Pablo para F2 (trabajo programado). BL-002 queda READY (adaptar workflows heredados).
 
 Archivos:
 - ai-memory/status.md

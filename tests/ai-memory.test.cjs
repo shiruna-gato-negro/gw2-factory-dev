@@ -6,6 +6,7 @@
 // - Límites de carga y formato de discovery (DEC-016, DEC-017).
 // - Gobernanza de pendientes (DEC-018, DEC-019) y áreas de discovery (DEC-020).
 // - Manifiesto de micro-ciclo con ≤ 3 archivos (DEC-021) y riesgo en pedidos nuevos (DEC-022).
+// - status.md sin clave ni sección "##" repetida.
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
@@ -171,6 +172,16 @@ test('status.md: el manifiesto del micro-ciclo lista como máximo 3 archivos (DE
   if (!m) return;
   const files = m[1].split('\n').filter((l) => /^- \S/.test(l));
   assert.ok(files.length <= MAX_MANIFEST_FILES, `el manifiesto lista ${files.length} archivos (máximo ${MAX_MANIFEST_FILES}): dividir el micro-ciclo`);
+});
+
+test('status.md: sin clave ni sección "##" repetida', () => {
+  const status = read('status.md');
+  const keys = [...status.matchAll(/^([A-Za-zÁÉÍÓÚáéíóúñ]+(?: [A-Za-zÁÉÍÓÚáéíóúñ]+)*):/gm)].map((m) => m[1].trim());
+  const dupKeys = keys.filter((k, i) => keys.indexOf(k) !== i);
+  assert.deepEqual(dupKeys, [], 'clave repetida en status.md: ' + [...new Set(dupKeys)].join(', '));
+  const sections = [...status.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+  const dupSections = sections.filter((s, i) => sections.indexOf(s) !== i);
+  assert.deepEqual(dupSections, [], 'sección ## repetida en status.md: ' + [...new Set(dupSections)].join(', '));
 });
 
 test('pedidos de decisión abiertos desde el 2026-10-21 traen "## Riesgo" (DEC-022)', () => {
