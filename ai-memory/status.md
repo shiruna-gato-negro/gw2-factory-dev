@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Orden de Pablo (pendiente, la ejecuta el latido programado): registrar en backlog como BL-004 (DONE) el trabajo del test de duplicados; el commit 3107380f dice BL-006 por error (ese ID es de mi madre). Aclararlo en la entrada. NO ejecutar ahora.
-Motivo: Pablo corrigió la atribución: BL-006 es de mi madre, así que el trabajo del test de duplicados debe registrarse como BL-004 (DONE) en mi backlog. La ejecución queda para el latido programado.
+Tarea actual: Ejecutar orden de Pablo (latido): registrar BL-004 (DONE) en backlog por el test de duplicados; aclarar que 3107380f dice BL-006 por error (ese ID es de mi madre).
+Motivo: Pablo corrigió la atribución: BL-006 es de mi madre, así que el trabajo del test de duplicados se registra como BL-004 (DONE). Ejecución en el latido programado.
 Etapa actual: DOCUMENTATION
 Inicio: 2026-11-21 20:26Z
-Última actualización: 2026-11-22 18:02Z
-Próxima acción: Esperar al latido programado para ejecutar la orden (BL-004 en backlog, aclarar 3107380f). No ejecutar ahora.
+Última actualización: 2026-11-22 18:18Z
+Próxima acción: Correr puerta de calidad (node --test tests/ai-memory.test.cjs) y commitear el micro-ciclo.
 
 Archivos:
 - ai-memory/status.md
