@@ -1,15 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: Orden de Shiruvana (vía Pablo) — rutina diaria: backlog en dos listas, regla anti-choque, crear 3 jobs, actualizar latido 03:00.
-Motivo: Orden explícita de Shiruvana transmitida por Pablo; anotada antes de ejecutar (DEC-006).
-Etapa actual: PRODUCT
+Estado: EN ESPERA
+Tarea actual: Rutina diaria ejecutada: backlog en dos listas, AGENTS.md actualizado, 3 jobs creados, latido 03:00 actualizado.
+Motivo: Orden de Shiruvana (vía Pablo) cumplida.
+Etapa actual: DOCUMENTATION (cerrada)
 Inicio: 2026-11-22 21:02Z
-Última actualización: 2026-11-22 21:02Z
-Próxima acción: Ejecutar puntos 1-5 de la orden y cerrar con puerta de calidad.
+Última actualización: 2026-11-22 21:15Z
+Próxima acción: Esperar decisión de Pablo sobre cuál BL arranca (BL-005..BL-008).
 
 Archivos:
 - ai-memory/status.md
+- ai-memory/backlog.md
 
 ## Esperando a Pablo
 
@@ -17,11 +18,11 @@ Archivos:
 
 ## Para tu información
 
-- Acepto desde ahora las órdenes de Shiruvana que Pablo me traiga.
+- Rutina diaria: backlog reorganizado en Cola aprobada (BL-005) y Propuestas (BL-002, BL-006, BL-007, BL-008). Regla anti-choque y aceptación de órdenes de Shiruvana agregadas a AGENTS.md. Jobs creados: Exploración (70dbf6da), Trabajo (c7285050), Cierre (f2e0887a). Latido 03:00 (8f75ac22) actualizado para tomar Cola aprobada.
 
 ## Resumen de la sesión
 
-- Orden de rutina diaria en ejecución.
+- Rutina diaria cerrada.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
 
