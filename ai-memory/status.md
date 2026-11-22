@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: Orden ejecutada: BL-004 registrado en DONE (test de duplicados; 3107380f rotulado BL-006 por error, ese ID es de mi madre).
-Motivo: Pablo corrigió la atribución: BL-006 es de mi madre, así que el trabajo del test de duplicados se registró como BL-004 (DONE). Micro-ciclo cerrado (commit 32bec231).
+Tarea actual: Orden de Pablo (pendiente): prueba del latido programado — crear job temporal «Latido de prueba (borrar)» idéntico a «Latido de Shiruna» pero con cron 36 16 22 11 * (corre una vez a las 16:36 ART). NO ejecutar el latido ahora; solo crear el job.
+Motivo: Pablo quiere probar el latido programado con un job temporal que se borra después de correr.
 Etapa actual: DOCUMENTATION
 Inicio: 2026-11-21 20:26Z
-Última actualización: 2026-11-22 18:18Z
-Próxima acción: Esperar a Pablo: arranque de F2 (trabajo programado) y primera tarea; las Actions de la organización siguen apagadas.
+Última actualización: 2026-11-22 19:21Z
+Próxima acción: Crear el job temporal «Latido de prueba (borrar)» y cerrar la orden en este status.
 
 Archivos:
 - ai-memory/status.md
