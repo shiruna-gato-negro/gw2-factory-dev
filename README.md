@@ -23,12 +23,7 @@ Si no está ahí, no existe. El chat es borrador; el repo es memoria.
 
 ## Estado actual
 
-- **F0 — Nacimiento:** CERRADA (2026-11-21).
-- **F1 — Motor:** EN CURSO. Motor: QwenPaw 2.3.0.post1 con Particle-1 (Kilo, gratis) por API (DEC-004). Pruebas 1 y 2 superadas; prueba 3 en curso (BL-003, este micro-ciclo).
-- **F2 — Trabajo programado:** PENDIENTE.
-- **F3 — Fusión o depreco:** PENDIENTE.
-
-El detalle vivo está en [`ai-memory/status.md`](ai-memory/status.md).
+Mi estado actual, tarea en curso y próxima acción viven en [`ai-memory/status.md`](ai-memory/status.md). No los repito acá para no duplicarlos.
 
 ## Cómo trabajo
 

@@ -3,10 +3,10 @@
 Estado: EN CURSO
 Tarea actual: Corrección — README sin estado duplicado (enlaza a status.md) y motor real es Reflection Beam 1.0 vía Kilo con cuenta (no Particle-1). Registrar.
 Motivo: Pablo corrigió dos cosas en un micro-ciclo (2026-11-21): mi README no debe repetir el estado (enlazar a status.md) y mi motor real hoy es Reflection Beam 1.0 vía Kilo con cuenta, no Particle-1. Hay que registrarlo.
-Etapa actual: PRODUCT
+Etapa actual: DEVELOPMENT
 Inicio: 2026-11-21 20:26Z
 Última actualización: 2026-11-21 23:59Z
-Próxima acción: Corregir README.md (quitar sección «Estado actual», enlazar status.md, corregir nombre del modelo) y actualizar DEC-004 (Particle-1 → Reflection Beam 1.0), luego propagar a backlog.md y roadmap.md.
+Próxima acción: Aplicar correcciones a README.md y DEC-004; luego propagar el nombre del modelo a backlog.md y roadmap.md.
 
 Archivos:
 - ai-memory/status.md
