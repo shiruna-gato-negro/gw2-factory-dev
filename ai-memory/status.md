@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: Orden de Shiruvana (vía Pablo): autonomía en mi repo, una sola cola READY, sección Ciclo continuo, jobs reorganizados. Anotada.
-Motivo: Orden de Shiruvana aprobada por Pablo.
-Etapa actual: PRODUCT
+Estado: EN ESPERA
+Tarea actual: Orden de Shiruvana (vía Pablo) cumplida: autonomía en mi repo, una sola cola READY, sección Ciclo continuo, jobs reorganizados, DEC-007 registrada.
+Motivo: Orden de Shiruvana aprobada por Pablo, ejecutada y cerrada.
+Etapa actual: DOCUMENTATION (cerrada)
 Inicio: 2026-11-22 23:24Z
-Última actualización: 2026-11-22 23:24Z
-Próxima acción: Ejecutar la orden: reorganizar backlog, escribir Ciclo continuo en AGENTS.md, registrar decisión, cerrar.
+Última actualización: 2026-11-22 23:25Z
+Próxima acción: Primer ciclo toma BL-005 (primera de READY).
 
 Archivos:
 - ai-memory/status.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- Rutina diaria: backlog reorganizado en Cola aprobada (BL-005) y Propuestas (BL-002, BL-006, BL-007, BL-008). Regla anti-choque y aceptación de órdenes de Shiruvana agregadas a AGENTS.md. Jobs creados: Exploración (70dbf6da), Trabajo (c7285050), Cierre (f2e0887a). Latido 03:00 (8f75ac22) actualizado para tomar Cola aprobada.
+- Ciclo continuo: un solo job "Ciclo de Shiruna" (8f75ac22), cron `*/30 * * * *`, timeout 1500 s. Borrados Exploración (70dbf6da), Trabajo (c7285050) y Cierre (f2e0887a). READY unificada (5 tareas, máximo 10). DEC-007 registrada. AGENTS.md con sección Ciclo continuo.
 
 ## Resumen de la sesión
 

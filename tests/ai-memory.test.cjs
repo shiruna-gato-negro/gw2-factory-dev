@@ -15,7 +15,7 @@ const path = require('node:path');
 
 const MEM = path.join(__dirname, '..', 'ai-memory');
 const REQUIRED = ['status.md', 'backlog.md', 'memory-index.md', 'roadmap.md', 'risks.md', 'discovery.md', 'discovery-archive.md'];
-const MAX_READY = 5;
+const MAX_READY = 10;
 const MAX_OPEN_DISC = 15;
 const OPEN_STATES = ['PENDIENTE', 'ANALIZADO'];
 const CLOSED_STATES = ['PROMOVIDO', 'ARCHIVADO', 'DESCARTADO'];
@@ -107,7 +107,7 @@ test('status.md tiene las claves que lee el panel', () => {
   }
 });
 
-test('READY del backlog no supera el límite de 5 tareas (DEC-016)', () => {
+test('READY del backlog no supera el límite de 10 tareas (DEC-016)', () => {
   const ready = backlogSection('READY');
   assert.ok(ready.length <= MAX_READY, `READY tiene ${ready.length} tareas (máximo ${MAX_READY}): ` + ready.map((l) => l.slice(2, 10)).join(' '));
 });
