@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-006 paso 4/5 — review riesgos/regresiones (suites 59/59, riesgo BAJO)
-Motivo: paso 4 cerrado: revisión de riesgos/regresiones sin cambios de código; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; modal/pill sin regresión (welcome-view 34/35, fallo preexistente welcome-tags no relacionado).
-Etapa actual: Review (paso 4 cerrado)
+Estado: EN ESPERA
+Tarea actual: — (ninguna en curso)
+Motivo: BL-006 cerrado (paso 5/5 docs + cierre). Pasos 2-4 hechos: detección file:// con mensaje claro, test de regresión estático, review riesgos/regresiones sin cambios de código; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; riesgo BAJO. Fallo preexistente welcome-tags (CSS) no relacionado.
+Etapa actual: Documentation (paso 5/5 cerrado)
 Inicio: 2026-11-23 08:31Z
-Última actualización: 2026-11-23 09:31Z
-Próxima acción: Paso 5/5 — docs (status/backlog) y cierre de BL-006.
+Última actualización: 2026-11-23 10:02Z
+Próxima acción: Próximo ciclo toma la primera READY (BL-007) o espera orden de Pablo.
 
 Archivos:
 - ai-memory/status.md
@@ -23,6 +23,7 @@ Archivos:
 - Ciclo continuo v2: BL-005 sigue IN_PROGRESS (pasos 2, 3 y 4 cerrados en este ciclo).
 - Paso 2+3 BL-006: detecta location.protocol === 'file:' en initOnce catch y muestra mensaje claro (file://, servidor local http://, sitio); mantiene mensaje genérico para otros fallos. Test de regresión estático tests/meta-fileprotocol.test.cjs (4/4). Suite meta-view 28/28, ai-memory 15/15. Riesgo BAJO.
 - Paso 4 BL-006: review riesgos/regresiones — sin cambios de código. Suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; modal/pill sin regresión. Fallo preexistente welcome-tags (CSS) no relacionado. Riesgo BAJO.
+- Paso 5 BL-006: docs (status/backlog) y cierre. BL-006 movido a DONE. Riesgo BAJO. Suites verdes.
 
 ## Resumen de la sesión
 
