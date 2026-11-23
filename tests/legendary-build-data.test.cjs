@@ -19,7 +19,7 @@ const DATA = path.join(ROOT, 'js', 'legendary-data.js');
 
 function tmp() { return fs.mkdtempSync(path.join(os.tmpdir(), 'leg-build-')); }
 function writeJSON(file, data) { fs.writeFileSync(file, JSON.stringify(data)); return file; }
-function py(args) { return spawnSync('python3', args, { encoding: 'utf8' }); }
+function py(args) { return spawnSync('python', args, { encoding: 'utf8' }); }
 function loadCatalog(file) {
   const sandbox = { console: { info() {} } };
   sandbox.window = sandbox;

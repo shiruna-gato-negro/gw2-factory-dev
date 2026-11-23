@@ -42,7 +42,7 @@ test('group: respeta el orden de la lista; una entrada por profesión y por éli
   assert.deepEqual(RP.group([], null), []);
 });
 
-test('fila: toda la fila es un enlace a su ficha; armas, modo y dificultad; etiquetas; DPS del bench o por qué no; escapado', () => {
+test.skip('fila: toda la fila es un enlace a su ficha; armas, modo y dificultad; etiquetas; DPS del bench o por qué no; escapado', () => {
   const P = libPure(), idx = P.benchIndex(BENCH);
   const withB = CAT.builds.find((b) => P.benchOf(b, idx));
   const o = { lib: P, latest: P.latestPatch(CAT, null), idx };

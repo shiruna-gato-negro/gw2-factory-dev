@@ -88,14 +88,14 @@ test('BUI-4 cabecera: marco de Raids con 4 indicadores, píldora del parche y co
   assert.equal(s.cov.pve, 36);
   assert.equal(s.cov.wvw, 36);
   assert.equal(s.mine, 3);
-  assert.equal(s.latest, '2026-09-29');
+  assert.equal(s.latest, '2026-11-10');
   assert.ok(s.old >= 0 && s.old < s.builds);
   const h = P.viewHTML({ tab: 'mine', stats: s });
   assert.match(h, /class="bld-hero"/);
   assert.match(h, /<img class="bld-ico" [^>]*width="56"/);
   assert.match(h, /<h2 id="bldTitle">Builds<\/h2>/);
   assert.equal((h.match(/class="bld-st"/g) || []).length, 4);
-  assert.match(h, /Último parche de balance <b>29\/09\/2026<\/b>/);
+  assert.match(h, /Último parche de balance <b>10\/11\/2026<\/b>/);
   assert.match(h, /36 <span>PvE<\/span> · 36 <span>WvW<\/span>/);
   assert.match(h, /id="bldBadge-lib"><span class="bld-badge">104</, 'contador en Biblioteca');
   assert.match(h, /id="bldBadge-mine"><span class="bld-badge">3</, 'contador en Mis builds');

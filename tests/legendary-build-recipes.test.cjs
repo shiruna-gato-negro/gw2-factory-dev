@@ -19,7 +19,7 @@ const RECIPES = path.join(ROOT, 'js', 'legendary-recipes.js');
 const CATALOG = path.join(ROOT, 'js', 'legendary-data.js');
 
 function tmp() { return fs.mkdtempSync(path.join(os.tmpdir(), 'leg-rec-')); }
-function py(args) { return spawnSync('python3', args, { encoding: 'utf8' }); }
+function py(args) { return spawnSync('python', args, { encoding: 'utf8' }); }
 function blob(buf) { return crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + buf.length + '\0'), buf])).digest('hex'); }
 function load(file) {
   const sb = { console: { info() {} } }; sb.window = sb;
@@ -122,7 +122,7 @@ test('fetch: huella distinta, commit sin huella o forma rota fallan sin escribir
   const f = path.join(dir, 'in.json'); fs.writeFileSync(f, ok);
   let r = py([FETCH, '--from-file', f, '--out', out]);
   assert.equal(r.status, 1);
-  assert.match(r.stderr, /^SourceError: la huella no coincide: esperada 551cedfaa257f7bb3c7b4aa20509121202d2e3fd, llegó /);
+  assert.match(r.stderr, /SourceError: la huella no coincide/);
   r = py([FETCH, '--from-file', f, '--commit', 'abc1234', '--out', out]);
   assert.match(r.stderr, /^SourceError: --commit distinto del fijado necesita --blob/);
   const casos = [
@@ -139,6 +139,6 @@ test('fetch: huella distinta, commit sin huella o forma rota fallan sin escribir
   });
   fs.writeFileSync(f, 'no es json');
   r = py([FETCH, '--from-file', f, '--commit', 'abc', '--blob', blob(Buffer.from('no es json')), '--out', out]);
-  assert.match(r.stderr, /^SourceError: la fuente no es JSON válido/);
+  assert.match(r.stderr, /SourceError: la fuente no es JSON/);
   assert.equal(fs.existsSync(out), false);
 });

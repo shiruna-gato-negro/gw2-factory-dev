@@ -14,7 +14,7 @@ const SCRIPT = path.join(__dirname, '..', 'tools', 'legendary', 'fetch_legendary
 function tmp() { return fs.mkdtempSync(path.join(os.tmpdir(), 'leg-fetch-')); }
 function write(dir, name, data) { fs.writeFileSync(path.join(dir, name), JSON.stringify(data)); }
 function run(cache, out, extra) {
-  return spawnSync('python3', [SCRIPT, '--offline', '--cache-dir', cache, '--out', out].concat(extra || []), { encoding: 'utf8' });
+  return spawnSync('python', [SCRIPT, '--offline', '--cache-dir', cache, '--out', out].concat(extra || []), { encoding: 'utf8' });
 }
 
 const EN = [
@@ -28,9 +28,9 @@ const ES = [
   { id: 91048, name: '' }
 ];
 
-test('python3 está disponible (sin él no hay cómo regenerar la Armería)', () => {
-  const r = spawnSync('python3', ['--version'], { encoding: 'utf8' });
-  assert.equal(r.status, 0, 'falta python3 en el entorno de tests');
+test('python está disponible (sin él no hay cómo regenerar la Armería)', () => {
+  const r = spawnSync('python', ['--version'], { encoding: 'utf8' });
+  assert.equal(r.status, 0, 'falta python en el entorno de tests');
 });
 
 test('arma el snapshot con la forma exacta que consume el build', () => {

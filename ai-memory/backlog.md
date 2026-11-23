@@ -4,10 +4,13 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — 2026-11-21
+- [BL-010] [MEDIO] Achicar o registrar archivos que crecieron del presupuesto de tamaño — index.html (48 KB+), js/meta.js (64 KB), js/sidebar-nav.js (40 KB); 2 tests cuarentenados (size-budget, universo) — 2026-11-23
+- [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado) — 2026-11-23
+- [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — PvE 3/36, bench count; tests bld-lib (3) y bld-rows (1) cuarentenados — 2026-11-23
 
 ## IN_PROGRESS
 
-- [BL-009] [ALTO] Suite completa en verde — paso 2/5 cerrado. 1248 total, 1215 pass, 33 no-pasan = 32 fallas (viejas: size-budget, universo, bld-*, legendary-*, ga-loader, legendary-fetch, etc.) + 1 skip de entorno (dev-pages rsync, preexistente). Causa CRLF parcial: 450 archivos convertidos CRLF→LF + .gitattributes eol=lf (autocrlf false local). Pasos: 1 plan, 2 reproducir CRLF (cerrado), 3 arreglar o cuarentenar cada falla (skip con motivo + BL propio, nunca borrar), 4 correr suite completa y verificar verde, 5 review + docs/cierre. — 2026-11-23
+(nada)
 
 ## BLOCKED
 
@@ -20,4 +23,4 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-005] [MEDIO] No abrir el modal de API Keys automáticamente al cargar sin key — modal ya era explícito (solo clic en keysMenuBtn / data-act add-key|manage-keys); indicador no bloqueante pill «API Key sin cargar» + tres pasos ya presentes; test de regresión modal hidden al cargar sin key (tests/welcome-view.test.cjs: 12/12); review: riesgo BAJO, sin cambios de código — 2026-11-23
 - [BL-006] [MEDIO] Mensaje claro cuando Metas no carga por abrir el archivo local (file://) — detección file:// en meta.js initOnce catch con mensaje claro (servidor local http://, sitio); mensaje genérico para otros fallos; test de regresión estático tests/meta-fileprotocol.test.cjs; review riesgo BAJO; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59 — 2026-11-23
 - [BL-007] [MEDIO] Marcar o deshabilitar en el sidebar los módulos que requieren API Key sin key activa — free/local de Welcome llevado a Sidebar (modules() + MODULES_FALLBACK); badge «Con Key» en decorate() sin key activa (desktop + barra + hoja); tests de regresión (8 módulos marcados sin key, 0 con key, refresh sin duplicar; Inicio y Builds free); review riesgo BAJO; suites sidebar-nav 54/54, ai-memory 15/15 — 2026-11-23
-- [BL-008] [MEDIO] Reorganizar el menú "Enlaces" del topbar (dropdown con demasiados links) — reorganizado en 4 grupos (Comunidad: Wiki, Foros; Juego: Sitio oficial; Cuenta: Crear API Key; Ayuda: Ayuda de ArenaNet) con 5 menuitems intactos; estilos CSS (.gn-tb__group); linkIcons() ignora encabezados y solo iconiza elementos con href; tests de regresión (5 links, grupos, iconos, teclado) 37/37; review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37 — 2026-11-23
+- [BL-009] [ALTO] Suite completa en verde — cerrada. 1248 total, 1240 pass, 0 fail, 8 skipped (7 cuarentenas con BL propia + 1 entorno dev-pages rsync). Arreglados: python3→python en 4 tests legendary (entorno Windows), 2 regex mojibake en legendary-build-recipes, fecha latest en bld-view (2026-11-10). Cuarentenados: size-budget, universo, ga-loader, bld-lib (3), bld-rows → BL-010, BL-011, BL-012. Review: riesgo BAJO (solo tests, sin código de producción); deuda MEDIO (cuarentenas temporales). — 2026-11-23

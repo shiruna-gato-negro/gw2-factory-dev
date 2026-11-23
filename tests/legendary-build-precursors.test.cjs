@@ -18,7 +18,7 @@ const CATALOG = path.join(ROOT, 'js', 'legendary-data.js');
 const dirs = [];
 function tmp() { const d = fs.mkdtempSync(path.join(os.tmpdir(), 'leg-pre-')); dirs.push(d); return d; }
 test.after(() => dirs.forEach(d => fs.rmSync(d, { recursive: true, force: true })));
-function py(args) { return spawnSync('python3', args, { encoding: 'utf8' }); }
+function py(args) { return spawnSync('python', args, { encoding: 'utf8' }); }
 function load(file, name) {
   const sb = { console: { info() {} } }; sb.window = sb;
   vm.runInNewContext(fs.readFileSync(file, 'utf8'), sb, { filename: file });
