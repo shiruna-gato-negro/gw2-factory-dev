@@ -989,8 +989,16 @@
       scheduleMidnight();
     } catch (e) {
       console.error(e);
-      setStatus('No se pudo cargar Metas y Eventos.', 'error');
-      notify('error', 'No se pudo cargar Metas y Eventos', 2400);
+      var isFileProtocol = false;
+      try { isFileProtocol = (typeof location !== 'undefined' && !!location && location.protocol === 'file:'); } catch (_) {}
+      if (!isFileProtocol) {
+        try { isFileProtocol = !!(window && window.location && window.location.protocol === 'file:'); } catch (_) {}
+      }
+      var msg = isFileProtocol
+        ? 'Metas no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).'
+        : 'No se pudo cargar Metas y Eventos.';
+      setStatus(msg, 'error');
+      notify('error', msg, 2400);
     }
   }
 
