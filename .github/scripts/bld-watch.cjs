@@ -14,7 +14,7 @@ const crypto = require('crypto');
 const WATCH = 'assets/data/builds/watch.json';
 const CATALOG = 'assets/data/builds/catalog.json';
 const PAGES = ['https://metabattle.com/wiki/WvW', 'https://metabattle.com/wiki/WvW_Roaming', 'https://metabattle.com/wiki/Build:Specter_-_Support_Specter'];
-const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/PabloSnchz/gw2-factory-dev; vigia semanal de builds)' } };
+const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/shiruna-gato-negro/gw2-factory-dev; vigia semanal de builds)' } };
 const MONTHS = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12 };
 
 // «up to date for the September 29, 2026 patch» → '2026-09-29' (la más nueva de la página).

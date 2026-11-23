@@ -3,7 +3,7 @@
 // Anoto solo datos factuales (élite, modo, dirección, fecha de actualización y código). Robots: «Allow: /».
 globalThis.GNBldCode = require('../js/bld-code.js');
 const C = globalThis.GNBldCode;
-const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/PabloSnchz/gw2-factory-dev; curacion manual de builds)' } };
+const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/shiruna-gato-negro/gw2-factory-dev; curacion manual de builds)' } };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const BASE = 'https://snowcrows.com';
 const PROFS = ['guardian', 'warrior', 'engineer', 'ranger', 'thief', 'elementalist', 'mesmer', 'necromancer', 'revenant'];

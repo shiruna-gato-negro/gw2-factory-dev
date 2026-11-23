@@ -3,7 +3,7 @@
 // No copia textos ni imágenes. El catálogo lo armo yo con estos datos y crédito a la fuente.
 globalThis.GNBldCode = require('../js/bld-code.js');
 const C = globalThis.GNBldCode;
-const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/PabloSnchz/gw2-factory-dev; curacion manual de builds)' } };
+const UA = { headers: { 'User-Agent': 'LaBovedaDelGatoNegro/1.0 (+https://github.com/shiruna-gato-negro/gw2-factory-dev; curacion manual de builds)' } };
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const BASE = 'https://snowcrows.com';
 const ELITES = { druid: 5, daredevil: 7, berserker: 18, dragonhunter: 27, reaper: 34, chronomancer: 40, scrapper: 43, tempest: 48, herald: 52,

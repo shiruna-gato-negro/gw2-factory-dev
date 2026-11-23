@@ -8,7 +8,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — PvE 3/36, bench count; tests bld-lib (3) y bld-rows (1) cuarentenados — 2026-11-23
 
 ## IN_PROGRESS
-- [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — Pasos: 1/5 plan ✓; 2/5 app-checks ✓ (guardia tests/app-checks.test.cjs, 4/4); 3/5 builds-watch: revisar/adaptar referencias al origen + test de guardia; 4/5 legacy-tests: gate `if: github.repository` a mi repo + bot shiruvana-factory → shiruna + test de guardia; 5/5 review + docs/cierre — 2026-11-21
+- [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — Pasos: 1/5 plan ✓; 2/5 app-checks ✓ (guardia tests/app-checks.test.cjs, 4/4); 3/5 builds-watch ✓ (User-Agent → shiruna-gato-negro; guardia tests/builds-watch.test.cjs, 4/4); 4/5 legacy-tests: gate `if: github.repository` a mi repo + bot shiruvana-factory → shiruna + test de guardia; 5/5 review + docs/cierre — 2026-11-21
 
 ## BLOCKED
 

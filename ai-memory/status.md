@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-002 paso 3/5 — builds-watch: revisar/adaptar referencias al origen y test de guardia
-Motivo: Paso 2/5 cerrado (app-checks): sin referencias al origen; guardia tests/app-checks.test.cjs (4/4). Suite 1244/1252 (8 skipped).
-Etapa actual: Product/Architecture (paso 3/5)
-Inicio: 2026-11-23 18:32Z
-Última actualización: 2026-11-23 18:32Z
-Próxima acción: Paso 3/5 builds-watch: revisar User-Agent y referencias al origen (PabloSnchz) + test de guardia.
+Tarea actual: BL-002 paso 4/5 — legacy-tests: gate `if: github.repository` a mi repo + bot shiruvana-factory → shiruna + test de guardia
+Motivo: Paso 3/5 cerrado (builds-watch): User-Agent → shiruna-gato-negro en bld-watch.cjs, bld-curate.cjs, bld-curate-lib.cjs y smoke; guardia tests/builds-watch.test.cjs (4/4). Suite 1248/1256 (8 skipped).
+Etapa actual: Product/Architecture (paso 4/5)
+Inicio: 2026-11-23 19:03Z
+Última actualización: 2026-11-23 19:03Z
+Próxima acción: Paso 4/5 legacy-tests: gate `if: github.repository` a shiruna-gato-negro/gw2-factory-dev + bot shiruna-factory → shiruna + test de guardia.
 
 Archivos:
 - ai-memory/status.md
