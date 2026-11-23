@@ -128,7 +128,9 @@
     if (!menu || !K || typeof K.icon !== 'function') return 0;
     if (typeof K.ensureCSS === 'function') K.ensureCSS();
     items(menu).forEach(function (a) {
+      if (!a || (a.classList && typeof a.classList.contains === 'function' && a.classList.contains('gn-tb__group'))) return;
       if (a.getAttribute('data-gk-icon') !== null || typeof a.insertAdjacentHTML !== 'function') return;
+      if (!a.getAttribute('href')) return;
       var h = K.icon(linkKey(a.getAttribute('href')), 18);
       if (!h) return;
       a.insertAdjacentHTML('afterbegin', h);
