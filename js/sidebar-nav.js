@@ -63,7 +63,7 @@
     { id: 'armory', name: 'Armería Legendaria', href: '#/account/legendary-armory', icon: 'assets/icons/Cuentas/157085.png', color: '#E545CA' },
     { id: 'accounts', name: 'Cuentas', href: '#/account/accounts', icon: 'assets/icons/3601748.png', color: '#8E96A3', local: true }
   ];
-  var HOME = { id: 'home', name: 'Inicio', href: '#/welcome', icon: 'https://render.guildwars2.com/file/32633AF8ADEA696A1EF56D3AE32D617B10D3AC57/157353.png', color: 'var(--acc-1)' };
+  var HOME = { id: 'home', name: 'Inicio', href: '#/welcome', icon: 'https://render.guildwars2.com/file/32633AF8ADEA696A1EF56D3AE32D617B10D3AC57/157353.png', color: 'var(--acc-1)', free: true };
   // Ids y data-view que ya usaban el router y otros módulos.
   var LINK_ID = { home: 'navHome', cards: 'navCards', meta: 'navMeta', armory: 'navLegendaryArmory', achievements: 'navAch',
     wv: 'navWV', activities: 'navAC', homestead: 'navHS', raids: 'navRaids', characters: 'navChars', accounts: 'navAccounts' };
@@ -174,7 +174,7 @@
 
   // BL-082 BLD-1: módulos que la Bienvenida todavía no lista (welcome-panel.js no tiene lugar: 48 KB).
   // Van antes de Cuentas y una sola vez: si algún día la Bienvenida los suma, no se repiten.
-  var EXTRA = [{ id: 'builds', name: 'Builds', href: '#/builds', icon: 'assets/icons/156720.png', color: '#C9B6FF' }];
+  var EXTRA = [{ id: 'builds', name: 'Builds', href: '#/builds', icon: 'assets/icons/156720.png', color: '#C9B6FF', free: true }];
   function withExtra(list) {
     var out = list.filter(function (m) { return m.id !== 'accounts'; }), tail = list.filter(function (m) { return m.id === 'accounts'; });
     EXTRA.forEach(function (x) { if (!list.some(function (m) { return m.id === x.id; })) out.push(x); });
@@ -566,7 +566,7 @@
     var fresh = newModules(state.news);
     var info = {};
     modules().forEach(function (md) { info[md.id] = md; });
-    function requiresKey(id) { var md = info[id]; return !(md && (md.free || md.local)); }
+    function requiresKey(id) { if (id === 'home') return false; var md = info[id]; return !(md && (md.free || md.local)); }
     allLinks().forEach(function (a) {
       Array.prototype.slice.call(a.children || []).forEach(function (c) {
         if (/\bsbr-(w|new|key|sr)\b/.test(c.className || '')) a.removeChild(c);

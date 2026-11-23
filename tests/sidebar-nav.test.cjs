@@ -369,19 +369,16 @@ test('«Nuevo»: en los módulos con una novedad de 14 días o menos; el aviso d
 
 test('«Con Key»: sin Key activa, los módulos que la requieren llevan el badge «Con Key» (desktop, barra y hoja)', () => {
   const x = ready(setup({ token: '' }));
-  const requiring = x.document.querySelectorAll('#sbrNav a').filter((a) => {
-    const id = a.getAttribute('data-mod');
-    return id && id !== 'meta' && id !== 'accounts' && id !== 'home' && id !== 'builds' ? false : false;
-  });
-  // módulos que requieren Key en la Sidebar: todos menos Inicio, meta (free) y accounts (local)
+  // módulos que requieren Key en la Sidebar: los 8 de la Bienvenida (meta es free, accounts es local; Inicio y Builds no requieren)
   const links = x.document.querySelectorAll('#sbrNav a');
   let conKey = 0;
   links.forEach((a) => { if (a.querySelector('.sbr-key')) conKey++; });
-  assert.ok(conKey >= 8, 'al menos 8 módulos marcados (8 de Welcome + builds)');
-  // meta (free) y accounts (local) no llevan el badge
+  assert.equal(conKey, 8, 'exactamente 8 módulos marcados sin Key');
+  // meta (free), accounts (local), Inicio (free) y Builds (free) no llevan el badge
   assert.equal(x.document.getElementById('navMeta').querySelector('.sbr-key'), null, 'meta es free: sin badge');
   assert.equal(x.document.getElementById('navAccounts').querySelector('.sbr-key'), null, 'accounts es local: sin badge');
-  assert.equal(x.document.getElementById('navMeta').querySelector('.sbr-key'), null);
+  assert.equal(x.document.getElementById('navHome').querySelector('.sbr-key'), null, 'Inicio es free: sin badge');
+  assert.equal(x.document.getElementById('nav-builds').querySelector('.sbr-key'), null, 'Builds es free: sin badge');
   // el texto del badge y el sr
   const sample = x.document.getElementById('navCards');
   assert.ok(sample.querySelector('.sbr-key'));

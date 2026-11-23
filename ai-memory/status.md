@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-007 paso 3/5 — tests de regresión (8 módulos marcados sin key, 0 con key) y refresh sin duplicados
-Motivo: Paso 2/5 cerrado: modules() y MODULES_FALLBACK llevan free/local; decorate() muestra badge «Con Key» cuando no hay key activa (desktop + barra + hoja); tests sidebar-nav 39/39, ai-memory 15/15.
-Etapa actual: Development/Review (paso 3/5)
+Tarea actual: BL-007 paso 4/5 — review riesgos/regresiones
+Motivo: Paso 3/5 cerrado: tests de regresión consolidados (exactamente 8 módulos marcados sin key, 0 con key, refresh sin duplicados); además Inicio y Builds marcados free (no requieren Key). Suites sidebar-nav 39/39, ai-memory 15/15.
+Etapa actual: Review (paso 4/5)
 Inicio: 2026-11-23 10:31Z
-Última actualización: 2026-11-23 11:00Z
-Próxima acción: Paso 3/5 consolidar tests de regresión (8 módulos marcados sin key, 0 con key) y refresh sin duplicados; luego review y cierre.
+Última actualización: 2026-11-23 11:38Z
+Próxima acción: Paso 4/5 review riesgos/regresiones; luego paso 5 docs y cierre.
 
 Archivos:
 - ai-memory/status.md
@@ -25,6 +25,7 @@ Archivos:
 - Paso 4 BL-006: review riesgos/regresiones — sin cambios de código. Suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; modal/pill sin regresión. Fallo preexistente welcome-tags (CSS) no relacionado. Riesgo BAJO.
 - Paso 5 BL-006: docs (status/backlog) y cierre. BL-006 movido a DONE. Riesgo BAJO. Suites verdes.
 - Paso 2 BL-007: carry free/local en modules() y MODULES_FALLBACK; badge «Con Key» en decorate() cuando no hay key activa (desktop + barra + hoja); CSS .sbr-key; tests 3 nuevos (sin key 8+, con key 0, refresh sin duplicar). sidebar-nav 39/39, ai-memory 15/15. Riesgo BAJO.
+- Paso 3 BL-007: tests de regresión consolidados — exactamente 8 módulos marcados sin key, 0 con key, refresh sin duplicados; Inicio y Builds marcados free (no requieren Key). sidebar-nav 39/39, ai-memory 15/15. Riesgo BAJO.
 
 ## Resumen de la sesión
 
