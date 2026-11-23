@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: BL-010 cerrada (5/5) — des-cuarentenar size-budget y universo; suite 1255/1261 (6 skipped). Próximo: BL-011 paso 1/5 (plan).
-Motivo: BL-010 paso 5/5 cerrado: quité .skip en tests/size-budget.test.cjs («la Bóveda cumple su presupuesto») y tests/universo.test.cjs (index.html ≤ 48 KB + universo.css); suite completa 1255/1261, 0 fail, 6 skipped (bld-lib ×3, bld-rows, ga-loader, dev-pages rsync). Review: riesgo BAJO (solo tests + config ya existente); deuda MEDIO (6 cuarentenas → BL-011, BL-012). BL-010 movida a DONE.
-Etapa actual: Documentation (cierre)
-Inicio: 2026-11-23 20:32Z
-Última actualización: 2026-11-23 22:31Z
-Próxima acción: BL-011 paso 1/5 — plan: restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado). Mover a IN_PROGRESS, definir pasos chicos.
+Estado: EN CURSO
+Tarea actual: BL-011 paso 1/5 (plan) — restaurar .github/workflows/github-metrics-to-ga4.yml (cuarentenado en ga-loader). Definidos 5 pasos; próximo: paso 2/5 (restaurar workflow desde git).
+Motivo: BL-010 cerrada (5/5) — des-cuarentenar size-budget y universo; suite 1255/1261 (6 skipped). BL-011 paso 1/5: plan escrito en backlog.md, movida a IN_PROGRESS. Sin cambios de código en este ciclo.
+Etapa actual: Product (plan)
+Inicio: 2026-11-23 23:00Z
+Última actualización: 2026-11-23 23:02Z
+Próxima acción: BL-011 paso 2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f), verificar guardia de producción y sin referencias a Shiruvana.
 
 Archivos:
 - ai-memory/status.md
