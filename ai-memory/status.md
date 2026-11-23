@@ -1,17 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-010 paso 4/5 — js/sidebar-nav.js: achicar 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo
-Motivo: BL-010 paso 3/5 cerrado: meta.js achicado 625 B (64051 → 63426, ≤63600) acortando header y simplificando detección file:// (BL-006); size-budget sin error para meta.js; suite 1253/1261 (8 skipped). Sigue sidebar-nav.js (41203, +243 sobre 40 KB).
-Etapa actual: Development (paso 3/5 cerrado)
+Tarea actual: BL-010 paso 5/5 — des-cuarentenar tests (quitar .skip en size-budget y universo), correr suite completa, review + docs + cierre
+Motivo: BL-010 paso 4/5 cerrado: sidebar-nav.js registrado en advertencia (40.2 KB, 243 B sobre 40 KB, nota BL-007 badge «Con Key»); size-budget sin errores (0); suite 1252/1260 (8 skipped). Sigue paso 5/5.
+Etapa actual: Development (paso 4/5 cerrado)
 Inicio: 2026-11-23 20:32Z
-Última actualización: 2026-11-23 21:51Z
-Próxima acción: BL-010 paso 4/5 — achicar sidebar-nav.js 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo; verificar size-budget.
+Última actualización: 2026-11-23 22:05Z
+Próxima acción: BL-010 paso 5/5 — quitar .skip en tests/size-budget.test.cjs («la Bóveda cumple su presupuesto») y tests/universo*.test.cjs si cuarentenado; correr suite completa; review riesgo + docs + cierre. Commit final.
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- js/meta.js
+- tools/size-budget.json
 
 ## Esperando a Pablo
 

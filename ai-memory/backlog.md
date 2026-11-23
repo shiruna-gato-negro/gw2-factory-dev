@@ -13,7 +13,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
   1/5 — plan (este ciclo): mover a IN_PROGRESS, definir pasos. (commit BL-010 paso 1/5)
   2/5 — index.html: achicado 58 B (49199 → 49141, ≤48 KB) quitando comentario BL-092; size-budget sin error. (cerrado)
   3/5 — js/meta.js: achicar 451 B sobre techo 63600 (BL-006 file://); si no es posible sin perder funcionalidad, extraer a archivo aparte. Verificar size-budget. (cerrado: 64051 → 63426, ≤63600, header + file:// simplificado; size-budget sin error)
-  4/5 — js/sidebar-nav.js: achicar 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo. Verificar size-budget.
+  4/5 — js/sidebar-nav.js: achicar 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo. Verificar size-budget. (cerrado: registrado en advertencia, 40.2 KB, nota BL-007; size-budget sin errores)
   5/5 — des-cuarentenar tests (quitar .skip en size-budget y universo), correr suite completa, review + docs + cierre. Commit final.
 
 ## BLOCKED
