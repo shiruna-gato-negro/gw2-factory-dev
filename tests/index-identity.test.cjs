@@ -12,7 +12,7 @@ const BRAND = 'assets/brand/gato-negro.svg';
 test('el logo de la cabecera, el pie y el favicon usan el gato oficial', () => {
   assert.match(HTML, /<img class="brand-logo-compact" src="assets\/brand\/gato-negro\.svg"/);
   assert.match(HTML, /<img class="footer-mark" src="assets\/brand\/gato-negro\.svg"/);
-  assert.match(HTML, /<link rel="icon" type="image\/svg\+xml" href="assets\/brand\/gato-negro\.svg"\/>/);
+  assert.match(HTML, /<link rel="icon" type="image\/svg\+xml" href="assets\/brand\/shiruna\.svg"\/>/);
   assert.doesNotMatch(HTML, /logo-gato-negro\.png|assets\/favicon\.png/, 'no queda la marca anterior');
   assert.ok(fs.existsSync(path.join(ROOT, BRAND)));
 });
