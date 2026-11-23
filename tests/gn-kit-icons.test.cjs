@@ -98,3 +98,29 @@ test('UNI-6: el menú Enlaces lleva el ícono de cada enlace, una sola vez, aunq
   assert.equal(sb.GNTopbar.linkKey('https://otro.sitio/'), null);
   assert.match(read('js/gn-topbar.js'), /if \(menu\.id === 'gnTbLinks'\) linkIcons\(\);/, 'también al abrir el menú');
 });
+
+// BL-008: linkIcons ignora los encabezados de grupo (solo iconiza los 5 enlaces)
+test('BL-008: linkIcons ignora los encabezados de grupo y solo iconiza los 5 enlaces', () => {
+  const HREFS = ['https://wiki-es.guildwars2.com/wiki/P%C3%A1gina_principal', 'https://en-forum.guildwars2.com/', 'https://help.guildwars2.com/hc',
+    'https://www.guildwars2.com/', 'https://account.arena.net/applications'];
+  const links = HREFS.map((href) => ({ attrs: { href, role: 'menuitem' }, html: '', classList: { contains: () => false },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }, setAttribute(k, v) { this.attrs[k] = String(v); },
+    insertAdjacentHTML(pos, h) { assert.equal(pos, 'afterbegin'); this.html = h + this.html; } }));
+  const group = { attrs: { class: 'gn-tb__group' }, html: '', classList: { contains: (c) => c === 'gn-tb__group' },
+    getAttribute(k) { return k in this.attrs ? this.attrs[k] : null; }, setAttribute() {}, insertAdjacentHTML() { throw new Error('no debe iconizar encabezados'); } };
+  const menu = { id: 'gnTbLinks', querySelectorAll: () => links.concat([group]) };
+  const heard = {};
+  const sb = { console: { info() {} } };
+  sb.window = sb;
+  sb.document = { readyState: 'complete', documentElement: { classList: { add() {}, remove() {} } },
+    getElementById: (id) => (id === 'gnTbLinks' ? menu : null), addEventListener: (t, f) => { heard[t] = f; } };
+  sb.location = { pathname: '/' };
+  vm.createContext(sb);
+  vm.runInContext(read('js/gn-topbar.js'), sb, { filename: 'js/gn-topbar.js' });
+  assert.equal(group.html, '', 'sin GNKit, el encabezado queda intacto');
+  vm.runInContext(read('js/gn-kit.js'), sb, { filename: 'js/gn-kit.js' });
+  heard['gn:boot-ready']();
+  assert.equal(links.filter((a) => a.html !== '').length, 5, 'los 5 enlaces reciben ícono');
+  assert.equal(group.html, '', 'el encabezado no recibe ícono');
+  assert.equal(sb.GNTopbar.linkIcons(), 0, 'no repite el ícono');
+});

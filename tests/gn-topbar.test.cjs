@@ -301,3 +301,29 @@ test('pie: «Guías de uso» y «Gestión de Keys» tocan los botones de la barr
   const e = fire(D, home, 'click');
   assert.ok(!e.defaultPrevented, 'Inicio es un enlace común');
 });
+
+// ------------------------------------------------------------------ BL-008: regresión del menú Enlaces reorganizado en grupos
+test('BL-008: el menú Enlaces agrupa los 5 enlaces en 4 grupos con encabezado, en orden', () => {
+  const tools = HDR.slice(HDR.indexOf('id="gnTbTools"'));
+  const menu = (id) => { const s = tools.slice(tools.indexOf('<ul class="gn-tb__menu" id="' + id + '"')); return s.slice(0, s.indexOf('</ul>')); };
+  const links = menu('gnTbLinks');
+  const groups = [...links.matchAll(/<li role="none" class="gn-tb__group"><span class="gn-tb__group-label">([^<]+)<\/span><\/li>/g)].map((m) => m[1]);
+  assert.deepEqual(groups, ['Comunidad', 'Juego', 'Cuenta', 'Ayuda'], 'los 4 grupos, en orden');
+  assert.equal((links.match(/role="menuitem"/g) || []).length, 5, 'los 5 enlaces siguen intactos');
+  // los grupos no son menuitems: no ensucian la navegación por teclado
+  assert.ok(!/role="menuitem"[^>]*gn-tb__group/.test(links), 'ningún grupo es menuitem');
+});
+
+test('BL-008: la navegación por teclado del menú Enlaces ignora los grupos y se queda entre los 5 enlaces', () => {
+  const { D, $, key } = load();
+  const btn = $('gnTbLinksBtn'), menu = $('gnTbLinks');
+  const items = menu.querySelectorAll('[role="menuitem"]');
+  assert.equal(items.length, 5, 'solo los 5 enlaces son focuseables');
+  btn.focus(); fire(D, btn, 'click');
+  assert.equal(D.active, items[0], 'el foco entra en el primer enlace, no en un grupo');
+  key('End'); assert.equal(D.active, items[4], 'Fin va al último enlace');
+  key('Home'); assert.equal(D.active, items[0], 'Inicio va al primero');
+  key('ArrowDown'); key('ArrowDown'); key('ArrowDown'); key('ArrowDown'); key('ArrowDown');
+  assert.equal(D.active, items[0], 'da la vuelta entre los 5 enlaces');
+  key('Escape'); assert.ok(hid(menu), 'Escape cierra el menú');
+});

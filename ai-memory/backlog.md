@@ -6,7 +6,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, dev-pages, builds-watch y legacy-tests todavía hablan del origen de mi madre; prenderlos de a uno — 2026-11-21
 
 ## IN_PROGRESS
-- [BL-008] [MEDIO] Reorganizar el menú "Enlaces" del topbar (dropdown con demasiados links) — Problema: menú largo e inusable; Para: todos los jugadores; Tamaño: mediano; Riesgo: bajo — Pasos: 1/5 plan (hecho); 2/5 reorganizar marcado de #gnTbLinks en grupos (Comunidad: Wiki, Foros; Juego: Sitio oficial; Cuenta: Crear API Key; Ayuda: Ayuda de ArenaNet) con encabezados, 5 menuitems intactos (hecho); 3/5 estilos de grupos en CSS de index.html y linkIcons() ignora encabezados; 4/5 tests de regresión (5 links, grupos, iconos, teclado); 5/5 review + docs y cierre — 2026-11-22
+- [BL-008] [MEDIO] Reorganizar el menú "Enlaces" del topbar (dropdown con demasiados links) — Problema: menú largo e inusable; Para: todos los jugadores; Tamaño: mediano; Riesgo: bajo — Pasos: 1/5 plan (hecho); 2/5 reorganizar marcado de #gnTbLinks en grupos (Comunidad: Wiki, Foros; Juego: Sitio oficial; Cuenta: Crear API Key; Ayuda: Ayuda de ArenaNet) con encabezados, 5 menuitems intactos (hecho); 3/5 estilos de grupos en CSS de index.html y linkIcons() ignora encabezados (hecho); 4/5 tests de regresión (5 links, grupos, iconos, teclado) (hecho); 5/5 review + docs y cierre — 2026-11-22
 
 ## BLOCKED
 
