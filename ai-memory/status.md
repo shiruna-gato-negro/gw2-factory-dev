@@ -1,16 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-010 paso 3/5 — js/meta.js: achicar 451 B sobre techo 63600 (BL-006 file://) o extraer a archivo aparte
-Motivo: BL-010 paso 2/5 cerrado: index.html achicado 58 B (49199 → 49141, ≤48 KB) quitando comentario BL-092; size-budget sin error para index.html; suite 1252/1260 (8 skipped). Sigue meta.js (64051, +451) y sidebar-nav.js (41203, +243).
-Etapa actual: Development (paso 2/5 cerrado)
+Tarea actual: BL-010 paso 4/5 — js/sidebar-nav.js: achicar 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo
+Motivo: BL-010 paso 3/5 cerrado: meta.js achicado 625 B (64051 → 63426, ≤63600) acortando header y simplificando detección file:// (BL-006); size-budget sin error para meta.js; suite 1253/1261 (8 skipped). Sigue sidebar-nav.js (41203, +243 sobre 40 KB).
+Etapa actual: Development (paso 3/5 cerrado)
 Inicio: 2026-11-23 20:32Z
-Última actualización: 2026-11-23 21:01Z
-Próxima acción: BL-010 paso 3/5 — achicar meta.js 451 B sobre techo 63600 o extraer a archivo aparte; verificar size-budget.
+Última actualización: 2026-11-23 21:51Z
+Próxima acción: BL-010 paso 4/5 — achicar sidebar-nav.js 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo; verificar size-budget.
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
+- js/meta.js
 
 ## Esperando a Pablo
 
@@ -33,5 +34,7 @@ Archivos:
 - BL-009 paso 3/5 y 4/5 cerrados: python3→python en 4 tests legendary; 2 regex mojibake en legendary-build-recipes; fecha latest bld-view 2026-11-10. Cuarentenados 7 tests (size-budget, universo, ga-loader, bld-lib ×3, bld-rows) con skip + BL propia (BL-010, BL-011, BL-012). Suite 1240/1248 (0 fail, 8 skip). BL-009 cerrada. Review: BAJO.
 
 - BL-002 paso 5/5 cerrado: review riesgo BAJO + docs/cierre. Workflows adaptados (app-checks, builds-watch, legacy-tests) con guardias 4/4, 4/4, 5/5 en verde; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
+
+- BL-010 paso 3/5 cerrado: meta.js achicado 625 B (64051 → 63426, ≤63600) acortando header y simplificando detección file:// (BL-006); size-budget sin error para meta.js; suite 1253/1261 (8 skipped).
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

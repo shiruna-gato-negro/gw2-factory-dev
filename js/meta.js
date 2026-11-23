@@ -1,11 +1,6 @@
 /*!
- * js/meta.js — Metas y Eventos · Bóveda del Gato Negro
- * Versión: 4.0.1 (2026-10-23) — BL-057
- * 4.0.1 (MET-1c, DEC-031): vistas previas desde assets/previews/; si falta o no carga, «Sin vista previa»
- *   limpio (nunca la imagen rota ni el texto alternativo suelto).
- * 4.0.0 (MET-1): Ahora, Próximas 3 horas, Fijadas (6) y Todas las metas por expansión; filtros desde los
- *   datos; «Hecho hoy» solo donde la API lo sabe; tick de 30 s; BL-041; sin «Vista compacta»;
- *   Meta.snapshot() y gn:meta-rendered para la cabecera (MET-2). Historia: CHANGELOG.md y git.
+ * js/meta.js — Metas y Eventos v4.0.1 (BL-057, DEC-031)
+ * Versión: 4.0.1
  */
 (function () {
   'use strict';
@@ -990,12 +985,9 @@
     } catch (e) {
       console.error(e);
       var isFileProtocol = false;
-      try { isFileProtocol = (typeof location !== 'undefined' && !!location && location.protocol === 'file:'); } catch (_) {}
-      if (!isFileProtocol) {
-        try { isFileProtocol = !!(window && window.location && window.location.protocol === 'file:'); } catch (_) {}
-      }
+      try { isFileProtocol = location.protocol === 'file:'; } catch (_) { try { isFileProtocol = !!(window && window.location && window.location.protocol === 'file:'); } catch (_) {} }
       var msg = isFileProtocol
-        ? 'Metas no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).'
+        ? 'Metas no carga con file://. Abrilo desde el sitio o con un servidor local (http://).'
         : 'No se pudo cargar Metas y Eventos.';
       setStatus(msg, 'error');
       notify('error', msg, 2400);
