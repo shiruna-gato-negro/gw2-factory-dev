@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna)
-Motivo: BL-002 cerrada. Workflows heredados adaptados (app-checks, builds-watch, legacy-tests) con guardias en verde. Suite 1253/1261 (8 skipped). Próxima tarea por tomar: BL-010 (primera de READY).
-Etapa actual: —
-Inicio: —
-Última actualización: 2026-11-23 20:01Z
-Próxima acción: BL-010 — Achicar o registrar archivos que crecieron del presupuesto de tamaño (index.html, js/meta.js, js/sidebar-nav.js).
+Estado: EN CURSO
+Tarea actual: BL-010 paso 1/5 — plan (achicar o registrar archivos que crecieron del presupuesto: index.html, meta.js, sidebar-nav.js)
+Motivo: BL-002 cerrada. Suite 1252/1260 (8 skipped). Tomo BL-010 (primera de READY): 3 archivos fuera de presupuesto (index.html 49199 B, meta.js 64051 B, sidebar-nav.js 41203 B) y 2 tests cuarentenados (size-budget, universo).
+Etapa actual: Documentation (plan)
+Inicio: 2026-11-23 20:32Z
+Última actualización: 2026-11-23 20:32Z
+Próxima acción: BL-010 paso 2/5 — achicar 47 B de index.html sobre 48 KB (o congelar si no se puede).
 
 Archivos:
 - ai-memory/status.md

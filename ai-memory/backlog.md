@@ -3,11 +3,18 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas.
 
 ## READY
-- [BL-010] [MEDIO] Achicar o registrar archivos que crecieron del presupuesto de tamaño — index.html (48 KB+), js/meta.js (64 KB), js/sidebar-nav.js (40 KB); 2 tests cuarentenados (size-budget, universo) — 2026-11-23
 - [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado) — 2026-11-23
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — PvE 3/36, bench count; tests bld-lib (3) y bld-rows (1) cuarentenados — 2026-11-23
 
 ## IN_PROGRESS
+
+- [BL-010] [MEDIO] Achicar o registrar archivos que crecieron del presupuesto de tamaño — index.html (49199 B, 47 B sobre 48 KB), js/meta.js (64051 B, 451 B sobre techo 63600), js/sidebar-nav.js (41203 B, 243 B sobre 40 KB). Tests cuarentenados: size-budget (la Bóveda cumple presupuesto) y universo (index.html carga universo.css + ≤48 KB). — 2026-11-23
+  Pasos:
+  1/5 — plan (este ciclo): mover a IN_PROGRESS, definir pasos. (commit BL-010 paso 1/5)
+  2/5 — index.html: achicar 47 B sobre 48 KB (o congelar con base=techo=49199 si el crecimiento de BL-008 es legítimo y no se puede achicar sin perder funcionalidad). Verificar size-budget.
+  3/5 — js/meta.js: achicar 451 B sobre techo 63600 (BL-006 file://); si no es posible sin perder funcionalidad, extraer a archivo aparte. Verificar size-budget.
+  4/5 — js/sidebar-nav.js: achicar 243 B sobre 40 KB (BL-007 badge «Con Key») o registrar en advertencia con motivo. Verificar size-budget.
+  5/5 — des-cuarentenar tests (quitar .skip en size-budget y universo), correr suite completa, review + docs + cierre. Commit final.
 
 ## BLOCKED
 
