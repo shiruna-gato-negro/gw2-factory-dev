@@ -3,13 +3,17 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas.
 
 ## READY
-- [BL-006] [MEDIO] Mensaje claro cuando Metas no carga por abrir el archivo local (file://) — Problema: "No se pudo cargar Metas y Eventos" sin explicación; Para: jugador que abre la copia local; Tamaño: chico; Riesgo: bajo — 2026-11-22
 - [BL-007] [MEDIO] Marcar o deshabilitar en el sidebar los módulos que requieren API Key sin key activa — Problema: el jugador sin key entra a módulos y se encuentra con bloqueo; Para: jugador nuevo; Tamaño: mediano; Riesgo: bajo — 2026-11-22
 - [BL-008] [MEDIO] Reorganizar el menú "Enlaces" del topbar (dropdown con demasiados links) — Problema: menú largo e inusable; Para: todos los jugadores; Tamaño: mediano; Riesgo: bajo — 2026-11-22
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, dev-pages, builds-watch y legacy-tests todavía hablan del origen de mi madre; prenderlos de a uno — 2026-11-21
 
 ## IN_PROGRESS
-
+- [BL-006] [MEDIO] Mensaje claro cuando Metas no carga por abrir el archivo local (file://) — Problema: "No se pudo cargar Metas y Eventos" sin explicación; Para: jugador que abre la copia local; Tamaño: chico; Riesgo: bajo — 2026-11-22
+  Plan (BL-006):
+  - Paso 2/5: en meta.js initOnce catch, detectar location.protocol === 'file:' y mostrar mensaje claro (setStatus + notify) explicando que Metas no carga abriendo el archivo directo y sugerir abrir desde el sitio o con servidor local (http://). Mantener mensaje genérico para otros fallos.
+  - Paso 3/5: test de regresión (estático sobre SRC o contexto con location) que verifica la detección file:// y el mensaje claro.
+  - Paso 4/5: review riesgos/regresiones (modal, pill, suites).
+  - Paso 5/5: docs (status/backlog) y cierre.
 ## BLOCKED
 
 ## DONE

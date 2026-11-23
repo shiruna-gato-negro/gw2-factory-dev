@@ -1,17 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna; BL-005 cerrada)
-Motivo: BL-005 paso 5 (review + docs) cerrado: modal ya era explícito, indicador no bloqueante verificado, test de regresión verde; riesgo BAJO, sin cambios de código.
-Etapa actual: DONE
-Inicio: 2026-11-23 08:01Z
-Última actualización: 2026-11-23 08:01Z
-Próxima acción: Próximo ciclo toma la primera de READY (BL-006) y arranca con paso 1 (plan).
+Estado: EN CURSO
+Tarea actual: BL-006 paso 1/5 — plan (mensaje claro cuando Metas no carga por file://)
+Motivo: BL-005 cerrada; tomo primera de READY (BL-006). Paso 1 solo planifica; código sin tocar.
+Etapa actual: Product/Architecture (plan)
+Inicio: 2026-11-23 08:31Z
+Última actualización: 2026-11-23 08:31Z
+Próxima acción: Paso 2/5 — detectar file:// en meta.js initOnce catch y mostrar mensaje claro.
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- tests/welcome-view.test.cjs
 
 ## Esperando a Pablo
 
