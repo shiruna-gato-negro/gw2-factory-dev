@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: orden ciclo continuo v4 (nunca esperar) — anotada, en ejecución
-Motivo: Pablo ordenó v4: decidir en repo (DEC propia), Esperando a Pablo solo para fuera, no reintentar aprobaciones, temporales en tmp/, N/N = suite completa, BL-009 siguiente.
-Etapa actual: — (orden)
+Estado: EN ESPERA
+Tarea actual: — (ninguna; orden v4 cerrada)
+Motivo: orden ciclo continuo v4 (nunca esperar) cerrada: reglas 1-6 sumadas a AGENTS.md, suite completa 1205/1248 (42 viejas → BL-009), push OK.
+Etapa actual: —
 Inicio: 2026-11-23 16:29Z
-Última actualización: 2026-11-23 16:29Z
-Próxima acción: limpiar Esperando a Pablo, sumar reglas 1-6 a AGENTS.md, correr suite, commit final tests <pasan>/<total> (<N> viejas → BL-009).
+Última actualización: 2026-11-23 16:31Z
+Próxima acción: tomar BL-009 (primera de READY): paso 1/5 plan — correr suite completa, listar fallas (42, CRLF en Windows), planificar cuarentenas.
 
 Archivos:
 - ai-memory/status.md
@@ -18,9 +18,9 @@ Archivos:
 ## Para tu información
 
 - BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.
-- Fallas preexistentes no relacionadas: `welcome-tags` (CSS) y `wv-shop-ui`; se retoman en BL-009 (cuarentena si no se pueden arreglar).
+- Suite completa: 1205/1248 (42 viejas → BL-009); fallas preexistentes (welcome-tags, wv-shop-ui y CRLF en Windows) se retoman en BL-009.
 - BL-009 (Suite completa en verde) es la primera tarea de READY; se toma por turno, antes de BL-002.
-- Orden v4 recibida: ciclo de las 13:00 cortado por Pablo al reiniciar QwenPaw (no error mío); candado tomado para esta orden.
+- Orden v4 cerrada: reglas 1-6 en AGENTS.md (casa); candado soltado.
 
 ## Resumen de la sesión
 
@@ -28,6 +28,6 @@ Archivos:
 - BL-008 paso 5/5 cerrado: review riesgo BAJO + docs/cierre. Suites gn-topbar + gn-kit-icons + ai-memory 37/37 en verde.
 - BL-009 (Suite completa en verde) entra como primera de READY (ALTO); BL-002 queda detrás.
 - Fallas preexistentes welcome-tags (CSS) y wv-shop-ui se retoman en BL-009.
-- Orden v4 (nunca esperar): anotada; en ejecución.
+- Orden v4 (nunca esperar): cerrada. Commit `orden: ciclo continuo v4 — nunca esperar — tests 1205/1248 (42 viejas → BL-009)`. Suite completa 1205/1248 (42 viejas). Candado soltado.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
