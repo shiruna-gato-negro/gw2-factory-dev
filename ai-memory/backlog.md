@@ -10,7 +10,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-005] [MEDIO] No abrir el modal de API Keys automáticamente al cargar sin key — Problema: el modal bloquea la UI y hay que cerrarlo cada carga; Para: jugador nuevo sin key; Tamaño: chico; Riesgo: bajo — Pasos: 1. Plan (este ciclo). 2. Localizar el disparador del modal en app.js/welcome-panel.js y condicionarlo a acción explícita del jugador. 3. Mostrar indicador no bloqueante en la Bienvenida cuando no hay key activa. 4. Test de regresión: modal hidden al cargar sin key. 5. Review + docs. — 2026-11-23
+- [BL-005] [MEDIO] No abrir el modal de API Keys automáticamente al cargar sin key — Problema: el modal bloquea la UI y hay que cerrarlo cada carga; Para: jugador nuevo sin key; Tamaño: chico; Riesgo: bajo — Pasos: 1. Plan (cerrado). 2. Localizar el disparador del modal en app.js/welcome-panel.js y condicionarlo a acción explícita del jugador (cerrado: ya era explícito; verificado). 3. Mostrar indicador no bloqueante en la Bienvenida cuando no hay key activa. 4. Test de regresión: modal hidden al cargar sin key (cerrado: tests/welcome-view.test.cjs). 5. Review + docs. — 2026-11-23
 
 ## BLOCKED
 

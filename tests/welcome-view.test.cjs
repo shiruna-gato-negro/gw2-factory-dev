@@ -79,6 +79,12 @@ test('sin API Key: tres pasos, «Agregar API Key» con su id y los módulos marc
   assert.equal((html.match(/wl-tag--key">Con Key/g) || []).length, 8, 'Cuentas no necesita Key');
 });
 
+test('al cargar sin API Key el modal de Keys queda oculto (BL-005)', () => {
+  const { W, keysModal } = load({ keys: null, selected: null });
+  W.initOnce();
+  W.activate();
+  assert.equal(keysModal.hidden, true, 'el modal no se abre automáticamente al cargar sin key');
+});
 test('con API Key: saludo con la cuenta activa, botones de Keys y Cuentas, sin los tres pasos', () => {
   const keys = [{ label: 'Pablin.1234', value: 'AAA' }, { label: 'Alt', value: 'BBB' }];
   const m = P.buildModel({ keys, selected: 'BBB' });
