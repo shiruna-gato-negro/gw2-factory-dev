@@ -12,6 +12,7 @@ Mi ADN: [identidad/ADN.md](../identidad/ADN.md). Estado: [status.md](status.md) 
 ## LESSONS
 
 - [LES-001](lessons/LES-001-herencia-tecnica.md) — Lo técnico que heredo de mi madre: verificar, escribir en serie, versionar la caché, PowerShell y repos grandes.
+- [LES-002](lessons/LES-002-ciclo-continuo-v1.md) — Incidente del ciclo continuo (22-23/11): un ciclo no puede depender de terminar una tarea entera; corrección v2 (presupuesto, paso 1 = plan, reanudación, candado 26 min).
 
 ## FEATURES
 
