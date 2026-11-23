@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-010 paso 1/5 — plan (achicar o registrar archivos que crecieron del presupuesto: index.html, meta.js, sidebar-nav.js)
-Motivo: BL-002 cerrada. Suite 1252/1260 (8 skipped). Tomo BL-010 (primera de READY): 3 archivos fuera de presupuesto (index.html 49199 B, meta.js 64051 B, sidebar-nav.js 41203 B) y 2 tests cuarentenados (size-budget, universo).
-Etapa actual: Documentation (plan)
+Tarea actual: BL-010 paso 3/5 — js/meta.js: achicar 451 B sobre techo 63600 (BL-006 file://) o extraer a archivo aparte
+Motivo: BL-010 paso 2/5 cerrado: index.html achicado 58 B (49199 → 49141, ≤48 KB) quitando comentario BL-092; size-budget sin error para index.html; suite 1252/1260 (8 skipped). Sigue meta.js (64051, +451) y sidebar-nav.js (41203, +243).
+Etapa actual: Development (paso 2/5 cerrado)
 Inicio: 2026-11-23 20:32Z
-Última actualización: 2026-11-23 20:32Z
-Próxima acción: BL-010 paso 2/5 — achicar 47 B de index.html sobre 48 KB (o congelar si no se puede).
+Última actualización: 2026-11-23 21:01Z
+Próxima acción: BL-010 paso 3/5 — achicar meta.js 451 B sobre techo 63600 o extraer a archivo aparte; verificar size-budget.
 
 Archivos:
 - ai-memory/status.md
