@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-006 paso 2/5+3/5 — detección file:// y mensaje claro en initOnce catch (código + test)
-Motivo: pasos 2 y 3 cerrados en este ciclo; código y test en verde (34/34 en meta-fileprotocol + meta-view + ai-memory).
-Etapa actual: Review (paso 4 pendiente)
+Tarea actual: BL-006 paso 4/5 — review riesgos/regresiones (suites 59/59, riesgo BAJO)
+Motivo: paso 4 cerrado: revisión de riesgos/regresiones sin cambios de código; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; modal/pill sin regresión (welcome-view 34/35, fallo preexistente welcome-tags no relacionado).
+Etapa actual: Review (paso 4 cerrado)
 Inicio: 2026-11-23 08:31Z
-Última actualización: 2026-11-23 09:01Z
-Próxima acción: Paso 4/5 — review riesgos/regresiones y suites; luego paso 5 docs y cierre.
+Última actualización: 2026-11-23 09:31Z
+Próxima acción: Paso 5/5 — docs (status/backlog) y cierre de BL-006.
 
 Archivos:
 - ai-memory/status.md
@@ -22,6 +22,7 @@ Archivos:
 - Paso 3 BL-005: indicador no bloqueante verificado/consolidado — pill «API Key sin cargar» (data-act add-key) en la cabecera y los tres pasos ya presentes en estado sin key. Sin cambio de código. tests/welcome-view.test.cjs: 12/12.
 - Ciclo continuo v2: BL-005 sigue IN_PROGRESS (pasos 2, 3 y 4 cerrados en este ciclo).
 - Paso 2+3 BL-006: detecta location.protocol === 'file:' en initOnce catch y muestra mensaje claro (file://, servidor local http://, sitio); mantiene mensaje genérico para otros fallos. Test de regresión estático tests/meta-fileprotocol.test.cjs (4/4). Suite meta-view 28/28, ai-memory 15/15. Riesgo BAJO.
+- Paso 4 BL-006: review riesgos/regresiones — sin cambios de código. Suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; modal/pill sin regresión. Fallo preexistente welcome-tags (CSS) no relacionado. Riesgo BAJO.
 
 ## Resumen de la sesión
 

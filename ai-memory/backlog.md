@@ -12,7 +12,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
   Plan (BL-006):
   - Paso 2/5: HECHO — en meta.js initOnce catch, detectar location.protocol === 'file:' y mostrar mensaje claro (setStatus + notify). Mensaje genérico para otros fallos. (tests/meta-fileprotocol.test.cjs)
   - Paso 3/5: HECHO — test de regresión estático sobre SRC: detección file://, mensaje claro, mensaje genérico, setStatus/notify.
-  - Paso 4/5: review riesgos/regresiones (modal, pill, suites).
+  - Paso 4/5: HECHO — review riesgos/regresiones (sin cambios de código): modal/pill sin regresión; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59. Riesgo BAJO. Fallo preexistente welcome-tags (CSS) no relacionado.
   - Paso 5/5: docs (status/backlog) y cierre.
 ## BLOCKED
 
