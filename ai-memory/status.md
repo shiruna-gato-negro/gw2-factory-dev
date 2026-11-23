@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: BL-007 cerrado (DONE); próxima BL-008 paso 1 — plan
-Motivo: Paso 5/5 docs y cierre completado: BL-007 movido a DONE; suites sidebar-nav 54/54 y ai-memory 15/15 verdes. Fallos preexistentes welcome-tags (CSS) y wv-shop-ui no relacionados.
-Etapa actual: Cierre (BL-007)
-Inicio: 2026-11-23 10:31Z
-Última actualización: 2026-11-23 13:01Z
-Próxima acción: BL-008 paso 1 — plan de reorganizar el menú "Enlaces" del topbar (dropdown).
+Estado: EN CURSO
+Tarea actual: BL-008 paso 1/5 — plan de reorganizar el menú "Enlaces" del topbar (dropdown)
+Motivo: Primer paso del ciclo continuo: planificar reorganización del dropdown en grupos (Comunidad, Juego, Cuenta) sin tocar código.
+Etapa actual: Product (BL-008)
+Inicio: 2026-11-23 13:31Z
+Última actualización: 2026-11-23 13:31Z
+Próxima acción: BL-008 paso 2/5 — reorganizar marcado de #gnTbLinks en grupos con separadores/encabezados (5 menuitems intactos).
 
 Archivos:
 - ai-memory/status.md
