@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna en curso)
-Motivo: BL-006 cerrado (paso 5/5 docs + cierre). Pasos 2-4 hechos: detección file:// con mensaje claro, test de regresión estático, review riesgos/regresiones sin cambios de código; suites meta-fileprotocol + meta-view + meta-header + meta-events + ai-memory 59/59; riesgo BAJO. Fallo preexistente welcome-tags (CSS) no relacionado.
-Etapa actual: Documentation (paso 5/5 cerrado)
-Inicio: 2026-11-23 08:31Z
-Última actualización: 2026-11-23 10:02Z
-Próxima acción: Próximo ciclo toma la primera READY (BL-007) o espera orden de Pablo.
+Estado: EN CURSO
+Tarea actual: BL-007 paso 1/5 — plan (marcar/deshabilitar en sidebar módulos que requieren API Key sin key activa)
+Motivo: Primer READY tomada tras cierre de BL-006; paso 1 solo planificación, sin código.
+Etapa actual: Product/Architecture (paso 1/5)
+Inicio: 2026-11-23 10:31Z
+Última actualización: 2026-11-23 10:31Z
+Próxima acción: Paso 2/5 implementar badge «Con Key» en sidebar-nav.js (desktop + barra + hoja) y llevar flags free/local desde Welcome.
 
 Archivos:
 - ai-memory/status.md
