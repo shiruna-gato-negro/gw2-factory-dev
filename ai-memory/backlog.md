@@ -3,12 +3,11 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas.
 
 ## READY
-- [BL-009] [ALTO] Suite completa en verde — correr la suite entera, listar fallas (welcome-tags, wv-shop-ui) y arreglar test o código; cuarentena con motivo y BL si no se puede; nunca borrar — 2026-11-23. Aclaración v5: 1248 total, 1205 pass, 43 no-pasan = 42 fallas (viejas, CRLF en Windows + welcome-tags + wv-shop-ui) + 1 skip de entorno (dev-pages rsync, preexistente en Windows). Las 42 son las viejas; el skip no es nueva ni falla. Si aparece una falla nueva en BL-009, va primero.
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — 2026-11-21
 
 ## IN_PROGRESS
 
-— (ninguna)
+- [BL-009] [ALTO] Suite completa en verde — paso 1/5 plan. Aclaración v5: 1248 total, 1205 pass, 43 no-pasan = 42 fallas (viejas, CRLF en Windows + welcome-tags + wv-shop-ui) + 1 skip de entorno (dev-pages rsync, preexistente). Pasos: 1 plan (este), 2 reproducir y confirmar CRLF con git config core.autocrlf false + renormalizar; 3 arreglar o cuarentenar cada falla (skip con motivo + BL propio, nunca borrar); 4 correr suite completa y verificar verde; 5 review + docs/cierre. — 2026-11-23
 
 ## BLOCKED
 
