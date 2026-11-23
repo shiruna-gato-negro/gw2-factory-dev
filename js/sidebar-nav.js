@@ -53,7 +53,7 @@
   // Respaldo idéntico a Welcome._pure.MODULES (lo vigila tests/sidebar-nav.test.cjs).
   var MODULES_FALLBACK = [
     { id: 'cards', name: 'Cartera', href: '#/cards', icon: 'assets/icons/733322.png', color: '#F2B94B' },
-    { id: 'meta', name: 'Metas y Eventos', href: '#/meta', icon: 'assets/icons/102420.png', color: '#A896FF' },
+    { id: 'meta', name: 'Metas y Eventos', href: '#/meta', icon: 'assets/icons/102420.png', color: '#A896FF', free: true },
     { id: 'wv', name: 'Cámara del Brujo', href: '#/account/wizards-vault', icon: 'assets/icons/3172791.png', color: '#15C3B7' },
     { id: 'activities', name: 'Actividades', href: '#/activities', icon: 'assets/icons/1302773.png', color: '#3CC48A' },
     { id: 'homestead', name: 'Heredad', href: '#/account/homestead', icon: 'assets/icons/Welcome/3380755.png', color: '#D9A55B' },
@@ -61,7 +61,7 @@
     { id: 'achievements', name: 'Logros', href: '#/account/achievements', icon: 'assets/icons/155059.png', color: '#6EA3FF' },
     { id: 'characters', name: 'Inventario y Personajes', href: '#/account/characters', icon: 'assets/icons/Welcome/358409.png', color: '#7EC3FF' },
     { id: 'armory', name: 'Armería Legendaria', href: '#/account/legendary-armory', icon: 'assets/icons/Cuentas/157085.png', color: '#E545CA' },
-    { id: 'accounts', name: 'Cuentas', href: '#/account/accounts', icon: 'assets/icons/3601748.png', color: '#8E96A3' }
+    { id: 'accounts', name: 'Cuentas', href: '#/account/accounts', icon: 'assets/icons/3601748.png', color: '#8E96A3', local: true }
   ];
   var HOME = { id: 'home', name: 'Inicio', href: '#/welcome', icon: 'https://render.guildwars2.com/file/32633AF8ADEA696A1EF56D3AE32D617B10D3AC57/157353.png', color: 'var(--acc-1)' };
   // Ids y data-view que ya usaban el router y otros módulos.
@@ -118,6 +118,8 @@
     SIDE + ' .sbr-w{margin-left:auto;width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--gn-gold,var(--color-amber))}',
     SIDE + ' .sbr-new{margin-left:auto;flex-shrink:0;font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;' +
       'color:var(--gn-gold,var(--color-amber));border:1px solid var(--gn-gold,var(--color-amber));border-radius:999px;padding:0 6px;line-height:1.5}',
+    SIDE + ' .sbr-key{margin-left:auto;flex-shrink:0;font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;' +
+      'color:var(--tx-3);border:1px solid var(--bd-2,var(--bd-1));border-radius:999px;padding:0 6px;line-height:1.5}',
     '.sbr-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}',
     // SBR-3: celular. La barra y la hoja solo existen hasta 900 px.
     '#sbrTabs,#sbrSheet,#sbrScrim{display:none}',
@@ -135,7 +137,7 @@
       '#sbrTabs .sbr-tab.is-active{color:var(--tx-1);font-weight:700}' +
       '#sbrTabs .sbr-tab.is-active::before{content:"";position:absolute;top:-6px;left:28%;right:28%;height:3px;border-radius:3px;background:var(--x,var(--acc-1))}' +
       '#sbrTabs .sbr-tab:focus-visible{outline:2px solid var(--acc-1);outline-offset:-2px}' +
-      '#sbrTabs .sbr-w,#sbrTabs .sbr-new,#sbrTabs .sbr-dot{position:absolute;top:4px;right:calc(50% - 20px);width:9px;height:9px;padding:0;margin:0;border:0;' +
+      '#sbrTabs .sbr-w,#sbrTabs .sbr-new,#sbrTabs .sbr-key,#sbrTabs .sbr-dot{position:absolute;top:4px;right:calc(50% - 20px);width:9px;height:9px;padding:0;margin:0;border:0;' +
         'border-radius:50%;background:var(--gn-gold,var(--color-amber));box-shadow:0 0 0 2px var(--bg-1);font-size:0;line-height:0;overflow:hidden}' +
       '#sbrScrim:not([hidden]){display:block;position:fixed;inset:0;z-index:1000;background:rgba(5,6,10,.6)}' +
       '#sbrSheet:not([hidden]){display:block;position:fixed;left:0;right:0;bottom:0;z-index:1001;max-height:84vh;overflow-y:auto;' +
@@ -167,7 +169,7 @@
   function modules() {
     var W = root.Welcome;
     var list = W && W._pure && Array.isArray(W._pure.MODULES) && W._pure.MODULES.length ? W._pure.MODULES : MODULES_FALLBACK;
-    return withExtra(list).map(function (m) { return { id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color }; });
+    return withExtra(list).map(function (m) { return { id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color, free: !!m.free, local: !!m.local }; });
   }
 
   // BL-082 BLD-1: módulos que la Bienvenida todavía no lista (welcome-panel.js no tiene lugar: 48 KB).
@@ -558,12 +560,16 @@
   function decorate() {
     var d = doc();
     var m = accountModel();
+    var hasKey = !!(m && m.state === 'back');
     var missing = {};
     ((m && m.state === 'back' && m.activeMods) || []).forEach(function (id) { missing[id] = true; });
     var fresh = newModules(state.news);
+    var info = {};
+    modules().forEach(function (md) { info[md.id] = md; });
+    function requiresKey(id) { var md = info[id]; return !(md && (md.free || md.local)); }
     allLinks().forEach(function (a) {
       Array.prototype.slice.call(a.children || []).forEach(function (c) {
-        if (/\bsbr-(w|new|sr)\b/.test(c.className || '')) a.removeChild(c);
+        if (/\bsbr-(w|new|key|sr)\b/.test(c.className || '')) a.removeChild(c);
       });
       a.removeAttribute('title');
       var id = a.getAttribute('data-mod');
@@ -577,6 +583,17 @@
         a.appendChild(w);
         a.appendChild(sr);
         a.setAttribute('title', 'A tu API Key le falta un permiso para este módulo');
+      } else if (!hasKey && requiresKey(id)) {
+        var k = d.createElement('i');
+        k.className = 'sbr-key';
+        k.setAttribute('aria-hidden', 'true');
+        k.textContent = 'Con Key';
+        var srk = d.createElement('span');
+        srk.className = 'sbr-sr';
+        srk.textContent = ' (requiere Key)';
+        a.appendChild(k);
+        a.appendChild(srk);
+        a.setAttribute('title', 'Este módulo necesita una API Key para mostrar datos');
       } else if (fresh[id]) {
         var n = d.createElement('i');
         n.className = 'sbr-new';

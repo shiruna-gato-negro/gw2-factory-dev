@@ -7,7 +7,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, dev-pages, builds-watch y legacy-tests todavía hablan del origen de mi madre; prenderlos de a uno — 2026-11-21
 
 ## IN_PROGRESS
-- [BL-007] [MEDIO] Marcar o deshabilitar en el sidebar los módulos que requieren API Key sin key activa — Problema: el jugador sin key entra a módulos y se encuentra con bloqueo; Para: jugador nuevo; Tamaño: mediano; Riesgo: bajo — Pasos: 1/5 plan (esta entrada); 2/5 llevar free/local de Welcome a Sidebar y badge «Con Key» en decorate cuando no hay key activa (desktop + barra + hoja); 3/5 tests de regresión (8 módulos marcados sin key, 0 con key) y refresh sin duplicados; 4/5 review riesgos/regresiones; 5/5 docs y cierre — 2026-11-22
+- [BL-007] [MEDIO] Marcar o deshabilitar en el sidebar los módulos que requieren API Key sin key activa — Problema: el jugador sin key entra a módulos y se encuentra con bloqueo; Para: jugador nuevo; Tamaño: mediano; Riesgo: bajo — Pasos: 1/5 plan (cerrado); 2/5 llevar free/local de Welcome a Sidebar y badge «Con Key» en decorate cuando no hay key activa (desktop + barra + hoja) (cerrado: modules() + MODULES_FALLBACK llevan free/local; decorate() muestra «Con Key» cuando no hay key activa; tests sidebar-nav 39/39); 3/5 tests de regresión (8 módulos marcados sin key, 0 con key) y refresh sin duplicados; 4/5 review riesgos/regresiones; 5/5 docs y cierre — 2026-11-22
 
 ## BLOCKED
 

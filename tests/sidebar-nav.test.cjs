@@ -143,7 +143,7 @@ test('BLD-ICON: Builds con el ícono oficial de la pestaña Build del Panel del 
 
 test('una sola lista: el respaldo es idéntico a los módulos de la Bienvenida (orden, nombre, ruta, ícono y color)', () => {
   const x = ready(setup());
-  const W = x.window.Welcome._pure.MODULES.map((m) => ({ id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color }));
+  const W = x.window.Welcome._pure.MODULES.map((m) => ({ id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color, free: m.free, local: m.local }));
   same(x.S()._pure.MODULES_FALLBACK, JSON.parse(JSON.stringify(W)));
 });
 
@@ -365,6 +365,61 @@ test('«Nuevo»: en los módulos con una novedad de 14 días o menos; el aviso d
   assert.equal(x.document.getElementById('navLegendaryArmory').querySelector('.sbr-new'), null, 'una novedad vieja no');
   assert.equal(x.fetched.filter((u) => /welcome-news/.test(u)).length, 1);
   same(x.S()._pure.newModules([{ module: 'wv', isNew: true }, { module: 'raids', isNew: false }, null]), { wv: true });
+});
+
+test('«Con Key»: sin Key activa, los módulos que la requieren llevan el badge «Con Key» (desktop, barra y hoja)', () => {
+  const x = ready(setup({ token: '' }));
+  const requiring = x.document.querySelectorAll('#sbrNav a').filter((a) => {
+    const id = a.getAttribute('data-mod');
+    return id && id !== 'meta' && id !== 'accounts' && id !== 'home' && id !== 'builds' ? false : false;
+  });
+  // módulos que requieren Key en la Sidebar: todos menos Inicio, meta (free) y accounts (local)
+  const links = x.document.querySelectorAll('#sbrNav a');
+  let conKey = 0;
+  links.forEach((a) => { if (a.querySelector('.sbr-key')) conKey++; });
+  assert.ok(conKey >= 8, 'al menos 8 módulos marcados (8 de Welcome + builds)');
+  // meta (free) y accounts (local) no llevan el badge
+  assert.equal(x.document.getElementById('navMeta').querySelector('.sbr-key'), null, 'meta es free: sin badge');
+  assert.equal(x.document.getElementById('navAccounts').querySelector('.sbr-key'), null, 'accounts es local: sin badge');
+  assert.equal(x.document.getElementById('navMeta').querySelector('.sbr-key'), null);
+  // el texto del badge y el sr
+  const sample = x.document.getElementById('navCards');
+  assert.ok(sample.querySelector('.sbr-key'));
+  assert.equal(sample.querySelector('.sbr-key').textContent, 'Con Key');
+  assert.equal(sample.querySelector('.sbr-key').getAttribute('aria-hidden'), 'true');
+  assert.equal(sample.querySelector('.sbr-sr').textContent, ' (requiere Key)');
+  // barra del celular y hoja «Más» también
+  const tabsAll = x.document.querySelectorAll('#sbrTabs a');
+  const tabCards = tabsAll.filter((a) => a.getAttribute('data-mod') === 'cards')[0];
+  assert.ok(tabCards, 'tabCards exists');
+  assert.ok(tabCards.querySelector('.sbr-key'), 'barra del celular');
+  // la hoja «Más» lleva los módulos que no son pestaña (p. ej. Actividades)
+  const sheetAct = x.document.querySelectorAll('#sbrSheet a').filter((a) => a.getAttribute('data-mod') === 'activities')[0];
+  assert.ok(sheetAct, 'sheetAct exists');
+  assert.ok(sheetAct.querySelector('.sbr-key'), 'hoja Más');
+});
+
+test('«Con Key»: con Key activa no aparece en ningún módulo', () => {
+  const x = ready(setup({ token: 'A', keys: [{ label: 'Main', value: 'A', perms: ALL }] }));
+  let conKey = 0;
+  x.document.querySelectorAll('#sbrNav a').forEach((a) => { if (a.querySelector('.sbr-key')) conKey++; });
+  assert.equal(conKey, 0, '0 con Key activa');
+  // tampoco en barra/hoja
+  x.document.querySelectorAll('#sbrTabs a,#sbrSheet a').forEach((a) => {
+    assert.equal(a.querySelector('.sbr-key'), null);
+  });
+});
+
+test('«Con Key»: al cambiar la Key (agregarla) desaparece sin duplicar', () => {
+  const x = ready(setup({ token: '' }));
+  assert.ok(x.document.getElementById('navCards').querySelector('.sbr-key'));
+  x.store['gn:account:keys'] = [{ label: 'Main', value: 'X', perms: ALL }];
+  x.fire('gn:tokenchange');
+  assert.equal(x.document.getElementById('navCards').querySelector('.sbr-key'), null, 'desaparece');
+  assert.equal(x.document.getElementById('navCards').querySelectorAll('.sbr-sr').length, 0, 'sin duplicar sr');
+  // refrescar no duplica
+  x.S().refresh();
+  assert.equal(x.document.getElementById('navCards').querySelectorAll('.sbr-key').length, 0);
 });
 
 test('al cambiar la Key (gn:tokenchange) rearmo tarjeta y avisos sin duplicar', () => {
