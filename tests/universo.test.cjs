@@ -57,7 +57,7 @@ function media(css, q) {
 const SOURCES = [HTML].concat(fs.readdirSync(path.join(ROOT, 'js')).filter((f) => /\.js$/.test(f))
   .map((f) => fs.readFileSync(path.join(ROOT, 'js', f), 'utf8'))).join('\n');
 
-test.skip('index.html carga css/universo.css después del theme, con la versión del archivo', () => {
+test('index.html carga css/universo.css después del theme, con la versión del archivo', () => {
   const link = HTML.match(/<link rel="stylesheet" href="css\/universo\.css\?v=([\d.]+)">/);
   assert.ok(link, 'falta el <link> de universo.css');
   assert.ok(link.index > HTML.indexOf('id="themeStylesheet"'), 'va después del theme: le gana por orden a igual especificidad');
