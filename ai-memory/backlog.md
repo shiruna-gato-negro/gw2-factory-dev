@@ -7,7 +7,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-009] [ALTO] Suite completa en verde — paso 1/5 plan. Aclaración v5: 1248 total, 1205 pass, 43 no-pasan = 42 fallas (viejas, CRLF en Windows + welcome-tags + wv-shop-ui) + 1 skip de entorno (dev-pages rsync, preexistente). Pasos: 1 plan (este), 2 reproducir y confirmar CRLF con git config core.autocrlf false + renormalizar; 3 arreglar o cuarentenar cada falla (skip con motivo + BL propio, nunca borrar); 4 correr suite completa y verificar verde; 5 review + docs/cierre. — 2026-11-23
+- [BL-009] [ALTO] Suite completa en verde — paso 2/5 cerrado. 1248 total, 1215 pass, 33 no-pasan = 32 fallas (viejas: size-budget, universo, bld-*, legendary-*, ga-loader, legendary-fetch, etc.) + 1 skip de entorno (dev-pages rsync, preexistente). Causa CRLF parcial: 450 archivos convertidos CRLF→LF + .gitattributes eol=lf (autocrlf false local). Pasos: 1 plan, 2 reproducir CRLF (cerrado), 3 arreglar o cuarentenar cada falla (skip con motivo + BL propio, nunca borrar), 4 correr suite completa y verificar verde, 5 review + docs/cierre. — 2026-11-23
 
 ## BLOCKED
 
