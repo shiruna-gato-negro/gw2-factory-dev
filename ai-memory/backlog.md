@@ -10,7 +10,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado) — 2026-11-23
   Pasos:
   1/5 — plan (este ciclo): mover a IN_PROGRESS, definir pasos. (commit BL-011 paso 1/5)
-  2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f), verificar guardia de producción `if: github.repository == 'PabloSnchz/gw2-wallet-ligero'` y sin referencias a Shiruvana.
+  2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f), verificar guardia de producción `if: github.repository == 'PabloSnchz/gw2-wallet-ligero'` y sin referencias a Shiruvana. (commit BL-011 paso 2/5) — completado 2026-11-23.
   3/5 — des-cuarentenar: quitar .skip del test ga-loader, verificar que pasa.
   4/5 — suite completa + review de riesgos (BAJO esperado: solo workflow + test).
   5/5 — docs/cierre: actualizar status.md, mover a DONE, commit final.

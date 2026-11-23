@@ -1,17 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-011 paso 1/5 (plan) — restaurar .github/workflows/github-metrics-to-ga4.yml (cuarentenado en ga-loader). Definidos 5 pasos; próximo: paso 2/5 (restaurar workflow desde git).
-Motivo: BL-010 cerrada (5/5) — des-cuarentenar size-budget y universo; suite 1255/1261 (6 skipped). BL-011 paso 1/5: plan escrito en backlog.md, movida a IN_PROGRESS. Sin cambios de código en este ciclo.
-Etapa actual: Product (plan)
+Tarea actual: BL-011 paso 2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f); guardia de producción y sin refs Shiruvana verificadas.
+Motivo: BL-011 paso 2/5 cerrado: workflow restaurado; guardia `if: github.repository == 'PabloSnchz/gw2-wallet-ligero'` OK; sin referencias a Shiruvana; suite 1255/1261 (6 skipped, 0 fail). Próximo: paso 3/5 des-cuarentenar test ga-loader.
+Etapa actual: Development
 Inicio: 2026-11-23 23:00Z
-Última actualización: 2026-11-23 23:02Z
-Próxima acción: BL-011 paso 2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f), verificar guardia de producción y sin referencias a Shiruvana.
+Última actualización: 2026-11-23 23:31Z
+Próxima acción: BL-011 paso 3/5 — quitar .skip del test ga-loader, correr test, verificar que pasa (guardia producción).
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- tests/size-budget.test.cjs
+- .github/workflows/github-metrics-to-ga4.yml
 
 ## Esperando a Pablo
 
