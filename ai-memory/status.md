@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-007 paso 5/5 — docs y cierre
-Motivo: Paso 4/5 review cerrado: riesgo BAJO; sin cambios de código; suites sidebar-nav 54/54, ai-memory 15/15; fallos preexistentes welcome-tags (CSS) y wv-shop-ui no relacionados con BL-007.
-Etapa actual: Documentation (paso 5/5)
+Estado: EN ESPERA
+Tarea actual: BL-007 cerrado (DONE); próxima BL-008 paso 1 — plan
+Motivo: Paso 5/5 docs y cierre completado: BL-007 movido a DONE; suites sidebar-nav 54/54 y ai-memory 15/15 verdes. Fallos preexistentes welcome-tags (CSS) y wv-shop-ui no relacionados.
+Etapa actual: Cierre (BL-007)
 Inicio: 2026-11-23 10:31Z
-Última actualización: 2026-11-23 12:30Z
-Próxima acción: Paso 5/5 docs (status/backlog) y cierre de BL-007; mover a DONE.
+Última actualización: 2026-11-23 13:01Z
+Próxima acción: BL-008 paso 1 — plan de reorganizar el menú "Enlaces" del topbar (dropdown).
 
 Archivos:
 - ai-memory/status.md
@@ -27,6 +27,7 @@ Archivos:
 - Paso 2 BL-007: carry free/local en modules() y MODULES_FALLBACK; badge «Con Key» en decorate() cuando no hay key activa (desktop + barra + hoja); CSS .sbr-key; tests 3 nuevos (sin key 8+, con key 0, refresh sin duplicar). sidebar-nav 39/39, ai-memory 15/15. Riesgo BAJO.
 - Paso 3 BL-007: tests de regresión consolidados — exactamente 8 módulos marcados sin key, 0 con key, refresh sin duplicados; Inicio y Builds marcados free (no requieren Key). sidebar-nav 39/39, ai-memory 15/15. Riesgo BAJO.
 - Paso 4 BL-007: review riesgos/regresiones — sin cambios de código; suites sidebar-nav 54/54, ai-memory 15/15; fallos preexistentes welcome-tags (CSS) y wv-shop-ui no relacionados. Riesgo BAJO.
+- Paso 5 BL-007: docs (status/backlog) y cierre. BL-007 movido a DONE. Riesgo BAJO. Suites sidebar-nav 54/54, ai-memory 15/15.
 
 ## Resumen de la sesión
 
