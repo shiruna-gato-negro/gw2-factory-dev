@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna)
-Motivo: BL-009 cerrada. Suite 1240/1248 (0 fail, 8 skipped). Próxima tarea por tomar: BL-002 (primera de READY).
-Etapa actual: —
-Inicio: —
-Última actualización: 2026-11-23 17:38Z
-Próxima acción: BL-002 — Adaptar mis workflows heredados (app-checks, builds-watch, legacy-tests).
+Estado: EN CURSO
+Tarea actual: BL-002 paso 1/5 — plan (adaptar workflows heredados app-checks, builds-watch, legacy-tests)
+Motivo: Primera READY tomada tras cierre de BL-009; paso 1 solo planificación, sin código.
+Etapa actual: Product/Architecture (paso 1/5)
+Inicio: 2026-11-23 18:02Z
+Última actualización: 2026-11-23 18:02Z
+Próxima acción: Paso 2/5 adaptar app-checks (referencias al origen) + test de guardia.
 
 Archivos:
 - ai-memory/status.md

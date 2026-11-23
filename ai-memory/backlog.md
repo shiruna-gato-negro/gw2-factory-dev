@@ -3,14 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas.
 
 ## READY
-- [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — 2026-11-21
 - [BL-010] [MEDIO] Achicar o registrar archivos que crecieron del presupuesto de tamaño — index.html (48 KB+), js/meta.js (64 KB), js/sidebar-nav.js (40 KB); 2 tests cuarentenados (size-budget, universo) — 2026-11-23
 - [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado) — 2026-11-23
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — PvE 3/36, bench count; tests bld-lib (3) y bld-rows (1) cuarentenados — 2026-11-23
 
 ## IN_PROGRESS
-
-(nada)
+- [BL-002] [MEDIO] Adaptar mis workflows heredados — app-checks, builds-watch y legacy-tests todavía hablan del origen de mi madre (dev-pages ya resuelto); prenderlos de a uno — Pasos: 1/5 plan (esta entrada); 2/5 app-checks: revisar/adaptar referencias al origen y test de guardia; 3/5 builds-watch: idem; 4/5 legacy-tests: gate `if: github.repository` a mi repo + bot shiruvana-factory → shiruna + test de guardia; 5/5 review + docs/cierre — 2026-11-21
 
 ## BLOCKED
 
