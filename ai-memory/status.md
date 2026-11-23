@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-002 paso 1/5 — plan (adaptar workflows heredados app-checks, builds-watch, legacy-tests)
-Motivo: Primera READY tomada tras cierre de BL-009; paso 1 solo planificación, sin código.
-Etapa actual: Product/Architecture (paso 1/5)
-Inicio: 2026-11-23 18:02Z
-Última actualización: 2026-11-23 18:02Z
-Próxima acción: Paso 2/5 adaptar app-checks (referencias al origen) + test de guardia.
+Tarea actual: BL-002 paso 3/5 — builds-watch: revisar/adaptar referencias al origen y test de guardia
+Motivo: Paso 2/5 cerrado (app-checks): sin referencias al origen; guardia tests/app-checks.test.cjs (4/4). Suite 1244/1252 (8 skipped).
+Etapa actual: Product/Architecture (paso 3/5)
+Inicio: 2026-11-23 18:32Z
+Última actualización: 2026-11-23 18:32Z
+Próxima acción: Paso 3/5 builds-watch: revisar User-Agent y referencias al origen (PabloSnchz) + test de guardia.
 
 Archivos:
 - ai-memory/status.md
