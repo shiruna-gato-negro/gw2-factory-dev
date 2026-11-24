@@ -7,7 +7,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — meta.js dropHTML + CSS; reutiliza previewOf y assets/previews/. Qué ve el jugador: en cada tarjeta de meta con drop, una miniatura visible de la infusión sin pasar el mouse, con «Sin vista previa» cuando falta. — 2026-11-24
 
 ## IN_PROGRESS
-- [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — pasos: 1/3 plan (este ciclo); 2/3 código: agregar {id:'builds', ... free:true} a MODULES en welcome-panel.js y quitar EXTRA en sidebar-nav.js (unificar listas) + adaptar tests welcome-view (11 módulos) y sidebar-nav (Builds en MODULES, sin EXTRA); 3/3 test de regresión + review BAJO + docs/cierre. — 2026-11-24
+- [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — pasos: 1/3 plan (cerrado); 2/3 código (cerrado: Builds en MODULES, EXTRA eliminado, tests adaptados, size-budget actualizado); 3/3 test de regresión + review BAJO + docs/cierre. — 2026-11-24
   Qué ve el jugador: una tarjeta «Builds» en «¿Qué puedo hacer aquí?» de la Bienvenida, con el mismo ícono (156720) y descripción que en la barra lateral, que lleva a #/builds.
 
 ## BLOCKED

@@ -99,13 +99,14 @@ test('con API Key: saludo con la cuenta activa, botones de Keys y Cuentas, sin l
   assert.equal(P.buildModel({ keys: [{ value: 'X', label: '  ' }] }).activeLabel, 'sin nombre');
 });
 
-test('los 10 módulos de la barra lateral, en orden y con su ruta real', () => {
+test('los 11 módulos de la barra lateral, en orden y con su ruta real', () => {
   const html = P.bodyHTML(P.buildModel({ keys: [{ value: 'k', label: 'a' }] }), []);
   const hrefs = [...html.matchAll(/class="wl-mod" href="([^"]+)"/g)].map((x) => x[1]);
   assert.deepEqual(hrefs, ['#/cards', '#/meta', '#/account/wizards-vault', '#/activities', '#/account/homestead',
-    '#/account/raids', '#/account/achievements', '#/account/characters', '#/account/legendary-armory', '#/account/accounts']);
+    '#/account/raids', '#/account/achievements', '#/account/characters', '#/account/legendary-armory', '#/builds', '#/account/accounts']);
   const sidebar = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  for (const h of hrefs) assert.ok(sidebar.includes('class="side-nav__link" href="' + h + '"'), h + ' existe en la barra lateral');
+  // Builds vive en la Sidebar vía sidebar-nav.js (MODULES), no en el markup viejo de index.html.
+  for (const h of hrefs.filter((x) => x !== '#/builds')) assert.ok(sidebar.includes('class="side-nav__link" href="' + h + '"'), h + ' existe en la barra lateral');
   for (const m of P.MODULES) assert.ok(fs.existsSync(path.join(ROOT, m.icon)), m.icon);
 });
 

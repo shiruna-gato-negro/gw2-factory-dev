@@ -13,14 +13,13 @@
     "js/legendary-tracker.js": { "base": 63971, "techo": 63971 },
     "js/meta.js": { "base": 64051, "techo": 64051, "nota": "BL-006/orden v6: restaurada la cabecera con historia de versiones y el mensaje claro de file://. No se achico para cumplir el limite (nunca empeorar lo que ve el jugador). Techo actualizado al nuevo tamano." },
     "js/render-catologo.js": { "base": 61534, "techo": 61534 },
-    "js/wallet-dashboard.js": { "base": 52505, "techo": 52505 }
+    "js/wallet-dashboard.js": { "base": 52505, "techo": 52505 },
+    "js/welcome-panel.js": { "base": 49285, "techo": 49285, "nota": "BL-015: Builds sumado a MODULES (11 módulos). Supera 48 KB: pasa a congelado." }
   },
   "advertencia": {
     "index.html": { "nota": "Salió de congelados en BL-070 TOP-4 (retiro de Gist: de 54034 a 41949 bytes). Módulos nuevos van a js/modules.json (FP-5). No puede volver a pasar 48 KB." },
-    "js/welcome-panel.js": { "nota": "Bienvenida; bajó de 48 KB en BL-070 RAI-5a («Raids y Strikes» pasa a «Raids»). No puede volver a pasar 48 KB." },
     "js/converter-modal.js": { "nota": "Cartera (BL-056); se achicó de 68 KB a 48 KB en CAR-2A." },
-    "css/theme-polish.css": { "nota": "Capa visual común; se achica en el marco común (BL-064, paso 8)." },
-    "js/sidebar-nav.js": { "nota": "Sidebar + badge Con Key (BL-007); 40.2 KB, 243 B sobre 40 KB. Registrado en advertencia en BL-010 paso 4 (achicar o mantener)." }
+    "css/theme-polish.css": { "nota": "Capa visual común; se achica en el marco común (BL-064, paso 8)." }
   },
   "excepciones": {
     "js/legendary-data.js": { "motivo": "Datos generados por tools/legendary (DEC-035): se regeneran, no se editan a mano." },

@@ -234,9 +234,10 @@ test('si la Bienvenida cambia su lista, la Sidebar la sigue', () => {
   x.window.Welcome._pure.MODULES = [
     { id: 'meta', name: 'Metas', href: '#/meta', icon: 'a.png', color: '#111111' },
     { id: 'cards', name: 'Cartera', href: '#/cards', icon: 'b.png', color: '#222222' },
+    { id: 'builds', name: 'Builds', href: '#/builds', icon: 'c.png', color: '#333333', free: true },
   ];
   ready(x);
-  same(hrefs(x), ['#/welcome', '#/meta', '#/cards', '#/builds'], 'Builds (BL-082) se suma aunque la Bienvenida no lo liste');
+  same(hrefs(x), ['#/welcome', '#/meta', '#/cards', '#/builds'], 'Builds viene de MODULES, ya no se suma aparte');
   assert.equal(x.document.getElementById('navMeta').children[1].textContent, 'Metas');
 });
 

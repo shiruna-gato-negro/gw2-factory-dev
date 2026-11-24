@@ -61,6 +61,7 @@
     { id: 'achievements', name: 'Logros', href: '#/account/achievements', icon: 'assets/icons/155059.png', color: '#6EA3FF' },
     { id: 'characters', name: 'Inventario y Personajes', href: '#/account/characters', icon: 'assets/icons/Welcome/358409.png', color: '#7EC3FF' },
     { id: 'armory', name: 'Armería Legendaria', href: '#/account/legendary-armory', icon: 'assets/icons/Cuentas/157085.png', color: '#E545CA' },
+    { id: 'builds', name: 'Builds', href: '#/builds', icon: 'assets/icons/156720.png', color: '#C9B6FF', free: true },
     { id: 'accounts', name: 'Cuentas', href: '#/account/accounts', icon: 'assets/icons/3601748.png', color: '#8E96A3', local: true }
   ];
   var HOME = { id: 'home', name: 'Inicio', href: '#/welcome', icon: 'https://render.guildwars2.com/file/32633AF8ADEA696A1EF56D3AE32D617B10D3AC57/157353.png', color: 'var(--acc-1)', free: true };
@@ -169,16 +170,7 @@
   function modules() {
     var W = root.Welcome;
     var list = W && W._pure && Array.isArray(W._pure.MODULES) && W._pure.MODULES.length ? W._pure.MODULES : MODULES_FALLBACK;
-    return withExtra(list).map(function (m) { return { id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color, free: !!m.free, local: !!m.local }; });
-  }
-
-  // BL-082 BLD-1: módulos que la Bienvenida todavía no lista (welcome-panel.js no tiene lugar: 48 KB).
-  // Van antes de Cuentas y una sola vez: si algún día la Bienvenida los suma, no se repiten.
-  var EXTRA = [{ id: 'builds', name: 'Builds', href: '#/builds', icon: 'assets/icons/156720.png', color: '#C9B6FF', free: true }];
-  function withExtra(list) {
-    var out = list.filter(function (m) { return m.id !== 'accounts'; }), tail = list.filter(function (m) { return m.id === 'accounts'; });
-    EXTRA.forEach(function (x) { if (!list.some(function (m) { return m.id === x.id; })) out.push(x); });
-    return out.concat(tail);
+    return list.map(function (m) { return { id: m.id, name: m.name, href: m.href, icon: m.icon, color: m.color, free: !!m.free, local: !!m.local }; });
   }
 
   // Los grupos de la Sidebar: Inicio, los módulos y Cuentas aparte.
@@ -757,7 +749,7 @@
     openSheet: openSheet, closeSheet: closeSheet,
     _pure: { groups: groups, mobileGroups: mobileGroups, activeFor: activeFor, normHash: normHash, keyLine: keyLine, newModules: newModules,
       moreNeedsAttention: moreNeedsAttention, MODULES_FALLBACK: MODULES_FALLBACK, HOME: HOME, TABS: TABS, SHORT: SHORT,
-      LINK_ID: LINK_ID, VIEW: VIEW, ALIAS: ALIAS, CSS: CSS, EXTRA: EXTRA }
+      LINK_ID: LINK_ID, VIEW: VIEW, ALIAS: ALIAS, CSS: CSS }
   };
 
   // Welcome (welcome-panel.js) se carga después, y con `defer` el estado ya es «interactive» cuando corro:

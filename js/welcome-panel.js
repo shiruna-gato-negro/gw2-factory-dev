@@ -48,7 +48,7 @@
     privacy: 'privacy.html'
   };
 
-  // Los 10 módulos, en el orden de la barra lateral. «free»: anda sin API Key.
+  // Los 11 módulos, en el orden de la barra lateral. «free»: anda sin API Key.
   var MODULES = [
     { id: 'cards', name: 'Cartera', desc: 'Divisas, conversor y todas tus cuentas', href: '#/cards', icon: 'assets/icons/733322.png', color: '#F2B94B', tag: 'Renovada' },
     { id: 'meta', name: 'Metas y Eventos', desc: 'Horarios de metas y world bosses', href: '#/meta', icon: 'assets/icons/102420.png', color: '#A896FF', tag: 'Renovada', free: true },
@@ -59,6 +59,7 @@
     { id: 'achievements', name: 'Logros', desc: 'Los que tenés cerca de completar', href: '#/account/achievements', icon: 'assets/icons/155059.png', color: '#6EA3FF' },
     { id: 'characters', name: 'Inventario y Personajes', desc: 'Buscá un objeto en toda la cuenta', href: '#/account/characters', icon: 'assets/icons/Welcome/358409.png', color: '#7EC3FF' },
     { id: 'armory', name: 'Armería Legendaria', desc: 'Las 206 legendarias, recetas y lo que te falta', href: '#/account/legendary-armory', icon: 'assets/icons/Cuentas/157085.png', color: '#E545CA' },
+    { id: 'builds', name: 'Builds', desc: 'Builds curadas, tu editor y tus códigos del juego', href: '#/builds', icon: 'assets/icons/156720.png', color: '#C9B6FF', free: true },
     { id: 'accounts', name: 'Cuentas', desc: 'Tus cuentas y Keys, cifradas en tu PC', href: '#/account/accounts', icon: 'assets/icons/3601748.png', color: '#8E96A3', local: true }
   ];
   // Los 7 permisos que pide la puerta de app.js (KeyManager.REQUIRED_PERMISSIONS, que no está en
@@ -382,7 +383,7 @@
     }).join('');
     return '<section aria-label="¿Qué puedo hacer aquí?">' +
       '<div class="wl-h"><h3>¿Qué puedo hacer aquí?</h3><span>' +
-        (m.state === 'back' ? 'Tus 10 módulos, a un clic' : 'Los 10 módulos de la Bóveda') + '</span></div>' +
+        (m.state === 'back' ? 'Tus 11 módulos, a un clic' : 'Los 11 módulos de la Bóveda') + '</span></div>' +
       '<ul class="wl-mods">' + items + '</ul></section>';
   }
 

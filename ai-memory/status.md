@@ -1,14 +1,22 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-015 paso 1/3 — plan
-Motivo: READY vacía → exploré La Bóveda y propuse 3 tareas (BL-015, BL-016, BL-017); tomé BL-015 por turno.
-Etapa actual: Product (plan)
+Tarea actual: BL-015 paso 2/3 — código
+Motivo: Builds sumado a MODULES en welcome-panel.js (11 módulos); EXTRA eliminado de sidebar-nav.js (listas unificadas); MODULES_FALLBACK actualizado; tests welcome-view y sidebar-nav adaptados; size-budget actualizado (welcome-panel congelado 49285 B, sidebar-nav saludable); guías, privacidad en verde.
+Etapa actual: Development (código + tests)
 Inicio: 2026-11-24 03:36Z
-Última actualización: 2026-11-24 03:36Z
-Próxima acción: BL-015 paso 2/3 — código: agregar builds a MODULES en welcome-panel.js, quitar EXTRA en sidebar-nav.js, adaptar tests.
+Última actualización: 2026-11-24 04:35Z
+Próxima acción: BL-015 paso 3/3 — test de regresión + review BAJO + docs/cierre.
 
 Archivos:
+- js/welcome-panel.js
+- js/sidebar-nav.js
+- tools/size-budget.json
+- tests/welcome-view.test.cjs
+- tests/sidebar-nav.test.cjs
+- docs/user-guide.html
+- docs/user-guide-avanzado.html
+- privacy.html
 - ai-memory/status.md
 - ai-memory/backlog.md
 
