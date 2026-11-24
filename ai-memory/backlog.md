@@ -3,11 +3,18 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-(vacío — orden v6: BL-012 cancelada; builds se actualizan en BL-101 de Shiruvana)
+- [BL-013] [BAJO] Consistencia visual de Builds con el resto de los módulos (UNI-4b/UNI-7b): íconos del juego en la cabecera y las pestañas — la cabecera de Builds muestra los 4 indicadores (Builds curadas, Élites cubiertas, Para revisar, Mis builds) sin ícono, y las 4 pestañas (Biblioteca, Editor, Mis builds, Importar) no tienen ícono en GNKit; el resto de los módulos sí los tiene. — 2026-11-24
+  Qué ve el jugador: la cabecera y las pestañas de Builds llevan íconos del juego, como en Logros, Inventario, Actividades, Heredad, Raids y Cámara, en vez de texto solo.
+- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — las dos metas muestran «Sin vista previa» porque no hay archivo en assets/previews/; conseguir el .webp (descarga manual desde la wiki, DEC-031) y conectarlo en assets/meta-drops.json. — 2026-11-24
+  Qué ve el jugador: la animación de la infusión de Chak y Dragon's End en la tarjeta de meta, en vez de «Sin vista previa».
 
 ## IN_PROGRESS
-
-(vacío — orden v6: BL-011 cancelada)
+- [BL-013] [BAJO] Consistencia visual de Builds con el resto de los módulos (UNI-4b/UNI-7b): íconos del juego en la cabecera y las pestañas — paso 1/3 — plan — 2026-11-24
+  Qué ve el jugador: la cabecera y las pestañas de Builds llevan íconos del juego, como en Logros, Inventario, Actividades, Heredad, Raids y Cámara, en vez de texto solo.
+  Pasos:
+  1. (hecho) Plan: identificar los 4 indicadores de bld-view.js (statsHTML/stat) y las 4 pestañas (TABS) sin ícono; elegir íconos existentes en assets/icons o render.guildwars2.com y agregarlos a gn-kit.js (claves stat.bld.* y tab.bld.*).
+  2. Modificar bld-view.js: statsHTML agrega <img> del ícono en cada .bld-st; tabsHTML ya usa kit.icon('tab.bld.'+id) — solo necesita las claves en GNKit.
+  3. Guardia en tests (bld-view o gn-kit-icons) que verifique los 4 íconos existen y se renderizan; suite completa en verde.
 
 ## BLOCKED
 

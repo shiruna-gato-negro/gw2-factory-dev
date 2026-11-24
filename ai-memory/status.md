@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (orden v6 ejecutada)
-Motivo: Orden v6 cerrada: BL-011 y BL-012 canceladas; ga-loader marcado «no aplica en este repo»; meta.js restaurado (64051 B, techo actualizado); backlog/roadmap/AGENTS actualizados; suite en verde.
-Etapa actual: Documentation
-Inicio: 2026-11-24 00:10Z
-Última actualización: 2026-11-24 00:16Z
-Próxima acción: Explorar La Bóveda como jugadora y anotar 1 a 3 tareas visibles nuevas en READY (cada una con «Qué ve el jugador:»), o esperar órdenes.
+Estado: EN CURSO
+Tarea actual: BL-013 paso 1/3 — plan (íconos en cabecera y pestañas de Builds)
+Motivo: READY estaba vacía; exploré La Bóveda como jugadora y anoté BL-013 y BL-014 (consistencia visual de Builds y vistas previas de Chak/Dragon's End). BL-013 tomada y planificada (3 pasos).
+Etapa actual: Product
+Inicio: 2026-11-24 00:38Z
+Última actualización: 2026-11-24 00:39Z
+Próxima acción: BL-013 paso 2/3 — agregar claves de íconos en gn-kit.js y modificar statsHTML en bld-view.js.
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- BL-009 cerrada: suite 1240/1248 (0 fail, 8 skipped). Arreglados 4 tests legendary (python3→python), 2 regex mojibake, fecha latest bld-view. Cuarentenados 7 tests → BL-010, BL-011, BL-012.
+- BL-013 IN_PROGRESS paso 1/3 (plan): íconos en cabecera y pestañas de Builds (consistencia UNI-4b/UNI-7b); BL-014 en READY (vistas previas Chak/Dragon's End). Suite 1254/1260 (6 skipped).
 - BL-002 cerrada: app-checks (4/4), builds-watch (4/4), legacy-tests (5/5) adaptados; guardias en verde; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
 - BL-010 cerrada: size-budget y universo des-cuarentenados; index.html 49141 B (advertencia), meta.js 63426 B (≤63600), sidebar-nav.js 40.2 KB (advertencia, nota BL-007); suite 1255/1261 (6 skipped). Review BAJO; deuda MEDIO (6 cuarentenas → BL-011, BL-012).
 - BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.
