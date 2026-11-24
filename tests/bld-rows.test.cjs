@@ -27,7 +27,7 @@ test('versión en la cabecera y en modules.json, antes de la Biblioteca', () => 
   const src = mods.map((m) => m.src);
   assert.ok(src.includes('js/bld-rows.js'));
   assert.ok(src.indexOf('js/bld-rows.js') < src.indexOf('js/bld-lib.js'));
-  assert.equal(mods.find((m) => m.src === 'js/bld-lib.js').v, '1.9.0');
+  assert.equal(mods.find((m) => m.src === 'js/bld-lib.js').v, '1.10.0');
 });
 
 test('group: respeta el orden de la lista; una entrada por profesión y por élite', () => {
@@ -84,7 +84,7 @@ test('lista agrupada: un grupo por profesión con su color y conteo, columnas po
 test('Biblioteca 1.9.0: filtros en una barra (con búsqueda), filas agrupadas, «Más DPS primero» plano; tocar una fila la recuerda para volver', () => {
   globalThis.GNBldRows = R;
   const L = require('../js/bld-lib.js'), P = L._pure;
-  assert.equal(L.version, '1.9.0');
+  assert.equal(L.version, '1.10.0');
   const idx = P.benchIndex(BENCH);
   Object.assign(L._state, { cat: CAT, watch: null, bench: BENCH, bidx: idx, loading: false, error: '', open: '' });
   L._state.f = { prof: 0, elite: 0, mode: 'pve', role: '', weapon: '', damage: '', state: '', q: '', sort: '' };

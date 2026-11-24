@@ -20,7 +20,7 @@ const ELITES = { 1: [27, 62, 65, 81], 2: [18, 61, 68, 74], 3: [43, 57, 70, 75], 
 const SOURCES = /^https:\/\/(snowcrows\.com|metabattle\.com|hardstuck\.gg|guildjen\.com)\//;
 
 test('versiones en la cabecera', () => {
-  for (const [f, m, v] of [['bld-lib.js', L, '1.9.0'], ['bld-mine.js', M, '1.5.0']]) {
+  for (const [f, m, v] of [['bld-lib.js', L, '1.10.0'], ['bld-mine.js', M, '1.5.0']]) {
     assert.match(fs.readFileSync(path.join(ROOT, 'js', f), 'utf8'), new RegExp('Versión: ' + v.replace(/\./g, '\\.') + ' '), f);
     assert.equal(m.version, v, f);
   }
@@ -90,6 +90,20 @@ test('filtros (A5): profesión, élite, modo, rol, arma, daño, vigencia y texto
   assert.ok(f({ q: 'luminaria' }).length >= 2);
 });
 
+test('BL-031 Builds: switch «Solo vigentes» filtra las builds vigentes en la Biblioteca', () => {
+  const B = CAT.builds, latest = P.latestPatch(CAT, WATCH);
+  const f = (x) => P.filter(B, Object.assign({ prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', onlyBench: false, onlyVigentes: false }, x), latest);
+  const all = f({}).length;
+  const vig = f({ onlyVigentes: true });
+  assert.ok(vig.length < all, 'filtra alguna');
+  assert.ok(vig.every((b) => P.stateOf(b, latest) === 'vigente'), 'solo vigentes');
+  // switch presente en la UI
+  Object.assign(L._state, { cat: CAT, watch: WATCH, loading: false, error: '', open: '' });
+  L._state.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '', onlyBench: false, onlyVigentes: false };
+  const h = P.filtersHTML(CAT, L._state.f);
+  assert.match(h, /data-lib-sw="onlyVigentes"/);
+  assert.match(h, /Solo vigentes/);
+});
 test('tarjeta: datos escapados, fuente con crédito y aviso de build vieja prellenado', () => {
   const b = Object.assign({}, CAT.builds[0], { name: '<b>x</b>' });
   L._state.open = '';

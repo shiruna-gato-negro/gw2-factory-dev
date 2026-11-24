@@ -4,7 +4,10 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-(vacío)
+- [BL-032] [BAJO] Metas: contador de drops/infusiones en «Todas las metas» — mtCount suma cuántas de las 49 metas tienen recompensa de infusión o drop, además de vista previa. — 2026-11-24
+  Qué ve el jugador: en «Todas las metas» ve, junto a «X metas · Y con vista previa», cuántas tienen drop o infusión.
+- [BL-033] [BAJO] Builds: filtro por dificultad en la Biblioteca — chips 1-5 (o agrupados) en «Más filtros» que dejan solo builds de esa dificultad. — 2026-11-24
+  Qué ve el jugador: en la Biblioteca puede dejar solo builds fáciles (1-2) o difíciles (4-5) para elegir por nivel de exigencia.
 
 ## IN_PROGRESS
 
@@ -18,6 +21,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-031] [BAJO] Builds: switch «Solo vigentes» en la barra de filtros de la Biblioteca — cerrada. onlyVigentes en filters/matches (stateOf === 'vigente') + switch sw('onlyVigentes', 'Solo vigentes') en el chiprow; clearFilters y estado por defecto incluyen onlyVigentes; test de regresión (filter solo vigentes + switch en UI). Versión bld-lib 1.9.0 → 1.10.0 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyBench/onlyPreview, sin regresión. Suite 1213/1219 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds vigentes (parche actual).
 - [BL-030] [BAJO] Builds: switch «Solo con bench de daño» en la barra de filtros de la Biblioteca — cerrada. onlyBench en filters/matches (benchOf != null) + switch sw('onlyBench', 'Solo con bench de daño') en la UI (chiprow); resets (clearFilters) incluyen onlyBench; estado por defecto onlyBench:false; test de regresión (filter solo bench + switch en UI). Review riesgo BAJO: aditivo, sigue el patrón de onlyPreview/onlyPinned, sin regresión. Suite 1274/1280 (6 skipped). — 2026-11-24
   Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds con benchmark de daño publicado (Snow Crows).
 - [BL-029] [BAJO] Builds: un solo botón «Ver más builds de esta élite» en la ficha — cerrada. En la ficha de la Biblioteca (sheetHTML) el botón se repetía 3 veces (data-sheet moreelite/elite/more); quedó uno (moreelite). mineHTML ya tenía uno. onClick sigue aceptando las claves viejas por compatibilidad. Test de regresión agregado (conteo en sheetHTML de la Biblioteca = 1). Review riesgo BAJO: aditivo, sin regresión. Suite 1274/1280 (6 skipped). — 2026-11-24

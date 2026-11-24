@@ -1,6 +1,6 @@
 /*!
  * js/bld-lib.js — Builds: pestaña Biblioteca (BL-082 BLD-7, BLD-8, BLD-10 y BLD-15: A1–A6, C2, D4)
- * Versión: 1.9.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
+ * Versión: 1.10.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
  *          plano) y los filtros en una sola barra con la búsqueda; cada fila es un enlace a su ficha · antes 1.8.0 (2026-10-30) · EQ-3: «Ver ficha» y tocar la tarjeta abren la ficha en su pantalla (#/builds/ver/<id>,
  *          js/bld-sheet.js); al volver, la Biblioteca sigue igual y el foco vuelve a esa build; list() da lo que se ve
  *          · antes 1.7.0 (2026-10-29) · BENCH-2: sin bench exacto, la build de PvE que hace daño muestra la «Referencia» medida más
@@ -27,7 +27,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.9.0';
+  var VERSION = '1.10.0';
   var CATALOG = 'assets/data/builds/catalog.json';
   var WATCH = 'assets/data/builds/watch.json';
   var BENCH = 'assets/data/builds/bench.json';
@@ -37,7 +37,7 @@
   var ROLES = { dps: 'DPS', quickness: 'Celeridad', alacrity: 'Alacridad', heal: 'Curación', support: 'Apoyo', boon: 'Bendiciones', cc: 'Control' };
   var DAMAGE = { power: 'Poder', condition: 'Condición', hybrid: 'Híbrido' };
   var SORT = { '': 'Por profesión', dps: 'Más DPS primero' };
-  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '', onlyBench: false },
+  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '', onlyBench: false, onlyVigentes: false },
     open: '', more: false, views: {}, checks: {}, viewErr: {} };
 
   function esc(s) { return root.GNBldShow ? root.GNBldShow.esc(s) : String(s == null ? '' : s); }
@@ -69,6 +69,7 @@
         var _idx = (f && (f.benchIndex || f.idx || f.bidx)) || st.bidx;
         if (!benchOf(b, _idx)) return false;
       }
+      if (f.onlyVigentes && stateOf(b, latest) !== 'vigente') return false;
       return true;
     });
   }
@@ -185,7 +186,7 @@
       '<input id="bldLibQ" class="bld-q" type="search" data-lib-f="q" value="' + esc(f.q) + '" placeholder="Buscar build o élite" aria-label="Buscar build o élite"></div>' +
       elitesHTML(cat, f, id) + '<div class="bld-chiprow">' +
       (st.bidx && st.bidx.n ? '<div class="bld-chips" role="group" aria-label="Orden"><small class="bld-muted">Orden:</small>' + Object.keys(SORT).map(function (k) {
-        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + sw('onlyBench', 'Solo con bench de daño') + '</div>' +
+        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + sw('onlyBench', 'Solo con bench de daño') + sw('onlyVigentes', 'Solo vigentes') + '</div>' +
       moreHTML(cat, f) + '</div>';
   }
   function cardHTML(b, latest) {
@@ -383,7 +384,7 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     if (x.focus) x.focus({ preventScroll: true });
     return true;
   }
-  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: st.f.sort || '', onlyBench: false }; st.more = false; }
+  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: st.f.sort || '', onlyBench: false, onlyVigentes: false }; st.more = false; }
 
   // Un clic: devuelve qué hizo (para los tests). La tarjeta se abre tocándola, salvo en botones, enlaces y el menú.
   function onClick(ctx, e) {
