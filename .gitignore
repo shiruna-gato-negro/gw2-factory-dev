@@ -2,3 +2,4 @@
 # No se versionan: con ellas el build "funcionaría" con datos viejos.
 tools/legendary/.work/
 __pycache__/
+`ntmp/

@@ -200,6 +200,17 @@ test('«Agregar API Key» y «API Key» abren el modal de Keys; cambiar de cuent
   assert.match(panel.body.innerHTML, /wl-mods/);
 });
 
+test('tarjeta de Builds muestra fecha de curación cuando el catálogo la trae (BL-026)', () => {
+  const m = P.buildModel({ keys: [{ value: 'k', label: 'a' }] });
+  const html = P.modulesHTML(m, 5, '16/11');
+  assert.match(html, /5 builds curadas · Curadas el 16\/11/);
+  const html2 = P.modulesHTML(m, 5, null);
+  assert.doesNotMatch(html2, /Curadas el/);
+  assert.equal(P.curatedDate({ curated: '2026-11-16', builds: [] }), '16/11');
+  assert.equal(P.curatedDate({ builds: [] }), null);
+  assert.equal(P.curatedDate(null), null);
+});
+
 test('API pública compatible con 1.4.0 y versión en el encabezado', () => {
   const { W } = load();
   for (const k of ['initOnce', 'activate', 'deactivate', 'Route', '_debug']) assert.ok(W[k], k);

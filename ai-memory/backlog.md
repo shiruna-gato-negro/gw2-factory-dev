@@ -4,8 +4,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-026] [BAJO] Welcome: fecha de curación en la tarjeta de Builds — la tarjeta de Builds muestra «N builds curadas · Curadas el DD/MM» leyendo catalog.curated del catálogo, sin romper si falta. — 2026-11-24
-  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuándo se curó el catálogo junto a la cantidad.
+(vacío)
 
 ## IN_PROGRESS
 
@@ -19,6 +18,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-026] [BAJO] Welcome: fecha de curación en la tarjeta de Builds — cerrada. Tarjeta de Builds muestra «N builds curadas · Curadas el DD/MM» leyendo catalog.curated del catálogo, sin romper si falta (curatedDate helper + state.buildsCurated + params en modulesHTML/bodyHTML); test welcome-view adaptado (curatedDate + modulesHTML con/sin curated). Techo size-budget welcome-panel actualizado a 51464 B con motivo. Review riesgo BAJO: aditivo, sin regresión. Suite 1267/1273 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuándo se curó el catálogo junto a la cantidad.
+
 - [BL-025] [BAJO] Inventario: total de tipos de materiales en la cabecera de Materiales — cerrada. Línea resumen «X tipos de materiales · en Y categorías» arriba de los grupos en materialsHTML (calculada sobre grupos con held > 0); test de regresión en inv-view. Review riesgo BAJO: aditivo, sin regresión. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
   Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántos tipos de materiales tiene guardados y en cuántas categorías.
 

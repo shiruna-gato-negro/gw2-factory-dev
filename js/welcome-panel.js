@@ -187,7 +187,7 @@
     '@media (prefers-reduced-motion:reduce){#welcomePanel .wl-mod{transition:none}#welcomePanel .wl-mod:hover{transform:none}}'
   ].join('\n');
 
-  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false, buildsCount: null, buildsLoading: false, buildsLoaded: false };
+  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false, buildsCount: null, buildsCurated: null, buildsLoading: false, buildsLoaded: false };
 
   // ---------------------------------------------------------------- utilidades
   function doc() { return root.document; }
@@ -336,6 +336,13 @@
     if (!builds) return null;
     return builds.length;
   }
+  // Fecha de curación del catálogo (catalog.curated) en formato DD/MM. Devuelve null si no hay o es inválida.
+  function curatedDate(data) {
+    if (!data || Array.isArray(data)) return null;
+    var iso = (typeof data.curated === 'string') ? data.curated : null;
+    var m = iso ? /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso) : null;
+    return m ? (m[3] + '/' + m[2]) : null;
+  }
 
   function moduleById(id) {
     for (var i = 0; i < MODULES.length; i++) if (MODULES[i].id === id) return MODULES[i];
@@ -377,11 +384,12 @@
       '</ol></section>';
   }
 
-  function modulesHTML(m, buildsCount) {
+  function modulesHTML(m, buildsCount, buildsCurated) {
     var bc = (typeof buildsCount === 'number') ? buildsCount : state.buildsCount;
+    var bcur = (typeof buildsCurated === 'string') ? buildsCurated : state.buildsCurated;
     var items = MODULES.map(function (mod) {
       var desc = mod.desc;
-      if (mod.id === 'builds' && typeof bc === 'number') desc = mod.desc + ' · ' + bc + ' builds curadas';
+      if (mod.id === 'builds' && typeof bc === 'number') desc = mod.desc + ' · ' + bc + ' builds curadas' + (bcur ? ' · Curadas el ' + bcur : '');
       var tag = '';
       if (m.state === 'back') {
         if ((m.activeMods || []).indexOf(mod.id) >= 0) tag = '<i class="wl-tag wl-tag--perm">Falta permiso</i>';
@@ -499,10 +507,10 @@
       '<ul class="wl-chk">' + items.join('') + '</ul></section>';
   }
 
-  function bodyHTML(m, news, buildsCount) {
+  function bodyHTML(m, news, buildsCount, buildsCurated) {
     return '<div class="wl-body">' +
       (m.state === 'new' ? stepsHTML() : '<div class="wl-row">' + continueHTML(m) + vaultHTML(m) + '</div>') +
-      modulesHTML(m, buildsCount) +
+      modulesHTML(m, buildsCount, buildsCurated) +
       '<div class="wl-row">' + newsHTML(news) + guidesHTML() + '</div>' +
       footHTML() +
       '</div>';
@@ -733,7 +741,7 @@
     ensureCSS();
     var m = buildModel(readEnv());
     renderHead(host, m);
-    body.innerHTML = bodyHTML(m, state.news, state.buildsCount);
+    body.innerHTML = bodyHTML(m, state.news, state.buildsCount, state.buildsCurated);
     applyContrast();
     if (!state.wired) {
       state.wired = true;
@@ -773,6 +781,8 @@
         state.buildsLoaded = true;
         var n = countBuilds(data);
         if (n !== null) state.buildsCount = n;
+        var c = curatedDate(data);
+        if (c !== null) state.buildsCurated = c;
         if (state.active) render();
       });
   }
@@ -814,7 +824,7 @@
     _debug: function () { return { version: VERSION, active: state.active, news: state.news ? state.news.length : null }; },
     orientation: function () { return orientation(buildModel(readEnv())); },
     applyContrast: applyContrast,
-    _pure: { buildModel: buildModel, pickNews: pickNews, countBuilds: countBuilds, headHTML: headHTML, bodyHTML: bodyHTML, modulesHTML: modulesHTML, orientation: orientation,
+    _pure: { buildModel: buildModel, pickNews: pickNews, countBuilds: countBuilds, curatedDate: curatedDate, headHTML: headHTML, bodyHTML: bodyHTML, modulesHTML: modulesHTML, orientation: orientation,
       keyStatus: keyStatus, relTime: relTime, moduleForHash: moduleForHash, trackVisit: trackVisit, markBackup: markBackup,
       MODULES: MODULES, SCOPES: SCOPES, CSS: CSS, LINKS: LINKS,
       contrastFixes: contrastFixes, parseColor: parseColor, contrast: contrast }
