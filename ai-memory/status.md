@@ -1,16 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: (ninguna) — BL-029 cerrada (paso 1/1). READY con BL-030.
-Motivo: BL-029 completada: en la ficha de la Biblioteca (sheetHTML) quedó un solo botón «Ver más builds de esta élite» (antes 3: moreelite/elite/more); mineHTML ya tenía uno; onClick sigue aceptando las claves viejas por compatibilidad; test de regresión agregado (conteo en sheetHTML de la Biblioteca = 1). Suite 1280/1274 (6 skipped). Exploración La Bóveda: propuesta BL-030 (switch «Solo con bench de daño» en la Biblioteca).
+Tarea actual: (ninguna) — BL-030 cerrada (paso 1/1).
+Motivo: BL-030 completada: onlyBench en filters/matches de bld-lib.js (benchOf != null) + switch sw('onlyBench', 'Solo con bench de daño') en el chiprow de la Biblioteca; clearFilters y estado por defecto incluyen onlyBench; CSS del switch agregado (sin hex fijo); test de regresión (filter solo bench + switch en UI). Review riesgo BAJO: aditivo, sin regresión. Suite 1280/1274 (6 skipped). READY vacía: próximo ciclo explora La Bóveda y propone 1 a 3 tareas.
 Etapa actual: Documentation (cierre)
 Inicio: —
-Última actualización: 2026-11-24 18:47Z
-Próxima acción: tomar BL-030 (primera de READY) — paso 1 plan.
+Última actualización: 2026-11-24 18:55Z
+Próxima acción: explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas (READY vacía).
 
 Archivos:
 - ai-memory/backlog.md
 - ai-memory/status.md
+- js/bld-lib.js
 
 ## Esperando a Pablo
 
@@ -18,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-030. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1280 total, 1274 pass, 0 fail, 6 skipped.
 

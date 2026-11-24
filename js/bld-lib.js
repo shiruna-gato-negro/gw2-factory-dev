@@ -37,7 +37,7 @@
   var ROLES = { dps: 'DPS', quickness: 'Celeridad', alacrity: 'Alacridad', heal: 'Curación', support: 'Apoyo', boon: 'Bendiciones', cc: 'Control' };
   var DAMAGE = { power: 'Poder', condition: 'Condición', hybrid: 'Híbrido' };
   var SORT = { '': 'Por profesión', dps: 'Más DPS primero' };
-  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '' },
+  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '', onlyBench: false },
     open: '', more: false, views: {}, checks: {}, viewErr: {} };
 
   function esc(s) { return root.GNBldShow ? root.GNBldShow.esc(s) : String(s == null ? '' : s); }
@@ -65,6 +65,10 @@
       if (f.damage && b.damage !== f.damage) return false;
       if (f.state && stateOf(b, latest) !== f.state) return false;
       if (q && (b.name + ' ' + (b.eliteName || '')).toLowerCase().indexOf(q) < 0) return false;
+      if (f.onlyBench) {
+        var _idx = (f && (f.benchIndex || f.idx || f.bidx)) || st.bidx;
+        if (!benchOf(b, _idx)) return false;
+      }
       return true;
     });
   }
@@ -171,13 +175,17 @@
   }
   function filtersHTML(cat, f) {
     var id = ident();
+    function sw(k, label) {
+      var on = !!(f && f[k]);
+      return '<button type="button" class="bld-sw' + (on ? ' is-on' : '') + '" role="switch" data-lib-sw="' + k + '" aria-checked="' + on + '"><i aria-hidden="true"></i>' + esc(label) + '</button>';
+    }
     // EQ-3b: una sola barra (profesión, modo, rol y búsqueda), como Snow Crows; debajo las élites, el orden y «Más filtros».
     return '<div class="bld-filters"><div class="bld-bar1">' + profsHTML(f, id) + '<span class="bld-sep" aria-hidden="true"></span>' + chips('Modo', 'mode', MODES, f.mode) +
       '<span class="bld-sep" aria-hidden="true"></span>' + chips('Rol', 'role', ROLES, f.role) +
       '<input id="bldLibQ" class="bld-q" type="search" data-lib-f="q" value="' + esc(f.q) + '" placeholder="Buscar build o élite" aria-label="Buscar build o élite"></div>' +
       elitesHTML(cat, f, id) + '<div class="bld-chiprow">' +
       (st.bidx && st.bidx.n ? '<div class="bld-chips" role="group" aria-label="Orden"><small class="bld-muted">Orden:</small>' + Object.keys(SORT).map(function (k) {
-        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + '</div>' +
+        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + sw('onlyBench', 'Solo con bench de daño') + '</div>' +
       moreHTML(cat, f) + '</div>';
   }
   function cardHTML(b, latest) {
@@ -273,6 +281,10 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     '#buildsPanel .bld-bench-bar{display:block;height:6px;border-radius:999px;background:var(--bg-0);box-shadow:inset 0 0 0 1px var(--bd-1);overflow:hidden}',
     '#buildsPanel .bld-bench-bar>i{display:block;height:100%;border-radius:999px;background:var(--bld-prof,var(--gn-mod))}#buildsPanel .bld-bench.is-none{font-size:.75rem}',
     '#buildsPanel .bld-shv{border-left:3px solid var(--gn-mod);padding:6px 10px;background:var(--bg-1);border-radius:6px;color:var(--tx-1)}',
+    '#buildsPanel .bld-sw{display:inline-flex;align-items:center;gap:8px;background:none;border:0;color:var(--tx-2);font:inherit;font-size:.82rem;cursor:pointer;padding:4px}',
+    '#buildsPanel .bld-sw i{width:34px;height:20px;border-radius:999px;background:var(--bd-2);position:relative;display:inline-block}',
+    '#buildsPanel .bld-sw i::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--bld-sw-knob,#fff);transition:left .15s}',
+    '#buildsPanel .bld-sw.is-on i{background:var(--acc-1)}#buildsPanel .bld-sw.is-on i::after{left:17px}',
     '@media (max-width:560px){#buildsPanel .bld-lib{grid-template-columns:1fr}#buildsPanel .bld-pf{min-width:40px;height:40px}}'
   ].join('\n');
   function ensureCss() {
@@ -371,7 +383,7 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     if (x.focus) x.focus({ preventScroll: true });
     return true;
   }
-  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: st.f.sort || '' }; st.more = false; }
+  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: st.f.sort || '', onlyBench: false }; st.more = false; }
 
   // Un clic: devuelve qué hizo (para los tests). La tarjeta se abre tocándola, salvo en botones, enlaces y el menú.
   function onClick(ctx, e) {
@@ -382,6 +394,8 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     if (x) { st.f.elite = Number(x.getAttribute('data-lib-elite')) || 0; paint(ctx); return 'elite'; }
     x = near('[data-lib-p]');
     if (x) { st.f[x.getAttribute('data-lib-p')] = x.getAttribute('data-v'); paint(ctx); return 'chip'; }
+    x = near('[data-lib-sw]');
+    if (x) { var sk = x.getAttribute('data-lib-sw'); st.f[sk] = !st.f[sk]; paint(ctx); return 'sw'; }
     x = near('[data-lib]');
     if (x) {
       var k = x.getAttribute('data-lib');

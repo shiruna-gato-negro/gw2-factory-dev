@@ -4,8 +4,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-030] [BAJO] Builds: switch «Solo con bench de daño» en la barra de filtros de la Biblioteca — añadir onlyBench a filters/matches (benchOf != null) y un switch sw('onlyBench', 'Solo con bench de daño') en la UI; el resumen ya cuenta «N con bench de daño». Sigue el patrón de onlyPreview (BL-018) y onlyPinned (BL-024). — 2026-11-24
-  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds con benchmark de daño publicado (Snow Crows).
+(vacío)
 
 ## IN_PROGRESS
 
@@ -19,6 +18,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-030] [BAJO] Builds: switch «Solo con bench de daño» en la barra de filtros de la Biblioteca — cerrada. onlyBench en filters/matches (benchOf != null) + switch sw('onlyBench', 'Solo con bench de daño') en la UI (chiprow); resets (clearFilters) incluyen onlyBench; estado por defecto onlyBench:false; test de regresión (filter solo bench + switch en UI). Review riesgo BAJO: aditivo, sigue el patrón de onlyPreview/onlyPinned, sin regresión. Suite 1274/1280 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds con benchmark de daño publicado (Snow Crows).
 - [BL-029] [BAJO] Builds: un solo botón «Ver más builds de esta élite» en la ficha — cerrada. En la ficha de la Biblioteca (sheetHTML) el botón se repetía 3 veces (data-sheet moreelite/elite/more); quedó uno (moreelite). mineHTML ya tenía uno. onClick sigue aceptando las claves viejas por compatibilidad. Test de regresión agregado (conteo en sheetHTML de la Biblioteca = 1). Review riesgo BAJO: aditivo, sin regresión. Suite 1274/1280 (6 skipped). — 2026-11-24
   Qué ve el jugador: en la ficha de una build de la Biblioteca, un solo botón «Ver más builds de esta élite» en vez de tres iguales.
 - [BL-028] [BAJO] Builds: enlace «Ver más builds de esta profesión» en la ficha — cerrada. Botón «Ver más builds de esta profesión» (data-sheet moreprof) en sheetHTML (biblioteca y Mis builds) que, al tocarlo, pone st.f.prof con la profesión de la build (elite 0) en bld-lib, recuerda la primera build filtrada y navega a #/builds. Sigue el patrón de BL-021. Review riesgo BAJO: aditivo, sin regresión. Suite 1274/1280 (6 skipped). — 2026-11-24
