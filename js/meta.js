@@ -173,6 +173,10 @@
     var ext = Array.isArray(meta._extItems) ? meta._extItems[0] : null;
     return !!(ext && ext.itemName && ext.itemName !== '—');
   }
+  function hasPreview(meta) {
+    var ext = Array.isArray(meta && meta._extItems) ? meta._extItems[0] : null;
+    return previewOf(ext).state === 'ok';
+  }
 
   // Filtros de «Todas las metas». row = { meta, inst, done }.
   function matches(row, f) {
@@ -187,6 +191,10 @@
     if (f.when === 'pending' && row.done !== false) return false;
     if (f.hideDone && row.done === true) return false;
     if (f.onlyDrop && !hasDrop(m)) return false;
+    if (f.onlyPreview) {
+      var extPv = Array.isArray(m._extItems) ? m._extItems[0] : null;
+      if (previewOf(extPv).state !== 'ok') return false;
+    }
     return true;
   }
 
@@ -236,7 +244,7 @@
   var rows = [];
   var openIds = new Set();
   var wpOverride = {};
-  var filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false };
+  var filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
   var flags = { state: 'none', worldbosses: new Set(), mapchests: new Set(), lastTs: 0, lastHuman: '—' };
   var _flagsSeq = 0, _flagsAbort = null;
   var root = null, tickT = null, midnightT = null, qT = null, inited = false;
@@ -669,7 +677,7 @@
   function goTo(id) {
     var card = $('#mt-card-' + id, root);
     if (!card) {
-      filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false };
+      filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
       var q = $('#mtQ', root); if (q) q.value = '';
       renderAll(); card = $('#mt-card-' + id, root);
     }
@@ -778,7 +786,7 @@
       }
       else if (act === 'flags') window.Meta.refresh({ token: token(), nocache: true });
       else if (act === 'reset') {
-        filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false };
+        filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
         var q = $('#mtQ', root); if (q) q.value = '';
         renderFilters(); renderCatalog();
       }
@@ -927,7 +935,7 @@
         '<div class="mt-seg" role="group" aria-label="Mostrar">' + when('all', 'Todas') + when('hour', 'Próxima hora') + when('pending', 'Pendientes hoy') + '</div></div>' +
         '<div id="mtTypes" class="mt-chips" role="group" aria-label="Tipo"></div>' +
         '<div id="mtExps" class="mt-chips" role="group" aria-label="Expansión"></div>' +
-        '<div class="mt-tools">' + sw('hideDone', 'Ocultar las hechas hoy') + sw('onlyDrop', 'Solo con infusión o drop') + '</div>' +
+        '<div class="mt-tools">' + sw('hideDone', 'Ocultar las hechas hoy') + sw('onlyDrop', 'Solo con infusión o drop') + sw('onlyPreview', 'Solo con vista previa') + '</div>' +
         '<div id="mtCount" class="mt-count" aria-live="polite"></div><div id="mtAll"></div>' +
       '</section>';
   }
@@ -1036,7 +1044,7 @@
   };
   window.Meta._pure = {
     instanceAt: instanceAt, startsWithin: startsWithin, agendaOf: agendaOf, matches: matches, typeCounts: typeCounts,
-    expCounts: expCounts, groupByExp: groupByExp, isTracked: isTracked, doneOf: doneOf, hasDrop: hasDrop, fold: fold,
+    expCounts: expCounts, groupByExp: groupByExp, isTracked: isTracked, doneOf: doneOf, hasDrop: hasDrop, hasPreview: hasPreview, fold: fold,
     nextResetUTC: nextResetUTC, typeOne: typeOne, expName: expName
   };
   window.Meta._view = { dropHTML: dropHTML, previewOf: previewOf, showPreview: showPreview, hidePreview: hidePreview, badPreviews: badPreviews };

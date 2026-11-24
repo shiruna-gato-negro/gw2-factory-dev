@@ -1,15 +1,16 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-018 paso 1/3 — plan (cerrado en este ciclo); próximo paso 2/3 código.
-Motivo: READY vacía → exploré La Bóveda y anoté BL-018 y BL-019; tomé BL-018 (filtro «Solo con vista previa» en Metas) y escribí el plan de 3 pasos.
-Etapa actual: Product → Architecture (plan)
+Tarea actual: BL-018 paso 2/3 — código (cerrado en este ciclo); próximo paso 3/3 test + review + docs.
+Motivo: implementado onlyPreview en matches()/filters y switch «Solo con vista previa» en la UI; hasPreview agregado y exportado; techo size-budget actualizado a 64719 B con motivo (BL-018).
+Etapa actual: Development (hecho) → Review pendiente
 Inicio: 2026-11-24 07:30Z
-Última actualización: 2026-11-24 07:34Z
-Próxima acción: BL-018 paso 2/3 — código: onlyPreview en matches(), filters y switch en la UI de «Todas las metas».
+Última actualización: 2026-11-24 08:05Z
+Próxima acción: BL-018 paso 3/3 — test de regresión (meta-view) + review BAJO + docs/cierre.
 
 Archivos:
-- ai-memory/backlog.md
+- js/meta.js
+- tools/size-budget.json
 - ai-memory/status.md
 
 ## Esperando a Pablo
@@ -18,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-018 paso 2/3 pendiente (código). READY: BL-019.
+- IN_PROGRESS: BL-018 paso 3/3 pendiente (test de regresión + review + docs). READY: BL-019.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
 
@@ -49,5 +50,7 @@ Archivos:
 - BL-016 paso 1/1 cerrado: 2 entradas nuevas en welcome-news.json (builds íconos cabecera/pestañas, meta vistas previas Chak y Dragon's End), test pickNews adaptado (3 más nuevas, NUEVO en las 2 del 24/11); review BAJO; suite 1257/1263 (6 skipped). BL-016 movida a DONE. READY: BL-017.
 
 - BL-017 paso 2/3 cerrado: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px, cover) + size-budget meta.js 64276 B con motivo; test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
+
+- BL-018 paso 2/3 cerrado: onlyPreview en matches()/filters + switch «Solo con vista previa» en la UI; hasPreview exportado; techo size-budget 64719 B con motivo. Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
