@@ -4,8 +4,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-022] [MEDIO] Welcome: en la tarjeta del módulo Builds, mostrar la cantidad de builds curadas — leer assets/data/builds/catalog.json en welcome-panel (fetch con fallback) y mostrar «N builds curadas» en la tarjeta de Builds (MODULES desc dinámico o badge), sin romper si el catálogo no carga. — 2026-11-24
-  Qué ve el jugador: la tarjeta de Builds dice cuántas builds curadas hay, en vez de texto fijo.
+- [BL-023] [BAJO] Builds: fecha de curación del catálogo en la cabecera de la Biblioteca — mostrar «Curadas el DD/MM» junto al contador de builds, tomando catalog.curated, sin romper si falta. — 2026-11-24
+  Qué ve el jugador: en la Biblioteca de Builds ve la fecha de la última curación del catálogo, junto al total.
 
 ## IN_PROGRESS
 
@@ -17,6 +17,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-022] [MEDIO] Welcome: cantidad de builds curadas en la tarjeta de Builds — fetch de assets/data/builds/catalog.json en welcome-panel (con fallback) y desc dinámico «N builds curadas» en la tarjeta de Builds; techo size-budget welcome-panel actualizado a 50757 B con motivo. Test welcome-view adaptado (2 fetches). Review riesgo BAJO: aditivo, sin regresión; fallback si el catálogo no carga. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
+  Qué ve el jugador: la tarjeta de Builds dice cuántas builds curadas hay, en vez de texto fijo.
+
 - [BL-021] [BAJO] Builds: enlace «Ver más builds de esta élite» en la ficha — cerrada. Botón «Ver más builds de esta élite» en sheetHTML y mineHTML (cuando la build tiene élite) que, al tocarlo, pone st.f.prof y st.f.elite de bld-lib con la profesión y élite de la build, recuerda la primera build del listado filtrado para el foco y navega a #/builds (ctx.go('lib')). Test de regresión en bld-sheet (HTML + onClick + filtros + navegación). Review riesgo BAJO: aditivo, sin regresión; bld-sheet.js sigue en zona saludable (< 40 KB). Suite 1264/1270 (6 skipped). — 2026-11-24
   Qué ve el jugador: desde la ficha de una build, un clic muestra las otras builds de la misma élite en la Biblioteca.
 

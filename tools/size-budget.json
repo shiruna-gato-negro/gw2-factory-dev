@@ -14,7 +14,7 @@
     "js/meta.js": {"base": 64813, "techo": 64813, "nota": "BL-020 paso 2/2: contador de vistas previas en «Todas las metas» (mtCount con «X metas · Y con vista previa», Y = seed.filter(hasPreview).length). Techo actualizado al nuevo tamaño (regla v6: no achicar código visible para cumplir el límite)."},
     "js/render-catologo.js": { "base": 61534, "techo": 61534 },
     "js/wallet-dashboard.js": { "base": 52505, "techo": 52505 },
-    "js/welcome-panel.js": { "base": 49285, "techo": 49285, "nota": "BL-015: Builds sumado a MODULES (11 módulos). Supera 48 KB: pasa a congelado." }
+    "js/welcome-panel.js": { "base": 50761, "techo": 50761, "nota": "BL-022: contador de builds curadas en tarjeta de Builds (fetch catalog.json + desc dinámico). Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)." }
   },
   "advertencia": {
     "index.html": { "nota": "Salió de congelados en BL-070 TOP-4 (retiro de Gist: de 54034 a 41949 bytes). Módulos nuevos van a js/modules.json (FP-5). No puede volver a pasar 48 KB." },

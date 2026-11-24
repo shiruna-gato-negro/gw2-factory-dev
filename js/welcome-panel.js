@@ -79,6 +79,7 @@
   var NEWS_URL = 'assets/welcome-news.json';
   var NEWS_DAYS = 14;  // una novedad lleva «NUEVO» durante 14 días
   var NEWS_MAX = 3;
+  var BUILD_URL = 'assets/data/builds/catalog.json';
 
   var CSS = [
     '#welcomePanel .wl-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:20px 22px;margin:-1px -1px 0;border-bottom:1px solid var(--bd-1);background:linear-gradient(180deg,var(--glow-base,rgba(123,92,255,.12)),transparent);border-radius:inherit}',
@@ -186,7 +187,7 @@
     '@media (prefers-reduced-motion:reduce){#welcomePanel .wl-mod{transition:none}#welcomePanel .wl-mod:hover{transform:none}}'
   ].join('\n');
 
-  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false };
+  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false, buildsCount: null, buildsLoading: false, buildsLoaded: false };
 
   // ---------------------------------------------------------------- utilidades
   function doc() { return root.document; }
@@ -328,6 +329,14 @@
     });
   }
 
+  // Cuenta las builds curadas del catálogo (assets/data/builds/catalog.json). Devuelve null si no hay datos válidos.
+  function countBuilds(data) {
+    if (!data) return null;
+    var builds = Array.isArray(data) ? data : (Array.isArray(data.builds) ? data.builds : null);
+    if (!builds) return null;
+    return builds.length;
+  }
+
   function moduleById(id) {
     for (var i = 0; i < MODULES.length; i++) if (MODULES[i].id === id) return MODULES[i];
     return null;
@@ -368,8 +377,11 @@
       '</ol></section>';
   }
 
-  function modulesHTML(m) {
+  function modulesHTML(m, buildsCount) {
+    var bc = (typeof buildsCount === 'number') ? buildsCount : state.buildsCount;
     var items = MODULES.map(function (mod) {
+      var desc = mod.desc;
+      if (mod.id === 'builds' && typeof bc === 'number') desc = mod.desc + ' · ' + bc + ' builds curadas';
       var tag = '';
       if (m.state === 'back') {
         if ((m.activeMods || []).indexOf(mod.id) >= 0) tag = '<i class="wl-tag wl-tag--perm">Falta permiso</i>';
@@ -379,7 +391,7 @@
       else if (!mod.local) tag = '<i class="wl-tag wl-tag--key">Con Key</i>';
       return '<li><a class="wl-mod" href="' + mod.href + '" data-mod="' + mod.id + '" style="--x:' + mod.color + '">' +
         '<img src="' + mod.icon + '" alt="" width="40" height="40" loading="lazy">' +
-        '<div><b>' + esc(mod.name) + '</b><span>' + esc(mod.desc) + '</span></div>' + tag + '</a></li>';
+        '<div><b>' + esc(mod.name) + '</b><span>' + esc(desc) + '</span></div>' + tag + '</a></li>';
     }).join('');
     return '<section aria-label="¿Qué puedo hacer aquí?">' +
       '<div class="wl-h"><h3>¿Qué puedo hacer aquí?</h3><span>' +
@@ -487,10 +499,10 @@
       '<ul class="wl-chk">' + items.join('') + '</ul></section>';
   }
 
-  function bodyHTML(m, news) {
+  function bodyHTML(m, news, buildsCount) {
     return '<div class="wl-body">' +
       (m.state === 'new' ? stepsHTML() : '<div class="wl-row">' + continueHTML(m) + vaultHTML(m) + '</div>') +
-      modulesHTML(m) +
+      modulesHTML(m, buildsCount) +
       '<div class="wl-row">' + newsHTML(news) + guidesHTML() + '</div>' +
       footHTML() +
       '</div>';
@@ -721,13 +733,14 @@
     ensureCSS();
     var m = buildModel(readEnv());
     renderHead(host, m);
-    body.innerHTML = bodyHTML(m, state.news);
+    body.innerHTML = bodyHTML(m, state.news, state.buildsCount);
     applyContrast();
     if (!state.wired) {
       state.wired = true;
       host.addEventListener('click', onClick);
     }
     loadNews();
+    loadBuilds();
   }
 
   function loadNews() {
@@ -742,6 +755,24 @@
       .then(function (data) {
         state.newsLoading = false;
         state.news = pickNews(data && data.items ? data.items : data);
+        if (state.active) render();
+      });
+  }
+
+  function loadBuilds() {
+    if (state.buildsLoaded || state.buildsLoading || typeof root.fetch !== 'function') {
+      if (typeof root.fetch !== 'function' && !state.buildsLoaded) { state.buildsLoaded = true; state.buildsCount = null; }
+      return;
+    }
+    state.buildsLoading = true;
+    root.fetch(BUILD_URL, { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (data) {
+        state.buildsLoading = false;
+        state.buildsLoaded = true;
+        var n = countBuilds(data);
+        if (n !== null) state.buildsCount = n;
         if (state.active) render();
       });
   }
@@ -783,7 +814,7 @@
     _debug: function () { return { version: VERSION, active: state.active, news: state.news ? state.news.length : null }; },
     orientation: function () { return orientation(buildModel(readEnv())); },
     applyContrast: applyContrast,
-    _pure: { buildModel: buildModel, pickNews: pickNews, headHTML: headHTML, bodyHTML: bodyHTML, orientation: orientation,
+    _pure: { buildModel: buildModel, pickNews: pickNews, countBuilds: countBuilds, headHTML: headHTML, bodyHTML: bodyHTML, modulesHTML: modulesHTML, orientation: orientation,
       keyStatus: keyStatus, relTime: relTime, moduleForHash: moduleForHash, trackVisit: trackVisit, markBackup: markBackup,
       MODULES: MODULES, SCOPES: SCOPES, CSS: CSS, LINKS: LINKS,
       contrastFixes: contrastFixes, parseColor: parseColor, contrast: contrast }
