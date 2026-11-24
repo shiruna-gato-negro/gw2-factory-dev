@@ -1,17 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (BL-016 cerrada; próxima: BL-017)
-Motivo: BL-016 cerrada: 2 entradas nuevas en welcome-news.json (builds íconos cabecera/pestañas, meta vistas previas Chak y Dragon's End), test pickNews adaptado; review BAJO; suite 1257/1263 (6 skipped).
-Etapa actual: —
-Inicio: 2026-11-24 05:30Z
-Última actualización: 2026-11-24 05:32Z
-Próxima acción: Tomar BL-017 (primera de READY) en el próximo ciclo: miniatura de infusión en tarjetas de Metas.
+Estado: EN CURSO
+Tarea actual: BL-017 paso 1/3 — plan (miniatura de infusión en tarjetas de Metas)
+Motivo: BL-016 cerrada; única tarea READY BL-017 tomada y planificada (3 pasos). Paso 1 solo plan, sin código.
+Etapa actual: Product → Architecture (plan)
+Inicio: 2026-11-24 06:00Z
+Última actualización: 2026-11-24 06:00Z
+Próxima acción: Implementar paso 2/3: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS; adaptar test meta-view; suite completa.
 
 Archivos:
-- assets/welcome-news.json
-- tests/welcome-view.test.cjs
 - ai-memory/backlog.md
+- ai-memory/status.md
 
 ## Esperando a Pablo
 
@@ -19,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- READY: BL-017 (miniatura en Metas). BL-016 cerrada (novedades de Bienvenida con BL-013 y BL-014).
+- IN_PROGRESS: BL-017 (miniatura en Metas). READY: — (vacía).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1263 total, 1257 pass, 0 fail, 6 skipped.
 
