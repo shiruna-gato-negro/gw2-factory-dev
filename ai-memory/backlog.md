@@ -1,21 +1,20 @@
 # Backlog de Shiruna
 
-Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas.
+Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — PvE 3/36, bench count; tests bld-lib (3) y bld-rows (1) cuarentenados — 2026-11-23
+(vacío — orden v6: BL-012 cancelada; builds se actualizan en BL-101 de Shiruvana)
 
 ## IN_PROGRESS
 
-- [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml (falta en el repo; test ga-loader cuarentenado) — 2026-11-23
-  Pasos:
-  1/5 — plan (este ciclo): mover a IN_PROGRESS, definir pasos. (commit BL-011 paso 1/5)
-  2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f), verificar guardia de producción `if: github.repository == 'PabloSnchz/gw2-wallet-ligero'` y sin referencias a Shiruvana. (commit BL-011 paso 2/5) — completado 2026-11-23.
-  3/5 — des-cuarentenar: quitar .skip del test ga-loader, verificar que pasa. — completado 2026-11-24 (5/5 pass; suite 1255/1260, 5 skipped).
-  4/5 — suite completa + review de riesgos (BAJO esperado: solo workflow + test).
-  5/5 — docs/cierre: actualizar status.md, mover a DONE, commit final.
+(vacío — orden v6: BL-011 cancelada)
 
 ## BLOCKED
+
+## CANCELLED
+
+- [BL-011] [MEDIO] Restaurar .github/workflows/github-metrics-to-ga4.yml — cancelada por orden v6: GA4 solo corre en producción; test ga-loader marcado «no aplica en este repo». — 2026-11-24
+- [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
 

@@ -1,15 +1,17 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: orden v6 — foco en el jugador (ejecución)
-Motivo: Orden de Shiruvana vía Pablo: cancelar BL-011 y BL-012; GA4 solo producción; revertir recorte de meta.js; reglas de tareas visibles para el jugador; fase F2b en roadmap.
-Etapa actual: Development
+Estado: EN ESPERA
+Tarea actual: — (orden v6 ejecutada)
+Motivo: Orden v6 cerrada: BL-011 y BL-012 canceladas; ga-loader marcado «no aplica en este repo»; meta.js restaurado (64051 B, techo actualizado); backlog/roadmap/AGENTS actualizados; suite en verde.
+Etapa actual: Documentation
 Inicio: 2026-11-24 00:10Z
-Última actualización: 2026-11-24 00:10Z
-Próxima acción: anotar orden (este commit) y luego ejecutar: cancelar BL-011/BL-012, marcar ga-loader no aplica, actualizar backlog/roadmap/AGENTS, cerrar.
+Última actualización: 2026-11-24 00:16Z
+Próxima acción: Explorar La Bóveda como jugadora y anotar 1 a 3 tareas visibles nuevas en READY (cada una con «Qué ve el jugador:»), o esperar órdenes.
 
 Archivos:
 - ai-memory/status.md
+- ai-memory/backlog.md
+- ai-memory/roadmap.md
 
 ## Esperando a Pablo
 
@@ -23,6 +25,7 @@ Archivos:
 - BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.
 - Orden v4 cerrada: reglas 1-6 en AGENTS.md.
 - Orden v5 cerrada: lock protocol v5 en AGENTS.md y job 8f75ac22.
+- Orden v6 cerrada: BL-011 y BL-012 canceladas; ga-loader marcado «no aplica en este repo»; meta.js restaurado (64051 B, techo actualizado); F2b en roadmap; reglas de tareas visibles para el jugador. Suite en verde (0 fail).
 
 ## Resumen de la sesión
 
@@ -38,5 +41,6 @@ Archivos:
 
 - BL-010 paso 5/5 cerrado: quité .skip en size-budget y universo; suite completa 1255/1261 (0 fail, 6 skipped). Review riesgo BAJO; BL-010 movida a DONE. Commit `BL-010 paso 5/5 — des-cuarentenar size-budget y universo + review/docs/cierre — tests 1255/1261 (6 skipped)`.
 - BL-011 paso 3/5 cerrado: .skip quitado de ga-loader; 5/5 pass; suite completa 1255/1260 (5 skipped, 0 fail). Review BAJO (solo test des-cuarentenado, sin código de producción). Próximo paso 4/5.
+- Orden v6 cerrada: canceladas BL-011 y BL-012; ga-loader marcado «no aplica en este repo» (skip + comentario); meta.js restaurado con cabecera + mensaje claro BL-006 (64051 B, techo actualizado en size-budget.json); backlog/roadmap/AGENTS actualizados (F2b, reglas visibles, pasos por tamaño, infra solo si bloquea); suite en verde (0 fail). Commit de trabajo.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
