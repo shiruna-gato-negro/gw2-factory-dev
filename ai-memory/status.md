@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (BL-013 cerrada)
-Motivo: BL-013 paso 2/3 y guardia (paso 3/3) cerrados en este ciclo: claves stat.bld.* en gn-kit.js, kitIcon + BLD_STAT en bld-view.js, ícono en cada .bld-st; guardia en gn-kit-icons.test.cjs; suite 1193/1199 (6 skipped). Review BAJO.
-Etapa actual: Documentation
-Inicio: 2026-11-24 00:38Z
-Última actualización: 2026-11-24 01:33Z
-Próxima acción: BL-014 paso 1/3 — plan (vistas previas Chak y Dragon's End en Metas).
+Estado: EN CURSO
+Tarea actual: BL-014 paso 1/3 — plan (vistas previas Chak y Dragon's End en Metas)
+Motivo: BL-013 cerrada; único READY tomado; plan escrito en backlog.md (3 pasos). Este ciclo solo planifica, no toca código.
+Etapa actual: Product
+Inicio: 2026-11-24 02:00Z
+Última actualización: 2026-11-24 02:00Z
+Próxima acción: BL-014 paso 2/3 — conseguir .webp (curl User-Agent navegador, DEC-031) y conectar en assets/meta-drops.json.
 
 Archivos:
 - ai-memory/status.md

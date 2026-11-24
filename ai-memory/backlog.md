@@ -3,10 +3,10 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — las dos metas muestran «Sin vista previa» porque no hay archivo en assets/previews/; conseguir el .webp (descarga manual desde la wiki, DEC-031) y conectarlo en assets/meta-drops.json. — 2026-11-24
-  Qué ve el jugador: la animación de la infusión de Chak y Dragon's End en la tarjeta de meta, en vez de «Sin vista previa».
 
 ## IN_PROGRESS
+- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — pasos: 1/3 plan (este ciclo); 2/3 conseguir .webp (curl con User-Agent de navegador desde la wiki, DEC-031; si falla → BLOCKED para Pablo descarga manual) y conectar en assets/meta-drops.json (preview path + quitar previewMissing); 3/3 test de regresión (meta-view) + review BAJO + docs/cierre. — 2026-11-24
+  Qué ve el jugador: la animación de la infusión de Chak y Dragon's End en la tarjeta de meta, en vez de «Sin vista previa».
 
 ## BLOCKED
 
