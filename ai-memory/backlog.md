@@ -7,8 +7,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
   Qué ve el jugador: sobre la lista de builds ve cuántas builds están vigentes y cuántas hay que revisar, sin abrir filtros.
 
 ## IN_PROGRESS
-- [BL-018] [BAJO] Filtro «Solo con vista previa» en Metas — pasos: 1/3 plan (este ciclo); 2/3 código (agregar onlyPreview a filters/matches y switch en la UI); 3/3 test de regresión (meta-view) + review BAJO + docs/cierre. — 2026-11-24
-  Qué ve el jugador: en Metas, un switch «Solo con vista previa» que deja solo las metas que muestran la animación de la infusión.
 
 ## BLOCKED
 
@@ -18,6 +16,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-018] [BAJO] Filtro «Solo con vista previa» en Metas — cerrada. onlyPreview en filters/matches (hasPreview exportado) + switch «Solo con vista previa» en la UI; test de regresión meta-view (hasPreview, onlyPreview matches, switch/export) + review BAJO. Suite 1259/1265 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en Metas, un switch «Solo con vista previa» que deja solo las metas que muestran la animación de la infusión.
+
 - [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — cerrada. Miniatura `<img class="mt-dthumb">` (48px, cover) en dropHTML cuando previewOf === 'ok' + CSS + techo size-budget meta.js 64276 B con motivo; test meta-view adaptado (img en ok, ausencia en miss/none). Review riesgo BAJO: aditivo, sin regresión, XSS cubierto por esc(pv.url). Suite 1256/1262 (6 skipped). — 2026-11-24
 
 - [BL-016] [BAJO] Actualizar novedades de la Bienvenida con BL-013 y BL-014 — cerrada. 2 entradas nuevas (2026-11-24) en assets/welcome-news.json: builds (íconos en cabecera y pestañas) y meta (vistas previas de Chak y Dragon's End); test pickNews adaptado (3 más nuevas, NUEVO en las 2 del 24/11). Review riesgo BAJO (solo datos + test, sin código de producción). Suite 1257/1263 (6 skipped). — 2026-11-24

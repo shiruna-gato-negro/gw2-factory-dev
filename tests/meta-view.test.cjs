@@ -27,7 +27,7 @@ const flagsOk = (wb, mc) => ({ state: 'ok', worldbosses: new Set(wb || []), mapc
 test('versión 4.0.x y API pública', () => {
   assert.equal(Meta.version, Meta._view ? '4.0.1' : '4.0.0');
   for (const k of ['refresh', 'snapshot', '_expansionOptions']) assert.equal(typeof Meta[k], 'function', k);
-  for (const k of ['instanceAt', 'startsWithin', 'agendaOf', 'matches', 'typeCounts', 'expCounts', 'groupByExp', 'doneOf', 'hasDrop', 'fold', 'nextResetUTC']) {
+  for (const k of ['instanceAt', 'startsWithin', 'agendaOf', 'matches', 'typeCounts', 'expCounts', 'groupByExp', 'doneOf', 'hasDrop', 'hasPreview', 'fold', 'nextResetUTC']) {
     assert.equal(typeof P[k], 'function', k);
   }
 });
@@ -116,6 +116,40 @@ test('filtros: búsqueda sin tildes, tipo, expansión, próxima hora, pendientes
   const hour = count({ when: 'hour' });
   assert.ok(hour > 0 && hour < 49);
   assert.equal(count({ when: 'pending' }), rows.filter((r) => r.done === false).length);
+});
+
+test('hasPreview: true solo cuando el primer ext item tiene vista previa ok', () => {
+  assert.equal(P.hasPreview({ _extItems: [{ preview: 'assets/previews/vinewrath.webp' }] }), true);
+  assert.equal(P.hasPreview({ _extItems: [{ preview: 'assets/previews/vinewrath.webp' }, { preview: '' }] }), true, 'mira solo el primero');
+  assert.equal(P.hasPreview({ _extItems: [{ preview: '', previewMissing: true }] }), false);
+  assert.equal(P.hasPreview({ _extItems: [{ preview: '' }] }), false);
+  assert.equal(P.hasPreview({ _extItems: [] }), false);
+  assert.equal(P.hasPreview({}), false);
+  assert.equal(P.hasPreview(null), false);
+  // badPreviews convierte un ok en missing
+  Meta._view.badPreviews.add('assets/previews/rota.webp');
+  assert.equal(P.hasPreview({ _extItems: [{ preview: 'assets/previews/rota.webp' }] }), false);
+  Meta._view.badPreviews.delete('assets/previews/rota.webp');
+});
+
+test('filtros: onlyPreview deja solo las metas con vista previa ok', () => {
+  const now = at('2026-10-22T23:37:00Z');
+  const inst = P.instanceAt(metas[0], now);
+  const rows = [
+    { meta: { name: 'A', type: 'meta', expansion: 'Core', _extItems: [{ preview: 'assets/previews/a.webp' }] }, inst, done: null },
+    { meta: { name: 'B', type: 'meta', expansion: 'Core', _extItems: [{ preview: '', previewMissing: true }] }, inst, done: null },
+    { meta: { name: 'C', type: 'meta', expansion: 'Core' }, inst, done: null },
+  ];
+  const base = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false };
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyPreview: false }))).length, 3);
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyPreview: true }))).length, 1);
+});
+
+test('BL-018: switch «Solo con vista previa» en la UI y hasPreview exportado', () => {
+  assert.match(SRC, /sw\('onlyPreview', 'Solo con vista previa'\)/);
+  assert.match(SRC, /onlyPreview: false/);
+  assert.match(SRC, /hasPreview: hasPreview/);
+  assert.match(SRC, /function hasPreview\(meta\)/);
 });
 
 test('tipos y expansiones salen de los datos (sin «Fractal» vacío) y suman 49', () => {

@@ -1,16 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-018 paso 2/3 — código (cerrado en este ciclo); próximo paso 3/3 test + review + docs.
-Motivo: implementado onlyPreview en matches()/filters y switch «Solo con vista previa» en la UI; hasPreview agregado y exportado; techo size-budget actualizado a 64719 B con motivo (BL-018).
-Etapa actual: Development (hecho) → Review pendiente
-Inicio: 2026-11-24 07:30Z
-Última actualización: 2026-11-24 08:05Z
-Próxima acción: BL-018 paso 3/3 — test de regresión (meta-view) + review BAJO + docs/cierre.
+Estado: EN ESPERA
+Tarea actual: — (ninguna en curso)
+Motivo: BL-018 cerrada (paso 3/3: test de regresión meta-view + review BAJO + docs/cierre). Suite 1259/1265 (6 skipped, 0 fail).
+Etapa actual: —
+Inicio: —
+Última actualización: 2026-11-24 08:32Z
+Próxima acción: BL-019 paso 1/3 — plan (resumen vigentes/para revisar en Biblioteca de Builds).
 
 Archivos:
-- js/meta.js
-- tools/size-budget.json
+- tests/meta-view.test.cjs
+- ai-memory/backlog.md
 - ai-memory/status.md
 
 ## Esperando a Pablo
@@ -19,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-018 paso 3/3 pendiente (test de regresión + review + docs). READY: BL-019.
+- IN_PROGRESS: (vacío). READY: BL-019. DONE reciente: BL-018.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
+- Suite actual: 1265 total, 1259 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -52,5 +52,6 @@ Archivos:
 - BL-017 paso 2/3 cerrado: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px, cover) + size-budget meta.js 64276 B con motivo; test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 
 - BL-018 paso 2/3 cerrado: onlyPreview en matches()/filters + switch «Solo con vista previa» en la UI; hasPreview exportado; techo size-budget 64719 B con motivo. Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
+- BL-018 paso 3/3 cerrado: test de regresión meta-view (hasPreview, onlyPreview matches, switch/export) + review BAJO + docs/cierre. Suite 1259/1265 (6 skipped). BL-018 movida a DONE. READY: BL-019.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
