@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-013 paso 1/3 — plan (íconos en cabecera y pestañas de Builds)
-Motivo: READY estaba vacía; exploré La Bóveda como jugadora y anoté BL-013 y BL-014 (consistencia visual de Builds y vistas previas de Chak/Dragon's End). BL-013 tomada y planificada (3 pasos).
-Etapa actual: Product
+Estado: EN ESPERA
+Tarea actual: — (BL-013 cerrada)
+Motivo: BL-013 paso 2/3 y guardia (paso 3/3) cerrados en este ciclo: claves stat.bld.* en gn-kit.js, kitIcon + BLD_STAT en bld-view.js, ícono en cada .bld-st; guardia en gn-kit-icons.test.cjs; suite 1193/1199 (6 skipped). Review BAJO.
+Etapa actual: Documentation
 Inicio: 2026-11-24 00:38Z
-Última actualización: 2026-11-24 00:39Z
-Próxima acción: BL-013 paso 2/3 — agregar claves de íconos en gn-kit.js y modificar statsHTML en bld-view.js.
+Última actualización: 2026-11-24 01:33Z
+Próxima acción: BL-014 paso 1/3 — plan (vistas previas Chak y Dragon's End en Metas).
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- BL-013 IN_PROGRESS paso 1/3 (plan): íconos en cabecera y pestañas de Builds (consistencia UNI-4b/UNI-7b); BL-014 en READY (vistas previas Chak/Dragon's End). Suite 1254/1260 (6 skipped).
+- BL-013 cerrada: íconos en cabecera y pestañas de Builds (UNI-4b/UNI-7b); claves stat.bld.* + tab.bld.*; guardia en gn-kit-icons; suite 1193/1199 (6 skipped). BL-014 en READY (vistas previas Chak/Dragon's End).
 - BL-002 cerrada: app-checks (4/4), builds-watch (4/4), legacy-tests (5/5) adaptados; guardias en verde; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
 - BL-010 cerrada: size-budget y universo des-cuarentenados; index.html 49141 B (advertencia), meta.js 63426 B (≤63600), sidebar-nav.js 40.2 KB (advertencia, nota BL-007); suite 1255/1261 (6 skipped). Review BAJO; deuda MEDIO (6 cuarentenas → BL-011, BL-012).
 - BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.

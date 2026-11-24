@@ -139,7 +139,18 @@
     'stat.home.janthir': { src: 'Welcome/222580.png', ok: true },
     'stat.wv.aa': { src: 'Welcome/156108.png', ok: true },
     'stat.wv.gastada': { src: 'Welcome/156107.png', ok: true },
-    'stat.ach.ap': { src: '155059.png', ok: true }
+    'stat.ach.ap': { src: '155059.png', ok: true },
+    // BL-013: indicadores de la cabecera de Builds.
+    'stat.bld.builds': { src: '1228891.png', ok: true },
+    'stat.bld.curadas': { src: '1228891.png', ok: true },
+    'stat.bld.buildsCuradas': { src: '1228891.png', ok: true },
+    'stat.bld.elites': { src: '156720.png', ok: true },
+    'stat.bld.cobertura': { src: '156720.png', ok: true },
+    'stat.bld.elitesCubiertas': { src: '156720.png', ok: true },
+    'stat.bld.revisar': { src: '155064.png', ok: true },
+    'stat.bld.paraRevisar': { src: '155064.png', ok: true },
+    'stat.bld.mine': { src: 'Cuentas/255373.png', ok: true },
+    'stat.bld.misBuilds': { src: 'Cuentas/255373.png', ok: true }
   };
   function iconSrc(key) { var e = ICONS[key]; return e && e.src ? (/^https:\/\//.test(e.src) ? e.src : DIR + e.src) : ''; }
   // El ícono es decorativo (alt vacío): el lector de pantalla sigue leyendo el texto de al lado.

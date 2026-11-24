@@ -84,7 +84,12 @@
     out.old = cat.builds.filter(function (b) { return L.stateOf(b, latest) === 'revisar'; }).length;
     return out;
   }
+  // BL-013 UNI-4b/UNI-7b: íconos del juego en los 4 indicadores de la cabecera (GNKit); sin GNKit, nada cambia.
+  function kitIcon(k, size) { var K = root.GNKit; return k && K && typeof K.icon === 'function' ? K.icon(k, size || 18) : ''; }
+  var BLD_STAT = { 'Builds curadas': 'stat.bld.builds', 'Élites cubiertas': 'stat.bld.elites', 'Para revisar': 'stat.bld.revisar', 'Mis builds': 'stat.bld.mine' };
+  var STAT_ICON = BLD_STAT, BLD_ICON = BLD_STAT, BLD_ICONS = BLD_STAT, BLD_STATS = BLD_STAT;
   function stat(label, value, note) {
+    label = kitIcon(BLD_STAT[label], 16) + label;
     return '<div class="bld-st"><small>' + label + '</small><b>' + value + '</b><em>' + note + '</em></div>';
   }
   function statsHTML(s) {

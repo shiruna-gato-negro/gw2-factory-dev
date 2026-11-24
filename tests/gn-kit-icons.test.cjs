@@ -124,3 +124,15 @@ test('BL-008: linkIcons ignora los encabezados de grupo y solo iconiza los 5 enl
   assert.equal(group.html, '', 'el encabezado no recibe ícono');
   assert.equal(sb.GNTopbar.linkIcons(), 0, 'no repite el ícono');
 });
+
+// BL-013: Builds lleva íconos en las 4 pestañas y los 4 indicadores.
+test('Builds: las 4 pestañas y los 4 indicadores', () => {
+  const sb = sandbox(['js/bld-view.js']);
+  const V = sb.GNBld._pure;
+  const K = sb.GNKit;
+  const h = V.viewHTML({ tab: 'lib', kit: K, stats: V.statsModel(null) });
+  ['1228891.png', '63127.png', 'Cuentas/255373.png', '155033.png'].forEach((s) => assert.ok(h.includes('assets/icons/' + s), 'tab: ' + s));
+  ['1228891.png', '156720.png', '155064.png', 'Cuentas/255373.png'].forEach((s) => assert.ok(h.includes('assets/icons/' + s), 'stat: ' + s));
+  assert.equal((h.match(/class="gk-ic"/g) || []).length >= 8, true);
+  ['tab.bld.lib', 'tab.bld.editor', 'tab.bld.mine', 'tab.bld.import', 'stat.bld.builds', 'stat.bld.elites', 'stat.bld.revisar', 'stat.bld.mine'].forEach((k) => assert.ok(K.iconSrc(k), k));
+});
