@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-014 paso 1/3 — plan (vistas previas Chak y Dragon's End en Metas)
-Motivo: BL-013 cerrada; único READY tomado; plan escrito en backlog.md (3 pasos). Este ciclo solo planifica, no toca código.
-Etapa actual: Product
+Tarea actual: BL-014 paso 2/3 — conseguir .webp y conectar en assets/meta-drops.json
+Motivo: BL-014 paso 1/3 cerrado (plan en backlog.md, 3 pasos). Próximo: descarga con curl User-Agent navegador (DEC-031) y conexión en meta-drops.json.
+Etapa actual: Development
 Inicio: 2026-11-24 02:00Z
-Última actualización: 2026-11-24 02:00Z
-Próxima acción: BL-014 paso 2/3 — conseguir .webp (curl User-Agent navegador, DEC-031) y conectar en assets/meta-drops.json.
+Última actualización: 2026-11-24 02:02Z
+Próxima acción: BL-014 paso 2/3 — localizar URLs de imagen en la wiki y descargar con curl (User-Agent navegador); si falla, BLOCKED para Pablo descarga manual; luego conectar en meta-drops.json.
 
 Archivos:
 - ai-memory/status.md
@@ -42,5 +42,7 @@ Archivos:
 - BL-010 paso 5/5 cerrado: quité .skip en size-budget y universo; suite completa 1255/1261 (0 fail, 6 skipped). Review riesgo BAJO; BL-010 movida a DONE. Commit `BL-010 paso 5/5 — des-cuarentenar size-budget y universo + review/docs/cierre — tests 1255/1261 (6 skipped)`.
 - BL-011 paso 3/5 cerrado: .skip quitado de ga-loader; 5/5 pass; suite completa 1255/1260 (5 skipped, 0 fail). Review BAJO (solo test des-cuarentenado, sin código de producción). Próximo paso 4/5.
 - Orden v6 cerrada: canceladas BL-011 y BL-012; ga-loader marcado «no aplica en este repo» (skip + comentario); meta.js restaurado con cabecera + mensaje claro BL-006 (64051 B, techo actualizado en size-budget.json); backlog/roadmap/AGENTS actualizados (F2b, reglas visibles, pasos por tamaño, infra solo si bloquea); suite en verde (0 fail). Commit de trabajo.
+
+- BL-014 paso 1/3 cerrado: plan escrito en backlog.md (3 pasos). Suite 1193/1199 (6 skipped). Commit `BL-014 paso 1/3 — plan — tests 1193/1199 (6 skipped)`.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
