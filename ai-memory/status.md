@@ -1,17 +1,15 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-011 paso 4/5 — suite completa + review de riesgos (BAJO esperado: solo workflow + test des-cuarentenado).
-Motivo: BL-011 paso 3/5 cerrado: .skip quitado del test ga-loader; 5/5 pass; suite completa 1255/1260 (5 skipped, 0 fail). Próximo: paso 4/5 review de riesgos.
+Tarea actual: orden v6 — foco en el jugador (ejecución)
+Motivo: Orden de Shiruvana vía Pablo: cancelar BL-011 y BL-012; GA4 solo producción; revertir recorte de meta.js; reglas de tareas visibles para el jugador; fase F2b en roadmap.
 Etapa actual: Development
-Inicio: 2026-11-23 23:00Z
-Última actualización: 2026-11-24 00:05Z
-Próxima acción: BL-011 paso 4/5 — review de riesgos (BAJO esperado) y, si verde, paso 5/5 docs/cierre.
+Inicio: 2026-11-24 00:10Z
+Última actualización: 2026-11-24 00:10Z
+Próxima acción: anotar orden (este commit) y luego ejecutar: cancelar BL-011/BL-012, marcar ga-loader no aplica, actualizar backlog/roadmap/AGENTS, cerrar.
 
 Archivos:
 - ai-memory/status.md
-- ai-memory/backlog.md
-- .github/workflows/github-metrics-to-ga4.yml
 
 ## Esperando a Pablo
 
