@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-027 paso 2/3 — código + test (detección file:// en bld-lib load)
-Motivo: Implementada detección de file:// en load() de bld-lib.js con mensaje claro; test estático bld-lib-fileprotocol (4/4). Suite 1271/1277 (6 skipped). Sin fallos nuevos.
-Etapa actual: Development → Review
-Inicio: 2026-11-24 16:06Z
-Última actualización: 2026-11-24 16:32Z
-Próxima acción: BL-027 paso 3/3 — review BAJO + docs/cierre.
+Estado: EN ESPERA
+Tarea actual: (ninguna) — BL-027 cerrada (paso 3/3 review BAJO + docs/cierre).
+Motivo: BL-027 completada: detección file:// en load() de bld-lib.js con mensaje claro; test bld-lib-fileprotocol 4/4; review riesgo BAJO; suite 1272/1278 (6 skipped). READY con BL-028 y BL-029.
+Etapa actual: Documentation (cierre)
+Inicio: —
+Última actualización: 2026-11-24 17:33Z
+Próxima acción: tomar BL-028 (primera de READY) — paso 1 plan.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,10 +18,10 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-027 (paso 2/3). READY: BL-028, BL-029. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-028, BL-029. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1277 total, 1271 pass, 0 fail, 6 skipped.
+- Suite actual: 1278 total, 1272 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
-- Exploración La Bóveda: Welcome (tarjetas Builds con cantidad/fecha), Builds (biblioteca y ficha) y Metas (filtros y vistas previas). Propuestas: BL-027 mensaje claro por file:// en Builds (sigue BL-006), BL-028 enlace por profesión en ficha (sigue BL-021), BL-029 quitar botón duplicado en Mis builds. BL-027 paso 1/3 (plan) y paso 2/3 (código + test) cerrados. Suite 1271/1277 (6 skipped).
+- BL-027 paso 3/3 cerrado: review BAJO (aditivo, sin regresión, sigue patrón BL-006) + docs/cierre. Suite 1272/1278 (6 skipped). BL-027 movida a DONE. READY con BL-028 y BL-029.

@@ -12,12 +12,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-027] [BAJO] Builds: mensaje claro cuando no carga por file:// — en bld-lib.js (load), detectar location.protocol === 'file:' y mostrar «Builds no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).» en vez del error genérico; mantener el genérico para otros fallos. Sigue BL-006 (Metas). — 2026-11-24
-  Qué ve el jugador: al abrir la Biblioteca de Builds desde el archivo local, ve un mensaje claro en vez de un error genérico.
-  Pasos:
-  1. Plan + exploración La Bóveda (BL-028, BL-029) — cerrado.
-  2. Código + test (bld-lib load + test estático) — cerrado (bld-lib-fileprotocol 4/4, suite 1271/1277).
-  3. Review BAJO + docs/cierre.
+(vacío)
 
 ## BLOCKED
 
@@ -27,6 +22,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-027] [BAJO] Builds: mensaje claro cuando no carga por file:// — cerrada. Detección de location.protocol === 'file:' en load() de bld-lib.js con mensaje claro «Builds no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).»; mensaje genérico para otros fallos. Test estático bld-lib-fileprotocol (4/4). Sigue el patrón de BL-006 (Metas). Review riesgo BAJO: aditivo, sin regresión, sin deuda nueva. Suite 1272/1278 (6 skipped). — 2026-11-24
+  Qué ve el jugador: al abrir la Biblioteca de Builds desde el archivo local, ve un mensaje claro en vez de un error genérico.
 - [BL-026] [BAJO] Welcome: fecha de curación en la tarjeta de Builds — cerrada. Tarjeta de Builds muestra «N builds curadas · Curadas el DD/MM» leyendo catalog.curated del catálogo, sin romper si falta (curatedDate helper + state.buildsCurated + params en modulesHTML/bodyHTML); test welcome-view adaptado (curatedDate + modulesHTML con/sin curated). Techo size-budget welcome-panel actualizado a 51464 B con motivo. Review riesgo BAJO: aditivo, sin regresión. Suite 1267/1273 (6 skipped). — 2026-11-24
   Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuándo se curó el catálogo junto a la cantidad.
 
