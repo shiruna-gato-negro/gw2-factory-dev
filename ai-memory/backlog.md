@@ -15,8 +15,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-027] [BAJO] Builds: mensaje claro cuando no carga por file:// — en bld-lib.js (load), detectar location.protocol === 'file:' y mostrar «Builds no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).» en vez del error genérico; mantener el genérico para otros fallos. Sigue BL-006 (Metas). — 2026-11-24
   Qué ve el jugador: al abrir la Biblioteca de Builds desde el archivo local, ve un mensaje claro en vez de un error genérico.
   Pasos:
-  1. Plan + exploración La Bóveda (BL-028, BL-029) — este ciclo.
-  2. Código + test (bld-lib load + test estático).
+  1. Plan + exploración La Bóveda (BL-028, BL-029) — cerrado.
+  2. Código + test (bld-lib load + test estático) — cerrado (bld-lib-fileprotocol 4/4, suite 1271/1277).
   3. Review BAJO + docs/cierre.
 
 ## BLOCKED

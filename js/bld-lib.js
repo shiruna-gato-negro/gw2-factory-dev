@@ -307,7 +307,16 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
       var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(st.cat.curated);
       if (ctx.setSub) ctx.setSub(st.cat.builds.length + ' builds curadas' + (cd ? ' · Curadas el ' + cd : '') + ' · último parche de balance ' + fmtDate(latest) + (old ? ' · ' + old + ' para revisar' : ''));
       paint(ctx);
-    }, function (e) { st.loading = false; st.error = 'No pude cargar la biblioteca (' + (e && e.message || '') + ').'; paint(ctx); });
+    }, function (e) {
+  st.loading = false;
+  var isFileProtocol = false;
+  try { isFileProtocol = (typeof location !== 'undefined' && !!location && location.protocol === 'file:'); } catch (_) {}
+  if (!isFileProtocol) { try { isFileProtocol = !!(window && window.location && window.location.protocol === 'file:'); } catch (_) {} }
+  var msg = isFileProtocol
+    ? 'Builds no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).'
+    : 'No pude cargar la biblioteca (' + (e && e.message || '') + ').';
+  st.error = msg; paint(ctx);
+});
   }
   // Los íconos llegan aparte: si fallan, la Biblioteca sigue con los nombres.
   function loadIcons(ctx) {
