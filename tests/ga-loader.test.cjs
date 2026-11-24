@@ -83,7 +83,7 @@ test('index.html no carga gtag.js por fuera del cargador', () => {
   assert.ok(!outside.includes(GA_ID), 'el ID de GA aparece fuera del cargador');
 });
 
-test.skip('el workflow de métricas GA4 solo corre en el repo de producción', () => {
+test('el workflow de métricas GA4 solo corre en el repo de producción', () => {
   const yml = fs.readFileSync(path.join(ROOT, '.github/workflows/github-metrics-to-ga4.yml'), 'utf8');
   const job = yml.split(/\n  send-metrics:\n/)[1];
   assert.ok(job, 'falta el job send-metrics');

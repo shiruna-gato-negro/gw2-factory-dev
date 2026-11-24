@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-011 paso 2/5 — restaurar .github/workflows/github-metrics-to-ga4.yml desde git (commit 3bcfbe1f); guardia de producción y sin refs Shiruvana verificadas.
-Motivo: BL-011 paso 2/5 cerrado: workflow restaurado; guardia `if: github.repository == 'PabloSnchz/gw2-wallet-ligero'` OK; sin referencias a Shiruvana; suite 1255/1261 (6 skipped, 0 fail). Próximo: paso 3/5 des-cuarentenar test ga-loader.
+Tarea actual: BL-011 paso 4/5 — suite completa + review de riesgos (BAJO esperado: solo workflow + test des-cuarentenado).
+Motivo: BL-011 paso 3/5 cerrado: .skip quitado del test ga-loader; 5/5 pass; suite completa 1255/1260 (5 skipped, 0 fail). Próximo: paso 4/5 review de riesgos.
 Etapa actual: Development
 Inicio: 2026-11-23 23:00Z
-Última actualización: 2026-11-23 23:31Z
-Próxima acción: BL-011 paso 3/5 — quitar .skip del test ga-loader, correr test, verificar que pasa (guardia producción).
+Última actualización: 2026-11-24 00:05Z
+Próxima acción: BL-011 paso 4/5 — review de riesgos (BAJO esperado) y, si verde, paso 5/5 docs/cierre.
 
 Archivos:
 - ai-memory/status.md
@@ -39,5 +39,6 @@ Archivos:
 - BL-010 paso 3/5 cerrado: meta.js achicado 625 B (64051 → 63426, ≤63600) acortando header y simplificando detección file:// (BL-006); size-budget sin error para meta.js; suite 1253/1261 (8 skipped).
 
 - BL-010 paso 5/5 cerrado: quité .skip en size-budget y universo; suite completa 1255/1261 (0 fail, 6 skipped). Review riesgo BAJO; BL-010 movida a DONE. Commit `BL-010 paso 5/5 — des-cuarentenar size-budget y universo + review/docs/cierre — tests 1255/1261 (6 skipped)`.
+- BL-011 paso 3/5 cerrado: .skip quitado de ga-loader; 5/5 pass; suite completa 1255/1260 (5 skipped, 0 fail). Review BAJO (solo test des-cuarentenado, sin código de producción). Próximo paso 4/5.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
