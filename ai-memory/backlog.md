@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-021] [BAJO] Builds: en la ficha de una build, enlace «Ver más builds de esta élite» que vuelve a la Biblioteca filtrada por esa élite — agregar en bld-sheet (sheetHTML/mineHTML) un botón/enlace que navega a #/builds con el filtro de élite aplicado (st.f.elite) y toma el foco en la lista. — 2026-11-24
-  Qué ve el jugador: desde la ficha de una build, un clic para ver otras builds de la misma élite en la Biblioteca.
-
 - [BL-022] [MEDIO] Welcome: en la tarjeta del módulo Builds, mostrar la cantidad de builds curadas — leer assets/data/builds/catalog.json en welcome-panel (fetch con fallback) y mostrar «N builds curadas» en la tarjeta de Builds (MODULES desc dinámico o badge), sin romper si el catálogo no carga. — 2026-11-24
   Qué ve el jugador: la tarjeta de Builds dice cuántas builds curadas hay, en vez de texto fijo.
 
@@ -20,6 +17,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-021] [BAJO] Builds: enlace «Ver más builds de esta élite» en la ficha — cerrada. Botón «Ver más builds de esta élite» en sheetHTML y mineHTML (cuando la build tiene élite) que, al tocarlo, pone st.f.prof y st.f.elite de bld-lib con la profesión y élite de la build, recuerda la primera build del listado filtrado para el foco y navega a #/builds (ctx.go('lib')). Test de regresión en bld-sheet (HTML + onClick + filtros + navegación). Review riesgo BAJO: aditivo, sin regresión; bld-sheet.js sigue en zona saludable (< 40 KB). Suite 1264/1270 (6 skipped). — 2026-11-24
+  Qué ve el jugador: desde la ficha de una build, un clic muestra las otras builds de la misma élite en la Biblioteca.
+
 - [BL-020] [BAJO] Metas: contador de vistas previas en «Todas las metas» — cerrada. mtCount en renderCatalog ahora muestra «X metas · Y con vista previa» (Y = seed.filter(hasPreview).length); test de regresión en meta-view (SRC regex + cálculo). Techo size-budget meta.js actualizado a 64813 B con motivo (regla v6). Review riesgo BAJO: aditivo, sin regresión. Suite 1261/1267 (6 skipped). — 2026-11-24
   Qué ve el jugador: en «Todas las metas» ve de un vistazo cuántas tienen animación de la infusión disponible.
 

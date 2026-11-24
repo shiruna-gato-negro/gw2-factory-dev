@@ -361,6 +361,25 @@ test('Mis builds: la ficha propia (m:<id>) con nombre y notas, acciones propias,
   delete globalThis.GNBldLib; delete globalThis.GNBldMine; delete globalThis.GNBldStore;
 });
 
+test('BL-021: enlace Ver mas builds de esta elite vuelve a la Biblioteca filtrada por esa elite', () => {
+  const b = CAT.builds.find((x) => x.elite && x.prof);
+  const L = [CAT.builds[0], b, CAT.builds[2]];
+  globalThis.GNBldLib = fakeLib(L);
+  const h = P.sheetHTML({ b, nav: P.navOf(L, b.id), latest: '2026-09-29', gear: null });
+  assert.match(h, /Ver más builds de esta élite/);
+  assert.match(h, /data-sheet="moreelite"/);
+  SH._state.id = b.id;
+  const lib = globalThis.GNBldLib;
+  lib._state.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '' };
+  const went = [];
+  const ctx = { go: (t, a) => went.push(t + (a ? ':' + a : '')), toast() {} };
+  assert.equal(P.onClick(ctx, { target: el({ 'data-sheet': 'moreelite' }) }), 'moreelite');
+  assert.equal(lib._state.f.prof, b.prof);
+  assert.equal(lib._state.f.elite, b.elite);
+  assert.deepEqual(went, ['lib']);
+  delete globalThis.GNBldLib;
+});
+
 test('Mis builds: editar, duplicar, borrar con confirmación, guardar nombre y notas; «← Mis builds» vuelve a la fila', () => {
   const src = CAT.builds[0];
   globalThis.GNBldLib = fakeLib(CAT.builds);
@@ -397,4 +416,23 @@ test('Mis builds: editar, duplicar, borrar con confirmación, guardar nombre y n
   assert.equal(went.pop(), 'mine');
   assert.deepEqual(remembered, ['a2'], 'Mis builds sabe a qué fila devolver el foco');
   delete globalThis.GNBldLib; delete globalThis.GNBldMine; delete globalThis.GNBldStore;
+});
+
+test('BL-021: enlace Ver mas builds de esta elite vuelve a la Biblioteca filtrada por esa elite', () => {
+  const b = CAT.builds.find((x) => x.elite && x.prof);
+  const L = [CAT.builds[0], b, CAT.builds[2]];
+  globalThis.GNBldLib = fakeLib(L);
+  const h = P.sheetHTML({ b, nav: P.navOf(L, b.id), latest: '2026-09-29', gear: null });
+  assert.match(h, /Ver más builds de esta élite/);
+  assert.match(h, /data-sheet="moreelite"/);
+  SH._state.id = b.id;
+  const lib = globalThis.GNBldLib;
+  lib._state.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '' };
+  const went = [];
+  const ctx = { go: (t, a) => went.push(t + (a ? ':' + a : '')), toast() {} };
+  assert.equal(P.onClick(ctx, { target: el({ 'data-sheet': 'moreelite' }) }), 'moreelite');
+  assert.equal(lib._state.f.prof, b.prof);
+  assert.equal(lib._state.f.elite, b.elite);
+  assert.deepEqual(went, ['lib']);
+  delete globalThis.GNBldLib;
 });

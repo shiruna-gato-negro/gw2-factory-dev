@@ -148,7 +148,10 @@
       '<button type="button" class="bld-btn" data-bld-act="share">Copiar enlace</button>' +
       '<button type="button" class="bld-btn" data-sheet="edit">Editar en el Editor</button>' + ae2BtnHTML(m) +
       '<button type="button" class="bld-btn" data-sheet="dup">Duplicar</button>' +
-      '<button type="button" class="bld-btn" data-sheet="del">Borrar…</button></div>' + ask +
+      '<button type="button" class="bld-btn" data-sheet="del">Borrar…</button>' +
+      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' +
+        '<button type="button" class="bld-btn" data-sheet="elite">Ver más builds de esta élite</button>' +
+        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') + '</div>' + ask +
       MINE_SECTIONS.map(function (s) { return sectionHTML(s[0], s[1], body[s[0]]); }).join('') +
       '</article>';
   }
@@ -177,7 +180,10 @@
       '<div class="bld-acts"><button type="button" class="bld-btn is-primary" data-bld-act="copy">Copiar código</button>' +
       '<button type="button" class="bld-btn" data-bld-act="save">Guardar en Mis builds</button>' + ae2BtnHTML(m) +
       '<button type="button" class="bld-btn" data-bld-act="share">Copiar enlace</button>' +
-      (issue ? '<a class="bld-btn" href="' + esc(issue) + '" target="_blank" rel="noopener" title="Abre un aviso en GitHub ya escrito">Avisar que está vieja ↗</a>' : '') + '</div>' +
+      (issue ? '<a class="bld-btn" href="' + esc(issue) + '" target="_blank" rel="noopener" title="Abre un aviso en GitHub ya escrito">Avisar que está vieja ↗</a>' : '') +
+      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' +
+        '<button type="button" class="bld-btn" data-sheet="elite">Ver más builds de esta élite</button>' +
+        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') + '</div>' +
       SECTIONS.map(function (s) { return sectionHTML(s[0], s[1], body[s[0]]); }).join('') +
       '<p class="bld-muted"><small>Datos de la build: ' + (b.source ? esc(b.source.name) : 'la Biblioteca') + ' (élite, armas, equipo, código y fecha). Nombres, íconos y descripciones: API oficial de Guild Wars 2, en castellano.</small></p>' +
       '</article>';
@@ -298,6 +304,21 @@
       return '';
     }
     if (k === 'ae2') return ae2Act(ctx);
+    var MORE_ELITE_KEYS = { moreelite: 1, 'more-elite': 1, elite: 1, more: 1, morebuilds: 1, 'more-builds': 1, vermas: 1, 'ver-mas': 1 };
+    if (MORE_ELITE_KEYS[k]) {
+      var bme = current();
+      var Lme = Lib();
+      if (bme && Lme && Lme._state && Lme._state.f) {
+        Lme._state.f.prof = bme.prof || 0;
+        Lme._state.f.elite = bme.elite || 0;
+      }
+      if (Lme && typeof Lme.list === 'function' && Lme && typeof Lme.remember === 'function') {
+        var lme = Lme.list();
+        if (lme && lme.length) Lme.remember(lme[0].id);
+      }
+      ctx.go('lib');
+      return k;
+    }
     if (mine) return mineAct(ctx, k);
     return '';
   }

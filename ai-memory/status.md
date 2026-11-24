@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: (ninguna — BL-020 cerrada)
-Motivo: BL-020 paso 2/2 cerrado: contador de vistas previas en «Todas las metas» (mtCount «X metas · Y con vista previa»), test de regresión meta-view, techo size-budget meta.js 64813 B. Suite 1261/1267 (6 skipped), 0 fail.
+Tarea actual: (ninguna — BL-021 cerrada)
+Motivo: BL-021 paso 1/1 cerrado: enlace «Ver más builds de esta élite» en bld-sheet (sheetHTML + mineHTML) con filtros prof/élite de bld-lib aplicados, foco en la primera build filtrada y navegación a #/builds; test de regresión bld-sheet. Suite 1264/1270 (6 skipped), 0 fail.
 Etapa actual: Review + Documentation (cierre)
-Inicio: 2026-11-24 10:00Z
-Última actualización: 2026-11-24 10:32Z
-Próxima acción: BL-021 paso 1/1 — plan + código del enlace «Ver más builds de esta élite» en bld-sheet (tarea chica, 1 paso).
+Inicio: 2026-11-24 11:00Z
+Última actualización: 2026-11-24 11:30Z
+Próxima acción: BL-022 paso 1/1 — plan + código de la cantidad de builds curadas en la tarjeta de Builds de la Bienvenida (tarea chica, 1 paso).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguna). READY: BL-021, BL-022. DONE reciente: BL-020.
+- IN_PROGRESS: (ninguna). READY: BL-022. DONE reciente: BL-021.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1267 total, 1261 pass, 0 fail, 6 skipped.
 
