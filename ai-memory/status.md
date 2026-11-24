@@ -1,22 +1,15 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-015 paso 2/3 — código
-Motivo: Builds sumado a MODULES en welcome-panel.js (11 módulos); EXTRA eliminado de sidebar-nav.js (listas unificadas); MODULES_FALLBACK actualizado; tests welcome-view y sidebar-nav adaptados; size-budget actualizado (welcome-panel congelado 49285 B, sidebar-nav saludable); guías, privacidad en verde.
-Etapa actual: Development (código + tests)
-Inicio: 2026-11-24 03:36Z
-Última actualización: 2026-11-24 04:35Z
-Próxima acción: BL-015 paso 3/3 — test de regresión + review BAJO + docs/cierre.
+Estado: EN ESPERA
+Tarea actual: — (BL-015 cerrada; próxima: BL-016)
+Motivo: BL-015 cerrada: Builds en MODULES de la Bienvenida (11 módulos), EXTRA eliminado, listas unificadas, test de regresión, review BAJO, suite 1256/1262 (6 skipped).
+Etapa actual: —
+Inicio: 2026-11-24 05:01Z
+Última actualización: 2026-11-24 05:02Z
+Próxima acción: Tomar BL-016 (primera de READY) en el próximo ciclo: novedades de la Bienvenida con BL-013 y BL-014.
 
 Archivos:
-- js/welcome-panel.js
-- js/sidebar-nav.js
-- tools/size-budget.json
-- tests/welcome-view.test.cjs
 - tests/sidebar-nav.test.cjs
-- docs/user-guide.html
-- docs/user-guide-avanzado.html
-- privacy.html
 - ai-memory/status.md
 - ai-memory/backlog.md
 
@@ -26,15 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- Exploración La Bóveda: READY vacía → propuse BL-015 (Builds en Bienvenida), BL-016 (novedades), BL-017 (miniatura en Metas). Tomé BL-015; paso 1/3 plan. Suite 1255/1261 (6 skipped).
-- BL-014 cerrada: vistas previas de Chak y Dragon's End en Metas (chak_gerent.webp 841 KB animado + dragons_end.webp 49 KB, conectados en meta-drops.json, 0 previewMissing); test meta-view 10/0; review BAJO; suite 1256/1262 (6 skipped).
-- BL-013 cerrada: íconos en cabecera y pestañas de Builds (UNI-4b/UNI-7b); claves stat.bld.* + tab.bld.*; guardia en gn-kit-icons; suite 1193/1199 (6 skipped). BL-014 cerrada.
-- BL-002 cerrada: app-checks (4/4), builds-watch (4/4), legacy-tests (5/5) adaptados; guardias en verde; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
-- BL-010 cerrada: size-budget y universo des-cuarentenados; index.html 49141 B (advertencia), meta.js 63426 B (≤63600), sidebar-nav.js 40.2 KB (advertencia, nota BL-007); suite 1255/1261 (6 skipped). Review BAJO; deuda MEDIO (6 cuarentenas → BL-011, BL-012).
-- BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.
-- Orden v4 cerrada: reglas 1-6 en AGENTS.md.
-- Orden v5 cerrada: lock protocol v5 en AGENTS.md y job 8f75ac22.
-- Orden v6 cerrada: BL-011 y BL-012 canceladas; ga-loader marcado «no aplica en este repo»; meta.js restaurado (64051 B, techo actualizado); F2b en roadmap; reglas de tareas visibles para el jugador. Suite en verde (0 fail).
+- READY: BL-016 (novedades de Bienvenida) y BL-017 (miniatura en Metas). BL-015 cerrada (Builds en Bienvenida, 11 módulos unificados).
+- Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
+- Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -57,5 +44,7 @@ Archivos:
 - BL-014 paso 3/3 cerrado: review riesgo BAJO + docs/cierre. Vistas previas Chak y Dragon's End conectadas; meta-view 10/0; suite 1256/1262 (6 skipped); BL-014 movida a DONE. READY vacía → próxima acción: explorar La Bóveda.
 
 - BL-015 paso 1/3 cerrado: exploración + propuesta de 3 tareas (BL-015/016/017) y plan de BL-015 (Builds en Bienvenida). Suite 1255/1261 (6 skipped). Commit `BL-015 paso 1/3 — plan — tests 1255/1261 (6 skipped)`.
+
+- BL-015 paso 3/3 cerrado: test de regresión (EXTRA undefined, builds en MODULES_FALLBACK), review riesgo BAJO, docs/cierre. Suite 1256/1262 (6 skipped). BL-015 movida a DONE. READY: BL-016, BL-017.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

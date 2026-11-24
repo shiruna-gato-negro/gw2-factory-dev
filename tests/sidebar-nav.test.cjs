@@ -147,6 +147,13 @@ test('una sola lista: el respaldo es idéntico a los módulos de la Bienvenida (
   same(x.S()._pure.MODULES_FALLBACK, JSON.parse(JSON.stringify(W)));
 });
 
+test('regresión BL-015: Builds viene de MODULES, sin EXTRA aparte', () => {
+  const x = ready(setup());
+  assert.equal(x.S()._pure.EXTRA, undefined, 'EXTRA eliminado: Builds ya no se suma aparte en sidebar-nav');
+  const fb = x.S()._pure.MODULES_FALLBACK;
+  assert.ok(Array.isArray(fb) && fb.some((m) => m.id === 'builds' && m.free === true), 'MODULES_FALLBACK incluye builds (free) por unificación');
+});
+
 test('arma la Sidebar: Inicio, los 9 módulos en el orden de la Bienvenida y Cuentas aparte', () => {
   const x = ready(setup());
   // PUL-3 (orden de Pablo): Cartera; lo diario; lo semanal; el progreso de la cuenta; Cuentas aparte.

@@ -7,8 +7,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — meta.js dropHTML + CSS; reutiliza previewOf y assets/previews/. Qué ve el jugador: en cada tarjeta de meta con drop, una miniatura visible de la infusión sin pasar el mouse, con «Sin vista previa» cuando falta. — 2026-11-24
 
 ## IN_PROGRESS
-- [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — pasos: 1/3 plan (cerrado); 2/3 código (cerrado: Builds en MODULES, EXTRA eliminado, tests adaptados, size-budget actualizado); 3/3 test de regresión + review BAJO + docs/cierre. — 2026-11-24
-  Qué ve el jugador: una tarjeta «Builds» en «¿Qué puedo hacer aquí?» de la Bienvenida, con el mismo ícono (156720) y descripción que en la barra lateral, que lleva a #/builds.
 
 ## BLOCKED
 
@@ -18,6 +16,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — cerrada. Builds sumado a MODULES en welcome-panel.js (11 módulos, ícono 156720, free:true); EXTRA eliminado de sidebar-nav.js (listas unificadas, MODULES_FALLBACK = MODULES); tests welcome-view (11 módulos) y sidebar-nav adaptados + test de regresión (EXTRA undefined, builds en fallback); size-budget welcome-panel congelado 49285 B; guías y privacidad actualizados. Review riesgo BAJO. Suite 1256/1262 (6 skipped). — 2026-11-24
 
 - [BL-000] [ALTO] Nacer — identidad, memoria limpia y lugar en el Centro de mando (S-1..S-4) — 2026-11-21
 - [BL-001] [ALTO] Elegir y montar mi motor — QwenPaw 2.3.0.post1 con Reflection Beam 1.0 vía Kilo (con cuenta) (DEC-004, actualizado); pruebas 1, 2 y 3 superadas, micro-ciclo completo sin ayuda (BL-003) — S-5 cerrado — 2026-11-21
