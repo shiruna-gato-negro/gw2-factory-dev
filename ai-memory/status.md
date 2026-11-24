@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-017 paso 1/3 — plan (miniatura de infusión en tarjetas de Metas)
-Motivo: BL-016 cerrada; única tarea READY BL-017 tomada y planificada (3 pasos). Paso 1 solo plan, sin código.
-Etapa actual: Product → Architecture (plan)
+Tarea actual: BL-017 paso 2/3 cerrado; próximo paso 3/3 (review + docs/cierre)
+Motivo: Miniatura <img class="mt-dthumb"> añadida en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px) + size-budget meta.js actualizado a 64276 B con motivo. Test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped), 0 fail.
+Etapa actual: Review → Documentation (paso 3/3)
 Inicio: 2026-11-24 06:00Z
-Última actualización: 2026-11-24 06:00Z
-Próxima acción: Implementar paso 2/3: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS; adaptar test meta-view; suite completa.
+Última actualización: 2026-11-24 06:32Z
+Próxima acción: Paso 3/3: review riesgo BAJO/MEDIO + docs/cierre; suite completa; mover BL-017 a DONE. READY vacía → si queda vacía, explorar La Bóveda.
 
 Archivos:
 - ai-memory/backlog.md
@@ -20,7 +20,7 @@ Archivos:
 
 - IN_PROGRESS: BL-017 (miniatura en Metas). READY: — (vacía).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1263 total, 1257 pass, 0 fail, 6 skipped.
+- Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -47,5 +47,7 @@ Archivos:
 - BL-015 paso 3/3 cerrado: test de regresión (EXTRA undefined, builds en MODULES_FALLBACK), review riesgo BAJO, docs/cierre. Suite 1256/1262 (6 skipped). BL-015 movida a DONE. READY: BL-016, BL-017.
 
 - BL-016 paso 1/1 cerrado: 2 entradas nuevas en welcome-news.json (builds íconos cabecera/pestañas, meta vistas previas Chak y Dragon's End), test pickNews adaptado (3 más nuevas, NUEVO en las 2 del 24/11); review BAJO; suite 1257/1263 (6 skipped). BL-016 movida a DONE. READY: BL-017.
+
+- BL-017 paso 2/3 cerrado: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px, cover) + size-budget meta.js 64276 B con motivo; test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

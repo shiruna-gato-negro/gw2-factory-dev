@@ -431,6 +431,7 @@
     return '<div class="mt-drop' + (pv.state === 'ok' ? ' mt-drop--prev' : pv.state === 'missing' ? ' mt-drop--nopv' : '') + '"' + attrs + ' title="' + esc(tip) + '">' +
       '<span class="mt-dtag mt-dtag--' + (inf ? 'inf' : 'drop') + '">' + (inf ? 'Infusión' : 'Drop') + '</span>' +
       (item && item.icon ? iconTag(item.icon, 24, 'mt-dico') : '') +
+      (pv.state === 'ok' ? '<img class="mt-dthumb" src="' + esc(pv.url) + '" alt="" loading="lazy">' : '') +
       '<span class="mt-dname">' + esc(name) + '</span>' + hintHTML(pv.state) + '</div>';
   }
   function hintHTML(state) {
@@ -853,6 +854,7 @@
 '.mt-dtag{font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:999px;padding:2px 7px;flex-shrink:0;border:1px solid var(--bd-2);color:var(--tx-2)}',
 '.mt-dtag--inf{border-color:var(--gn-gold);color:var(--gn-gold)}',
 '.mt-dico{width:24px;height:24px;border-radius:5px;flex-shrink:0}',
+'.mt-dthumb{width:48px;height:48px;border-radius:8px;object-fit:cover;border:1px solid var(--bd-1);flex-shrink:0}',
 '.mt-dname{flex:1;min-width:0;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
 '.mt-dhint{font-size:.7rem;color:var(--tx-3);flex-shrink:0}',
 '.mt-drop--nopv{cursor:help}.mt-dhint--none{border:1px dashed var(--bd-2);border-radius:999px;padding:1px 7px}',

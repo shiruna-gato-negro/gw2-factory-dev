@@ -198,6 +198,7 @@ test('tarjeta: «Vista previa» si hay archivo, «Sin vista previa» si falta, n
   assert.match(ok, /data-pv="ok"/);
   assert.match(ok, /mt-drop--prev/);
   assert.match(ok, />Vista previa</);
+  assert.match(ok, /<img[^>]*mt-dthumb/);
   const miss = V.dropHTML({ highlightItemId: null, _extItems: [{ itemName: 'Chak Infusion', preview: '', previewMissing: true }] });
   assert.match(miss, /data-preview=""/);
   assert.match(miss, /data-pv="missing"/);
@@ -205,8 +206,10 @@ test('tarjeta: «Vista previa» si hay archivo, «Sin vista previa» si falta, n
   assert.match(miss, /Sin vista previa/);
   assert.match(miss, /aria-label="Sin vista previa de Chak Infusion"/);
   assert.doesNotMatch(miss, /mt-drop--prev/);
+  assert.doesNotMatch(miss, /mt-dthumb/);
   const none = V.dropHTML({ highlightItemId: null, _extItems: [{ itemName: 'Algo', preview: '' }] });
   assert.doesNotMatch(none, /data-preview|vista previa/i);
+  assert.doesNotMatch(none, /mt-dthumb/);
 });
 
 // DOM mínimo para la ventanita: lo justo que usan showPreview, place y markMissing.

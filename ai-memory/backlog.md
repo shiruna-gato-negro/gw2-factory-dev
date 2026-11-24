@@ -8,7 +8,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — meta.js dropHTML + CSS; reutiliza previewOf y assets/previews/. Qué ve el jugador: en cada tarjeta de meta con drop, una miniatura visible de la infusión sin pasar el mouse, con «Sin vista previa» cuando falta. — 2026-11-24
   Plan (3 pasos):
   1. Plan (este ciclo): alcance y pasos.
-  2. Implementar miniatura en dropHTML: cuando previewOf === 'ok', mostrar `<img class="mt-dthumb">` con pv.url (miniatura visible) además del ícono/nombre; mantener «Sin vista previa» cuando missing; nada si none. CSS: .mt-dthumb (44-56px, radius, object-fit cover, borde). Adaptar test meta-view (nueva aserción de `<img ... mt-dthumb` en caso ok, ausencia en miss/none) sin borrar aserciones existentes. Si meta.js supera techo 64051 B, actualizar techo en tools/size-budget.json con motivo (regla v6, no achicar lo visible).
+  2. Implementar miniatura en dropHTML: cuando previewOf === 'ok', mostrar `<img class="mt-dthumb">` con pv.url (miniatura visible) además del ícono/nombre; mantener «Sin vista previa» cuando missing; nada si none. CSS: .mt-dthumb (44-56px, radius, object-fit cover, borde). Adaptar test meta-view (nueva aserción de `<img ... mt-dthumb` en caso ok, ausencia en miss/none) sin borrar aserciones existentes. Si meta.js supera techo 64051 B, actualizar techo en tools/size-budget.json con motivo (regla v6, no achicar lo visible). — CERRADO (commit paso 2/3): img + CSS + size-budget 64276 B + test adaptado; suite 1256/1262.
   3. Review riesgo BAJO/MEDIO + docs/cierre; suite completa; mover a DONE.
 
 ## BLOCKED
