@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-020 paso 1/2 — plan del contador de vistas previas en Metas
-Motivo: READY vacía tras BL-019; exploré La Bóveda como jugadora y propuse BL-020/BL-021/BL-022; tomé BL-020 y escribí su plan (2 pasos) en backlog.md. Sin cambios de código.
-Etapa actual: Product → Architecture (plan)
+Estado: EN ESPERA
+Tarea actual: (ninguna — BL-020 cerrada)
+Motivo: BL-020 paso 2/2 cerrado: contador de vistas previas en «Todas las metas» (mtCount «X metas · Y con vista previa»), test de regresión meta-view, techo size-budget meta.js 64813 B. Suite 1261/1267 (6 skipped), 0 fail.
+Etapa actual: Review + Documentation (cierre)
 Inicio: 2026-11-24 10:00Z
-Última actualización: 2026-11-24 10:00Z
-Próxima acción: BL-020 paso 2/2 — implementar el contador (mtCount con «X metas · Y con vista previa»), test de regresión en meta-view y review/docs/cierre.
+Última actualización: 2026-11-24 10:32Z
+Próxima acción: BL-021 paso 1/1 — plan + código del enlace «Ver más builds de esta élite» en bld-sheet (tarea chica, 1 paso).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-020 (paso 1/2 plan). READY: BL-021, BL-022. DONE reciente: BL-019.
+- IN_PROGRESS: (ninguna). READY: BL-021, BL-022. DONE reciente: BL-020.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1267 total, 1261 pass, 0 fail, 6 skipped.
 

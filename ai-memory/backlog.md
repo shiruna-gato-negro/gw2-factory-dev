@@ -12,12 +12,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-020] [BAJO] Metas: contador de vistas previas en «Todas las metas» — en meta.js renderCatalog, ampliar mtCount para mostrar también cuántas metas tienen vista previa disponible («X metas · Y con vista previa»), reutilizando hasPreview sobre seed/_extItems. Tests: meta-view. — 2026-11-24
-  Qué ve el jugador: en «Todas las metas» ve de un vistazo cuántas tienen animación de la infusión disponible.
-  Plan (2 pasos):
-  1. (este ciclo) plan — definir el texto exacto del contador y el cálculo (Y = seed.filter(hasPreview).length), sin tocar código.
-  2. código + test de regresión + review BAJO + docs/cierre.
-
 ## BLOCKED
 
 ## CANCELLED
@@ -26,6 +20,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-020] [BAJO] Metas: contador de vistas previas en «Todas las metas» — cerrada. mtCount en renderCatalog ahora muestra «X metas · Y con vista previa» (Y = seed.filter(hasPreview).length); test de regresión en meta-view (SRC regex + cálculo). Techo size-budget meta.js actualizado a 64813 B con motivo (regla v6). Review riesgo BAJO: aditivo, sin regresión. Suite 1261/1267 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en «Todas las metas» ve de un vistazo cuántas tienen animación de la infusión disponible.
+
 - [BL-019] [BAJO] Resumen vigentes/para revisar en la Biblioteca de Builds — cerrada. Contador de la Biblioteca (bld-lib.js viewHTML) ahora muestra «X vigentes · Y para revisar» junto al total de builds (antes solo «élites cubiertas … (N vigentes)»). Test de regresión agregado (tests/bld-lib.test.cjs). Review riesgo BAJO (aditivo, sin regresión). Suite 1261/1267 (6 skipped). — 2026-11-24
   Qué ve el jugador: sobre la lista de builds ve cuántas builds están vigentes y cuántas hay que revisar, sin abrir filtros.
 

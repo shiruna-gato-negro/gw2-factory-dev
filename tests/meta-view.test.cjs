@@ -152,6 +152,11 @@ test('BL-018: switch «Solo con vista previa» en la UI y hasPreview exportado',
   assert.match(SRC, /function hasPreview\(meta\)/);
 });
 
+test('BL-020: contador de vistas previas en «Todas las metas»', () => {
+  assert.match(SRC, /metas · .* con vista previa/);
+  assert.match(SRC, /seed\.filter\(hasPreview\)\.length/);
+});
+
 test('tipos y expansiones salen de los datos (sin «Fractal» vacío) y suman 49', () => {
   const t = P.typeCounts(metas);
   assert.equal(t.reduce((n, x) => n + x.n, 0), 49);

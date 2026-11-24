@@ -580,7 +580,8 @@
     var box = $('#mtAll', root); if (!box) return;
     var list = rows.filter(function (r) { return matches(r, filters); });
     var cnt = $('#mtCount', root);
-    if (cnt) cnt.textContent = list.length === rows.length ? rows.length + ' metas' : 'Mostrando ' + list.length + ' de ' + rows.length;
+    var withPreview = seed.filter(hasPreview).length;
+    if (cnt) cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa' : 'Mostrando ' + list.length + ' de ' + rows.length;
     if (!list.length) {
       box.innerHTML = '<div class="mt-empty">Ninguna meta coincide con lo que elegiste. <button type="button" class="mt-link" data-mt-act="reset">Ver todas</button></div>';
       return;
