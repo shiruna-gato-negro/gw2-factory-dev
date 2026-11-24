@@ -4,11 +4,20 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-(vacío)
+- [BL-028] [BAJO] Builds: enlace «Ver más builds de esta profesión» en la ficha — botón en sheetHTML (biblioteca y Mis builds) que, al tocarlo, pone st.f.prof con la profesión de la build (elite 0) en bld-lib, recuerda la primera build filtrada y navega a #/builds. Sigue el patrón de BL-021 (élite). — 2026-11-24
+  Qué ve el jugador: desde la ficha de una build, un clic muestra las otras builds de la misma profesión en la Biblioteca.
+
+- [BL-029] [BAJO] Builds: un solo botón «Ver más builds de esta élite» en la ficha de Mis builds — mineHTML repite el botón 3 veces (data-sheet moreelite/elite/more); dejar uno. — 2026-11-24
+  Qué ve el jugador: en la ficha de una build propia, un solo botón en vez de tres iguales.
 
 ## IN_PROGRESS
 
-(vacío)
+- [BL-027] [BAJO] Builds: mensaje claro cuando no carga por file:// — en bld-lib.js (load), detectar location.protocol === 'file:' y mostrar «Builds no carga abriendo el archivo directo (file://). Abrilo desde el sitio o con un servidor local (http://).» en vez del error genérico; mantener el genérico para otros fallos. Sigue BL-006 (Metas). — 2026-11-24
+  Qué ve el jugador: al abrir la Biblioteca de Builds desde el archivo local, ve un mensaje claro en vez de un error genérico.
+  Pasos:
+  1. Plan + exploración La Bóveda (BL-028, BL-029) — este ciclo.
+  2. Código + test (bld-lib load + test estático).
+  3. Review BAJO + docs/cierre.
 
 ## BLOCKED
 
