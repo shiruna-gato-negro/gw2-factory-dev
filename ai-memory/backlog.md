@@ -4,7 +4,19 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-021] [BAJO] Builds: en la ficha de una build, enlace «Ver más builds de esta élite» que vuelve a la Biblioteca filtrada por esa élite — agregar en bld-sheet (sheetHTML/mineHTML) un botón/enlace que navega a #/builds con el filtro de élite aplicado (st.f.elite) y toma el foco en la lista. — 2026-11-24
+  Qué ve el jugador: desde la ficha de una build, un clic para ver otras builds de la misma élite en la Biblioteca.
+
+- [BL-022] [MEDIO] Welcome: en la tarjeta del módulo Builds, mostrar la cantidad de builds curadas — leer assets/data/builds/catalog.json en welcome-panel (fetch con fallback) y mostrar «N builds curadas» en la tarjeta de Builds (MODULES desc dinámico o badge), sin romper si el catálogo no carga. — 2026-11-24
+  Qué ve el jugador: la tarjeta de Builds dice cuántas builds curadas hay, en vez de texto fijo.
+
 ## IN_PROGRESS
+
+- [BL-020] [BAJO] Metas: contador de vistas previas en «Todas las metas» — en meta.js renderCatalog, ampliar mtCount para mostrar también cuántas metas tienen vista previa disponible («X metas · Y con vista previa»), reutilizando hasPreview sobre seed/_extItems. Tests: meta-view. — 2026-11-24
+  Qué ve el jugador: en «Todas las metas» ve de un vistazo cuántas tienen animación de la infusión disponible.
+  Plan (2 pasos):
+  1. (este ciclo) plan — definir el texto exacto del contador y el cálculo (Y = seed.filter(hasPreview).length), sin tocar código.
+  2. código + test de regresión + review BAJO + docs/cierre.
 
 ## BLOCKED
 
