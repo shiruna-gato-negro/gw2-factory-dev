@@ -180,9 +180,7 @@
       '<button type="button" class="bld-btn" data-bld-act="save">Guardar en Mis builds</button>' + ae2BtnHTML(m) +
       '<button type="button" class="bld-btn" data-bld-act="share">Copiar enlace</button>' +
       (issue ? '<a class="bld-btn" href="' + esc(issue) + '" target="_blank" rel="noopener" title="Abre un aviso en GitHub ya escrito">Avisar que está vieja ↗</a>' : '') +
-      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' +
-        '<button type="button" class="bld-btn" data-sheet="elite">Ver más builds de esta élite</button>' +
-        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') +
+      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' : '') +
       (b.prof ? '<button type="button" class="bld-btn" data-sheet="moreprof">Ver más builds de esta profesión</button>' : '') + '</div>' +
       SECTIONS.map(function (s) { return sectionHTML(s[0], s[1], body[s[0]]); }).join('') +
       '<p class="bld-muted"><small>Datos de la build: ' + (b.source ? esc(b.source.name) : 'la Biblioteca') + ' (élite, armas, equipo, código y fecha). Nombres, íconos y descripciones: API oficial de Guild Wars 2, en castellano.</small></p>' +

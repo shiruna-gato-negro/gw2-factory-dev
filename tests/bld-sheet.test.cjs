@@ -342,6 +342,15 @@ test('BL-029: Mis builds muestra un solo boton Ver mas builds de esta elite', ()
   assert.match(h, /data-sheet="moreelite"/);
   delete globalThis.GNBldLib; delete globalThis.GNBldMine; delete globalThis.GNBldStore;
 });
+test('BL-029: la ficha de la Biblioteca muestra un solo boton Ver mas builds de esta elite', () => {
+  const b = CAT.builds.find((x) => x.elite && x.prof);
+  const L = [CAT.builds[0], b, CAT.builds[2]];
+  globalThis.GNBldLib = fakeLib(L);
+  const h = P.sheetHTML({ b, nav: P.navOf(L, b.id), latest: '2026-09-29', gear: null });
+  assert.equal((h.match(/Ver más builds de esta élite/g) || []).length, 1);
+  assert.match(h, /data-sheet="moreelite"/);
+  delete globalThis.GNBldLib;
+});
 function fakeStore(items) {
   const xs = items.map((x) => Object.assign({}, x));
   const log = [];
