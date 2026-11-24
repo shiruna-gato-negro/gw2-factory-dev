@@ -4,7 +4,12 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-(vacío)
+- [BL-036] [BAJO] Actividades: contador de fabricaciones diarias hechas en el indicador — en el indicador «Fabricación diaria» mostrar «X de 5 hechas hoy» (sobre las 5 de la API, con el cristal de cuarzo cargado) además del estado actual; sin datos, «Sin datos». — 2026-11-24
+  Qué ve el jugador: en el indicador «Fabricación diaria» de Actividades ve cuántas de las 5 fabricaciones diarias ya hizo hoy, de un vistazo.
+- [BL-037] [BAJO] Inventario: contador de espacios ocupados por pestaña en el Banco — en el encabezado de cada pestaña del banco (30 espacios) mostrar «X de 30 ocupados»; sin datos, «Sin datos». — 2026-11-24
+  Qué ve el jugador: en cada pestaña del banco del Inventario ve cuántos espacios ocupó de los 30 sin abrir la pestaña.
+- [BL-038] [BAJO] Logros: contador de logros completados en la cabecera — en la cabecera de Logros mostrar «X de Y logros completos» (sobre los logros cargados de la cuenta) además de los 4 indicadores actuales; sin datos, «Sin datos». — 2026-11-24
+  Qué ve el jugador: en la cabecera de Logros ve cuántos logros tiene completos del total cargado, además de los puntos de logro.
 
 ## IN_PROGRESS
 
