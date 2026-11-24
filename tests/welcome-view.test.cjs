@@ -120,13 +120,16 @@ test('Frontera con los módulos (DEC-032): la Bienvenida no lee datos de Metas n
 });
 
 test('novedades: las 3 más nuevas, con «NUEVO» solo durante 14 días', () => {
-  const now = Date.parse('2026-11-05T12:00:00Z'); // 13 días después del 23/10
+  const now = Date.parse('2026-11-25T12:00:00Z'); // 1 día después de las nuevas del 24/11
   const n = P.pickNews(NEWS.items, now);
   assert.equal(n.length, 3);
-  assert.equal(n[0].title, 'Metas y Eventos renovado');
-  assert.equal(n[0].when, '23/10');
+  assert.equal(n[0].title, 'Builds con íconos en cabecera y pestañas');
+  assert.equal(n[0].when, '24/11');
   assert.equal(n[0].isNew, true);
-  assert.equal(n[1].isNew, false, 'la del 22/10 ya tiene 14,5 días');
+  assert.equal(n[1].title, "Vistas previas de Chak y Dragon's End en Metas");
+  assert.equal(n[1].isNew, true);
+  assert.equal(n[2].title, 'Metas y Eventos renovado');
+  assert.equal(n[2].isNew, false, 'la del 23/10 ya tiene más de 14 días');
   assert.equal(P.pickNews([{ date: '2026-10-01', title: 'vieja' }, { date: '2026-10-20', title: 'nueva' }])[0].title, 'nueva', 'ordena aunque el archivo venga desordenado');
   assert.equal(P.pickNews(null).length, 0);
   assert.equal(P.pickNews([{ title: 'sin fecha' }, { date: '2026-10-01' }]).length, 0, 'descarta lo incompleto');

@@ -1,16 +1,16 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: — (BL-015 cerrada; próxima: BL-016)
-Motivo: BL-015 cerrada: Builds en MODULES de la Bienvenida (11 módulos), EXTRA eliminado, listas unificadas, test de regresión, review BAJO, suite 1256/1262 (6 skipped).
+Tarea actual: — (BL-016 cerrada; próxima: BL-017)
+Motivo: BL-016 cerrada: 2 entradas nuevas en welcome-news.json (builds íconos cabecera/pestañas, meta vistas previas Chak y Dragon's End), test pickNews adaptado; review BAJO; suite 1257/1263 (6 skipped).
 Etapa actual: —
-Inicio: 2026-11-24 05:01Z
-Última actualización: 2026-11-24 05:02Z
-Próxima acción: Tomar BL-016 (primera de READY) en el próximo ciclo: novedades de la Bienvenida con BL-013 y BL-014.
+Inicio: 2026-11-24 05:30Z
+Última actualización: 2026-11-24 05:32Z
+Próxima acción: Tomar BL-017 (primera de READY) en el próximo ciclo: miniatura de infusión en tarjetas de Metas.
 
 Archivos:
-- tests/sidebar-nav.test.cjs
-- ai-memory/status.md
+- assets/welcome-news.json
+- tests/welcome-view.test.cjs
 - ai-memory/backlog.md
 
 ## Esperando a Pablo
@@ -19,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- READY: BL-016 (novedades de Bienvenida) y BL-017 (miniatura en Metas). BL-015 cerrada (Builds en Bienvenida, 11 módulos unificados).
+- READY: BL-017 (miniatura en Metas). BL-016 cerrada (novedades de Bienvenida con BL-013 y BL-014).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
+- Suite actual: 1263 total, 1257 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -46,5 +46,7 @@ Archivos:
 - BL-015 paso 1/3 cerrado: exploración + propuesta de 3 tareas (BL-015/016/017) y plan de BL-015 (Builds en Bienvenida). Suite 1255/1261 (6 skipped). Commit `BL-015 paso 1/3 — plan — tests 1255/1261 (6 skipped)`.
 
 - BL-015 paso 3/3 cerrado: test de regresión (EXTRA undefined, builds en MODULES_FALLBACK), review riesgo BAJO, docs/cierre. Suite 1256/1262 (6 skipped). BL-015 movida a DONE. READY: BL-016, BL-017.
+
+- BL-016 paso 1/1 cerrado: 2 entradas nuevas en welcome-news.json (builds íconos cabecera/pestañas, meta vistas previas Chak y Dragon's End), test pickNews adaptado (3 más nuevas, NUEVO en las 2 del 24/11); review BAJO; suite 1257/1263 (6 skipped). BL-016 movida a DONE. READY: BL-017.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
