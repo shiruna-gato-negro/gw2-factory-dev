@@ -114,6 +114,7 @@ test('estados honestos: lo que no se leyó dice «sin datos» y se nombra; nunca
   assert.equal((h.match(/av-badge--pend">Te falta/g) || []).length, 0, 'sin lectura nunca «Te falta»');
   assert.equal((h.match(/av-badge--nd">Sin datos/g) || []).length, 5 + 1, 'las 5 fabricaciones y la llave');
   assert.equal((P.statsHTML(m).match(/<em>sin datos<\/em>/g) || []).length, 3, 'fabricación, llave y piedras');
+
   assert.match(P.statsHTML(m), /<b>—<\/b><em>Rocahonda, Océano Sólido, Cenagal<\/em>/, 'los fractales de hoy se ven aunque falte tu progreso');
   assert.doesNotMatch(P.statsHTML(m), /<b>0 <span>/);
   assert.equal(P.errorText(P.buildModel(sample({ unread: ['fractals'], fractals: null }), CAT, {}, NOW)), 'No pude leer los fractales del día de la API del juego.');
@@ -128,7 +129,7 @@ test('vista: cabecera con los 3 relojes, 4 indicadores y pestañas accesibles co
   assert.match(h, /Reset diario <b id="avClkD">en 18 h 42 min<\/b>/);
   assert.match(h, /PSNA cambia <b id="avClkP">en 2 h 42 min<\/b>/);
   assert.match(h, /Semanal <b id="avClkW">/);
-  assert.match(h, /<small>Fabricación diaria<\/small><b>2 <span>\/ 5<\/span><\/b>.*<em>te faltan 3<\/em>/);
+  assert.match(h, /<small>Fabricaci\u00f3n diaria<\/small><b>2 <span>\/ 5<\/span><\/b>.*<em>2 de 5 hechas hoy.*te faltan 3<\/em>/);
   assert.match(h, /<small>Fractales del día<\/small><b>2 <span>\/ 6<\/span><\/b>.*<em>Rocahonda, Océano Sólido, Cenagal<\/em>/);
   assert.match(h, /<small>Llave semanal<\/small><b>Probable<\/b><em>Lyra, nivel 12, creado el /);
   assert.match(h, /<small>Piedras vetustas<\/small><b>3 <span>\/ 5<\/span><\/b>/);

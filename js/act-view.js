@@ -124,8 +124,10 @@
 
   function statsHTML(m) {
     var ok = m.loaded && m.hasToken, nd = m.loaded ? 'sin datos' : 'leyendo…', h = '', c = m.crafting, p = m.frProg, k = m.key;
-    if (ok && c && c.done != null) h += stat('Fabricación diaria', frac(c.done, c.total), c.missing ? (c.missing === 1 ? 'te falta 1' : 'te faltan ' + c.missing) : 'todo hecho hoy', pct(c.done, c.total));
-    else h += stat('Fabricación diaria', '—', nd);
+    if (ok && c && c.done != null) {
+      var craftState = c.missing ? (c.missing === 1 ? 'te falta 1' : 'te faltan ' + c.missing) : 'todo hecho hoy';
+      h += stat('Fabricación diaria', frac(c.done, c.total), c.done + ' de ' + c.total + ' hechas hoy · ' + craftState, pct(c.done, c.total));
+    } else h += stat('Fabricación diaria', '—', nd);
     var names = m.fr && m.fr.fractals.length ? esc(m.fr.fractals.map(function (f) { return f.name; }).join(', ')) : null;
     if (ok && p && p.done != null) h += stat('Fractales del día', frac(p.done, p.total), names || 'logros del día', pct(p.done, p.total));
     else h += stat('Fractales del día', '—', names || nd);

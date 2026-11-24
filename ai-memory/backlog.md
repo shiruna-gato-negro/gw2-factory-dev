@@ -11,9 +11,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-036] [BAJO] Actividades: contador de fabricaciones diarias hechas en el indicador — paso 1/2 (plan). Cambio en js/act-view.js (1 archivo). Pasos: (1) plan (este ciclo); (2) implementar en statsHTML el stat «Fabricación diaria»: mostrar «X de 5 hechas hoy» (sobre las 5 de la API, con el cristal de cuarzo cargado) además del estado actual («te falta N»/«todo hecho hoy»); sin datos, «Sin datos»; adaptar tests/act-view.test.cjs (regex stat card y caso sin datos) y mantener suite completa. Riesgo BAJO (aditivo, sin regresión). — 2026-11-24
-  Qué ve el jugador: en el indicador «Fabricación diaria» de Actividades ve cuántas de las 5 fabricaciones diarias ya hizo hoy, de un vistazo.
-
 ## BLOCKED
 
 ## CANCELLED
@@ -22,6 +19,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-036] [BAJO] Actividades: contador de fabricaciones diarias hechas en el indicador — cerrada. statsHTML del indicador «Fabricación diaria» ahora muestra «X de 5 hechas hoy · te falta N/te faltan N/todo hecho hoy» (sobre las 5 de la API, con el cristal de cuarzo cargado), manteniendo el estado actual; sin datos sigue «sin datos». Adaptado tests/act-view.test.cjs (regex stat card). Review riesgo BAJO: aditivo, sin regresión. Suite 1216/1222 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en el indicador «Fabricación diaria» de Actividades ve cuántas de las 5 fabricaciones diarias ya hizo hoy, de un vistazo.
 - [BL-035] [BAJO] Builds: orden «Más fácil primero» en la Biblioteca — cerrada. Nuevo chip en el grupo de orden (SORT.difficulty «Más fácil primero») junto a «Más DPS primero» que ordena de menor a mayor dificultad (1..5), con desempate por orden de la biblioteca; sortBuilds maneja difficulty/easy/easyfirst; listHTML flat para difficulty; versión bld-lib 1.12.0 → 1.13.0 y modules.json. Tests bld-lib (BL-035) + versiones bld-lib/bld-rows adaptados. Review riesgo BAJO: aditivo, sin regresión. Suite 1215/1221 (6 skipped). — 2026-11-24
   Qué ve el jugador: en la Biblioteca de Builds puede ordenar de más fácil a más difícil con un chip junto a «Más DPS primero».
 - [BL-034] [BAJO] Builds: desglose por dificultad en el contador de la Biblioteca — cerrada. Contador (bld-lib.js viewHTML) ahora muestra «N fáciles (1-2) · M medias (3) · K difíciles (4-5)» junto al total de builds (sobre el catálogo). Versión bld-lib 1.11.0 → 1.12.0 y modules.json. Tests bld-lib (versión) y bld-rows (versión) adaptados. Review riesgo BAJO: aditivo, sin regresión. Suite 1215/1221 (6 skipped). — 2026-11-24
