@@ -5,8 +5,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 ## READY
 
 ## IN_PROGRESS
-- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — pasos: 1/3 plan (cerrado); 2/3 conseguir .webp (cerrado: chak_gerent.webp 841 KB animado + dragons_end.webp 49 KB, conectados en meta-drops.json, 0 previewMissing) + test meta-view actualizado a 10/0; 3/3 review BAJO + docs/cierre (pendiente). — 2026-11-24
-  Qué ve el jugador: la animación de la infusión de Chak y Dragon's End en la tarjeta de meta, en vez de «Sin vista previa».
 
 ## BLOCKED
 
@@ -28,3 +26,4 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-002] [MEDIO] Adaptar mis workflows heredados — cerrada. app-checks (guardia 4/4), builds-watch (guardia 4/4, User-Agent → shiruna-gato-negro) y legacy-tests (guardia 5/5, gate `github.repository`, bot shiruna) adaptados; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO. — 2026-11-23
 - [BL-010] [MEDIO] Achicar o registrar archivos que crecieron del presupuesto de tamaño — cerrada. index.html 49141 B (advertencia), js/meta.js 63426 B (≤63600, header + file:// simplificado), js/sidebar-nav.js 40.2 KB (advertencia, nota BL-007 badge «Con Key»). Des-cuarentenados size-budget y universo; suite 1255/1261 (6 skipped: bld-lib ×3, bld-rows, ga-loader, dev-pages rsync). Review BAJO; deuda MEDIO (cuarentenas → BL-011, BL-012). — 2026-11-23
 - [BL-013] [BAJO] Consistencia visual de Builds con el resto de los módulos (UNI-4b/UNI-7b): íconos en cabecera y pestañas — cerrada. Agregadas claves stat.bld.* en gn-kit.js (builds, elites, revisar, mine + alias) y tab.bld.* ya existentes; kitIcon + BLD_STAT en bld-view.js; stat() antepone el ícono en cada .bld-st; tabsHTML ya usaba kit.icon('tab.bld.'+id). Guardia en tests/gn-kit-icons.test.cjs (4 pestañas + 4 indicadores). Review BAJO; suite 1193/1199 (6 skipped). — 2026-11-24
+- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — cerrada. Descargados chak_gerent.webp (841 KB, 50 frames animados) y dragons_end.webp (49 KB) desde la wiki con UA navegador (DEC-031); conectados en assets/meta-drops.json (preview path + previewMissing quitado, 0 faltantes); test meta-view actualizado a 10/0. Review BAJO: solo assets + datos + test, sin código de producción; riesgo BAJO (sin regresión). Suite 1256/1262 (6 skipped). — 2026-11-24

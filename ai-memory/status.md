@@ -1,20 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-014 paso 3/3 — test de regresión (meta-view) + review BAJO + docs/cierre
-Motivo: paso 2/3 cerrado: descargados chak_gerent.webp (841 KB, 50 frames animados) y dragons_end.webp (49 KB) desde la wiki con UA navegador (DEC-031); conectados en assets/meta-drops.json (preview path + previewMissing quitado, 0 faltantes); test meta-view actualizado a 10/0. Suite 1256/1262 (6 skipped), 0 fail.
-Etapa actual: Review
-Inicio: 2026-11-24 02:00Z
-Última actualización: 2026-11-24 02:34Z
-Próxima acción: BL-014 paso 3/3 — review riesgo BAJO + docs/cierre + mover BL-014 a DONE en backlog.md y actualizar status.md.
+Estado: EN ESPERA
+Tarea actual: — (ninguna en curso; READY vacía)
+Motivo: BL-014 cerrada: vistas previas de Chak (chak_gerent.webp, 841 KB, 50 frames) y Dragon's End (dragons_end.webp, 49 KB) conectadas en meta-drops.json; 10/0 previews; review riesgo BAJO; suite 1256/1262 (6 skipped). READY quedó vacía.
+Etapa actual: —
+Inicio: 2026-11-24 03:01Z
+Última actualización: 2026-11-24 03:01Z
+Próxima acción: Explorar La Bóveda como jugadora y proponer 1-3 tareas nuevas en READY (READY vacía).
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- assets/meta-drops.json
-- assets/previews/chak_gerent.webp
-- assets/previews/dragons_end.webp
-- tests/meta-view.test.cjs
 
 ## Esperando a Pablo
 
@@ -22,7 +18,8 @@ Archivos:
 
 ## Para tu información
 
-- BL-013 cerrada: íconos en cabecera y pestañas de Builds (UNI-4b/UNI-7b); claves stat.bld.* + tab.bld.*; guardia en gn-kit-icons; suite 1193/1199 (6 skipped). BL-014 en READY (vistas previas Chak/Dragon's End).
+- BL-014 cerrada: vistas previas de Chak y Dragon's End en Metas (chak_gerent.webp 841 KB animado + dragons_end.webp 49 KB, conectados en meta-drops.json, 0 previewMissing); test meta-view 10/0; review BAJO; suite 1256/1262 (6 skipped).
+- BL-013 cerrada: íconos en cabecera y pestañas de Builds (UNI-4b/UNI-7b); claves stat.bld.* + tab.bld.*; guardia en gn-kit-icons; suite 1193/1199 (6 skipped). BL-014 cerrada.
 - BL-002 cerrada: app-checks (4/4), builds-watch (4/4), legacy-tests (5/5) adaptados; guardias en verde; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
 - BL-010 cerrada: size-budget y universo des-cuarentenados; index.html 49141 B (advertencia), meta.js 63426 B (≤63600), sidebar-nav.js 40.2 KB (advertencia, nota BL-007); suite 1255/1261 (6 skipped). Review BAJO; deuda MEDIO (6 cuarentenas → BL-011, BL-012).
 - BL-008 cerrada: review riesgo BAJO; suites gn-topbar + gn-kit-icons + ai-memory 37/37.
@@ -47,5 +44,7 @@ Archivos:
 - Orden v6 cerrada: canceladas BL-011 y BL-012; ga-loader marcado «no aplica en este repo» (skip + comentario); meta.js restaurado con cabecera + mensaje claro BL-006 (64051 B, techo actualizado en size-budget.json); backlog/roadmap/AGENTS actualizados (F2b, reglas visibles, pasos por tamaño, infra solo si bloquea); suite en verde (0 fail). Commit de trabajo.
 
 - BL-014 paso 1/3 cerrado: plan escrito en backlog.md (3 pasos). Suite 1193/1199 (6 skipped). Commit `BL-014 paso 1/3 — plan — tests 1193/1199 (6 skipped)`.
+
+- BL-014 paso 3/3 cerrado: review riesgo BAJO + docs/cierre. Vistas previas Chak y Dragon's End conectadas; meta-view 10/0; suite 1256/1262 (6 skipped); BL-014 movida a DONE. READY vacía → próxima acción: explorar La Bóveda.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.
