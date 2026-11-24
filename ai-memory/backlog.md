@@ -5,11 +5,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 ## READY
 
 ## IN_PROGRESS
-- [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — meta.js dropHTML + CSS; reutiliza previewOf y assets/previews/. Qué ve el jugador: en cada tarjeta de meta con drop, una miniatura visible de la infusión sin pasar el mouse, con «Sin vista previa» cuando falta. — 2026-11-24
-  Plan (3 pasos):
-  1. Plan (este ciclo): alcance y pasos.
-  2. Implementar miniatura en dropHTML: cuando previewOf === 'ok', mostrar `<img class="mt-dthumb">` con pv.url (miniatura visible) además del ícono/nombre; mantener «Sin vista previa» cuando missing; nada si none. CSS: .mt-dthumb (44-56px, radius, object-fit cover, borde). Adaptar test meta-view (nueva aserción de `<img ... mt-dthumb` en caso ok, ausencia en miss/none) sin borrar aserciones existentes. Si meta.js supera techo 64051 B, actualizar techo en tools/size-budget.json con motivo (regla v6, no achicar lo visible). — CERRADO (commit paso 2/3): img + CSS + size-budget 64276 B + test adaptado; suite 1256/1262.
-  3. Review riesgo BAJO/MEDIO + docs/cierre; suite completa; mover a DONE.
 
 ## BLOCKED
 
@@ -19,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — cerrada. Miniatura `<img class="mt-dthumb">` (48px, cover) en dropHTML cuando previewOf === 'ok' + CSS + techo size-budget meta.js 64276 B con motivo; test meta-view adaptado (img en ok, ausencia en miss/none). Review riesgo BAJO: aditivo, sin regresión, XSS cubierto por esc(pv.url). Suite 1256/1262 (6 skipped). — 2026-11-24
+
 - [BL-016] [BAJO] Actualizar novedades de la Bienvenida con BL-013 y BL-014 — cerrada. 2 entradas nuevas (2026-11-24) en assets/welcome-news.json: builds (íconos en cabecera y pestañas) y meta (vistas previas de Chak y Dragon's End); test pickNews adaptado (3 más nuevas, NUEVO en las 2 del 24/11). Review riesgo BAJO (solo datos + test, sin código de producción). Suite 1257/1263 (6 skipped). — 2026-11-24
 
 - [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — cerrada. Builds sumado a MODULES en welcome-panel.js (11 módulos, ícono 156720, free:true); EXTRA eliminado de sidebar-nav.js (listas unificadas, MODULES_FALLBACK = MODULES); tests welcome-view (11 módulos) y sidebar-nav adaptados + test de regresión (EXTRA undefined, builds en fallback); size-budget welcome-panel congelado 49285 B; guías y privacidad actualizados. Review riesgo BAJO. Suite 1256/1262 (6 skipped). — 2026-11-24

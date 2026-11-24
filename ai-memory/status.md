@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-017 paso 2/3 cerrado; próximo paso 3/3 (review + docs/cierre)
-Motivo: Miniatura <img class="mt-dthumb"> añadida en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px) + size-budget meta.js actualizado a 64276 B con motivo. Test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped), 0 fail.
-Etapa actual: Review → Documentation (paso 3/3)
+Estado: EN ESPERA
+Tarea actual: — (sin IN_PROGRESS)
+Motivo: BL-017 cerrada (paso 3/3): review riesgo BAJO + docs/cierre; suite 1256/1262 (6 skipped). READY vacía → próximo ciclo explora La Bóveda.
+Etapa actual: —
 Inicio: 2026-11-24 06:00Z
-Última actualización: 2026-11-24 06:32Z
-Próxima acción: Paso 3/3: review riesgo BAJO/MEDIO + docs/cierre; suite completa; mover BL-017 a DONE. READY vacía → si queda vacía, explorar La Bóveda.
+Última actualización: 2026-11-24 07:05Z
+Próxima acción: Explorar La Bóveda como jugadora y anotar 1 a 3 tareas nuevas en READY (máx 10), cada una con «Qué ve el jugador:».
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-017 (miniatura en Metas). READY: — (vacía).
+- IN_PROGRESS: — (vacío). READY: — (vacía) → explorar La Bóveda en próximo ciclo.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
 
