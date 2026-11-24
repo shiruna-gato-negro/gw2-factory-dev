@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-018 cerrada (paso 3/3: test de regresión meta-view + review BAJO + docs/cierre). Suite 1259/1265 (6 skipped, 0 fail).
+Motivo: BL-019 cerrada (paso 1/1: desglose «X vigentes · Y para revisar» en el contador de la Biblioteca + test de regresión + review BAJO + docs/cierre). Suite 1261/1267 (6 skipped, 0 fail).
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-24 08:32Z
-Próxima acción: BL-019 paso 1/3 — plan (resumen vigentes/para revisar en Biblioteca de Builds).
+Última actualización: 2026-11-24 09:05Z
+Próxima acción: READY vacía → explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas.
 
 Archivos:
 - tests/meta-view.test.cjs
@@ -19,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-019. DONE reciente: BL-018.
+- IN_PROGRESS: (vacío). READY: (vacío). DONE reciente: BL-019.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1265 total, 1259 pass, 0 fail, 6 skipped.
+- Suite actual: 1267 total, 1261 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -52,6 +52,6 @@ Archivos:
 - BL-017 paso 2/3 cerrado: miniatura `<img class="mt-dthumb">` en dropHTML cuando previewOf === 'ok' + CSS .mt-dthumb (48px, cover) + size-budget meta.js 64276 B con motivo; test meta-view adaptado (aserción img en ok, ausencia en miss/none). Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 
 - BL-018 paso 2/3 cerrado: onlyPreview en matches()/filters + switch «Solo con vista previa» en la UI; hasPreview exportado; techo size-budget 64719 B con motivo. Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
-- BL-018 paso 3/3 cerrado: test de regresión meta-view (hasPreview, onlyPreview matches, switch/export) + review BAJO + docs/cierre. Suite 1259/1265 (6 skipped). BL-018 movida a DONE. READY: BL-019.
+- BL-019 paso 1/1 cerrado: desglose «X vigentes · Y para revisar» en el contador de la Biblioteca (bld-lib.js viewHTML) + test de regresión bld-lib + review BAJO + docs/cierre. Suite 1261/1267 (6 skipped). BL-019 movida a DONE. READY vacía.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

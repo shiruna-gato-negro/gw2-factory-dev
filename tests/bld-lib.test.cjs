@@ -67,6 +67,16 @@ test('vigencia (D4): un parche más nuevo en la vigía pasa las builds a «revis
   assert.equal(P.latestPatch({ patch: { latest: '2026-09-29' } }, null), '2026-09-29');
 });
 
+test('BL-019 contador: desglose «X vigentes · Y para revisar» en la Biblioteca', () => {
+  Object.assign(L._state, { cat: CAT, watch: WATCH, loading: false, error: '', open: '' });
+  const latest = P.latestPatch(CAT, WATCH);
+  const vig = CAT.builds.filter((b) => P.stateOf(b, latest) === 'vigente').length;
+  const rev = CAT.builds.filter((b) => P.stateOf(b, latest) === 'revisar').length;
+  const h = P.viewHTML();
+  assert.match(h, new RegExp(vig + ' vigentes · ' + rev + ' para revisar'));
+  L._state.watch = WATCH;
+});
+
 test('filtros (A5): profesión, élite, modo, rol, arma, daño, vigencia y texto', () => {
   const B = CAT.builds, latest = P.latestPatch(CAT, WATCH);
   const f = (x) => P.filter(B, Object.assign({ prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '' }, x), latest);
