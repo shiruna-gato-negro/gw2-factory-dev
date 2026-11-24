@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-025] [BAJO] Inventario: total de tipos de materiales en la cabecera de Materiales — línea resumen arriba de los grupos («X tipos de materiales · en Y categorías») calculada sobre los grupos con cantidad > 0. — 2026-11-24
-  Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántos tipos de materiales tiene guardados y en cuántas categorías.
-
 - [BL-026] [BAJO] Welcome: fecha de curación en la tarjeta de Builds — la tarjeta de Builds muestra «N builds curadas · Curadas el DD/MM» leyendo catalog.curated del catálogo, sin romper si falta. — 2026-11-24
   Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuándo se curó el catálogo junto a la cantidad.
 
@@ -22,6 +19,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-025] [BAJO] Inventario: total de tipos de materiales en la cabecera de Materiales — cerrada. Línea resumen «X tipos de materiales · en Y categorías» arriba de los grupos en materialsHTML (calculada sobre grupos con held > 0); test de regresión en inv-view. Review riesgo BAJO: aditivo, sin regresión. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
+  Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántos tipos de materiales tiene guardados y en cuántas categorías.
+
 - [BL-024] [BAJO] Metas: switch «Solo fijadas» en la barra de filtros — cerrada. onlyPinned en filters/matches (fijadas = favs/pin); switch sw('onlyPinned', 'Solo fijadas') en mt-tools; mtCount muestra «X fijadas» cuando activo; resets (goTo/renderAll) incluyen onlyPinned. Test de regresión (matches filtra solo fijadas + switch en UI). Techo size-budget meta.js 65046 B con motivo. Review riesgo BAJO: aditivo, sigue el patrón de onlyPreview (BL-018), sin regresión. Suite 1266/1272 (6 skipped). — 2026-11-24
   Qué ve el jugador: en Metas, un switch «Solo fijadas» que muestra únicamente las metas que marcó como favoritas.
 

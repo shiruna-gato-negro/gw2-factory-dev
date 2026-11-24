@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-024 cerrada: review riesgo BAJO + docs/cierre. onlyPinned en Metas completo (filters/matches/switch/mtCount); test de regresión; techo size-budget meta.js 65046 B. Suite 1266/1272 (6 skipped, 0 fail).
+Motivo: BL-025 cerrada: línea resumen «X tipos de materiales · en Y categorías» arriba de los grupos en Materiales (inv-view.js) + test de regresión; review riesgo BAJO. Suite 1272/1266 (6 skipped, 0 fail).
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-24 14:32Z
-Próxima acción: tomar BL-025 (primera de READY) en el próximo ciclo.
+Última actualización: 2026-11-24 15:08Z
+Próxima acción: tomar BL-026 (primera de READY) en el próximo ciclo.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-025, BL-026.
+- IN_PROGRESS: (vacío). READY: BL-026.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1272 total, 1266 pass, 0 fail, 6 skipped.
 

@@ -126,6 +126,11 @@ test('filtro por nombre: sin tildes ni mayúsculas; en el banco dice en qué pes
   assert.doesNotMatch(P.listHTML(P.buildModel(sample(), CATS, { cat: '37' })), /Mineral de cobre/);
 });
 
+test('BL-025: resumen de tipos y categorías arriba de los grupos de Materiales', () => {
+  const h = P.listHTML(P.buildModel(sample(), CATS, {}));
+  assert.match(h, /2 tipos de materiales · en 2 categorías/);
+});
+
 test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento reducido y 44 px en el celular', () => {
   assert.match(P.CSS, /#inventoryPanel\.iv-on>\.panel__title,#inventoryPanel\.iv-on>\.panel__body\{display:none!important\}/);
   assert.match(P.CSS, /prefers-reduced-motion:reduce/);

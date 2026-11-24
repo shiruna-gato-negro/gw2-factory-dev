@@ -146,7 +146,10 @@
 
   function materialsHTML(m) {
     if (!m.matGroups.length) return '<p class="iv-note">' + (m.loaded ? 'Sin datos de tus materiales.' : 'Cargando…') + '</p>';
-    var h = '', any = false;
+    var totalTypes = m.matHeld != null ? m.matHeld : 0;
+    var totalCats = m.matGroups.filter(function (g) { return g.held; }).length;
+    var h = '<p class="iv-note">' + fmtInt(totalTypes) + ' tipos de materiales · en ' + totalCats + (totalCats === 1 ? ' categoría' : ' categorías') + '</p>';
+    var any = false;
     m.matGroups.forEach(function (g) {
       if (m.cat !== 'all' && String(g.id) !== String(m.cat)) return;
       var rows = g.items.filter(function (it) { return matches(m, m.items[it.id], it.id); });
