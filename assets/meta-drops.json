@@ -16,8 +16,7 @@
       {
         "itemName": "Chak Infusion",
         "wiki": "https://wiki.guildwars2.com/wiki/Chak_Infusion",
-        "preview": "",
-        "previewMissing": true
+        "preview": "assets/previews/chak_gerent.webp"
       }
     ],
     "highlightItemId": 81825
@@ -39,8 +38,7 @@
       {
         "itemName": "Glob of Dragonvoid Aether (Echo of the Dragonvoid)",
         "wiki": "https://wiki.guildwars2.com/wiki/Glob_of_Dragonvoid_Aether",
-        "preview": "",
-        "previewMissing": true
+        "preview": "assets/previews/dragons_end.webp"
       }
     ],
     "highlightItemId": 97993

@@ -1,17 +1,20 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-014 paso 2/3 — conseguir .webp y conectar en assets/meta-drops.json
-Motivo: BL-014 paso 1/3 cerrado (plan en backlog.md, 3 pasos). Próximo: descarga con curl User-Agent navegador (DEC-031) y conexión en meta-drops.json.
-Etapa actual: Development
+Tarea actual: BL-014 paso 3/3 — test de regresión (meta-view) + review BAJO + docs/cierre
+Motivo: paso 2/3 cerrado: descargados chak_gerent.webp (841 KB, 50 frames animados) y dragons_end.webp (49 KB) desde la wiki con UA navegador (DEC-031); conectados en assets/meta-drops.json (preview path + previewMissing quitado, 0 faltantes); test meta-view actualizado a 10/0. Suite 1256/1262 (6 skipped), 0 fail.
+Etapa actual: Review
 Inicio: 2026-11-24 02:00Z
-Última actualización: 2026-11-24 02:02Z
-Próxima acción: BL-014 paso 2/3 — localizar URLs de imagen en la wiki y descargar con curl (User-Agent navegador); si falla, BLOCKED para Pablo descarga manual; luego conectar en meta-drops.json.
+Última actualización: 2026-11-24 02:34Z
+Próxima acción: BL-014 paso 3/3 — review riesgo BAJO + docs/cierre + mover BL-014 a DONE en backlog.md y actualizar status.md.
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- ai-memory/roadmap.md
+- assets/meta-drops.json
+- assets/previews/chak_gerent.webp
+- assets/previews/dragons_end.webp
+- tests/meta-view.test.cjs
 
 ## Esperando a Pablo
 

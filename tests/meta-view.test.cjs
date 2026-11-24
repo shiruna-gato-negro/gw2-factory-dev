@@ -161,7 +161,7 @@ test('pantalla: se mantiene la vista previa de drops; se va la vista compacta', 
 const drops = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/meta-drops.json'), 'utf8').replace(/^\uFEFF/, ''));
 const skip1c = !Meta._view && 'meta.js todavía 4.0.0';
 
-test('meta-drops.json: 8 vistas previas locales en assets/previews/ y 2 marcadas como faltantes', () => {
+test('meta-drops.json: 10 vistas previas locales en assets/previews/ y 0 marcadas como faltantes', () => {
   const ok = [], missing = [];
   for (const d of drops) {
     const it = (d.items || [])[0] || {};
@@ -172,8 +172,8 @@ test('meta-drops.json: 8 vistas previas locales en assets/previews/ y 2 marcadas
     assert.equal(it.preview, 'assets/previews/' + d.metaId + '.webp', d.metaId);
     assert.ok(fs.existsSync(path.join(ROOT, it.preview)), 'existe ' + it.preview);
   }
-  assert.deepEqual(ok.sort(), ['death_branded_shatterer', 'dragonstorm', 'drakkar', 'drizzlewood_north', 'octovine', 'pinata', 'secrets_of_the_weald', 'vinewrath']);
-  assert.deepEqual(missing.sort(), ['chak_gerent', 'dragons_end']);
+  assert.deepEqual(ok.sort(), ['chak_gerent', 'death_branded_shatterer', 'dragons_end', 'dragonstorm', 'drakkar', 'drizzlewood_north', 'octovine', 'pinata', 'secrets_of_the_weald', 'vinewrath']);
+  assert.deepEqual(missing.sort(), []);
 });
 
 test('meta.js pide meta-drops.json nuevo (?v=2.6.0) para no servir las direcciones viejas', { skip: skip1c }, () => {

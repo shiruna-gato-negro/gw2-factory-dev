@@ -5,7 +5,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 ## READY
 
 ## IN_PROGRESS
-- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — pasos: 1/3 plan (este ciclo); 2/3 conseguir .webp (curl con User-Agent de navegador desde la wiki, DEC-031; si falla → BLOCKED para Pablo descarga manual) y conectar en assets/meta-drops.json (preview path + quitar previewMissing); 3/3 test de regresión (meta-view) + review BAJO + docs/cierre. — 2026-11-24
+- [BL-014] [BAJO] Vistas previas de Chak y Dragon's End en Metas — pasos: 1/3 plan (cerrado); 2/3 conseguir .webp (cerrado: chak_gerent.webp 841 KB animado + dragons_end.webp 49 KB, conectados en meta-drops.json, 0 previewMissing) + test meta-view actualizado a 10/0; 3/3 review BAJO + docs/cierre (pendiente). — 2026-11-24
   Qué ve el jugador: la animación de la infusión de Chak y Dragon's End en la tarjeta de meta, en vez de «Sin vista previa».
 
 ## BLOCKED
