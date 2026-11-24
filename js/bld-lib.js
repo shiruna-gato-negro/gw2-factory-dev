@@ -1,6 +1,6 @@
 /*!
  * js/bld-lib.js — Builds: pestaña Biblioteca (BL-082 BLD-7, BLD-8, BLD-10 y BLD-15: A1–A6, C2, D4)
- * Versión: 1.11.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
+ * Versión: 1.12.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
  *          plano) y los filtros en una sola barra con la búsqueda; cada fila es un enlace a su ficha · antes 1.8.0 (2026-10-30) · EQ-3: «Ver ficha» y tocar la tarjeta abren la ficha en su pantalla (#/builds/ver/<id>,
  *          js/bld-sheet.js); al volver, la Biblioteca sigue igual y el foco vuelve a esa build; list() da lo que se ve
  *          · antes 1.7.0 (2026-10-29) · BENCH-2: sin bench exacto, la build de PvE que hace daño muestra la «Referencia» medida más
@@ -27,7 +27,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.11.0';
+  var VERSION = '1.12.0';
   var CATALOG = 'assets/data/builds/catalog.json';
   var WATCH = 'assets/data/builds/watch.json';
   var BENCH = 'assets/data/builds/bench.json';
@@ -231,6 +231,9 @@
     var latest = latestPatch(st.cat, st.watch), list = sortBuilds(filter(st.cat.builds, st.f, latest), st.f.sort, st.bidx);
     var nb = st.cat.builds.filter(function (b) { return benchOf(b, st.bidx); }).length;
     var old = st.cat.builds.filter(function (b) { return stateOf(b, latest) === 'revisar'; }).length;
+    var easy = st.cat.builds.filter(function (b) { return Number(b.difficulty) >= 1 && Number(b.difficulty) <= 2; }).length;
+    var med = st.cat.builds.filter(function (b) { return Number(b.difficulty) === 3; }).length;
+    var hard = st.cat.builds.filter(function (b) { return Number(b.difficulty) >= 4 && Number(b.difficulty) <= 5; }).length;
     var cov = coverage(st.cat.builds, latest, true), ok = coverage(st.cat.builds, latest);
     var fresh = st.watch && st.watch.latestPatch && st.cat.patch && st.watch.latestPatch > st.cat.patch.latest;
     var line = old ? (fresh ? '<p class="bld-shv" role="status"><b>Ojo:</b> salió un parche de balance (' + fmtDate(latest) + ') y ' + old + (old === 1 ? ' build quedó' : ' builds quedaron') +
@@ -240,7 +243,7 @@
       : '<p class="bld-shv">Todas las builds están revisadas para el último parche de balance (' + fmtDate(latest) + '). <small class="bld-muted">Lo sé por: la biblioteca y la vigía semanal</small></p>';
 var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(st.cat.curated);
     return line + filtersHTML(st.cat, st.f) +
-      '<p class="bld-muted bld-count" aria-live="polite">' + list.length + ' de ' + st.cat.builds.length + ' builds · ' + (st.cat.builds.length - old) + ' vigentes · ' + old + ' para revisar · élites cubiertas: ' + ['pve', 'wvw', 'pvp'].filter(function (m) { return cov[m]; }).map(function (m) { return MODES[m] + ' ' + cov[m] + '/36' + (ok[m] !== cov[m] ? ' (' + (ok[m] || 0) + ' vigentes)' : ''); }).join(', ') + (nb ? ' · ' + nb + ' con bench de daño' : '') + (cd ? ' · Curadas el ' + cd : '') + '</p>' +
+      '<p class="bld-muted bld-count" aria-live="polite">' + list.length + ' de ' + st.cat.builds.length + ' builds · ' + easy + ' fáciles (1-2) · ' + med + ' medias (3) · ' + hard + ' difíciles (4-5) · ' + (st.cat.builds.length - old) + ' vigentes · ' + old + ' para revisar · élites cubiertas: ' + ['pve', 'wvw', 'pvp'].filter(function (m) { return cov[m]; }).map(function (m) { return MODES[m] + ' ' + cov[m] + '/36' + (ok[m] !== cov[m] ? ' (' + (ok[m] || 0) + ' vigentes)' : ''); }).join(', ') + (nb ? ' · ' + nb + ' con bench de daño' : '') + (cd ? ' · Curadas el ' + cd : '') + '</p>' +
       (list.length ? listHTML(list, latest)
         : '<div class="bld-card bld-muted">Ninguna build con esos filtros. <button type="button" class="bld-btn" data-lib="clear">Sacar todos los filtros</button></div>') +
       '<p class="bld-muted"><small>Builds curadas por mí con datos de ' + (st.cat.sources || []).map(function (s) { return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'; }).join(', ') +

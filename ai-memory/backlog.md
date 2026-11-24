@@ -4,8 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-034] [BAJO] Builds: desglose por dificultad en el contador de la Biblioteca — junto al total, «N fáciles (1-2) · M medias (3) · K difíciles (4-5)». — 2026-11-24
-  Qué ve el jugador: sobre la lista ve cuántas builds hay por nivel de exigencia sin abrir filtros.
 - [BL-035] [BAJO] Builds: orden «Más fácil primero» en la Biblioteca — nuevo chip en el grupo de orden (junto a «Más DPS primero») que ordena de menor a mayor dificultad. — 2026-11-24
   Qué ve el jugador: puede ver primero las builds más accesibles para empezar.
 
@@ -21,6 +19,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-034] [BAJO] Builds: desglose por dificultad en el contador de la Biblioteca — cerrada. Contador (bld-lib.js viewHTML) ahora muestra «N fáciles (1-2) · M medias (3) · K difíciles (4-5)» junto al total de builds (sobre el catálogo). Versión bld-lib 1.11.0 → 1.12.0 y modules.json. Tests bld-lib (versión) y bld-rows (versión) adaptados. Review riesgo BAJO: aditivo, sin regresión. Suite 1215/1221 (6 skipped). — 2026-11-24
+  Qué ve el jugador: sobre la lista ve cuántas builds hay por nivel de exigencia sin abrir filtros.
 - [BL-033] [BAJO] Builds: filtro por dificultad en la Biblioteca — cerrada. Chips 1-5 en «Más filtros» (data-lib-p difficulty) + filtro por b.difficulty; moreCount incluye difficulty; clearFilters resetea difficulty; test de regresión (filtro solo dificultad 2 + chips en UI + moreCount + clearFilters). Versión bld-lib 1.10.0 → 1.11.0 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de weapon/damage/state, sin regresión. Suite 19/19 en bld-lib (3 skipped). — 2026-11-24
   Qué ve el jugador: en la Biblioteca puede dejar solo builds de una dificultad (1-5) para elegir por nivel de exigencia.
 - [BL-032] [BAJO] Metas: contador de drops/infusiones en «Todas las metas» — cerrada. mtCount ahora muestra «X metas · Y con vista previa · Z con drop o infusión» (Z = seed.filter(hasDrop).length); techo size-budget meta.js 65046 → 65135 B con motivo (regla v6). Test de regresión meta-view (SRC regex + seed.filter(hasDrop).length). Review riesgo BAJO: aditivo, sin regresión. Suite 1214/1220 (6 skipped). — 2026-11-24
