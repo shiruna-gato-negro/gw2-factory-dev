@@ -3,8 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-019] [BAJO] Resumen vigentes/para revisar en la Biblioteca de Builds — en el contador de la Biblioteca (bld-lib.js) agregar el desglose «X vigentes · Y para revisar» junto al total; hoy solo muestra «élites cubiertas … (N vigentes)». — 2026-11-24
+  Qué ve el jugador: sobre la lista de builds ve cuántas builds están vigentes y cuántas hay que revisar, sin abrir filtros.
 
 ## IN_PROGRESS
+- [BL-018] [BAJO] Filtro «Solo con vista previa» en Metas — pasos: 1/3 plan (este ciclo); 2/3 código (agregar onlyPreview a filters/matches y switch en la UI); 3/3 test de regresión (meta-view) + review BAJO + docs/cierre. — 2026-11-24
+  Qué ve el jugador: en Metas, un switch «Solo con vista previa» que deja solo las metas que muestran la animación de la infusión.
 
 ## BLOCKED
 

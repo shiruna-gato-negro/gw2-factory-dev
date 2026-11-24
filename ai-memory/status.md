@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (sin IN_PROGRESS)
-Motivo: BL-017 cerrada (paso 3/3): review riesgo BAJO + docs/cierre; suite 1256/1262 (6 skipped). READY vacía → próximo ciclo explora La Bóveda.
-Etapa actual: —
-Inicio: 2026-11-24 06:00Z
-Última actualización: 2026-11-24 07:05Z
-Próxima acción: Explorar La Bóveda como jugadora y anotar 1 a 3 tareas nuevas en READY (máx 10), cada una con «Qué ve el jugador:».
+Estado: EN CURSO
+Tarea actual: BL-018 paso 1/3 — plan (cerrado en este ciclo); próximo paso 2/3 código.
+Motivo: READY vacía → exploré La Bóveda y anoté BL-018 y BL-019; tomé BL-018 (filtro «Solo con vista previa» en Metas) y escribí el plan de 3 pasos.
+Etapa actual: Product → Architecture (plan)
+Inicio: 2026-11-24 07:30Z
+Última actualización: 2026-11-24 07:34Z
+Próxima acción: BL-018 paso 2/3 — código: onlyPreview en matches(), filters y switch en la UI de «Todas las metas».
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: — (vacío). READY: — (vacía) → explorar La Bóveda en próximo ciclo.
+- IN_PROGRESS: BL-018 paso 2/3 pendiente (código). READY: BL-019.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1262 total, 1256 pass, 0 fail, 6 skipped.
 
