@@ -157,6 +157,11 @@ test('BL-020: contador de vistas previas en «Todas las metas»', () => {
   assert.match(SRC, /seed\.filter\(hasPreview\)\.length/);
 });
 
+test('BL-032: contador de drops/infusiones en «Todas las metas»', () => {
+  assert.match(SRC, /con drop o infusi/);
+  assert.match(SRC, /seed\.filter\(hasDrop\)\.length/);
+});
+
 test('filtros: onlyPinned deja solo las metas fijadas', () => {
   const now = at('2026-10-22T23:37:00Z');
   const inst = P.instanceAt(metas[0], now);

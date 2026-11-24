@@ -582,9 +582,10 @@
     var list = rows.filter(function (r) { return matches(r, filters); });
     var cnt = $('#mtCount', root);
     var withPreview = seed.filter(hasPreview).length;
+    var withDrop = seed.filter(hasDrop).length;
     if (cnt) {
       if (filters.onlyPinned) cnt.textContent = list.length + ' fijadas';
-      else cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa' : 'Mostrando ' + list.length + ' de ' + rows.length;
+      else cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa · ' + withDrop + ' con drop o infusión' : 'Mostrando ' + list.length + ' de ' + rows.length;
     }
     if (!list.length) {
       box.innerHTML = '<div class="mt-empty">Ninguna meta coincide con lo que elegiste. <button type="button" class="mt-link" data-mt-act="reset">Ver todas</button></div>';

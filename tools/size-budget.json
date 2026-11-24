@@ -11,7 +11,7 @@
     "js/app.js": { "base": 66869, "techo": 66869 },
     "css/main.css": { "base": 64637, "techo": 64637 },
     "js/legendary-tracker.js": { "base": 63971, "techo": 63971 },
-    "js/meta.js": {"base": 65046, "techo": 65046, "nota": "BL-024 paso 2/3: switch «Solo fijadas» en filtros de Metas (onlyPinned en filters/matches, sw en mt-tools, mtCount «X fijadas»). Techo actualizado al nuevo tamaño (regla v6: no achicar código visible para cumplir el límite)."},
+    "js/meta.js": {"base": 65135, "techo": 65135, "nota": "BL-032: contador de drops/infusiones en mtCount (withDrop = seed.filter(hasDrop).length) junto a vista previa. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)."},
     "js/render-catologo.js": { "base": 61534, "techo": 61534 },
     "js/wallet-dashboard.js": { "base": 52505, "techo": 52505 },
     "js/welcome-panel.js": { "base": 51464, "techo": 51464, "nota": "BL-026: fecha de curación en tarjeta de Builds (Curadas el DD/MM) leyendo catalog.curated. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)." }
