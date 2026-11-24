@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-023] [BAJO] Builds: fecha de curación del catálogo en la cabecera de la Biblioteca — mostrar «Curadas el DD/MM» junto al contador de builds, tomando catalog.curated, sin romper si falta. — 2026-11-24
-  Qué ve el jugador: en la Biblioteca de Builds ve la fecha de la última curación del catálogo, junto al total.
-
 ## IN_PROGRESS
 
 ## BLOCKED
@@ -17,6 +14,10 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-023] [BAJO] Builds: fecha de curación del catálogo en la cabecera de la Biblioteca — cerrada. «Curadas el DD/MM» (catalog.curated, formato DD/MM) en el contador de la Biblioteca (bld-lib.js viewHTML) y en la cabecera de Builds (bld-view.js statsHTML/nota), sin romper si falta. Test bld-lib adaptado (bench trailing incluye Curadas el 16/11). Review riesgo BAJO: aditivo, sin regresión. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
+  Qué ve el jugador: en la Biblioteca y la cabecera de Builds ve la fecha de la última curación del catálogo, junto al total.
+
+
 - [BL-022] [MEDIO] Welcome: cantidad de builds curadas en la tarjeta de Builds — fetch de assets/data/builds/catalog.json en welcome-panel (con fallback) y desc dinámico «N builds curadas» en la tarjeta de Builds; techo size-budget welcome-panel actualizado a 50757 B con motivo. Test welcome-view adaptado (2 fetches). Review riesgo BAJO: aditivo, sin regresión; fallback si el catálogo no carga. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
   Qué ve el jugador: la tarjeta de Builds dice cuántas builds curadas hay, en vez de texto fijo.
 

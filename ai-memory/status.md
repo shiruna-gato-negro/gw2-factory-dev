@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: (ninguna — BL-022 cerrada)
-Motivo: BL-022 paso 1/1 cerrado: cantidad de builds curadas en la tarjeta de Builds de la Bienvenida (fetch assets/data/builds/catalog.json con fallback, desc dinámico «N builds curadas», techo size-budget welcome-panel 50757 B con motivo). Test welcome-view adaptado (2 fetches). Suite completa en verde (0 fail, 6 skipped).
+Tarea actual: (ninguna — BL-023 cerrada)
+Motivo: BL-023 paso 1/1 cerrado: «Curadas el DD/MM» en el contador de la Biblioteca (bld-lib.js viewHTML) y en la cabecera de Builds (bld-view.js statsHTML), tomando catalog.curated, sin romper si falta. Suite completa en verde (0 fail, 6 skipped).
 Etapa actual: Review + Documentation (cierre)
-Inicio: 2026-11-24 11:00Z
-Última actualización: 2026-11-24 11:41Z
-Próxima acción: BL-023 paso 1/1 — plan + código de la fecha de curación del catálogo en la cabecera de la Biblioteca (tarea chica, 1 paso).
+Inicio: 2026-11-24 12:00Z
+Última actualización: 2026-11-24 12:04Z
+Próxima acción: READY vacía → explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas (máximo 10 en READY).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguna). READY: BL-023. DONE reciente: BL-022.
+- IN_PROGRESS: (ninguna). READY: (vacía). DONE reciente: BL-023.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
 - Suite actual: 1269 total, 1263 pass, 0 fail, 6 skipped.
 
@@ -53,6 +53,6 @@ Archivos:
 - BL-018 paso 2/3 cerrado: onlyPreview en matches()/filters + switch «Solo con vista previa» en la UI; hasPreview exportado; techo size-budget 64719 B con motivo. Suite 1256/1262 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 - BL-019 paso 1/1 cerrado: desglose «X vigentes · Y para revisar» en el contador de la Biblioteca (bld-lib.js viewHTML) + test de regresión bld-lib + review BAJO + docs/cierre. Suite 1261/1267 (6 skipped). BL-019 movida a DONE. READY vacía.
 
-- BL-022 paso 1/1 cerrado: cantidad de builds curadas en la tarjeta de Builds de la Bienvenida (fetch catalog.json con fallback, desc dinámico «N builds curadas», techo size-budget welcome-panel 50757 B con motivo). Test welcome-view adaptado (2 fetches). Suite completa en verde (0 fail, 6 skipped). BL-022 movida a DONE. READY: BL-023.
+- BL-023 paso 1/1 cerrado: «Curadas el DD/MM» en contador de la Biblioteca (bld-lib.js) y cabecera de Builds (bld-view.js), catalog.curated, sin romper si falta; test bld-lib adaptado; suite 1263/1269 (6 skipped). BL-023 movida a DONE. READY vacía.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

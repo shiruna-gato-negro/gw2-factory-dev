@@ -337,7 +337,7 @@ test('BENCH-1 «Más DPS primero»: de mayor a menor, las sin bench al final y e
   const h = P.viewHTML();
   assert.match(h, /role="group" aria-label="Orden"/);
   assert.match(h, /data-lib-p="sort" data-v="dps" aria-pressed="true">Más DPS primero/);
-  assert.match(h, / con bench de daño<\/p>/);
+  assert.match(h, / con bench de daño · Curadas el 16\/11<\/p>/);
   assert.match(h, /benchmarks de Snow Crows<\/a> \(DPS contra el golem/);
   const first = /data-id="([^"]+)"/.exec(h)[1];
   assert.equal(first, s[0].id, 'la primera tarjeta es la de más DPS');

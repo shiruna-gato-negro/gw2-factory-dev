@@ -82,6 +82,7 @@
     out.cov = L.coverage(cat.builds, latest, true);
     out.ok = L.coverage(cat.builds, latest);
     out.old = cat.builds.filter(function (b) { return L.stateOf(b, latest) === 'revisar'; }).length;
+    out.curated = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(cat.curated || '');
     return out;
   }
   // BL-013 UNI-4b/UNI-7b: íconos del juego en los 4 indicadores de la cabecera (GNKit); sin GNKit, nada cambia.
@@ -95,7 +96,7 @@
   function statsHTML(s) {
     var none = s.builds == null, n = function (x) { return x == null ? '—' : String(x); };
     var cov = none ? '—' : (s.cov.pve || 0) + ' <span>PvE</span> · ' + (s.cov.wvw || 0) + ' <span>WvW</span>';
-    return stat('Builds curadas', n(s.builds), none ? 'cargando la biblioteca…' : 'Snow Crows y MetaBattle, con crédito') +
+    return stat('Builds curadas', n(s.builds), none ? 'cargando la biblioteca…' : 'Snow Crows y MetaBattle, con crédito' + (s.curated ? ' · Curadas el ' + s.curated : '')) +
       stat('Élites cubiertas', cov, none ? 'de 36 por modo' : 'de 36 por modo' + (s.cov.pvp ? ' · PvP ' + s.cov.pvp + '/36' : '')) +
       stat('Para revisar', n(s.old), none ? 'según el último parche' : (s.old ? 'de un parche anterior al ' + fmtDate(s.latest) : 'todas al día con el ' + fmtDate(s.latest))) +
       stat('Mis builds', n(s.mine), 'en este navegador · viajan en tu respaldo');

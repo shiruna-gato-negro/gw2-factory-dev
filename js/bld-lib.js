@@ -227,8 +227,9 @@
       : '<p class="bld-shv" role="status">' + old + (old === 1 ? ' build dice' : ' builds dicen') + ' en su fuente que son de un parche anterior al último de balance (' + fmtDate(latest) +
       '). Las marco «para revisar»: sirven, pero conviene mirar la fuente. <small class="bld-muted">Lo sé por: la fecha que declara cada fuente</small></p>')
       : '<p class="bld-shv">Todas las builds están revisadas para el último parche de balance (' + fmtDate(latest) + '). <small class="bld-muted">Lo sé por: la biblioteca y la vigía semanal</small></p>';
+var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(st.cat.curated);
     return line + filtersHTML(st.cat, st.f) +
-      '<p class="bld-muted bld-count" aria-live="polite">' + list.length + ' de ' + st.cat.builds.length + ' builds · ' + (st.cat.builds.length - old) + ' vigentes · ' + old + ' para revisar · élites cubiertas: ' + ['pve', 'wvw', 'pvp'].filter(function (m) { return cov[m]; }).map(function (m) { return MODES[m] + ' ' + cov[m] + '/36' + (ok[m] !== cov[m] ? ' (' + (ok[m] || 0) + ' vigentes)' : ''); }).join(', ') + (nb ? ' · ' + nb + ' con bench de daño' : '') + '</p>' +
+      '<p class="bld-muted bld-count" aria-live="polite">' + list.length + ' de ' + st.cat.builds.length + ' builds · ' + (st.cat.builds.length - old) + ' vigentes · ' + old + ' para revisar · élites cubiertas: ' + ['pve', 'wvw', 'pvp'].filter(function (m) { return cov[m]; }).map(function (m) { return MODES[m] + ' ' + cov[m] + '/36' + (ok[m] !== cov[m] ? ' (' + (ok[m] || 0) + ' vigentes)' : ''); }).join(', ') + (nb ? ' · ' + nb + ' con bench de daño' : '') + (cd ? ' · Curadas el ' + cd : '') + '</p>' +
       (list.length ? listHTML(list, latest)
         : '<div class="bld-card bld-muted">Ninguna build con esos filtros. <button type="button" class="bld-btn" data-lib="clear">Sacar todos los filtros</button></div>') +
       '<p class="bld-muted"><small>Builds curadas por mí con datos de ' + (st.cat.sources || []).map(function (s) { return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>'; }).join(', ') +
@@ -303,7 +304,8 @@
     return preload().then(function () {
       st.loading = false;
       var latest = latestPatch(st.cat, st.watch), old = st.cat.builds.filter(function (b) { return stateOf(b, latest) === 'revisar'; }).length;
-      if (ctx.setSub) ctx.setSub(st.cat.builds.length + ' builds curadas · último parche de balance ' + fmtDate(latest) + (old ? ' · ' + old + ' para revisar' : ''));
+      var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(st.cat.curated);
+      if (ctx.setSub) ctx.setSub(st.cat.builds.length + ' builds curadas' + (cd ? ' · Curadas el ' + cd : '') + ' · último parche de balance ' + fmtDate(latest) + (old ? ' · ' + old + ' para revisar' : ''));
       paint(ctx);
     }, function (e) { st.loading = false; st.error = 'No pude cargar la biblioteca (' + (e && e.message || '') + ').'; paint(ctx); });
   }
