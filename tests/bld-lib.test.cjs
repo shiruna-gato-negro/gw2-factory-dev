@@ -20,7 +20,7 @@ const ELITES = { 1: [27, 62, 65, 81], 2: [18, 61, 68, 74], 3: [43, 57, 70, 75], 
 const SOURCES = /^https:\/\/(snowcrows\.com|metabattle\.com|hardstuck\.gg|guildjen\.com)\//;
 
 test('versiones en la cabecera', () => {
-  for (const [f, m, v] of [['bld-lib.js', L, '1.12.0'], ['bld-mine.js', M, '1.5.0']]) {
+  for (const [f, m, v] of [['bld-lib.js', L, '1.13.0'], ['bld-mine.js', M, '1.5.0']]) {
     assert.match(fs.readFileSync(path.join(ROOT, 'js', f), 'utf8'), new RegExp('Versión: ' + v.replace(/\./g, '\\.') + ' '), f);
     assert.equal(m.version, v, f);
   }
@@ -378,6 +378,23 @@ test('BENCH-1 «Más DPS primero»: de mayor a menor, las sin bench al final y e
   L._state.f.sort = '';
   L._state.bidx = P.benchIndex(null);
   assert.doesNotMatch(P.viewHTML(), /aria-label="Orden"/, 'sin bench no hay chip de orden');
+  L._state.bidx = idx;
+});
+
+test('BL-035 «Más fácil primero»: de menor a mayor dificultad; el chip aparece si hay bench', () => {
+  const idx = P.benchIndex(BENCH);
+  const s = P.sortBuilds(CAT.builds, 'difficulty', idx);
+  assert.equal(s.length, CAT.builds.length);
+  const d = s.map((b) => Number(b.difficulty) || 0);
+  for (let i = 1; i < d.length; i++) assert.ok(d[i - 1] <= d[i], 'ordenado en ' + i);
+  assert.equal(P.sortBuilds(CAT.builds, '', idx), CAT.builds, 'sin orden pedido no toca la lista');
+  Object.assign(L._state, { cat: CAT, watch: WATCH, bench: BENCH, bidx: idx, loading: false, error: '', open: '' });
+  L._state.f = Object.assign({}, L._state.f, { prof: 0, elite: 0, mode: '', role: '', sort: 'difficulty' });
+  const h = P.viewHTML();
+  assert.match(h, /role="group" aria-label="Orden"/);
+  assert.match(h, /data-lib-p="sort" data-v="difficulty" aria-pressed="true">Más fácil primero/);
+  L._state.f.sort = '';
+  L._state.bidx = P.benchIndex(null);
   L._state.bidx = idx;
 });
 

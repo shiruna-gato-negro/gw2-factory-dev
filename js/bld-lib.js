@@ -1,6 +1,6 @@
 /*!
  * js/bld-lib.js — Builds: pestaña Biblioteca (BL-082 BLD-7, BLD-8, BLD-10 y BLD-15: A1–A6, C2, D4)
- * Versión: 1.12.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
+ * Versión: 1.13.0 (2026-10-30) · BL-035: orden «Más fácil primero» en la Biblioteca (de menor a mayor dificultad) junto a «Más DPS primero»
  *          plano) y los filtros en una sola barra con la búsqueda; cada fila es un enlace a su ficha · antes 1.8.0 (2026-10-30) · EQ-3: «Ver ficha» y tocar la tarjeta abren la ficha en su pantalla (#/builds/ver/<id>,
  *          js/bld-sheet.js); al volver, la Biblioteca sigue igual y el foco vuelve a esa build; list() da lo que se ve
  *          · antes 1.7.0 (2026-10-29) · BENCH-2: sin bench exacto, la build de PvE que hace daño muestra la «Referencia» medida más
@@ -27,7 +27,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.12.0';
+  var VERSION = '1.13.0';
   var CATALOG = 'assets/data/builds/catalog.json';
   var WATCH = 'assets/data/builds/watch.json';
   var BENCH = 'assets/data/builds/bench.json';
@@ -36,7 +36,7 @@
   var SUB = { raids: 'raids y strikes', fractals: 'fractales', 'open-world': 'mundo abierto', accessibuilds: 'accesible', roaming: 'roaming', zerg: 'zerg', conquest: 'conquista' };
   var ROLES = { dps: 'DPS', quickness: 'Celeridad', alacrity: 'Alacridad', heal: 'Curación', support: 'Apoyo', boon: 'Bendiciones', cc: 'Control' };
   var DAMAGE = { power: 'Poder', condition: 'Condición', hybrid: 'Híbrido' };
-  var SORT = { '': 'Por profesión', dps: 'Más DPS primero' };
+  var SORT = { '': 'Por profesión', dps: 'Más DPS primero', difficulty: 'Más fácil primero' };
   var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: '', onlyBench: false, onlyVigentes: false },
     open: '', more: false, views: {}, checks: {}, viewErr: {} };
 
@@ -104,10 +104,15 @@
   function benchOf(b, idx) { return idx && b && b.mode === 'pve' && b.source && b.source.name === 'Snow Crows' ? idx.rows[benchKey(b.source.url)] || null : null; }
   function fmtN(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
   // «Más DPS primero»: las que tienen bench, de mayor a menor; después el resto en el orden de la biblioteca.
+  // «Más fácil primero»: de menor a mayor dificultad (1..5); las sin dificultad al final en su orden.
   function sortBuilds(list, sort, idx) {
-    if (sort !== 'dps') return list;
-    return list.map(function (b, i) { var m = benchOf(b, idx); return { b: b, i: i, v: m ? m.max : -1 }; })
+    if (sort === 'dps') return list.map(function (b, i) { var m = benchOf(b, idx); return { b: b, i: i, v: m ? m.max : -1 }; })
       .sort(function (x, y) { return y.v - x.v || x.i - y.i; }).map(function (x) { return x.b; });
+    if (sort === 'difficulty' || sort === 'easy' || sort === 'easyfirst') {
+      return list.map(function (b, i) { return { b: b, i: i, v: Number(b.difficulty) || 0 }; })
+        .sort(function (x, y) { return x.v - y.v || x.i - y.i; }).map(function (x) { return x.b; });
+    }
+    return list;
   }
   function benchHTML(b, idx) {
     var m = benchOf(b, idx);
@@ -221,7 +226,7 @@
   // EQ-3b: con js/bld-rows.js, filas agrupadas por profesión y élite (planas con «Más DPS primero»); sin él, las tarjetas.
   function listHTML(list, latest) {
     var R = root.GNBldRows;
-    if (R && typeof R.listHTML === 'function' && !st.open) return R.listHTML(list, { lib: api._pure, latest: latest, idx: st.bidx, flat: st.f.sort === 'dps' });
+    if (R && typeof R.listHTML === 'function' && !st.open) return R.listHTML(list, { lib: api._pure, latest: latest, idx: st.bidx, flat: st.f.sort === 'dps' || st.f.sort === 'difficulty' });
     return '<ul class="bld-lib">' + list.map(function (b) { return cardHTML(b, latest); }).join('') + '</ul>';
   }
   function viewHTML() {
