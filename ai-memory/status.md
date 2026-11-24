@@ -1,19 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: (ninguna) — BL-032 cerrada (paso 1/1).
-Motivo: BL-032 completada: mtCount ahora muestra «X metas · Y con vista previa · Z con drop o infusión» (Z = seed.filter(hasDrop).length); techo size-budget meta.js 65046 → 65135 B con motivo. Test de regresión meta-view. Suite 1214/1220 (6 skipped). Review riesgo BAJO.
+Tarea actual: (ninguna) — BL-033 cerrada (paso 1/1).
+Motivo: BL-033 completada: filtro por dificultad (chips 1-5) en «Más filtros» de la Biblioteca (bld-lib.js 1.10.0 → 1.11.0); tests bld-lib 19/22 (3 skipped). Review riesgo BAJO. READY queda BL-034 y BL-035.
 Etapa actual: Documentation (cierre)
 Inicio: —
-Última actualización: 2026-11-24 20:10Z
-Próxima acción: tomar BL-033 (paso 1 plan) en el próximo ciclo.
+Última actualización: 2026-11-24 20:48Z
+Próxima acción: tomar BL-034 (paso 1 plan) en el próximo ciclo.
 
 Archivos:
-- ai-memory/backlog.md
-- ai-memory/status.md
-- js/meta.js
-- tools/size-budget.json
-- tests/meta-view.test.cjs
+- js/bld-lib.js
+- tests/bld-lib.test.cjs
+- js/modules.json
 
 ## Esperando a Pablo
 
@@ -21,10 +19,10 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-033. BLOCKED: (vacío).
-- Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1220 total, 1214 pass, 0 fail, 6 skipped.
+- IN_PROGRESS: (vacío). READY: BL-034, BL-035. BLOCKED: (vacío).
+- Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Suite actual: 1232 total, 1223 pass, 3 fail (smoke notes-refs, preexistentes), 6 skipped.
 
 ## Resumen de la sesión
 
-- BL-032 paso 1/1 cerrado: contador de drops/infusiones en «Todas las metas» (mtCount suma seed.filter(hasDrop).length) junto a vista previa. Techo size-budget meta.js 65046 → 65135 B. Suite 1214/1220 (6 skipped). READY queda BL-033.
+- BL-033 paso 1/1 cerrado: filtro por dificultad en «Más filtros» (chips 1-5, difficulty en filter/moreCount/clearFilters) + test de regresión. Versión bld-lib 1.10.0 → 1.11.0. Suite 1223/1232 (3 fail preexistentes). READY ahora BL-034 y BL-035.

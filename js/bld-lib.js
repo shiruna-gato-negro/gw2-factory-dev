@@ -1,6 +1,6 @@
 /*!
  * js/bld-lib.js — Builds: pestaña Biblioteca (BL-082 BLD-7, BLD-8, BLD-10 y BLD-15: A1–A6, C2, D4)
- * Versión: 1.10.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
+ * Versión: 1.11.0 (2026-10-30) · EQ-3b: la lista en filas agrupadas por profesión y élite (js/bld-rows.js; «Más DPS primero»
  *          plano) y los filtros en una sola barra con la búsqueda; cada fila es un enlace a su ficha · antes 1.8.0 (2026-10-30) · EQ-3: «Ver ficha» y tocar la tarjeta abren la ficha en su pantalla (#/builds/ver/<id>,
  *          js/bld-sheet.js); al volver, la Biblioteca sigue igual y el foco vuelve a esa build; list() da lo que se ve
  *          · antes 1.7.0 (2026-10-29) · BENCH-2: sin bench exacto, la build de PvE que hace daño muestra la «Referencia» medida más
@@ -27,7 +27,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.10.0';
+  var VERSION = '1.11.0';
   var CATALOG = 'assets/data/builds/catalog.json';
   var WATCH = 'assets/data/builds/watch.json';
   var BENCH = 'assets/data/builds/bench.json';
@@ -37,7 +37,7 @@
   var ROLES = { dps: 'DPS', quickness: 'Celeridad', alacrity: 'Alacridad', heal: 'Curación', support: 'Apoyo', boon: 'Bendiciones', cc: 'Control' };
   var DAMAGE = { power: 'Poder', condition: 'Condición', hybrid: 'Híbrido' };
   var SORT = { '': 'Por profesión', dps: 'Más DPS primero' };
-  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '', onlyBench: false, onlyVigentes: false },
+  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: '', onlyBench: false, onlyVigentes: false },
     open: '', more: false, views: {}, checks: {}, viewErr: {} };
 
   function esc(s) { return root.GNBldShow ? root.GNBldShow.esc(s) : String(s == null ? '' : s); }
@@ -64,6 +64,7 @@
       if (f.weapon && (b.weapons || []).indexOf(f.weapon) < 0) return false;
       if (f.damage && b.damage !== f.damage) return false;
       if (f.state && stateOf(b, latest) !== f.state) return false;
+      if (f.difficulty && Number(b.difficulty) !== Number(f.difficulty)) return false;
       if (q && (b.name + ' ' + (b.eliteName || '')).toLowerCase().indexOf(q) < 0) return false;
       if (f.onlyBench) {
         var _idx = (f && (f.benchIndex || f.idx || f.bidx)) || st.bidx;
@@ -126,7 +127,7 @@
   }
   function fmtDate(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] + '/' + m[1] : (iso || '—'); }
   // Cuántos filtros de «Más filtros» están puestos (para mostrarlo en el botón y abrirlo solo).
-  function moreCount(f) { return ['weapon', 'damage', 'state'].filter(function (k) { return f[k]; }).length; }
+  function moreCount(f) { return ['weapon', 'damage', 'state', 'difficulty'].filter(function (k) { return f[k]; }).length; }
 
   // ---------------------------------------------------------------- vista
   function chips(label, key, map, cur) {
@@ -171,6 +172,7 @@
       wopts.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (o[0] === f.weapon ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join('') + '</select></label>' +
       '<div class="bld-f"><small>Daño</small>' + chips('Daño', 'damage', DAMAGE, f.damage) + '</div>' +
       '<div class="bld-f"><small>Vigencia</small>' + chips('Vigencia', 'state', { vigente: 'Vigentes', revisar: 'Para revisar' }, f.state) + '</div>' +
+      '<div class="bld-f"><small>Dificultad</small>' + chips('Dificultad', 'difficulty', { 1: '1', 2: '2', 3: '3', 4: '4', 5: '5' }, f.difficulty) + '</div>' +
       (n || f.q || f.prof || f.mode || f.role ? '<button type="button" class="bld-btn" data-lib="clear">Sacar todos los filtros</button>' : '') +
       '</div></details>';
   }
@@ -384,7 +386,7 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     if (x.focus) x.focus({ preventScroll: true });
     return true;
   }
-  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: st.f.sort || '', onlyBench: false, onlyVigentes: false }; st.more = false; }
+  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: st.f.sort || '', onlyBench: false, onlyVigentes: false }; st.more = false; }
 
   // Un clic: devuelve qué hizo (para los tests). La tarjeta se abre tocándola, salvo en botones, enlaces y el menú.
   function onClick(ctx, e) {
@@ -459,7 +461,7 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
   }
 
   var api = { version: VERSION, render: render, preload: preload, list: list, byId: byId, remember: remember, _pure: { focusBack: focusBack, filter: filter, stateOf: stateOf, latestPatch: latestPatch, coverage: coverage, issueUrl: issueUrl, cardHTML: cardHTML, viewHTML: viewHTML,
-    filtersHTML: filtersHTML, moreCount: moreCount, onClick: onClick, MODES: MODES, ROLES: ROLES, SUB: SUB, DAMAGE: DAMAGE, SORT: SORT, listHTML: listHTML, CSS: CSS,
+    filtersHTML: filtersHTML, moreCount: moreCount, onClick: onClick, clearFilters: clearFilters, MODES: MODES, ROLES: ROLES, SUB: SUB, DAMAGE: DAMAGE, SORT: SORT, listHTML: listHTML, CSS: CSS,
     benchKey: benchKey, benchIndex: benchIndex, benchOf: benchOf, benchHTML: benchHTML, sortBuilds: sortBuilds, fmtN: fmtN }, _state: st };
   root.GNBldLib = api;
   if (root.GNBld && typeof root.GNBld.register === 'function') root.GNBld.register('lib', api);
