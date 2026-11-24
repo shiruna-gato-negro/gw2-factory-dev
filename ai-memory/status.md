@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna en curso; READY vacía)
-Motivo: BL-014 cerrada: vistas previas de Chak (chak_gerent.webp, 841 KB, 50 frames) y Dragon's End (dragons_end.webp, 49 KB) conectadas en meta-drops.json; 10/0 previews; review riesgo BAJO; suite 1256/1262 (6 skipped). READY quedó vacía.
-Etapa actual: —
-Inicio: 2026-11-24 03:01Z
-Última actualización: 2026-11-24 03:01Z
-Próxima acción: Explorar La Bóveda como jugadora y proponer 1-3 tareas nuevas en READY (READY vacía).
+Estado: EN CURSO
+Tarea actual: BL-015 paso 1/3 — plan
+Motivo: READY vacía → exploré La Bóveda y propuse 3 tareas (BL-015, BL-016, BL-017); tomé BL-015 por turno.
+Etapa actual: Product (plan)
+Inicio: 2026-11-24 03:36Z
+Última actualización: 2026-11-24 03:36Z
+Próxima acción: BL-015 paso 2/3 — código: agregar builds a MODULES en welcome-panel.js, quitar EXTRA en sidebar-nav.js, adaptar tests.
 
 Archivos:
 - ai-memory/status.md
@@ -18,6 +18,7 @@ Archivos:
 
 ## Para tu información
 
+- Exploración La Bóveda: READY vacía → propuse BL-015 (Builds en Bienvenida), BL-016 (novedades), BL-017 (miniatura en Metas). Tomé BL-015; paso 1/3 plan. Suite 1255/1261 (6 skipped).
 - BL-014 cerrada: vistas previas de Chak y Dragon's End en Metas (chak_gerent.webp 841 KB animado + dragons_end.webp 49 KB, conectados en meta-drops.json, 0 previewMissing); test meta-view 10/0; review BAJO; suite 1256/1262 (6 skipped).
 - BL-013 cerrada: íconos en cabecera y pestañas de Builds (UNI-4b/UNI-7b); claves stat.bld.* + tab.bld.*; guardia en gn-kit-icons; suite 1193/1199 (6 skipped). BL-014 cerrada.
 - BL-002 cerrada: app-checks (4/4), builds-watch (4/4), legacy-tests (5/5) adaptados; guardias en verde; review BAJO; suite 1253/1261 (8 skipped). RSK-002 MITIGADO.
@@ -46,5 +47,7 @@ Archivos:
 - BL-014 paso 1/3 cerrado: plan escrito en backlog.md (3 pasos). Suite 1193/1199 (6 skipped). Commit `BL-014 paso 1/3 — plan — tests 1193/1199 (6 skipped)`.
 
 - BL-014 paso 3/3 cerrado: review riesgo BAJO + docs/cierre. Vistas previas Chak y Dragon's End conectadas; meta-view 10/0; suite 1256/1262 (6 skipped); BL-014 movida a DONE. READY vacía → próxima acción: explorar La Bóveda.
+
+- BL-015 paso 1/3 cerrado: exploración + propuesta de 3 tareas (BL-015/016/017) y plan de BL-015 (Builds en Bienvenida). Suite 1255/1261 (6 skipped). Commit `BL-015 paso 1/3 — plan — tests 1255/1261 (6 skipped)`.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

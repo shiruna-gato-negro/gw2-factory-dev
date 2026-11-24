@@ -3,8 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-016] [BAJO] Actualizar novedades de la Bienvenida con BL-013 y BL-014 — welcome-news.json: 2 entradas nuevas (2026-11-24) para builds (íconos en cabecera y pestañas) y meta (vistas previas de Chak y Dragon's End); test pickNews adaptado. Qué ve el jugador: en «Novedades de la Bóveda» aparecen las mejoras recientes con la etiqueta NUEVO. — 2026-11-24
+- [BL-017] [MEDIO] En Metas, mostrar la vista previa de la infusión en miniatura en la tarjeta — meta.js dropHTML + CSS; reutiliza previewOf y assets/previews/. Qué ve el jugador: en cada tarjeta de meta con drop, una miniatura visible de la infusión sin pasar el mouse, con «Sin vista previa» cuando falta. — 2026-11-24
 
 ## IN_PROGRESS
+- [BL-015] [MEDIO] Incorporar Builds a la lista de módulos de la Bienvenida — pasos: 1/3 plan (este ciclo); 2/3 código: agregar {id:'builds', ... free:true} a MODULES en welcome-panel.js y quitar EXTRA en sidebar-nav.js (unificar listas) + adaptar tests welcome-view (11 módulos) y sidebar-nav (Builds en MODULES, sin EXTRA); 3/3 test de regresión + review BAJO + docs/cierre. — 2026-11-24
+  Qué ve el jugador: una tarjeta «Builds» en «¿Qué puedo hacer aquí?» de la Bienvenida, con el mismo ícono (156720) y descripción que en la barra lateral, que lleva a #/builds.
 
 ## BLOCKED
 
