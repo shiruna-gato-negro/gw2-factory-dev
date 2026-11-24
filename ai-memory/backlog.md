@@ -12,12 +12,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-024] [BAJO] Metas: switch «Solo fijadas» en la barra de filtros — IN_PROGRESS paso 2/3 (código). — 2026-11-24
-  Qué ve el jugador: en Metas, un switch «Solo fijadas» que muestra únicamente las metas que marcó como favoritas.
-  Pasos:
-  1. Plan (cerrado): agregar `onlyPinned` al objeto filters (init + 2 resets); en matches() devolver false si onlyPinned && !row.pin; switch sw('onlyPinned', 'Solo fijadas') en el mt-tools; mtCount mostrar "X fijadas" cuando activo; isTracked NO aplica (fijadas = favs/pin). Adaptar test meta-view (BL-018/BL-020 estilo).
-  2. Código (cerrado): implementado y test de regresión. Techo size-budget meta.js 65046 B con motivo.
-  3. Review + docs/cierre (pendiente).
+(vacío)
 
 ## BLOCKED
 
@@ -27,6 +22,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-024] [BAJO] Metas: switch «Solo fijadas» en la barra de filtros — cerrada. onlyPinned en filters/matches (fijadas = favs/pin); switch sw('onlyPinned', 'Solo fijadas') en mt-tools; mtCount muestra «X fijadas» cuando activo; resets (goTo/renderAll) incluyen onlyPinned. Test de regresión (matches filtra solo fijadas + switch en UI). Techo size-budget meta.js 65046 B con motivo. Review riesgo BAJO: aditivo, sigue el patrón de onlyPreview (BL-018), sin regresión. Suite 1266/1272 (6 skipped). — 2026-11-24
+  Qué ve el jugador: en Metas, un switch «Solo fijadas» que muestra únicamente las metas que marcó como favoritas.
+
 - [BL-023] [BAJO] Builds: fecha de curación del catálogo en la cabecera de la Biblioteca — cerrada. «Curadas el DD/MM» (catalog.curated, formato DD/MM) en el contador de la Biblioteca (bld-lib.js viewHTML) y en la cabecera de Builds (bld-view.js statsHTML/nota), sin romper si falta. Test bld-lib adaptado (bench trailing incluye Curadas el 16/11). Review riesgo BAJO: aditivo, sin regresión. Suite completa en verde (0 fail, 6 skipped). — 2026-11-24
   Qué ve el jugador: en la Biblioteca y la cabecera de Builds ve la fecha de la última curación del catálogo, junto al total.
 
