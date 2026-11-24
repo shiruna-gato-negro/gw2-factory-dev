@@ -312,7 +312,36 @@ test('EQ-9a: «Copiar AE2 (Alter Ego)» con el equipo real de la ficha', async (
   delete globalThis.GNBldLib;
 });
 
-// EQ-3b: la ficha de Mis builds (#/builds/ver/m:<id>).
+test('BL-028: enlace Ver mas builds de esta profesion vuelve a la Biblioteca filtrada por esa profesion', () => {
+  const b = CAT.builds.find((x) => x.prof);
+  const L = [CAT.builds[0], b, CAT.builds[2]];
+  globalThis.GNBldLib = fakeLib(L);
+  const h = P.sheetHTML({ b, nav: P.navOf(L, b.id), latest: '2026-09-29', gear: null });
+  assert.match(h, /Ver más builds de esta profesión/);
+  assert.match(h, /data-sheet="moreprof"/);
+  SH._state.id = b.id;
+  const lib = globalThis.GNBldLib;
+  lib._state.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', q: '', sort: '' };
+  const went = [];
+  const ctx = { go: (t, a) => went.push(t + (a ? ':' + a : '')), toast() {} };
+  assert.equal(P.onClick(ctx, { target: el({ 'data-sheet': 'moreprof' }) }), 'moreprof');
+  assert.equal(lib._state.f.prof, b.prof);
+  assert.equal(lib._state.f.elite, 0);
+  assert.deepEqual(went, ['lib']);
+  delete globalThis.GNBldLib;
+});
+
+test('BL-029: Mis builds muestra un solo boton Ver mas builds de esta elite', () => {
+  const src = CAT.builds.find((x) => x.elite && x.prof);
+  globalThis.GNBldLib = fakeLib(CAT.builds);
+  globalThis.GNBldMine = { _pure: { baseOf: (x) => CAT.builds.find((b) => b.code === x.code) || null, eliteOf: () => src.elite }, remember() {} };
+  globalThis.GNBldStore = fakeStore([{ id: 'a1', code: src.code, title: 'Mi build', profession: src.prof, updated: 0 }]);
+  const b = P.mineB('a1');
+  const h = P.sheetHTML({ b, nav: P.navOf(P.listFor('m:a1'), 'm:a1'), gear: undefined });
+  assert.equal((h.match(/Ver más builds de esta élite/g) || []).length, 1);
+  assert.match(h, /data-sheet="moreelite"/);
+  delete globalThis.GNBldLib; delete globalThis.GNBldMine; delete globalThis.GNBldStore;
+});
 function fakeStore(items) {
   const xs = items.map((x) => Object.assign({}, x));
   const log = [];

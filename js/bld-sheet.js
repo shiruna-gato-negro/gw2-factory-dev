@@ -149,9 +149,8 @@
       '<button type="button" class="bld-btn" data-sheet="edit">Editar en el Editor</button>' + ae2BtnHTML(m) +
       '<button type="button" class="bld-btn" data-sheet="dup">Duplicar</button>' +
       '<button type="button" class="bld-btn" data-sheet="del">Borrar…</button>' +
-      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' +
-        '<button type="button" class="bld-btn" data-sheet="elite">Ver más builds de esta élite</button>' +
-        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') + '</div>' + ask +
+      (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' : '') +
+      (b.prof ? '<button type="button" class="bld-btn" data-sheet="moreprof">Ver más builds de esta profesión</button>' : '') + '</div>' + ask +
       MINE_SECTIONS.map(function (s) { return sectionHTML(s[0], s[1], body[s[0]]); }).join('') +
       '</article>';
   }
@@ -183,7 +182,8 @@
       (issue ? '<a class="bld-btn" href="' + esc(issue) + '" target="_blank" rel="noopener" title="Abre un aviso en GitHub ya escrito">Avisar que está vieja ↗</a>' : '') +
       (b.elite ? '<button type="button" class="bld-btn" data-sheet="moreelite">Ver más builds de esta élite</button>' +
         '<button type="button" class="bld-btn" data-sheet="elite">Ver más builds de esta élite</button>' +
-        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') + '</div>' +
+        '<button type="button" class="bld-btn" data-sheet="more">Ver más builds de esta élite</button>' : '') +
+      (b.prof ? '<button type="button" class="bld-btn" data-sheet="moreprof">Ver más builds de esta profesión</button>' : '') + '</div>' +
       SECTIONS.map(function (s) { return sectionHTML(s[0], s[1], body[s[0]]); }).join('') +
       '<p class="bld-muted"><small>Datos de la build: ' + (b.source ? esc(b.source.name) : 'la Biblioteca') + ' (élite, armas, equipo, código y fecha). Nombres, íconos y descripciones: API oficial de Guild Wars 2, en castellano.</small></p>' +
       '</article>';
@@ -315,6 +315,21 @@
       if (Lme && typeof Lme.list === 'function' && Lme && typeof Lme.remember === 'function') {
         var lme = Lme.list();
         if (lme && lme.length) Lme.remember(lme[0].id);
+      }
+      ctx.go('lib');
+      return k;
+    }
+    var MORE_PROF_KEYS = { moreprof: 1, 'more-prof': 1, 'more-profession': 1, prof: 1, profession: 1, moreprofession: 1, 'more-profession-builds': 1 };
+    if (MORE_PROF_KEYS[k]) {
+      var bmp = current();
+      var Lmp = Lib();
+      if (bmp && Lmp && Lmp._state && Lmp._state.f) {
+        Lmp._state.f.prof = bmp.prof || 0;
+        Lmp._state.f.elite = 0;
+      }
+      if (Lmp && typeof Lmp.list === 'function' && Lmp && typeof Lmp.remember === 'function') {
+        var lmp = Lmp.list();
+        if (lmp && lmp.length) Lmp.remember(lmp[0].id);
       }
       ctx.go('lib');
       return k;
