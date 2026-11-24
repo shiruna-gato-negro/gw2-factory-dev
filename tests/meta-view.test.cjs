@@ -157,6 +157,25 @@ test('BL-020: contador de vistas previas en «Todas las metas»', () => {
   assert.match(SRC, /seed\.filter\(hasPreview\)\.length/);
 });
 
+test('filtros: onlyPinned deja solo las metas fijadas', () => {
+  const now = at('2026-10-22T23:37:00Z');
+  const inst = P.instanceAt(metas[0], now);
+  const rows = [
+    { meta: { name: 'A', type: 'meta', expansion: 'Core' }, inst, done: null, pin: true },
+    { meta: { name: 'B', type: 'meta', expansion: 'Core' }, inst, done: null, pin: false },
+    { meta: { name: 'C', type: 'meta', expansion: 'Core' }, inst, done: null, pin: false },
+  ];
+  const base = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyPinned: false }))).length, 3);
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyPinned: true }))).length, 1);
+});
+
+test('BL-024: switch «Solo fijadas» en la UI y onlyPinned en filtros', () => {
+  assert.match(SRC, /sw\('onlyPinned', 'Solo fijadas'\)/);
+  assert.match(SRC, /onlyPinned: false/);
+  assert.match(SRC, /fijadas/);
+});
+
 test('tipos y expansiones salen de los datos (sin «Fractal» vacío) y suman 49', () => {
   const t = P.typeCounts(metas);
   assert.equal(t.reduce((n, x) => n + x.n, 0), 49);

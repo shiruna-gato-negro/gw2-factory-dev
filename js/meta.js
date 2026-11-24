@@ -195,6 +195,7 @@
       var extPv = Array.isArray(m._extItems) ? m._extItems[0] : null;
       if (previewOf(extPv).state !== 'ok') return false;
     }
+    if (f.onlyPinned && !row.pin) return false;
     return true;
   }
 
@@ -244,7 +245,7 @@
   var rows = [];
   var openIds = new Set();
   var wpOverride = {};
-  var filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
+  var filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false, onlyPinned: false };
   var flags = { state: 'none', worldbosses: new Set(), mapchests: new Set(), lastTs: 0, lastHuman: '—' };
   var _flagsSeq = 0, _flagsAbort = null;
   var root = null, tickT = null, midnightT = null, qT = null, inited = false;
@@ -581,7 +582,10 @@
     var list = rows.filter(function (r) { return matches(r, filters); });
     var cnt = $('#mtCount', root);
     var withPreview = seed.filter(hasPreview).length;
-    if (cnt) cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa' : 'Mostrando ' + list.length + ' de ' + rows.length;
+    if (cnt) {
+      if (filters.onlyPinned) cnt.textContent = list.length + ' fijadas';
+      else cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa' : 'Mostrando ' + list.length + ' de ' + rows.length;
+    }
     if (!list.length) {
       box.innerHTML = '<div class="mt-empty">Ninguna meta coincide con lo que elegiste. <button type="button" class="mt-link" data-mt-act="reset">Ver todas</button></div>';
       return;
@@ -678,7 +682,7 @@
   function goTo(id) {
     var card = $('#mt-card-' + id, root);
     if (!card) {
-      filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
+      filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false, onlyPinned: false };
       var q = $('#mtQ', root); if (q) q.value = '';
       renderAll(); card = $('#mt-card-' + id, root);
     }
@@ -787,7 +791,7 @@
       }
       else if (act === 'flags') window.Meta.refresh({ token: token(), nocache: true });
       else if (act === 'reset') {
-        filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false };
+        filters = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyDrop: false, onlyPreview: false, onlyPinned: false };
         var q = $('#mtQ', root); if (q) q.value = '';
         renderFilters(); renderCatalog();
       }
@@ -936,7 +940,7 @@
         '<div class="mt-seg" role="group" aria-label="Mostrar">' + when('all', 'Todas') + when('hour', 'Próxima hora') + when('pending', 'Pendientes hoy') + '</div></div>' +
         '<div id="mtTypes" class="mt-chips" role="group" aria-label="Tipo"></div>' +
         '<div id="mtExps" class="mt-chips" role="group" aria-label="Expansión"></div>' +
-        '<div class="mt-tools">' + sw('hideDone', 'Ocultar las hechas hoy') + sw('onlyDrop', 'Solo con infusión o drop') + sw('onlyPreview', 'Solo con vista previa') + '</div>' +
+        '<div class="mt-tools">' + sw('hideDone', 'Ocultar las hechas hoy') + sw('onlyDrop', 'Solo con infusión o drop') + sw('onlyPreview', 'Solo con vista previa') + sw('onlyPinned', 'Solo fijadas') + '</div>' +
         '<div id="mtCount" class="mt-count" aria-live="polite"></div><div id="mtAll"></div>' +
       '</section>';
   }

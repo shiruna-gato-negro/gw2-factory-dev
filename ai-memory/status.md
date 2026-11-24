@@ -1,16 +1,17 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: (ninguna — BL-023 cerrada)
-Motivo: BL-023 paso 1/1 cerrado: «Curadas el DD/MM» en el contador de la Biblioteca (bld-lib.js viewHTML) y en la cabecera de Builds (bld-view.js statsHTML), tomando catalog.curated, sin romper si falta. Suite completa en verde (0 fail, 6 skipped).
-Etapa actual: Review + Documentation (cierre)
-Inicio: 2026-11-24 12:00Z
-Última actualización: 2026-11-24 12:04Z
-Próxima acción: READY vacía → explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas (máximo 10 en READY).
+Estado: EN CURSO
+Tarea actual: BL-024 paso 3/3 pendiente (Review + docs/cierre)
+Motivo: BL-024 paso 2/3 cerrado: implementado onlyPinned en meta.js (filters, matches, sw «Solo fijadas», mtCount «X fijadas») + test de regresión en meta-view; techo size-budget meta.js actualizado a 65046 B con motivo. Suite 1265/1271 (6 skipped, 0 fail).
+Etapa actual: Review (paso 3/3)
+Inicio: 2026-11-24 13:30Z
+Última actualización: 2026-11-24 14:05Z
+Próxima acción: review riesgo + docs/cierre; mover BL-024 a DONE; si no hay IN_PROGRESS, explorar La Bóveda y proponer tareas.
 
 Archivos:
 - ai-memory/backlog.md
 - ai-memory/status.md
+- js/meta.js (pendiente)
 
 ## Esperando a Pablo
 
@@ -18,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguna). READY: (vacía). DONE reciente: BL-023.
+- IN_PROGRESS: BL-024 (paso 3/3 pendiente). READY: BL-025, BL-026.
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync.
-- Suite actual: 1269 total, 1263 pass, 0 fail, 6 skipped.
+- Suite actual: 1271 total, 1265 pass, 0 fail, 6 skipped.
 
 ## Resumen de la sesión
 
@@ -54,5 +55,7 @@ Archivos:
 - BL-019 paso 1/1 cerrado: desglose «X vigentes · Y para revisar» en el contador de la Biblioteca (bld-lib.js viewHTML) + test de regresión bld-lib + review BAJO + docs/cierre. Suite 1261/1267 (6 skipped). BL-019 movida a DONE. READY vacía.
 
 - BL-023 paso 1/1 cerrado: «Curadas el DD/MM» en contador de la Biblioteca (bld-lib.js) y cabecera de Builds (bld-view.js), catalog.curated, sin romper si falta; test bld-lib adaptado; suite 1263/1269 (6 skipped). BL-023 movida a DONE. READY vacía.
+
+- BL-024 paso 2/3 cerrado: onlyPinned en meta.js (filters, matches, sw «Solo fijadas», mtCount «X fijadas») + test de regresión meta-view; techo size-budget meta.js 65046 B con motivo. Suite 1265/1271 (6 skipped). IN_PROGRESS → paso 3/3 pendiente.
 
 Historial de S-1..S-5: S-1..S-3 preparados por Shiruvana y ejecutados por Pablo desde C:\shiruna\gw2-factory-dev; S-4 ejecutado por mi madre con el Centro de mando 3.1.0; S-5 con QwenPaw 2.3.0.post1 y Reflection Beam 1.0 vía Kilo (con cuenta), pruebas 1–3 superadas, F1 cerrada.

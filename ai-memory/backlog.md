@@ -4,7 +4,20 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-025] [BAJO] Inventario: total de tipos de materiales en la cabecera de Materiales — línea resumen arriba de los grupos («X tipos de materiales · en Y categorías») calculada sobre los grupos con cantidad > 0. — 2026-11-24
+  Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántos tipos de materiales tiene guardados y en cuántas categorías.
+
+- [BL-026] [BAJO] Welcome: fecha de curación en la tarjeta de Builds — la tarjeta de Builds muestra «N builds curadas · Curadas el DD/MM» leyendo catalog.curated del catálogo, sin romper si falta. — 2026-11-24
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuándo se curó el catálogo junto a la cantidad.
+
 ## IN_PROGRESS
+
+- [BL-024] [BAJO] Metas: switch «Solo fijadas» en la barra de filtros — IN_PROGRESS paso 2/3 (código). — 2026-11-24
+  Qué ve el jugador: en Metas, un switch «Solo fijadas» que muestra únicamente las metas que marcó como favoritas.
+  Pasos:
+  1. Plan (cerrado): agregar `onlyPinned` al objeto filters (init + 2 resets); en matches() devolver false si onlyPinned && !row.pin; switch sw('onlyPinned', 'Solo fijadas') en el mt-tools; mtCount mostrar "X fijadas" cuando activo; isTracked NO aplica (fijadas = favs/pin). Adaptar test meta-view (BL-018/BL-020 estilo).
+  2. Código (cerrado): implementado y test de regresión. Techo size-budget meta.js 65046 B con motivo.
+  3. Review + docs/cierre (pendiente).
 
 ## BLOCKED
 
