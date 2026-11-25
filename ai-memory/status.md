@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: (ninguna — BL-055 cerrada)
-Motivo: BL-055 cerrada: switch «Solo sin Key» en Mis cuentas (onlyNoKey + reset + tests). Suite 1238/1244 (6 skipped).
-Etapa actual: Documentation (cierre)
+Estado: EN CURSO
+Tarea actual: BL-056 paso 1/3 — plan (Welcome: actualizar novedades)
+Motivo: BL-056 tomada de READY; primer paso solo planificación, sin código.
+Etapa actual: Product/Architecture (plan)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 17:30Z
-Próxima acción: tomar BL-056 (Welcome: actualizar novedades) — Paso 1 plan.
+Última actualización: 2026-11-25 15:05Z
+Próxima acción: BL-056 paso 2/3 — añadir entradas en assets/welcome-news.json (10 entradas, 2026-11-25).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-056. BLOCKED: (vacío).
+- IN_PROGRESS: BL-056 (paso 1/3 plan). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1244 total, 1238 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 

@@ -3,10 +3,13 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — añadir entradas en assets/welcome-news.json (fechas 2026-11-25) para los indicadores nuevos en cabeceras (Builds, Actividades, Inventario, Heredad, Raids, Cuentas, Logros, Cámara del Brujo, Armería) y los switches de filtros (Builds, Metas, Inventario), siguiendo el formato DEC-032 (solo el módulo, sin horarios ni datos del juego); test pickNews adaptado (NUEVO en las entradas del 25/11). — 2026-11-25
-  Qué ve el jugador: en la Bienvenida, la tarjeta de Novedades muestra las mejoras recientes (indicadores y filtros nuevos) con la marca «NUEVO».
 
 ## IN_PROGRESS
+- [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — Paso 1/3 plan. Añadir entradas (fecha 2026-11-25) en assets/welcome-news.json para los módulos con mejoras recientes (indicadores nuevos en cabeceras: Builds, Actividades, Inventario, Heredad, Raids, Cuentas, Logros, Cámara del Brujo, Armería; switches de filtros: Builds, Metas, Inventario), una entrada por módulo agrupando indicador+switch, formato DEC-032 (solo el módulo, sin horarios ni datos del juego). Adaptar test pickNews (las 3 más nuevas del 25/11, NUEVO en las 3). Pasos:
+  1. Plan (este ciclo) — sin código.
+  2. Añadir entradas en welcome-news.json (10 entradas, 2026-11-25).
+  3. Adaptar test pickNews + correr suite completa + review + commit.
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Novedades muestra las mejoras recientes (indicadores y filtros nuevos) con la marca «NUEVO».
 
 ## BLOCKED
 
