@@ -200,11 +200,12 @@
   // cabecera: suma solo lo que se pudo leer y dice cuántas cuentas quedaron afuera
   function summary(cards) {
     var list = Array.isArray(cards) ? cards : [];
-    var s = { accounts: list.length, ap: 0, apFrom: 0, legendaries: 0, legFrom: 0, keysComplete: 0, keysKnown: 0, types: {} };
+    var s = { accounts: list.length, ap: 0, apFrom: 0, legendaries: 0, legFrom: 0, keysComplete: 0, keysKnown: 0, commanders: 0, commanderFrom: 0, types: {} };
     list.forEach(function (c) {
       if (c.ap && c.ap.state === 'ok') { s.ap += c.ap.value; s.apFrom++; }
       if (c.legendaries && c.legendaries.state === 'ok') { s.legendaries += c.legendaries.value; s.legFrom++; }
       if (c.keyComplete !== null && c.keyComplete !== undefined) { s.keysKnown++; if (c.keyComplete) s.keysComplete++; }
+      if (c.commander !== null && c.commander !== undefined) { s.commanderFrom++; if (c.commander) s.commanders++; }
       if (c.type) s.types[c.type] = (s.types[c.type] || 0) + 1;
     });
     return s;

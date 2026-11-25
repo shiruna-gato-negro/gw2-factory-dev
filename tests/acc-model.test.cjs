@@ -172,7 +172,7 @@ test('clanes, antigüedad y resumen de cabecera (suma solo lo leído)', () => {
     { ap: { state: 'noperm' }, legendaries: { state: 'nodata' }, keyComplete: false, type: 'alter' },
     { ap: { state: 'ok', value: 50 }, legendaries: { state: 'ok', value: 1 }, keyComplete: null, type: 'alter' }
   ]);
-  assert.deepEqual(s, { accounts: 3, ap: 150, apFrom: 2, legendaries: 4, legFrom: 2, keysComplete: 1, keysKnown: 2, types: { main: 1, alter: 2 } });
+  assert.deepEqual(s, { accounts: 3, ap: 150, apFrom: 2, legendaries: 4, legFrom: 2, keysComplete: 1, keysKnown: 2, commanders: 0, commanderFrom: 0, types: { main: 1, alter: 2 } });
 });
 
 test('íconos: los locales quedan, los oficiales llevan el servicio de imágenes', () => {

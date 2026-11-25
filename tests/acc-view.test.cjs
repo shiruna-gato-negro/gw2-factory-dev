@@ -152,7 +152,7 @@ test('tarjeta en pantalla: solo las expansiones que tenés con su ícono, un íc
   assert.match(P.cardHTML(J(P.deriveCard(raw({ mastery: null, account: Object.assign({}, ACC, { access: ['PlayForFree'] }) }), CAT, M, NOW)), CAT, M, ''), /<small>Cuenta gratuita<\/small>/);
 });
 
-test('vista: cabecera con 4 indicadores, pestañas Mis cuentas y Llavero, filtros y el estado vacío', () => {
+test('vista: cabecera con 5 indicadores, pestañas Mis cuentas y Llavero, filtros y el estado vacío', () => {
   const a = J(P.deriveCard(raw(), CAT, M, NOW)), b = J(P.deriveCard(raw({ fp: 'bbbb', tag: 'alter', tokeninfo: { permissions: ['account'] }, account: Object.assign({}, ACC, { name: 'Alt.9' }) }), CAT, M, NOW));
   const m = { cat: CAT, M, cards: [a, b], active: 'aaaa1111', activeName: 'Gato Negro.1234', ui: { tab: 'mine', type: 'all', q: '' }, loading: false, readAt: NOW - 120000, now: NOW };
   const h = P.viewHTML(m);

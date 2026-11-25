@@ -4,8 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-039] [BAJO] Cuentas: contador de comandantes en la cabecera — en statsHTML de acc-view.js sumar un 5º indicador «Comandante» con «X de Y cuentas son comandante» (sobre las cuentas cargadas, commander === true), «Sin datos» sin token o sin cargar; summary de acc-model.js agrega commanders/commanderFrom. — 2026-11-24
-  Qué ve el jugador: en la cabecera de Cuentas ve cuántas de sus cuentas son comandante, de un vistazo.
 - [BL-040] [BAJO] Cámara del Brujo: contador de objetivos especiales en la cabecera — en statsHTML de wv-view.js sumar un 5º indicador «Especiales» con «X de Y» (sobre counts.special, igual que Hoy y Esta semana), grid de .wvx-stats a 5 columnas. — 2026-11-24
   Qué ve el jugador: en la cabecera de la Cámara del Brujo ve cuántos objetivos especiales completó, además de los diarios y semanales.
 - [BL-041] [BAJO] Raids: contador de encuentros con modo desafío en la cabecera — en statsHTML de raids-view.js sumar un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados), grid de .rv-stats a 5 columnas. — 2026-11-24
@@ -21,6 +19,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-039] [BAJO] Cuentas: contador de comandantes en la cabecera — cerrada. statsHTML de acc-view.js ahora incluye un 5º indicador «Comandante» con «X de Y cuentas son comandante» (sobre las cuentas cargadas, commander === true), «Sin datos» sin token o sin cargar; summary de acc-model.js agrega commanders/commanderFrom. Grid de .cv-stats pasado a 5 columnas. Review riesgo BAJO: aditivo, sin regresión. Suite 1217/1223 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la cabecera de Cuentas ve cuántas de sus cuentas son comandante, de un vistazo.
 - [BL-038] [BAJO] Logros: contador de logros completados en la cabecera — cerrada. statsHTML de ach-view.js ahora incluye un 5º indicador «Logros completos» con «X de Y logros completos» (sobre los logros cargados de la cuenta, completos = pct ≥ 1); sin datos (sin token o sin cargar) muestra «Sin datos». buildModel calcula completed/total a partir de snap.acc y snap.metaById. Grid de .achx-stats pasado a 5 columnas. Review riesgo BAJO: aditivo, sin regresión. Suite 1217/1223 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la cabecera de Logros ve cuántos logros tiene completos del total cargado, además de los puntos de logro.
 - [BL-037] [BAJO] Inventario: contador de espacios ocupados por pestaña en el Banco — cerrada. bankHTML ahora usa denominador fijo de 30 espacios por pestaña («X de 30 ocupados») y trata banco vacío/null como «Sin datos» (early return). Test de regresión BL-037 agregado en tests/inv-view.test.cjs (per-tab 30 + null/empty → Sin datos). Review riesgo BAJO: aditivo, sin regresión. Suite 1218/1224 (6 skipped). — 2026-11-25

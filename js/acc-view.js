@@ -160,7 +160,8 @@
     return stat('Cuentas', String(total), types) +
       (sum.apFrom ? stat('Puntos de logro', fmt(sum.ap), sum.apFrom === total ? 'sumando ' + (total === 1 ? 'tu cuenta' : 'las ' + total) : 'de ' + sum.apFrom + ' de ' + total + ' cuentas') : stat('Puntos de logro', '—', wait)) +
       (sum.legFrom ? stat('Legendarias', fmt(sum.legendaries), 'en la armería, entre ' + (sum.legFrom === 1 ? '1 cuenta' : sum.legFrom + ' cuentas')) : stat('Legendarias', '—', wait)) +
-      (sum.keysKnown ? stat('Keys completas', sum.keysComplete + ' <span>/ ' + sum.keysKnown + '</span>', sum.keysComplete < sum.keysKnown ? (sum.keysKnown - sum.keysComplete) + ' con permisos de menos' : 'con todos los permisos') : stat('Keys completas', '—', wait));
+      (sum.keysKnown ? stat('Keys completas', sum.keysComplete + ' <span>/ ' + sum.keysKnown + '</span>', sum.keysComplete < sum.keysKnown ? (sum.keysKnown - sum.keysComplete) + ' con permisos de menos' : 'con todos los permisos') : stat('Keys completas', '—', wait)) +
+      (sum.commanderFrom ? stat('Comandante', sum.commanders + ' de ' + total + ' cuentas son comandante', 'sobre las cuentas cargadas') : stat('Comandante', 'Sin datos', wait));
   }
 
   function factHTML(icon, label, s, show) {
@@ -251,7 +252,7 @@
     '.cv-pill{font-size:.78rem;border:1px solid var(--bd-1);border-radius:999px;padding:4px 10px;color:var(--tx-2);background:var(--bg-0);white-space:nowrap}.cv-pill b{color:var(--tx-1)}',
     '.cv-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}',
     '.cv-btn:hover{border-color:var(--acc-1)}.cv-btn[aria-pressed=true]{background:var(--bg-2);border-color:var(--cv-mod);font-weight:700}',
-    '.cv-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.cv-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.cv-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.cv-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.cv-st b{font-size:1.25rem;color:var(--tx-1)}.cv-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',
