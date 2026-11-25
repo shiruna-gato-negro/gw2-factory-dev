@@ -103,16 +103,17 @@
     var catIds = ok && Array.isArray(data.cats) ? data.cats.map(function (c) { return typeof c === 'object' && c ? c.id : c; }) : null;
     var catHas = {}; (catIds || []).forEach(function (id) { catHas[id] = true; });
     var cats = (cat.cats || []).map(function (c) { return { id: c.id, hint: c.hint, es: c.es, have: catIds ? !!catHas[c.id] : null }; });
-    var q = fold(ui.q || ''), group = ui.group || 'all', only = ui.only || 'all';
+    var q = fold(ui.q || ''), group = ui.group || 'all', only = ui.only || 'all', onlyUnowned = !!(ui && (ui.onlyUnowned || ui.onlyLocked || ui.onlyMissing));
     var shown = nodes.filter(function (n) {
       if (group !== 'all' && n.group !== group) return false;
       if (only === 'missing' && n.have !== false) return false;
       if (only === 'pending' && !(n.have && n.gather && !n.done)) return false;
+      if (onlyUnowned && n.have !== false) return false;
       return !q || fold(n.name + ' ' + n.itemName).indexOf(q) >= 0;
     });
     return {
       loaded: !!data.loaded, hasToken: !!data.hasToken, unread: data.unread || [], groups: cat.groups || [],
-      nodes: nodes, shown: shown, cats: cats, ui: { group: group, only: only, q: ui.q || '' },
+      nodes: nodes, shown: shown, cats: cats, onlyUnowned: onlyUnowned, onlyLocked: onlyUnowned, onlyMissing: onlyUnowned, ui: { group: group, only: only, q: ui.q || '', onlyUnowned: onlyUnowned, onlyLocked: onlyUnowned, onlyMissing: onlyUnowned },
       stats: {
         api: unl ? api.filter(function (n) { return n.have; }).length : null, apiTotal: api.length,
         mine: mine.length, done: mine.filter(function (n) { return n.done; }).length,
@@ -180,6 +181,7 @@
     h += '<div class="hs-filters"><div class="hs-pills" role="group" aria-label="Por herramienta">' +
       [['all', 'Todos']].concat(m.groups).map(function (g) { return '<button type="button" class="hs-pill" data-hs-group="' + g[0] + '" aria-pressed="' + (m.ui.group === g[0]) + '">' + esc(g[1]) + '</button>'; }).join('') + '</div>' +
       '<div class="hs-pills" role="group" aria-label="Mostrar">' + ONLY.map(function (o) { return '<button type="button" class="hs-pill" data-hs-only="' + o[0] + '" aria-pressed="' + (m.ui.only === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>' +
+      '<button type="button" class="hs-pill" role="switch" data-hs-sw="onlyUnowned" aria-checked="' + (m.ui.onlyUnowned ? 'true' : 'false') + '" aria-pressed="' + (m.ui.onlyUnowned ? 'true' : 'false') + '">Solo sin desbloquear</button>' +
       '<label class="hs-q"><span class="hs-sr">Buscar un nodo</span><input type="search" id="hsQ" placeholder="Buscar un nodo" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
     if (!m.shown.length) h += '<p class="hs-txt">' + (m.ui.only === 'pending' && m.stats.mine ? 'No te queda nada por recolectar hoy con estos filtros.' : 'No hay nodos con estos filtros.') + '</p>';
     else h += '<ul class="hs-nodes">' + m.shown.map(function (n) { return nodeHTML(n, m.hasToken); }).join('') + '</ul>';
@@ -278,7 +280,7 @@
 
   // ------------------------------------------------------------------ estado y DOM
   var doc = root.document;
-  var st = { cat: null, catP: null, data: null, ui: { group: 'all', only: 'all', q: '', tab: 'nodes' }, cache: {}, shown: false, seq: 0, voiceKey: null, tick: null, day: null };
+  var st = { cat: null, catP: null, data: null, ui: { group: 'all', only: 'all', q: '', tab: 'nodes', onlyUnowned: false, onlyLocked: false, onlyMissing: false }, cache: {}, shown: false, seq: 0, voiceKey: null, tick: null, day: null };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -380,7 +382,7 @@
   }
 
   function focusSel(a) {
-    var ks = ['data-hs', 'data-hs-tab', 'data-hs-group', 'data-hs-only', 'data-hs-done', 'data-hs-own', 'data-hx-only', 'data-hx-more'];
+    var ks = ['data-hs', 'data-hs-tab', 'data-hs-group', 'data-hs-only', 'data-hs-sw', 'data-hs-done', 'data-hs-own', 'data-hx-only', 'data-hx-more'];
     for (var i = 0; i < ks.length; i++) { var v = a.getAttribute(ks[i]); if (v) return '[' + ks[i] + '="' + v + '"]'; }
     return null;
   }
@@ -413,6 +415,7 @@
   function tabIds() { var X = extra(); return ['nodes'].concat(X ? X.tabs.map(function (t) { return t[0]; }) : []); }
   function goTab(id, focus) {
     st.ui.tab = id;
+    st.ui.onlyUnowned = false; st.ui.onlyLocked = false; st.ui.onlyMissing = false;
     render();
     var b = focus && byId('hsTab-' + id);
     if (b && b.focus) b.focus();
@@ -431,8 +434,8 @@
   function attrOf(t) {
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
-      var a = { act: n.getAttribute('data-hs'), group: n.getAttribute('data-hs-group'), only: n.getAttribute('data-hs-only'), done: n.getAttribute('data-hs-done'), own: n.getAttribute('data-hs-own') };
-      if (a.act || a.group || a.only || a.done || a.own) return a;
+      var a = { act: n.getAttribute('data-hs'), group: n.getAttribute('data-hs-group'), only: n.getAttribute('data-hs-only'), sw: n.getAttribute('data-hs-sw'), done: n.getAttribute('data-hs-done'), own: n.getAttribute('data-hs-own') };
+      if (a.act || a.group || a.only || a.sw || a.done || a.own) return a;
     }
     return null;
   }
@@ -468,6 +471,7 @@
       }
       if (a.group) st.ui.group = a.group;
       else if (a.only) st.ui.only = a.only;
+      else if (a.sw) { var _n = !st.ui.onlyUnowned; st.ui.onlyUnowned = _n; st.ui.onlyLocked = _n; st.ui.onlyMissing = _n; }
       else if (a.done) toggleDone(a.done);
       else if (a.own) toggleOwned(a.own);
       render();

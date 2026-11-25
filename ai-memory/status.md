@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-057 cerrada (switch «Solo con pendientes» en Actividades → Semana + filtro en piedras). READY: BL-058, BL-059.
+Motivo: BL-058 cerrada (switch «Solo sin desbloquear» en Heredad). READY: BL-059.
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-25 19:06Z
-Próxima acción: tomar BL-058 de READY en el próximo ciclo (paso 1 plan).
+Última actualización: 2026-11-25 19:34Z
+Próxima acción: tomar BL-059 de READY en el próximo ciclo (paso 1 plan).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-058, BL-059. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-059. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1300 pass / 1306 total, 6 skipped (.test.cjs + .test.js).
 

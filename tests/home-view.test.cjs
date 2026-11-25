@@ -125,6 +125,30 @@ test('filtros: herramienta, «Me faltan», «Sin recolectar hoy» y búsqueda si
   assert.deepEqual(ids({ q: 'arbol del dia' }), ['wintersday_tree'], 'sin tildes');
 });
 
+test('BL-058: switch «Solo sin desbloquear» oculta los nodos ya desbloqueados', () => {
+  const ids = (ui) => P.buildModel(DATA(), CAT, ui, NOW).shown.map((n) => n.id);
+  const all = ids({});
+  const only = ids({ onlyUnowned: true });
+  assert.ok(!only.includes('quartz_node'), 'nodo desbloqueado oculto');
+  assert.ok(!only.includes('iron_ore_node'), 'nodo desbloqueado oculto');
+  assert.ok(only.includes('mithril_ore_node'), 'nodo sin desbloquear visible');
+  assert.ok(only.includes('mursaat_obsidian_node'), 'nodo sin desbloquear visible');
+  assert.ok(only.length < all.length, 'filtra');
+  assert.equal(P.buildModel(DATA(), CAT, { onlyUnowned: true }).onlyUnowned, true);
+  assert.equal(P.buildModel(DATA(), CAT, {}).onlyUnowned, false);
+  assert.equal(P.buildModel(DATA(), CAT, {}).ui.onlyUnowned, false);
+  const h = P.viewHTML(P.buildModel(DATA(), CAT, {}, NOW));
+  assert.match(h, /data-hs-sw="onlyUnowned"/, 'switch presente');
+  assert.match(h, /Solo sin desbloquear/, 'etiqueta del switch');
+});
+
+test('BL-058: onlyUnowned en el estado, reset al cambiar de pestaña', () => {
+  assert.match(SRC, /onlyUnowned/);
+  assert.match(SRC, /data-hs-sw="onlyUnowned"/);
+  assert.match(SRC, /Solo sin desbloquear/);
+  assert.match(SRC, /onlyUnowned: false/);
+});
+
 test('mi voz: lo que te queda hoy; todo hecho; o que marques los de Janthir', () => {
   assert.equal(P.pickVoice(P.buildModel(DATA(), CAT, {}, NOW)).text, 'Te quedan 3 nodos por recolectar hoy en tu casa. Se reinician a las 00:00 UTC, en 5 h 30 min.');
   const all = P.buildModel(DATA({ done: { quartz_node: true, iron_ore_node: true, garden_plot_01: true, honey_flower_node: true } }), CAT, {}, NOW);

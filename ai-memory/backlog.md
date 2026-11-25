@@ -3,7 +3,6 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-058] [BAJO] Heredad: switch «Solo sin desbloquear» en los nodos — añadir switch en home-view siguiendo el patrón (data-hs-sw, «Solo sin desbloquear») que oculta los nodos ya desbloqueados dejando solo los que faltan; reset al cambiar de vista. Qué ve el jugador: en Heredad, un switch que deja solo los nodos que todavía no desbloqueó.
 - [BL-059] [BAJO] Cámara del Brujo: switch «Solo sin reclamar» en objetivos — añadir switch en wv-view siguiendo el patrón (data-wv-sw, «Solo sin reclamar») que oculta los objetivos ya reclamados dejando solo los pendientes; reset al cambiar de pestaña. Qué ve el jugador: en la Cámara del Brujo, un switch que deja solo los objetivos que todavía no reclamó.
 
 ## IN_PROGRESS
@@ -16,6 +15,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+  - [BL-058] [BAJO] Heredad: switch «Solo sin desbloquear» en los nodos — cerrada. Switch data-hs-sw="onlyUnowned" («Solo sin desbloquear») en home-view.js que oculta los nodos ya desbloqueados dejando solo los que faltan; onlyUnowned en buildModel (top-level y ui, con alias onlyLocked/onlyMissing) y st.ui con reset al cambiar de pestaña; clic alterna y repinta. Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyUnowned, sin regresión. Suite 1302/1308 (6 skipped). — 2026-11-25
+    Qué ve el jugador: en Heredad, un switch que deja solo los nodos que todavía no desbloqueó.
   - [BL-057] [BAJO] Actividades: switch «Solo con pendientes» en la pestaña Semana — cerrada. Switch data-act-sw="onlyPending" («Solo con pendientes») en Semana (act-view.js) que oculta lo ya hecho (piedras compradas) dejando solo lo pendiente; onlyPending en buildModel/ui y st.ui con reset al cambiar de pestaña; act-week.js también filtra piedras compradas y toggle por clic. Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyUnowned, sin regresión. Suite 1300/1306 (6 skipped). — 2026-11-25
     Qué ve el jugador: en Actividades → Semana, un switch que deja solo lo que todavía le falta hacer.
   - [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — cerrada. 10 entradas nuevas (2026-11-25) en assets/welcome-news.json, una por módulo (builds, meta, wv, activities, homestead, raids, achievements, characters, armory, accounts) agrupando indicador+switch, formato DEC-032. Test pickNews adaptado: las 3 más nuevas del 25/11 con NUEVO en las 3. Review riesgo BAJO: solo datos + test, sin código de producción. Suite 1301/1307 (6 skipped). — 2026-11-25
