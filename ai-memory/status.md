@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: (ninguna en curso — BL-049 cerrada)
-Motivo: BL-049 cerrada: bld-rows.js dpsHTML ahora devuelve «Sin bench publicado» para cualquier build sin bench. Test bld-rows actualizado. Versión bld-rows 1.0.0 → 1.0.1 y modules.json. Review riesgo BAJO. Suite 1228/1234 (6 skipped). v8 (orden) cerrada: reglas en AGENTS.md.
-Etapa actual: Documentation (cierre)
+Estado: EN CURSO
+Tarea actual: BL-050 paso 1/3 — plan (Welcome: contador de builds con notas en castellano)
+Motivo: BL-049 cerrada. BL-050 tomada; plan anotado en backlog.md (3 pasos). Sin cambios de código en este ciclo.
+Etapa actual: Product (plan)
 Inicio: 2026-11-25
 Última actualización: 2026-11-25 11:00Z
-Próxima acción: tomar BL-050 (Welcome: contador de builds con notas en castellano) — Paso 1 plan.
+Próxima acción: BL-050 paso 2/3 — implementación en welcome-panel.js (estado buildsNotes, fetch notes.json, countNotes, display).
 
 Archivos:
 - js/bld-rows.js
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguno). READY: BL-050. BLOCKED: (vacío).
+- IN_PROGRESS: BL-050 paso 1/3. READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1234 total, 1228 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 

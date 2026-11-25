@@ -3,10 +3,15 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — extender countBuilds/curatedDate en welcome-panel para leer notes.json y mostrar «X de Y con notas en castellano» junto a la fecha de curación. Test welcome-view adaptado. Techo size-budget con motivo si hace falta. — 2026-11-25
-  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
 
 ## IN_PROGRESS
+- [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — extender countBuilds/curatedDate en welcome-panel para leer notes.json y mostrar «X de Y con notas en castellano» junto a la fecha de curación. Test welcome-view adaptado. Techo size-budget con motivo si hace falta. — 2026-11-25
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
+  Plan (3 pasos):
+  1. (este ciclo) Plan — anotar pasos y pasar a IN_PROGRESS.
+  2. Implementación en js/welcome-panel.js: estado buildsNotes + fetch de assets/data/builds/notes.json; helper countNotes(data) (Object.keys(data.notes).length, null si inválido); firma modulesHTML/bodyHTML/render pasa buildsNotes; tarjeta Builds muestra «X de Y con notas en castellano» junto a «Curadas el DD/MM» (X = builds con notas, Y = builds curadas). Exponer countNotes en _pure.
+  3. Adaptar tests/welcome-view.test.cjs (BL-050): firma modulesHTML con 4º arg; helper countNotes; fetch de notes en activate (3 URLs); actualizar techo size-budget welcome-panel con motivo; review + docs; commit.
+
 ## BLOCKED
 
 ## CANCELLED
