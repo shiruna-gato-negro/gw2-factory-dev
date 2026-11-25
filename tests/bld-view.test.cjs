@@ -94,7 +94,7 @@ test('BUI-4 cabecera: marco de Raids con 4 indicadores, píldora del parche y co
   assert.match(h, /class="bld-hero"/);
   assert.match(h, /<img class="bld-ico" [^>]*width="56"/);
   assert.match(h, /<h2 id="bldTitle">Builds<\/h2>/);
-  assert.equal((h.match(/class="bld-st"/g) || []).length, 4);
+  assert.equal((h.match(/class="bld-st"/g) || []).length, 5);
   assert.match(h, /Último parche de balance <b>10\/11\/2026<\/b>/);
   assert.match(h, /36 <span>PvE<\/span> · 36 <span>WvW<\/span>/);
   assert.match(h, /id="bldBadge-lib"><span class="bld-badge">104</, 'contador en Biblioteca');
@@ -115,6 +115,20 @@ test('BUI-4 menú ⋯ común: tocar afuera cierra los abiertos menos el tocado',
   assert.equal(b.open, false);
   assert.equal(P.closeMenus(null), 0);
   assert.match(P.CSS, /\.bld-menu-l\{position:absolute/, 'el estilo del menú vive en el marco');
+});
+
+test('BL-045: Vigentes muestra builds vigentes del catálogo y sin datos muestra guión', () => {
+  const CAT = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/data/builds/catalog.json'), 'utf8'));
+  const WATCH = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/data/builds/watch.json'), 'utf8'));
+  globalThis.GNBldCode = require('../js/bld-code.js');
+  const L = require('../js/bld-lib.js');
+  const s = P.statsModel({ cat: CAT, watch: WATCH, mine: 3, lib: L._pure });
+  const h = P.viewHTML({ tab: 'lib', stats: s });
+  const vig = s.builds - s.old;
+  assert.match(h, new RegExp('<small>Vigentes</small><b>' + vig + ' de ' + s.builds + ' builds vigentes</b>'));
+  const empty = P.viewHTML({ tab: 'lib' });
+  assert.match(empty, /<small>Vigentes<\/small><b>—<\/b><em>sin datos<\/em>/);
+  delete globalThis.GNBldCode;
 });
 
 test('sin documento no rompe y register no falla', () => {

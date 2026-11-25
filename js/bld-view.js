@@ -73,7 +73,7 @@
   // BUI-4: lo que muestra la cabecera. info = { cat, watch, mine, lib } (lib = GNBldLib._pure); sin catálogo, guiones.
   function statsModel(info) {
     info = info || {};
-    var out = { builds: null, cov: null, ok: null, old: null, latest: '', mine: typeof info.mine === 'number' ? info.mine : null };
+    var out = { builds: null, cov: null, ok: null, old: null, vigentes: null, latest: '', mine: typeof info.mine === 'number' ? info.mine : null };
     var cat = info.cat, L = info.lib;
     if (!cat || !Array.isArray(cat.builds) || !L) return out;
     var latest = L.latestPatch(cat, info.watch);
@@ -82,6 +82,7 @@
     out.cov = L.coverage(cat.builds, latest, true);
     out.ok = L.coverage(cat.builds, latest);
     out.old = cat.builds.filter(function (b) { return L.stateOf(b, latest) === 'revisar'; }).length;
+    out.vigentes = out.builds - out.old;
     out.curated = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? m[3] + '/' + m[2] : ''; })(cat.curated || '');
     return out;
   }
@@ -99,7 +100,8 @@
     return stat('Builds curadas', n(s.builds), none ? 'cargando la biblioteca…' : 'Snow Crows y MetaBattle, con crédito' + (s.curated ? ' · Curadas el ' + s.curated : '')) +
       stat('Élites cubiertas', cov, none ? 'de 36 por modo' : 'de 36 por modo' + (s.cov.pvp ? ' · PvP ' + s.cov.pvp + '/36' : '')) +
       stat('Para revisar', n(s.old), none ? 'según el último parche' : (s.old ? 'de un parche anterior al ' + fmtDate(s.latest) : 'todas al día con el ' + fmtDate(s.latest))) +
-      stat('Mis builds', n(s.mine), 'en este navegador · viajan en tu respaldo');
+      stat('Mis builds', n(s.mine), 'en este navegador · viajan en tu respaldo') +
+      stat('Vigentes', none ? '—' : (s.vigentes != null ? s.vigentes : (s.builds - s.old)) + ' de ' + n(s.builds) + ' builds vigentes', none ? 'sin datos' : '');
   }
   function pillsHTML(s) {
     return s.latest ? '<span class="bld-pill" title="Último parche de balance que declaran las fuentes o la vigía semanal">Último parche de balance <b>' +
@@ -163,7 +165,7 @@
     P + ' .bld-sub{margin:2px 0 0;color:var(--tx-2);font-size:.86rem}',
     P + ' .bld-pills{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}',
     P + ' .bld-pill{font-size:.78rem;border:1px solid var(--bd-1);border-radius:999px;padding:4px 10px;color:var(--tx-2);background:var(--bg-0);white-space:nowrap}' + P + ' .bld-pill b{color:var(--tx-1)}',
-    P + ' .bld-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    P + ' .bld-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     P + ' .bld-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     P + ' .bld-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     P + ' .bld-st b{font-size:1.25rem;color:var(--tx-1)}' + P + ' .bld-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',
