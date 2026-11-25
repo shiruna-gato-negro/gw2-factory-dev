@@ -4,8 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-043] [BAJO] Inventario: 5º indicador «Objetos distintos en el banco» en la cabecera — statsHTML de inv-view.js suma un 5º indicador «Objetos distintos» con «X tipos distintos en el banco» (ids únicos en bankSlots), «—» sin token o sin cargar. Grid de .iv-stats pasado a 5 columnas. Test de regresión inv-view (BL-043). Review riesgo BAJO: aditivo, sin regresión.
-  Qué ve el jugador: en la cabecera de Inventario ve cuántos tipos de objetos distintos tiene en el banco, además de los espacios ocupados.
 - [BL-044] [BAJO] Actividades: 5º indicador «Fractales recomendados hoy» en la cabecera — statsHTML de act-view.js suma un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—» sin datos. Grid de .av-stats pasado a 5 columnas. Test de regresión act-view (BL-044). Review riesgo BAJO: aditivo, sin regresión.
   Qué ve el jugador: en la cabecera de Actividades ve cuántos fractales recomienda el juego hoy, de un vistazo.
 
@@ -19,6 +17,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-043] [BAJO] Inventario: 5º indicador «Objetos distintos en el banco» en la cabecera — cerrada. statsHTML de inv-view.js suma un 5º indicador «Objetos distintos» con «X tipos distintos en el banco» (ids únicos en bankSlots); grid de .iv-stats pasado a 5 columnas. Test de regresión BL-043 en tests/inv-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1221/1227 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la cabecera de Inventario ve cuántos tipos de objetos distintos tiene en el banco, además de los espacios ocupados.
 - [BL-042] [BAJO] Heredad: 5º indicador «Nodos que te faltan» en la cabecera — cerrada. statsHTML de home-view.js suma un 5º indicador «Nodos que te faltan» con «X de Y nodos de la API sin desbloquear» (apiTotal - api); grid de .hs-stats pasado a 5 columnas. Test de regresión BL-042 en tests/home-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1220/1226 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la cabecera de Heredad ve cuántos nodos de la API todavía no desbloqueó, además de los que tiene.
 - [BL-041] [BAJO] Raids: contador de encuentros con modo desafío en la cabecera — cerrada. statsHTML de raids-view.js ahora incluye un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados, sobre el catálogo); buildModel suma cmDone/cmTotal (y aliases) en stats; grid de .rv-stats pasado a 5 columnas. Test de regresión BL-041 en tests/raids-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1219/1225 (6 skipped). — 2026-11-25

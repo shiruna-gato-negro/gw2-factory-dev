@@ -23,7 +23,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.7.0';
+  var VERSION = '1.7.1';
   var LOG = '[InvView]';
   var PANEL = 'inventoryPanel';
   var ICON = 'assets/icons/Welcome/358409.png';
@@ -123,11 +123,15 @@
     var ok = m.loaded && m.hasToken, b = m.bank, nd = 'sin datos';
     var pct = b.total ? Math.round(b.used * 100 / b.total) : 0;
     var cats = m.matGroups.filter(function (g) { return g.held; }).length;
+    var seen = {}, distinct = 0;
+    if (m.bankSlots) m.bankSlots.forEach(function (s) { if (s && s.id) seen[s.id] = 1; });
+    distinct = Object.keys(seen).length;
     return stat('Banco', ok && b.total != null ? fmtInt(b.used) + ' <span>de ' + fmtInt(b.total) + '</span>' : '—',
         ok && b.total != null ? fmtInt(b.free) + ' espacios libres' : nd, ok && b.total != null ? pct : null) +
       stat('Materiales', ok && m.matHeld != null ? fmtInt(m.matHeld) + ' <span>tipos</span>' : '—', ok && m.matHeld != null ? 'guardados en ' + cats + (cats === 1 ? ' categoría' : ' categorías') : nd) +
       stat('Armería legendaria', ok && m.armory ? fmtInt(m.armory.length) : '—', ok && m.armory ? 'legendarias desbloqueadas' : nd) +
-      stat('Personajes', ok && m.chars != null ? fmtInt(m.chars) : '—', ok && m.chars != null ? 'en tu cuenta' : nd);
+      stat('Personajes', ok && m.chars != null ? fmtInt(m.chars) : '—', ok && m.chars != null ? 'en tu cuenta' : nd) +
+      stat('Objetos distintos', ok && m.bankSlots ? distinct + ' tipos distintos en el banco' : '—', ok && m.bankSlots ? '' : 'sin token o sin cargar');
   }
 
   // Un ítem: ícono con el anillo de su rareza, nombre y cantidad. La rareza también en texto.
@@ -255,7 +259,7 @@
     '.iv-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}',
     '.iv-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px}',
     '.iv-btn:hover{border-color:var(--acc-1)}',
-    '.iv-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.iv-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.iv-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.iv-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.iv-st b{font-size:1.25rem;color:var(--tx-1)}.iv-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',

@@ -308,3 +308,12 @@ test('BL-037: contador de espacios ocupados por pestaña del Banco y Sin datos',
   const listEmpty = P.listHTML(P.buildModel(sample({ bank: [] }), CATS, { tab: 'bank' }));
   assert.match(listEmpty, /Sin datos de tu banco\./);
 });
+
+test('BL-043: Objetos distintos muestra tipos únicos en el banco y sin datos muestra guión', () => {
+  const m = P.buildModel(sample(), CATS, {});
+  const h = P.viewHTML(m);
+  assert.match(h, /<small>Objetos distintos<\/small><b>2 tipos distintos en el banco<\/b>/);
+  const m2 = P.buildModel({ loaded: true, hasToken: false }, CATS, {});
+  const h2 = P.viewHTML(m2);
+  assert.match(h2, /<small>Objetos distintos<\/small><b>—<\/b><em>sin token o sin cargar<\/em>/);
+});
