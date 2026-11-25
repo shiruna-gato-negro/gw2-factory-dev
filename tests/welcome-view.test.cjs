@@ -120,16 +120,16 @@ test('Frontera con los módulos (DEC-032): la Bienvenida no lee datos de Metas n
 });
 
 test('novedades: las 3 más nuevas, con «NUEVO» solo durante 14 días', () => {
-  const now = Date.parse('2026-11-25T12:00:00Z'); // 1 día después de las nuevas del 24/11
+  const now = Date.parse('2026-11-25T12:00:00Z'); // mismo día de las nuevas del 25/11
   const n = P.pickNews(NEWS.items, now);
   assert.equal(n.length, 3);
-  assert.equal(n[0].title, 'Builds con íconos en cabecera y pestañas');
-  assert.equal(n[0].when, '24/11');
+  assert.equal(n[0].title, 'Builds: indicadores y filtros nuevos');
+  assert.equal(n[0].when, '25/11');
   assert.equal(n[0].isNew, true);
-  assert.equal(n[1].title, "Vistas previas de Chak y Dragon's End en Metas");
+  assert.equal(n[1].title, 'Metas: filtros nuevos en la barra');
   assert.equal(n[1].isNew, true);
-  assert.equal(n[2].title, 'Metas y Eventos renovado');
-  assert.equal(n[2].isNew, false, 'la del 23/10 ya tiene más de 14 días');
+  assert.equal(n[2].title, 'Cámara del Brujo: indicadores nuevos');
+  assert.equal(n[2].isNew, true, 'las 3 más nuevas del 25/11 son NUEVO');
   assert.equal(P.pickNews([{ date: '2026-10-01', title: 'vieja' }, { date: '2026-10-20', title: 'nueva' }])[0].title, 'nueva', 'ordena aunque el archivo venga desordenado');
   assert.equal(P.pickNews(null).length, 0);
   assert.equal(P.pickNews([{ title: 'sin fecha' }, { date: '2026-10-01' }]).length, 0, 'descarta lo incompleto');
@@ -177,7 +177,7 @@ test('activate dibuja la cabecera fuera del cuerpo (mi voz va arriba del cuerpo)
   assert.equal(head.children.filter((c) => c.id === 'wl-css').length, 1);
   assert.deepEqual(fetched, ['assets/welcome-news.json', 'assets/data/builds/catalog.json', 'assets/data/builds/notes.json']);
   await tick(); await tick();
-  assert.match(panel.body.innerHTML, /Metas y Eventos renovado/);
+  assert.match(panel.body.innerHTML, /Builds: indicadores y filtros nuevos/);
   W.activate(); W.refresh();
   assert.equal(head.children.filter((c) => c.id === 'wl-css').length, 1, 'el CSS se agrega una sola vez');
   assert.equal(fetched.length, 3, 'las novedades, el catálogo y las notas se piden una sola vez');

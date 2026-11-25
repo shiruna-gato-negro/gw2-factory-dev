@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-056 paso 1/3 — plan (Welcome: actualizar novedades)
-Motivo: BL-056 tomada de READY; primer paso solo planificación, sin código.
-Etapa actual: Product/Architecture (plan)
-Inicio: 2026-11-25
-Última actualización: 2026-11-25 15:05Z
-Próxima acción: BL-056 paso 2/3 — añadir entradas en assets/welcome-news.json (10 entradas, 2026-11-25).
+Estado: EN ESPERA
+Tarea actual: — (ninguna en curso)
+Motivo: BL-056 cerrada (10 entradas de novedades 2026-11-25 + test pickNews). READY con 3 tareas nuevas (BL-057, BL-058, BL-059) por exploración.
+Etapa actual: —
+Inicio: —
+Última actualización: 2026-11-25 18:35Z
+Próxima acción: tomar BL-057 de READY en el próximo ciclo (paso 1 plan).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-056 (paso 1/3 plan). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-057, BL-058, BL-059. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1244 total, 1238 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1307 total, 1301 pass, 0 fail, 6 skipped (.test.cjs).
 
 ## Resumen de la sesión
 
@@ -36,5 +36,6 @@ Archivos:
 - Exploración La Bóveda (Metas, Inventario, Armería Legendaria): 3 tareas nuevas en READY (BL-051 cerrada, BL-052 switch «Solo con stock» en Materiales, BL-053 resumen global de legendarias). Todas con «Qué ve el jugador».
 - BL-053 cerrada: resumen global en headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra; sin Key solo total. Test de regresión BL-053 (50 de 206 + barra 24.3%; sin Key Catálogo 206). Suite 1234/1240 (6 skipped). Review BAJO.
 - BL-054 cerrada: switch «Solo sin tener» en el catálogo de la Armería (onlyUnowned + reset + tests). Techo size-budget render-catologo.js 63917 B. Suite 1235/1242 (6 skipped). Review BAJO.
-- BL-055 cerrada: switch «Solo sin Key» en Mis cuentas (onlyNoKey + reset + tests). Versión acc-view 1.4.0 → 1.4.1. Suite 1238/1244 (6 skipped). Review BAJO.
+- BL-056 cerrada: Welcome actualiza novedades (10 entradas 2026-11-25, una por módulo) + test pickNews adaptado (3 más nuevas del 25/11, NUEVO en las 3). Suite 1301/1307 (6 skipped). Review BAJO.
+- Exploración La Bóveda: 3 tareas nuevas en READY (BL-057 switch «Solo con pendientes» en Actividades, BL-058 switch «Solo sin desbloquear» en Heredad, BL-059 switch «Solo sin reclamar» en Cámara del Brujo). Todas con «Qué ve el jugador».
 - Exploración La Bóveda (Armería Legendaria, Cuentas, Welcome): 3 tareas nuevas en READY (BL-054 switch «Solo sin tener» en catálogo, BL-055 switch «Solo sin Key» en Cuentas, BL-056 actualizar novedades). Todas con «Qué ve el jugador».

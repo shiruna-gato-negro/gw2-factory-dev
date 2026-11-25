@@ -3,13 +3,11 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-057] [BAJO] Actividades: switch «Solo con pendientes» en la pestaña Semana — añadir switch en act-view siguiendo el patrón de onlyStock/onlyUnowned (data-act-sw, «Solo con pendientes») que oculta las actividades completadas dejando solo las que faltan; reset al cambiar de pestaña/búsqueda. Qué ve el jugador: en Actividades → Semana, un switch que deja solo lo que todavía le falta hacer.
+- [BL-058] [BAJO] Heredad: switch «Solo sin desbloquear» en los nodos — añadir switch en home-view siguiendo el patrón (data-hs-sw, «Solo sin desbloquear») que oculta los nodos ya desbloqueados dejando solo los que faltan; reset al cambiar de vista. Qué ve el jugador: en Heredad, un switch que deja solo los nodos que todavía no desbloqueó.
+- [BL-059] [BAJO] Cámara del Brujo: switch «Solo sin reclamar» en objetivos — añadir switch en wv-view siguiendo el patrón (data-wv-sw, «Solo sin reclamar») que oculta los objetivos ya reclamados dejando solo los pendientes; reset al cambiar de pestaña. Qué ve el jugador: en la Cámara del Brujo, un switch que deja solo los objetivos que todavía no reclamó.
 
 ## IN_PROGRESS
-- [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — Paso 1/3 plan. Añadir entradas (fecha 2026-11-25) en assets/welcome-news.json para los módulos con mejoras recientes (indicadores nuevos en cabeceras: Builds, Actividades, Inventario, Heredad, Raids, Cuentas, Logros, Cámara del Brujo, Armería; switches de filtros: Builds, Metas, Inventario), una entrada por módulo agrupando indicador+switch, formato DEC-032 (solo el módulo, sin horarios ni datos del juego). Adaptar test pickNews (las 3 más nuevas del 25/11, NUEVO en las 3). Pasos:
-  1. Plan (este ciclo) — sin código.
-  2. Añadir entradas en welcome-news.json (10 entradas, 2026-11-25).
-  3. Adaptar test pickNews + correr suite completa + review + commit.
-  Qué ve el jugador: en la Bienvenida, la tarjeta de Novedades muestra las mejoras recientes (indicadores y filtros nuevos) con la marca «NUEVO».
 
 ## BLOCKED
 
@@ -19,6 +17,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+  - [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — cerrada. 10 entradas nuevas (2026-11-25) en assets/welcome-news.json, una por módulo (builds, meta, wv, activities, homestead, raids, achievements, characters, armory, accounts) agrupando indicador+switch, formato DEC-032. Test pickNews adaptado: las 3 más nuevas del 25/11 con NUEVO en las 3. Review riesgo BAJO: solo datos + test, sin código de producción. Suite 1301/1307 (6 skipped). — 2026-11-25
+    Qué ve el jugador: en la Bienvenida, la tarjeta de Novedades muestra las mejoras recientes (indicadores y filtros nuevos) con la marca «NUEVO».
   - [BL-055] [BAJO] Cuentas: switch «Solo sin Key» en Mis cuentas — cerrada. onlyNoKey en st.ui (default false); switch en cv-filters (clase cv-btn, data-cv-sw="onlyNoKey", «Solo sin Key») oculta las cuentas con Key cargada dejando solo las que faltan (state === 'nokey'); reset al cambiar de pestaña (goTab) y al buscar (input cvQ). Tests acc-view +2 (filtro onlyNoKey + switch en viewHTML; onlyNoKey en estado). Versión acc-view 1.4.0 → 1.4.1 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de switches, sin regresión. Suite 1238/1244 (6 skipped). — 2026-11-25
     Qué ve el jugador: en Cuentas → Mis cuentas, un switch que deja solo las cuentas que todavía no tienen API Key cargada, para ver cuáles faltan.
   - [BL-054] [BAJO] Armería Legendaria: switch «Solo sin tener» en el catálogo — cerrada. onlyUnowned en ui (default false); switch en toolbarHTML (data-arm-sw="onlyUnowned", «Solo sin tener»); gridInner oculta las owned (owned > 0) cuando el switch está activo; reset al cambiar de pestaña (shellHTML) y al buscar (searchFor); clic en wireArm alterna y repinta la grilla. CSS .arm-sw. Techo size-budget render-catologo.js 62458 → 63917 B con motivo (regla v6). Tests armeria-shell +2 (BL-054 switch presente + filtrado; reset en pestaña/búsqueda). Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyVigentes, sin regresión. Suite 1235/1242 (6 skipped). — 2026-11-25
