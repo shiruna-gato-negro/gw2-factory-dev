@@ -4,6 +4,13 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-042] [BAJO] Heredad: 5º indicador «Nodos que te faltan» en la cabecera — statsHTML de home-view.js suma un 5º indicador «Nodos que te faltan» con «X de Y nodos de la API sin desbloquear» (apiTotal - api), «—» sin token o sin cargar. Grid de .hs-stats pasado a 5 columnas. Test de regresión home-view (BL-042). Review riesgo BAJO: aditivo, sin regresión.
+  Qué ve el jugador: en la cabecera de Heredad ve cuántos nodos de la API todavía no desbloqueó, además de los que tiene.
+- [BL-043] [BAJO] Inventario: 5º indicador «Objetos distintos en el banco» en la cabecera — statsHTML de inv-view.js suma un 5º indicador «Objetos distintos» con «X tipos distintos en el banco» (ids únicos en bankSlots), «—» sin token o sin cargar. Grid de .iv-stats pasado a 5 columnas. Test de regresión inv-view (BL-043). Review riesgo BAJO: aditivo, sin regresión.
+  Qué ve el jugador: en la cabecera de Inventario ve cuántos tipos de objetos distintos tiene en el banco, además de los espacios ocupados.
+- [BL-044] [BAJO] Actividades: 5º indicador «Fractales recomendados hoy» en la cabecera — statsHTML de act-view.js suma un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—» sin datos. Grid de .av-stats pasado a 5 columnas. Test de regresión act-view (BL-044). Review riesgo BAJO: aditivo, sin regresión.
+  Qué ve el jugador: en la cabecera de Actividades ve cuántos fractales recomienda el juego hoy, de un vistazo.
+
 ## IN_PROGRESS
 
 ## BLOCKED
