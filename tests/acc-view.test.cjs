@@ -43,14 +43,14 @@ function raw(o) {
 
 test('archivo: presupuesto, versión, manifiesto después de acc-model, fuera de index.html, sin emojis ni localStorage', () => {
   assert.ok(Buffer.byteLength(SRC) <= 40 * 1024, Buffer.byteLength(SRC) + ' bytes');
-  assert.match(SRC, /Versión: 1\.4\.0/);
-  assert.equal(B.AccView.version, '1.4.0');
+  assert.match(SRC, /Versión: 1\.4\.1/);
+  assert.equal(B.AccView.version, '1.4.1');
   assert.doesNotMatch(SRC, /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u);
   assert.doesNotMatch(SRC, /localStorage|sessionStorage/);
   const man = JSON.parse(read('js/modules.json')).modules;
   const i = man.findIndex((m) => m.src === 'js/acc-view.js'), j = man.findIndex((m) => m.src === 'js/acc-model.js');
   assert.ok(j >= 0 && i > j, 'el modelo antes que la vista');
-  assert.equal(man[i].v, '1.4.0');
+  assert.equal(man[i].v, '1.4.1');
   assert.doesNotMatch(read('index.html'), /acc-view\.js|acc-model\.js/);
 });
 
@@ -116,6 +116,25 @@ test('orden y filtros: main, alter, f2p y sin tipo; por tipo y búsqueda sin til
   assert.deepEqual(P.filterCards(cards, { type: 'alter' }).map((c) => c.name), ['Beta.2', 'Alfa.4']);
   assert.deepEqual(P.filterCards(cards, { type: 'none' }).map((c) => c.name), ['Zeta.1']);
   assert.deepEqual(P.filterCards(cards, { q: 'ARBOL' }).map((c) => c.name), ['Árbol.3']);
+});
+
+test('BL-055: onlyNoKey filtra solo las cuentas sin Key cargada', () => {
+  const a = J(P.deriveCard(raw(), CAT, M, NOW));
+  const b = J(P.deriveCard(raw({ fp: 'bbbb', tag: 'alter', account: Object.assign({}, ACC, { name: 'Alt.9' }) }), CAT, M, NOW));
+  b.state = 'nokey';
+  const cards = [a, b];
+  assert.equal(P.filterCards(cards, { type: 'all', q: '', onlyNoKey: false }).length, 2);
+  assert.deepEqual(P.filterCards(cards, { type: 'all', q: '', onlyNoKey: true }).map((c) => c.fp), ['bbbb']);
+  const m = { cat: CAT, M, cards: cards, active: 'aaaa1111', activeName: 'Gato Negro.1234', ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false }, loading: false, readAt: NOW, now: NOW };
+  const h = P.viewHTML(m);
+  assert.match(h, /data-cv-sw="onlyNoKey"/, 'switch presente');
+  assert.match(h, /Solo sin Key/, 'etiqueta del switch');
+});
+
+test('BL-055: onlyNoKey en el estado, reset y switch en viewHTML', () => {
+  assert.match(SRC, /onlyNoKey/);
+  assert.match(SRC, /Solo sin Key/);
+  assert.match(SRC, /onlyNoKey: false/);
 });
 
 test('mi voz: Key muerta, después permisos que faltan, después Visions of Eternity; nada mientras leo', () => {

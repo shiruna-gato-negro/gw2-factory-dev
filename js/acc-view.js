@@ -1,7 +1,7 @@
 /*!
  * js/acc-view.js — Cuentas renovado: «Mis cuentas» en vivo y la puerta al Llavero (BL-070, paso 4, CTA-2)
  * Proyecto: Bóveda del Gato Negro
- * Versión: 1.4.0 (2026-10-28) · BL-078 UNI-7b: íconos del juego en las pestañas, desde GNKit (sin GNKit, como antes)
+ * Versión: 1.4.1
  *          1.3.0 (2026-10-27) · BL-076 SHV-5c: mi línea dice «Lo sé por», con la hora de la lectura
  *          1.2.0 (2026-10-26) · BL-074 BLS-3: las definiciones de logros (gn:accounts:achmeta) van a IndexedDB
  *          por js/gn-idb.js si está, y espero a que abra antes de leerlas.
@@ -26,7 +26,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.4.0';
+  var VERSION = '1.4.1';
   var LOG = '[AccView]';
   var PANEL = 'accountsPanel';
   var ROUTE = '#/account/accounts'; // la misma que usa js/router.js
@@ -127,6 +127,7 @@
   function filterCards(cards, ui) {
     var q = fold(ui.q || ''), ty = ui.type || 'all';
     return cards.filter(function (c) {
+      if(ui&&ui.onlyNoKey&&c.state!=='nokey')return false;
       if (ty === 'none' ? !!c.type : ty !== 'all' && c.type !== ty) return false;
       return !q || fold(c.name + ' ' + c.label).indexOf(q) >= 0;
     });
@@ -232,9 +233,10 @@
     h += '<div id="cvPanel-mine" role="tabpanel" aria-labelledby="cvTab-mine">';
     if (!m.cards.length) return h + '<section class="cv-empty"><p>Cargá la API Key de cada cuenta y te muestro todas juntas: expansiones, logros, legendarias, fractales, McM, JcJ y clanes. Sin archivo ni contraseña.</p><button type="button" class="cv-btn" data-cv="keys">Agregar API Key</button></section></div>';
     var shown = filterCards(sortCards(m.cards), m.ui);
+    function sw(k,l){var on=!!(m.ui&&m.ui.onlyNoKey);return '<button type="button" class="cv-btn" data-cv-sw="'+k+'" aria-pressed="'+on+'">'+esc(l)+'</button>';}
     h += '<div class="cv-filters"><div class="cv-pills" role="group" aria-label="Por tipo">' + TYPES.map(function (t) {
       return '<button type="button" class="cv-btn" data-cv-type="' + t[0] + '" aria-pressed="' + (m.ui.type === t[0]) + '">' + t[1] + '</button>';
-    }).join('') + '</div><label class="cv-q"><span class="cv-sr">Buscar una cuenta</span><input type="search" id="cvQ" placeholder="Buscar una cuenta" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
+    }).join('') + '</div>' + sw('onlyNoKey', 'Solo sin Key') + '<label class="cv-q"><span class="cv-sr">Buscar una cuenta</span><input type="search" id="cvQ" placeholder="Buscar una cuenta" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
     h += shown.length ? '<div class="cv-grid">' + shown.map(function (c) { return cardHTML(c, m.cat, m.M, m.active); }).join('') + '</div>' : '<p class="cv-note">No hay cuentas con estos filtros.</p>';
     return h + '<p class="cv-src">Datos en vivo de la API oficial con tus Keys; lo leído se guarda 6 horas en tu navegador, nunca la Key. Las etiquetas farming, llaves, semanal y taxi viven en tu Llavero: se suman acá mientras lo tenés abierto.</p></div>';
   }
@@ -291,7 +293,7 @@
 
   // ------------------------------------------------------------------ estado y DOM
   var doc = root.document;
-  var st = { cat: null, catP: null, cards: {}, keys: [], tokens: {}, meta: null, guilds: {}, ui: { tab: 'mine', type: 'all', q: '' }, shown: false, loading: false, seq: 0, voiceKey: null, readAt: 0 };
+  var st = { cat: null, catP: null, cards: {}, keys: [], tokens: {}, meta: null, guilds: {}, ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false }, shown: false, loading: false, seq: 0, voiceKey: null, readAt: 0 };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -500,7 +502,7 @@
   }
 
   function goTab(id, focus) {
-    st.ui.tab = id === 'vault' ? 'vault' : 'mine';
+    st.ui.tab=id==='vault'?'vault':'mine';st.ui.onlyNoKey=false;
     render();
     var b = focus && byId('cvTab-' + st.ui.tab);
     if (b && b.focus) b.focus();
@@ -509,8 +511,8 @@
   function attrOf(t) {
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
-      var a = { act: n.getAttribute('data-cv'), tab: n.getAttribute('data-cv-tab'), type: n.getAttribute('data-cv-type'), use: n.getAttribute('data-cv-use') };
-      if (a.act || a.tab || a.type || a.use) return a;
+      var a = { act: n.getAttribute('data-cv'), tab: n.getAttribute('data-cv-tab'), type: n.getAttribute('data-cv-type'), use: n.getAttribute('data-cv-use'), sw: n.getAttribute('data-cv-sw') };
+      if (a.act || a.tab || a.type || a.use || a.sw) return a;
     }
     return null;
   }
@@ -525,6 +527,7 @@
       if (a.use) { useAccount(a.use); return; }
       if (a.act === 'keys') { var b = byId('keysMenuBtn'); if (b && b.click) b.click(); return; }
       if (a.act === 'refresh') { if (root.toast) root.toast('info', 'Actualizando tus cuentas…', { ttl: 1500 }); load(true); return; }
+      if(a.sw==='onlyNoKey'||a.act==='onlyNoKey'){st.ui.onlyNoKey=!st.ui.onlyNoKey;render();return;}
       if (a.type) { st.ui.type = a.type; render(); }
     });
     host.addEventListener('keydown', function (e) {
@@ -544,7 +547,8 @@
       var t = e && e.target, X = vault();
       if (X && st.ui.tab === 'vault' && X.onInput(e)) return;
       if (!t || t.id !== 'cvQ') return;
-      st.ui.q = String(t.value || '');
+      st.ui.q=String(t.value||'');
+      st.ui.onlyNoKey = false;
       render();
     });
   }
