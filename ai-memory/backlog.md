@@ -4,6 +4,13 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-039] [BAJO] Cuentas: contador de comandantes en la cabecera — en statsHTML de acc-view.js sumar un 5º indicador «Comandante» con «X de Y cuentas son comandante» (sobre las cuentas cargadas, commander === true), «Sin datos» sin token o sin cargar; summary de acc-model.js agrega commanders/commanderFrom. — 2026-11-24
+  Qué ve el jugador: en la cabecera de Cuentas ve cuántas de sus cuentas son comandante, de un vistazo.
+- [BL-040] [BAJO] Cámara del Brujo: contador de objetivos especiales en la cabecera — en statsHTML de wv-view.js sumar un 5º indicador «Especiales» con «X de Y» (sobre counts.special, igual que Hoy y Esta semana), grid de .wvx-stats a 5 columnas. — 2026-11-24
+  Qué ve el jugador: en la cabecera de la Cámara del Brujo ve cuántos objetivos especiales completó, además de los diarios y semanales.
+- [BL-041] [BAJO] Raids: contador de encuentros con modo desafío en la cabecera — en statsHTML de raids-view.js sumar un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados), grid de .rv-stats a 5 columnas. — 2026-11-24
+  Qué ve el jugador: en la cabecera de Raids ve cuántos encuentros con modo desafío completó, de un vistazo.
+
 ## IN_PROGRESS
 
 ## BLOCKED
