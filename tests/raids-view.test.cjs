@@ -179,6 +179,16 @@ test('el CSS solo oculta lo viejo cuando la vista está activa y respeta movimie
   assert.match(P.CSS, /focus-visible/);
 });
 
+// BL-041: contador de encuentros con modo desafío en la cabecera.
+test('BL-041: Modo desafío muestra X de Y en la cabecera y sin datos muestra guión', () => {
+  const m = P.buildModel(CAT, sample(), {});
+  const h = P.viewHTML(m, MON);
+  assert.match(h, /<small>Modo desafío<\/small><b>\d+ <span>de \d+<\/span><\/b><em>hechos<\/em>/);
+  const m2 = P.buildModel(CAT, { loaded: true, hasToken: false, errors: [] }, {});
+  const h2 = P.viewHTML(m2, MON);
+  assert.match(h2, /<small>Modo desafío<\/small><b>—<\/b><em>sin datos todavía<\/em>/);
+});
+
 // ------------------------------------------------------------------ humo con DOM mínimo
 function fakeDom() {
   const els = {};

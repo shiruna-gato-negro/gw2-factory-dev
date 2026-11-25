@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: (ninguna en curso)
-Motivo: BL-040 cerrada: Cámara del Brujo: contador de objetivos especiales en la cabecera. Suite 1218/1224 (6 skipped).
+Motivo: BL-041 cerrada: Raids: contador de encuentros con modo desafío en la cabecera. Suite 1219/1225 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-24
-Última actualización: 2026-11-25 02:33Z
-Próxima acción: tomar BL-041 (Raids: contador de encuentros con modo desafío) en el próximo ciclo.
+Última actualización: 2026-11-25 00:35Z
+Próxima acción: READY vacía; explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas en el próximo ciclo.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,12 +18,13 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguno). READY: BL-041. BLOCKED: (vacío).
+- IN_PROGRESS: (ninguno). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1224 total, 1218 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1225 total, 1219 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
 ## Resumen de la sesión
 
+- BL-041 paso 1/1 (implementación): statsHTML de raids-view.js ahora incluye un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados, sobre el catálogo); buildModel suma cmDone/cmTotal (y aliases) en stats; grid de .rv-stats pasado a 5 columnas. Test de regresión BL-041 en tests/raids-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1219/1225 (6 skipped).
 - BL-040 paso 1/1 (implementación): headHTML de wv-view.js ahora incluye un 5º indicador «Especiales» con «X de Y» (sobre counts.special, igual que Hoy y Esta semana), «—»/«sin datos todavía» sin datos; buildModel agrega special. Grid de .wvx-stats pasado a 5 columnas. Test de regresión BL-040 en tests/wv-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1218/1224 (6 skipped).
 - BL-039 paso 1/1 (implementación): statsHTML de acc-view.js ahora incluye un 5º indicador «Comandante» con «X de Y cuentas son comandante» (sobre las cuentas cargadas, commander === true), «Sin datos» sin token o sin cargar; summary de acc-model.js agrega commanders/commanderFrom. Grid de .cv-stats pasado a 5 columnas. Review riesgo BAJO: aditivo, sin regresión. Suite 1217/1223 (6 skipped).
 - S-7: exploración La Bóveda — 3 tareas nuevas en READY (BL-039..BL-041). Suite 1217/1223 (6 skipped). Sin cambios de código.

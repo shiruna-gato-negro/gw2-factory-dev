@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-041] [BAJO] Raids: contador de encuentros con modo desafío en la cabecera — en statsHTML de raids-view.js sumar un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados), grid de .rv-stats a 5 columnas. — 2026-11-24
-  Qué ve el jugador: en la cabecera de Raids ve cuántos encuentros con modo desafío completó, de un vistazo.
-
 ## IN_PROGRESS
 
 ## BLOCKED
@@ -17,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-041] [BAJO] Raids: contador de encuentros con modo desafío en la cabecera — cerrada. statsHTML de raids-view.js ahora incluye un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados, sobre el catálogo); buildModel suma cmDone/cmTotal (y aliases) en stats; grid de .rv-stats pasado a 5 columnas. Test de regresión BL-041 en tests/raids-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1219/1225 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la cabecera de Raids ve cuántos encuentros con modo desafío completó, de un vistazo.
 - [BL-040] [BAJO] Cámara del Brujo: contador de objetivos especiales en la cabecera — cerrada. headHTML de wv-view.js ahora incluye un 5º indicador «Especiales» con «X de Y» (sobre counts.special, igual que Hoy y Esta semana), «—»/«sin datos todavía» sin datos; buildModel agrega special; grid de .wvx-stats pasado a 5 columnas. Test de regresión wv-view (BL-040). Review riesgo BAJO: aditivo, sin regresión. Suite 1218/1224 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la cabecera de la Cámara del Brujo ve cuántos objetivos especiales completó, además de los diarios y semanales.
 - [BL-039] [BAJO] Cuentas: contador de comandantes en la cabecera — cerrada. statsHTML de acc-view.js ahora incluye un 5º indicador «Comandante» con «X de Y cuentas son comandante» (sobre las cuentas cargadas, commander === true), «Sin datos» sin token o sin cargar; summary de acc-model.js agrega commanders/commanderFrom. Grid de .cv-stats pasado a 5 columnas. Review riesgo BAJO: aditivo, sin regresión. Suite 1217/1223 (6 skipped). — 2026-11-25

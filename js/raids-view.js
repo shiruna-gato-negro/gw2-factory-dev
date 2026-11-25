@@ -125,7 +125,9 @@
     ui = ui || {};
     var m = { tab: ui.tab === 'enc' ? 'enc' : 'wings', filter: ui.filter || 'all', exp: ui.exp || 'all',
       loaded: !!(data && data.loaded), hasToken: !!(data && data.hasToken), groups: [], exps: [], voice: null,
-      stats: { wDone: 0, wTotal: 0, eDone: 0, eTotal: 0, eKnown: true, liPending: 0, magPending: 0, gaePending: 0 },
+      stats: { wDone: 0, wTotal: 0, eDone: 0, eTotal: 0, eKnown: true, liPending: 0, magPending: 0, gaePending: 0, cmDone: 0, cmTotal: 0, challengeDone: 0, challengeTotal: 0, mdDone: 0, mdTotal: 0, modeDone: 0, modeTotal: 0 },
+
+
       li: data ? balance(data.wallet, cat && cat.currencies ? cat.currencies.li.id : 70) : null,
       errors: (data && data.errors) || [], cur: (cat && cat.currencies) || {}, expNames: (cat && cat.expansions) || {}, verified: (cat && cat.verified) || '' };
     if (!cat || !Array.isArray(cat.encounters) || !Array.isArray(cat.groups)) return m;
@@ -139,6 +141,7 @@
       G.total++;
       if (isDone(s)) G.done++;
       if (s === 'unknown') G.unknown = true;
+      if (e.cm) { m.stats.cmTotal++; if (isDone(s)) m.stats.cmDone++; }
       if (wing) { m.stats.wTotal++; if (isDone(s)) m.stats.wDone++; }
       else { m.stats.eTotal++; if (isDone(s)) m.stats.eDone++; if (s === 'unknown') m.stats.eKnown = false; }
       if (isPending(s)) {
@@ -163,6 +166,9 @@
       if (rows.length) m.groups.push({ g: g, rows: rows, done: G.done, total: G.total, unknown: G.unknown, allRows: G.rows });
     });
     m.voice = pickVoice(cat, groups, m);
+    m.stats.challengeDone = m.stats.cmDone; m.stats.challengeTotal = m.stats.cmTotal;
+    m.stats.mdDone = m.stats.cmDone; m.stats.mdTotal = m.stats.cmTotal;
+    m.stats.modeDone = m.stats.cmDone; m.stats.modeTotal = m.stats.cmTotal;
     return m;
   }
 
@@ -215,7 +221,8 @@
     return stat('Alas esta semana', ok ? fmtInt(s.wDone) + ' <span>de ' + fmtInt(s.wTotal) + '</span>' : '—', ok ? pct + ' % de los encuentros de alas' : 'sin datos todavía', ok ? pct : null) +
       stat('Conocimiento legendario', ok && m.li != null ? fmtInt(m.li) : '—', ok ? 'en tu cartera · ' + fmtInt(s.liPending) + ' por cobrar esta semana' : 'sin datos todavía') +
       stat('Fragmentos por cobrar', ok ? fmtInt(s.magPending) : '—', ok ? 'en lo que te falta' + gae + ' · tope semanal 800' : 'sin datos todavía') +
-      stat('Encuentros', ok && s.eKnown ? fmtInt(s.eDone) + ' <span>de ' + fmtInt(s.eTotal) + '</span>' : '—', '14 los informa la API · 2 los marcás vos');
+      stat('Encuentros', ok && s.eKnown ? fmtInt(s.eDone) + ' <span>de ' + fmtInt(s.eTotal) + '</span>' : '—', '14 los informa la API · 2 los marcás vos') +
+      stat('Modo desafío', ok ? fmtInt(s.cmDone) + ' <span>de ' + fmtInt(s.cmTotal) + '</span>' : '—', ok ? 'hechos' : 'sin datos todavía');
   }
 
   function curIcon(m, key) { var c = m.cur[key]; return c && c.icon ? c.icon : ''; }
@@ -323,7 +330,7 @@
     '.rv-pill b{color:var(--tx-1);font-weight:600}.rv-pill--hot{border-color:var(--color-amber,#F2B94B)}.rv-pill--hot b{color:var(--color-amber,#F2B94B)}',
     '.rv-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px}',
     '.rv-btn:hover{border-color:var(--acc-1)}.rv-btn--sm{font-size:.72rem;padding:2px 10px;min-height:28px;margin-top:4px}',
-    '.rv-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.rv-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.rv-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.rv-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.rv-st b{font-size:1.25rem;color:var(--tx-1)}.rv-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',
