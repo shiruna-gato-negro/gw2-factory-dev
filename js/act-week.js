@@ -147,10 +147,12 @@
   }
 
   function stonesHTML(s) {
-    var st = s.stones;
+    var st = s.stones, onlyPending = !!(s && s.onlyPending) || !!root.ActWeek.onlyPending;
+    var rows = onlyPending ? st.rows.filter(function (r) { return !r.bought; }) : st.rows;
     var h = '<section class="av-card" aria-labelledby="awStT"><div class="av-card-h"><h3 id="awStT">Piedras de invocación vetustas</h3>' +
-      '<small>Leivas, Piedra Arbórea · 5 por semana, una por moneda · ' + st.bought + ' de ' + st.total + ' compradas</small></div><ul class="aw-stones">';
-    st.rows.forEach(function (r) {
+      '<small>Leivas, Piedra Arbórea · 5 por semana, una por moneda · ' + st.bought + ' de ' + st.total + ' compradas</small></div>' +
+      '<div class="aw-sw"><button type="button" class="av-btn" role="switch" data-act-sw="onlyPending" aria-checked="' + (onlyPending ? 'true' : 'false') + '">Solo con pendientes</button></div><ul class="aw-stones">';
+    rows.forEach(function (r) {
       h += '<li><button type="button" class="aw-stone" data-aw-stone="' + r.currency + '" aria-pressed="' + r.bought + '"' + (s.hasToken ? '' : ' disabled') + '>' +
         '<span class="aw-box" aria-hidden="true"></span>' + (r.icon ? '<img src="' + esc(r.icon) + '" alt="" width="28" height="28" loading="lazy" referrerpolicy="no-referrer">' : '') +
         '<span class="aw-sn"><b>Con ' + esc(r.name) + '</b><small>' + esc(stoneNote(r)) + '</small></span>' +
@@ -256,7 +258,7 @@
     var v = view(), chars = v && v.data ? v.data.chars : null;
     return { data: d, hasToken: !!m.hasToken, loaded: !!m.loaded, mark: mk ? mk.key : undefined, weekly: m.clocks ? m.clocks.weekly : '', since: m.lastWeekly,
       key: keyModel(m.key, chars, d), stones: stones(offers(), tk ? st.wallet[tk] || null : null, mk ? mk.stones : {}, d),
-      walletState: tk ? st.walletState[tk] : null };
+      walletState: tk ? st.walletState[tk] : null, onlyPending: root.ActWeek.onlyPending || !!(m && m.onlyPending) };
   }
   function semana(m) { ensureCss(); loadData(); return html(snapshot(m)); }
 
@@ -284,6 +286,7 @@
   function onClick(e) {
     var t = e && e.target, v;
     if (!t) return false;
+    if (attr(t, 'data-act-sw') === 'onlyPending') { root.ActWeek.onlyPending = !root.ActWeek.onlyPending; repaint(); return true; }
     if ((v = attr(t, 'data-aw-key')) != null) { save('key', v === 'yes' ? true : v === 'no' ? false : null); repaint(); return true; }
     if ((v = attr(t, 'data-aw-stone')) != null) {
       var cur = Number(v), m = marks(Date.now());
@@ -296,7 +299,7 @@
   function refresh() { return loadWallet(true); }
 
   root.ActWeek = {
-    version: VERSION, html: semana, afterRender: afterRender, onClick: onClick, state: state, refresh: refresh,
+    version: VERSION, html: semana, afterRender: afterRender, onClick: onClick, state: state, refresh: refresh, onlyPending: false,
     _pure: { signal: signal, keyModel: keyModel, keyVoice: keyVoice, stones: stones, stoneNote: stoneNote, keyHTML: keyHTML, guideHTML: guideHTML, stonesHTML: stonesHTML, html: html, CSS: CSS, STORE: STORE }
   };
   if (root.console && root.console.info) root.console.info(LOG, 'ready v' + VERSION);

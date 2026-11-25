@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-056 cerrada (10 entradas de novedades 2026-11-25 + test pickNews). READY con 3 tareas nuevas (BL-057, BL-058, BL-059) por exploración.
+Motivo: BL-057 cerrada (switch «Solo con pendientes» en Actividades → Semana + filtro en piedras). READY: BL-058, BL-059.
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-25 18:35Z
-Próxima acción: tomar BL-057 de READY en el próximo ciclo (paso 1 plan).
+Última actualización: 2026-11-25 19:06Z
+Próxima acción: tomar BL-058 de READY en el próximo ciclo (paso 1 plan).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-057, BL-058, BL-059. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-058, BL-059. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1307 total, 1301 pass, 0 fail, 6 skipped (.test.cjs).
+- Suite actual: 1300 pass / 1306 total, 6 skipped (.test.cjs + .test.js).
 
 ## Resumen de la sesión
 

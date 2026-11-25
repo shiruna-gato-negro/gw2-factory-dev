@@ -76,7 +76,8 @@
     var P = A(), d = data || {}, c = cat || {}, ok = !!d.loaded && !!d.hasToken;
     var m = { tab: ui.tab === 'semana' ? 'semana' : 'hoy', loaded: !!d.loaded, hasToken: !!d.hasToken, unread: d.unread || [],
       items: d.items || {}, clocks: clocks(now), now: Number(now), crafting: null, fr: null, frProg: null,
-      key: { state: 'unknown', chars: [] }, stones: null, stonesTotal: (c.leivas && c.leivas.perWeek) || 5, voice: null };
+      key: { state: 'unknown', chars: [] }, stones: null, stonesTotal: (c.leivas && c.leivas.perWeek) || 5, voice: null,
+      onlyPending: !!(ui && ui.onlyPending) };
     if (!P) return m;
     if (c.dailyCrafting) m.crafting = P.dailyCrafting(c.dailyCrafting.items, ok ? d.crafting : null);
     if (c.fractals && Array.isArray(d.fractals)) {
@@ -88,6 +89,7 @@
     m.lastWeekly = P.lastWeekly(now);
     if (ok && typeof d.stones === 'number') m.stones = Math.max(0, Math.min(m.stonesTotal, d.stones));
     m.voice = pickVoice(m);
+    m.ui = { tab: m.tab, onlyPending: m.onlyPending };
     return m;
   }
 
@@ -225,7 +227,8 @@
   }
   function semanaHTML(m) {
     var W = root.ActWeek;
-    return (W && typeof W.html === 'function' ? W.html(m) : keyHTML(m)) +
+    var sw = '<div class="av-sw"><button type="button" class="av-btn" role="switch" data-act-sw="onlyPending" aria-checked="' + (m.onlyPending ? 'true' : 'false') + '">Solo con pendientes</button></div>';
+    return sw + (W && typeof W.html === 'function' ? W.html(m) : keyHTML(m)) +
       '<section class="av-card" aria-labelledby="avNodesT"><div class="av-card-h"><h3 id="avNodesT">Nodos de casa</h3></div>' +
       '<p class="av-txt">Se mudaron a su propio módulo, <a class="av-link" href="#/account/homestead">la Heredad</a>, con tus marcas de siempre.</p></section>';
   }
@@ -316,7 +319,7 @@
 
   // ------------------------------------------------------------------ DOM
   var doc = root.document;
-  var st = { cat: null, catP: null, data: null, ui: { tab: 'hoy' }, voiceKey: null, seq: 0, cache: {}, shown: false, tick: null, day: null };
+  var st = { cat: null, catP: null, data: null, ui: { tab: 'hoy', onlyPending: false }, voiceKey: null, seq: 0, cache: {}, shown: false, tick: null, day: null };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -449,12 +452,12 @@
   function model() {
     var W = root.ActWeek, wk = W && typeof W.state === 'function' ? W.state(Date.now()) : null;
     var d = Object.assign({}, st.data || {}, { stones: wk ? wk.bought : null, keyMark: wk ? wk.keyMark : undefined });
-    return buildModel(d, st.cat, { tab: st.ui.tab }, now());
+    return buildModel(d, st.cat, { tab: st.ui.tab, onlyPending: st.ui.onlyPending }, now());
   }
 
   // Para volver el foco al mismo botón después de redibujar (también los de la pestaña Semana).
   function focusSel(a) {
-    var ks = ['data-av', 'data-aw-key', 'data-aw-stone', 'data-aw-wp', 'data-ap-copy', 'data-ap-all'];
+    var ks = ['data-av', 'data-act-sw', 'data-aw-key', 'data-aw-stone', 'data-aw-wp', 'data-ap-copy', 'data-ap-all'];
     for (var i = 0; i < ks.length; i++) { var v = a.getAttribute(ks[i]); if (v) return '[' + ks[i] + '="' + v + '"]'; }
     return null;
   }
@@ -484,6 +487,8 @@
   function go(tab) {
     if (tab !== 'hoy' && tab !== 'semana') return null;
     st.ui.tab = tab;
+    st.ui.onlyPending = false;
+    if (root.ActWeek && root.ActWeek.onlyPending !== undefined) root.ActWeek.onlyPending = false;
     var m = render();
     return m;
   }
@@ -506,8 +511,8 @@
   function attrOf(t) {
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
-      var a = { act: n.getAttribute('data-av'), tab: n.getAttribute('data-av-tab') };
-      if (a.act || a.tab) return a;
+      var a = { act: n.getAttribute('data-av'), tab: n.getAttribute('data-av-tab'), sw: n.getAttribute('data-act-sw') };
+      if (a.act || a.tab || a.sw) return a;
     }
     return null;
   }
@@ -518,6 +523,7 @@
       if (root.ActPsna && typeof root.ActPsna.onClick === 'function' && root.ActPsna.onClick(e)) return;
       var a = attrOf(e.target);
       if (!a) return;
+      if (a.sw === 'onlyPending') { st.ui.onlyPending = !st.ui.onlyPending; if (root.ActWeek) root.ActWeek.onlyPending = st.ui.onlyPending; render(); return; }
       if (a.act === 'refresh') {
         if (root.toast) root.toast('info', 'Actualizando tus actividades…', { ttl: 1500 });
         load(true);
