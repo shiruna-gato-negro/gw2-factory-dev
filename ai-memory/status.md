@@ -1,14 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: MAP-3 (orden de Shiruvana vía Pablo, 2026-11-25): mi parte del mapa en el Centro de mando — descargar ai-memory/mapa.json y tests/mapa-parte.test.cjs, corregir lo que no sea verdad, sumar automatizaciones faltantes, suite verde, commit.
-Motivo: orden de Shiruvana (MAP-3) — mi zona del mapa pasa de borrador de Shiruvana a escrita por mí.
-Etapa actual: Product/Architecture (anotación de orden)
+Estado: EN ESPERA
+Tarea actual: (ninguna en curso — MAP-3 cerrada)
+Motivo: MAP-3 cerrada: descargué ai-memory/mapa.json y tests/mapa-parte.test.cjs, corregí datos (su-boveda cuando: uno o dos commits por ciclo), bump version 1.0.0 → 1.0.1, actualizado 2026-11-25. Regla nueva en AGENTS.md (sección Procesos): actualizar mapa.json al cambiar job/automatización/estado de repos. Suite 1228/1234 (6 skipped).
+Etapa actual: Documentation (cierre)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 10:46Z
-Próxima acción: descargar los dos archivos (Invoke-WebRequest) y leer ai-memory/mapa.json.
+Última actualización: 2026-11-25 10:50Z
+Próxima acción: tomar BL-049 (Builds: unificar texto de falta de benchmark en las filas) — Paso 1 plan.
 
 Archivos:
+- ai-memory/mapa.json
+- tests/mapa-parte.test.cjs
 - ai-memory/status.md
 
 ## Esperando a Pablo
@@ -17,13 +19,15 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: MAP-3. READY: BL-049, BL-050. BLOCKED: (vacío).
+- IN_PROGRESS: (ninguno). READY: BL-049, BL-050. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1232 total, 1226 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1234 total, 1228 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Orden v7 procesos (Shiruvana): reglas agregadas a AGENTS.md sección «Procesos».
+- MAP-3 (Shiruvana): mi parte del mapa escrita por mí; regla nueva en AGENTS.md (actualizar mapa.json al cambiar job/automatización/estado de repos).
 
 ## Resumen de la sesión
 
 - orden v7 procesos: reglas de procesos en AGENTS.md (sección «Procesos») y status.md. Commit `orden: v7 procesos — tests 1225/1231`.
 - Exploración La Bóveda (Builds, Metas): 3 tareas nuevas en READY (BL-048, BL-049, BL-050).
 - BL-048 cerrada: filtro «Solo con notas en castellano» en la Biblioteca. Suite 1226/1232 (6 skipped). Commit `BL-048 paso 2/3 — implementación — tests 1226/1232`.
-- MAP-3 (orden Shiruvana): anotada, pendiente de ejecutar.
+- MAP-3 cerrada: mi parte del mapa (ai-memory/mapa.json) corregida y versionada (1.0.1), tests/mapa-parte.test.cjs agregado, regla nueva en AGENTS.md. Suite 1228/1234 (6 skipped). Commit `MAP-3: mi parte del mapa — tests 1228/1234`.
