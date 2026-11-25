@@ -9,12 +9,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
   Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
 
 ## IN_PROGRESS
-- [BL-048] [BAJO] Builds: filtro «Solo con notas en castellano» en la Biblioteca — IN_PROGRESS. Pasos:
-  1. Plan (este): agregar onlyNotes al estado de filtros y al chiprow de bld-lib; en matches() filtrar builds cuyo id está en el set de notas; cargar notes.json una vez al abrir la Biblioteca y cachear el set de ids en memoria (si falla, onlyNotes deshabilitado). Test de regresión en bld-lib.test.cjs. Versión bld-lib + modules.json. — 2026-11-25
-  2. Implementación: código + test.
-  3. Review + docs + commit.
-  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds que tienen notas escritas en castellano.
-
 ## BLOCKED
 
 ## CANCELLED
@@ -23,6 +17,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-048] [BAJO] Builds: filtro «Solo con notas en castellano» en la Biblioteca — cerrada. onlyNotes en filters/matches de bld-lib.js (filtra builds cuyo id está en el set de notas cargado desde notes.json en preload); switch sw('onlyNotes', 'Solo con notas') en el chiprow (solo si notes cargó); clearFilters resetea onlyNotes; estado por defecto onlyNotes:false. Test de regresión BL-048 en tests/bld-lib.test.cjs (filtro + switch en UI). Versión bld-lib 1.13.0 → 1.14.0 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyBench/onlyVigentes, sin regresión. Suite 1226/1232 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds que tienen notas escritas en castellano.
 - [BL-047] [BAJO] Cámara del Brujo: 5º indicador «AA total» en el panel de compras — cerrada. statsHTML de wv-purchases-view.js suma un 5º indicador «AA total» con «X AA en todas las cuentas» (avail + marked); grid de .wvp-stats pasado a 5 columnas. Test de regresión BL-047 en tests/wv-purchases-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1225/1231 (6 skipped). — 2026-11-25
   Qué ve el jugador: en el panel de compras de la Cámara del Brujo ve el AA total de todas las cuentas, antes de las reservas, de un vistazo.
 - [BL-046] [BAJO] Cámara del Brujo: 5º indicador «Cuentas con pendientes» en el panel de objetivos — cerrada. statsHTML de wv-objectives-dashboard.js suma un 5º indicador «Con pendientes» con «X de Y cuentas con objetivos sin reclamar» (readable - upToDate); grid de .wvd-stats pasado a 5 columnas. Test de regresión BL-046 en tests/wv-objectives-dashboard.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1224/1230 (6 skipped). — 2026-11-25

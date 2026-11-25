@@ -1,6 +1,6 @@
 /*!
  * js/bld-lib.js — Builds: pestaña Biblioteca (BL-082 BLD-7, BLD-8, BLD-10 y BLD-15: A1–A6, C2, D4)
- * Versión: 1.13.0 (2026-10-30) · BL-035: orden «Más fácil primero» en la Biblioteca (de menor a mayor dificultad) junto a «Más DPS primero»
+ * Versión: 1.14.0 (2026-11-25) · BL-048: filtro «Solo con notas» en la Biblioteca (carga notes.json en preload)
  *          plano) y los filtros en una sola barra con la búsqueda; cada fila es un enlace a su ficha · antes 1.8.0 (2026-10-30) · EQ-3: «Ver ficha» y tocar la tarjeta abren la ficha en su pantalla (#/builds/ver/<id>,
  *          js/bld-sheet.js); al volver, la Biblioteca sigue igual y el foco vuelve a esa build; list() da lo que se ve
  *          · antes 1.7.0 (2026-10-29) · BENCH-2: sin bench exacto, la build de PvE que hace daño muestra la «Referencia» medida más
@@ -27,18 +27,19 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.13.0';
+  var VERSION = '1.14.0';
   var CATALOG = 'assets/data/builds/catalog.json';
   var WATCH = 'assets/data/builds/watch.json';
   var BENCH = 'assets/data/builds/bench.json';
+  var NOTES = 'assets/data/builds/notes.json';
   var ISSUES = 'https://github.com/PabloSnchz/gw2-factory-dev/issues/new';
   var MODES = { pve: 'PvE', wvw: 'WvW', pvp: 'PvP' };
   var SUB = { raids: 'raids y strikes', fractals: 'fractales', 'open-world': 'mundo abierto', accessibuilds: 'accesible', roaming: 'roaming', zerg: 'zerg', conquest: 'conquista' };
   var ROLES = { dps: 'DPS', quickness: 'Celeridad', alacrity: 'Alacridad', heal: 'Curación', support: 'Apoyo', boon: 'Bendiciones', cc: 'Control' };
   var DAMAGE = { power: 'Poder', condition: 'Condición', hybrid: 'Híbrido' };
   var SORT = { '': 'Por profesión', dps: 'Más DPS primero', difficulty: 'Más fácil primero' };
-  var st = { cat: null, watch: null, bench: null, bidx: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: '', onlyBench: false, onlyVigentes: false },
-    open: '', more: false, views: {}, checks: {}, viewErr: {} };
+  var st = { cat: null, watch: null, bench: null, bidx: null, notes: null, error: '', loading: false, f: { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: '', onlyBench: false, onlyVigentes: false, onlyNotes: false },
+    open: '', more: false, views: {}, checks: {}, viewErr: {}, pre: null };
 
   function esc(s) { return root.GNBldShow ? root.GNBldShow.esc(s) : String(s == null ? '' : s); }
   function C() { return root.GNBldCode; }
@@ -71,6 +72,7 @@
         if (!benchOf(b, _idx)) return false;
       }
       if (f.onlyVigentes && stateOf(b, latest) !== 'vigente') return false;
+      if (f.onlyNotes && st.notes && !st.notes[b.id]) return false;
       return true;
     });
   }
@@ -193,7 +195,7 @@
       '<input id="bldLibQ" class="bld-q" type="search" data-lib-f="q" value="' + esc(f.q) + '" placeholder="Buscar build o élite" aria-label="Buscar build o élite"></div>' +
       elitesHTML(cat, f, id) + '<div class="bld-chiprow">' +
       (st.bidx && st.bidx.n ? '<div class="bld-chips" role="group" aria-label="Orden"><small class="bld-muted">Orden:</small>' + Object.keys(SORT).map(function (k) {
-        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + sw('onlyBench', 'Solo con bench de daño') + sw('onlyVigentes', 'Solo vigentes') + '</div>' +
+        return '<button type="button" class="bld-chip" data-lib-p="sort" data-v="' + k + '" aria-pressed="' + ((f.sort || '') === k) + '">' + esc(SORT[k]) + '</button>'; }).join('') + '</div>' : '') + sw('onlyBench', 'Solo con bench de daño') + sw('onlyVigentes', 'Solo vigentes') + (st.notes ? sw('onlyNotes', 'Solo con notas') : '') + '</div>' +
       moreHTML(cat, f) + '</div>';
   }
   function cardHTML(b, latest) {
@@ -316,8 +318,10 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
   function preload() {
     if (st.cat) return Promise.resolve(st);
     if (!st.pre) {
-      st.pre = Promise.all([getJSON(CATALOG), getJSON(WATCH).catch(function () { return null; }), getJSON(BENCH).catch(function () { return null; })]).then(function (r) {
-        st.cat = r[0]; st.watch = r[1]; st.bench = r[2]; st.bidx = benchIndex(r[2]); return st;
+      st.pre = Promise.all([getJSON(CATALOG), getJSON(WATCH).catch(function () { return null; }), getJSON(BENCH).catch(function () { return null; }), getJSON(NOTES).catch(function () { return null; })]).then(function (r) {
+        st.cat = r[0]; st.watch = r[1]; st.bench = r[2]; st.bidx = benchIndex(r[2]);
+        st.notes = (r[3] && r[3].notes) ? r[3].notes : null;
+        return st;
       }, function (e) { st.pre = null; throw e; });
     }
     return st.pre;
@@ -394,7 +398,7 @@ var cd = (function (iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); 
     if (x.focus) x.focus({ preventScroll: true });
     return true;
   }
-  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: st.f.sort || '', onlyBench: false, onlyVigentes: false }; st.more = false; }
+  function clearFilters() { st.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: st.f.sort || '', onlyBench: false, onlyVigentes: false, onlyNotes: false }; st.more = false; }
 
   // Un clic: devuelve qué hizo (para los tests). La tarjeta se abre tocándola, salvo en botones, enlaces y el menú.
   function onClick(ctx, e) {

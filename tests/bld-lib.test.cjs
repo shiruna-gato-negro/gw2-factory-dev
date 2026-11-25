@@ -20,7 +20,7 @@ const ELITES = { 1: [27, 62, 65, 81], 2: [18, 61, 68, 74], 3: [43, 57, 70, 75], 
 const SOURCES = /^https:\/\/(snowcrows\.com|metabattle\.com|hardstuck\.gg|guildjen\.com)\//;
 
 test('versiones en la cabecera', () => {
-  for (const [f, m, v] of [['bld-lib.js', L, '1.13.0'], ['bld-mine.js', M, '1.5.0']]) {
+  for (const [f, m, v] of [['bld-lib.js', L, '1.14.0'], ['bld-mine.js', M, '1.5.0']]) {
     assert.match(fs.readFileSync(path.join(ROOT, 'js', f), 'utf8'), new RegExp('Versión: ' + v.replace(/\./g, '\\.') + ' '), f);
     assert.equal(m.version, v, f);
   }
@@ -104,6 +104,24 @@ test('BL-031 Builds: switch «Solo vigentes» filtra las builds vigentes en la B
   assert.match(h, /data-lib-sw="onlyVigentes"/);
   assert.match(h, /Solo vigentes/);
 });
+test('BL-048 Builds: switch «Solo con notas» filtra las builds con notas en castellano', () => {
+  const B = CAT.builds, latest = P.latestPatch(CAT, WATCH);
+  // cargar notes manualmente en el estado
+  const notes = {};
+  B.slice(0, 5).forEach(function (b) { notes[b.id] = { concepts: 'nota' }; });
+  Object.assign(L._state, { cat: CAT, watch: WATCH, loading: false, error: '', open: '', notes: notes });
+  const f = (x) => P.filter(B, Object.assign({ prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', onlyBench: false, onlyVigentes: false, onlyNotes: false }, x), latest);
+  const all = f({}).length;
+  const withNotes = f({ onlyNotes: true });
+  assert.ok(withNotes.length < all, 'filtra alguna');
+  assert.ok(withNotes.every((b) => !!notes[b.id]), 'solo con notas');
+  // switch presente en la UI
+  L._state.f = { prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', sort: '', onlyBench: false, onlyVigentes: false, onlyNotes: false };
+  const h = P.filtersHTML(CAT, L._state.f);
+  assert.match(h, /data-lib-sw="onlyNotes"/);
+  assert.match(h, /Solo con notas/);
+});
+
 test('BL-033 Builds: filtro por dificultad en «Más filtros» de la Biblioteca', () => {
   const B = CAT.builds, latest = P.latestPatch(CAT, WATCH);
   const f = (x) => P.filter(B, Object.assign({ prof: 0, elite: 0, mode: '', role: '', weapon: '', damage: '', state: '', difficulty: '', q: '', onlyBench: false, onlyVigentes: false }, x), latest);
@@ -277,10 +295,10 @@ test('BUI-4 preload: un solo pedido del catálogo y de la vigía, aunque lo pida
   const [a, b] = await Promise.all([L.preload(), L.preload()]);
   assert.equal(a, b);
   assert.equal(st.cat, CAT);
-  assert.deepEqual(urls, ['assets/data/builds/catalog.json', 'assets/data/builds/watch.json', 'assets/data/builds/bench.json']);
+  assert.deepEqual(urls, ['assets/data/builds/catalog.json', 'assets/data/builds/watch.json', 'assets/data/builds/bench.json', 'assets/data/builds/notes.json']);
   assert.ok(st.bidx.n > 100, 'bench indexado');
   await L.preload();
-  assert.equal(urls.length, 3, 'ya cargado: nada nuevo');
+  assert.equal(urls.length, 4, 'ya cargado: nada nuevo');
   st.cat = null; st.pre = null;
   globalThis.fetch = async () => ({ ok: false, status: 503 });
   await assert.rejects(L.preload(), /503/);
