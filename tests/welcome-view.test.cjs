@@ -175,12 +175,12 @@ test('activate dibuja la cabecera fuera del cuerpo (mi voz va arriba del cuerpo)
   assert.equal(panel.title.parentNode, panel.children[0].slot, 'el título vive dentro de la cabecera');
   assert.match(panel.body.innerHTML, /¿Qué puedo hacer aquí\?/);
   assert.equal(head.children.filter((c) => c.id === 'wl-css').length, 1);
-  assert.deepEqual(fetched, ['assets/welcome-news.json', 'assets/data/builds/catalog.json']);
+  assert.deepEqual(fetched, ['assets/welcome-news.json', 'assets/data/builds/catalog.json', 'assets/data/builds/notes.json']);
   await tick(); await tick();
   assert.match(panel.body.innerHTML, /Metas y Eventos renovado/);
   W.activate(); W.refresh();
   assert.equal(head.children.filter((c) => c.id === 'wl-css').length, 1, 'el CSS se agrega una sola vez');
-  assert.equal(fetched.length, 2, 'las novedades y el catálogo se piden una sola vez');
+  assert.equal(fetched.length, 3, 'las novedades, el catálogo y las notas se piden una sola vez');
   W.deactivate();
   assert.equal(panel.hidden, true);
 });

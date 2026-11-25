@@ -80,6 +80,7 @@
   var NEWS_DAYS = 14;  // una novedad lleva «NUEVO» durante 14 días
   var NEWS_MAX = 3;
   var BUILD_URL = 'assets/data/builds/catalog.json';
+  var NOTES_URL = 'assets/data/builds/notes.json';
 
   var CSS = [
     '#welcomePanel .wl-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:20px 22px;margin:-1px -1px 0;border-bottom:1px solid var(--bd-1);background:linear-gradient(180deg,var(--glow-base,rgba(123,92,255,.12)),transparent);border-radius:inherit}',
@@ -187,7 +188,7 @@
     '@media (prefers-reduced-motion:reduce){#welcomePanel .wl-mod{transition:none}#welcomePanel .wl-mod:hover{transform:none}}'
   ].join('\n');
 
-  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false, buildsCount: null, buildsCurated: null, buildsLoading: false, buildsLoaded: false };
+  var state = { inited: false, active: false, news: null, newsLoading: false, wired: false, buildsCount: null, buildsCurated: null, buildsNotes: null, buildsLoading: false, buildsLoaded: false };
 
   // ---------------------------------------------------------------- utilidades
   function doc() { return root.document; }
@@ -343,6 +344,13 @@
     var m = iso ? /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso) : null;
     return m ? (m[3] + '/' + m[2]) : null;
   }
+  // Cuenta las builds que tienen notas en castellano (assets/data/builds/notes.json). Devuelve null si no hay datos válidos.
+  function countNotes(data) {
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+    var notes = data.notes;
+    if (!notes || typeof notes !== 'object' || Array.isArray(notes)) return null;
+    return Object.keys(notes).length;
+  }
 
   function moduleById(id) {
     for (var i = 0; i < MODULES.length; i++) if (MODULES[i].id === id) return MODULES[i];
@@ -384,12 +392,13 @@
       '</ol></section>';
   }
 
-  function modulesHTML(m, buildsCount, buildsCurated) {
+  function modulesHTML(m, buildsCount, buildsCurated, buildsNotes) {
     var bc = (typeof buildsCount === 'number') ? buildsCount : state.buildsCount;
     var bcur = (typeof buildsCurated === 'string') ? buildsCurated : state.buildsCurated;
+    var bnotes = (typeof buildsNotes === 'number') ? buildsNotes : state.buildsNotes;
     var items = MODULES.map(function (mod) {
       var desc = mod.desc;
-      if (mod.id === 'builds' && typeof bc === 'number') desc = mod.desc + ' · ' + bc + ' builds curadas' + (bcur ? ' · Curadas el ' + bcur : '');
+      if (mod.id === 'builds' && typeof bc === 'number') desc = mod.desc + ' · ' + bc + ' builds curadas' + (bcur ? ' · Curadas el ' + bcur : '') + (typeof bnotes === 'number' ? ' · ' + bnotes + ' de ' + bc + ' con notas en castellano' : '');
       var tag = '';
       if (m.state === 'back') {
         if ((m.activeMods || []).indexOf(mod.id) >= 0) tag = '<i class="wl-tag wl-tag--perm">Falta permiso</i>';
@@ -507,10 +516,10 @@
       '<ul class="wl-chk">' + items.join('') + '</ul></section>';
   }
 
-  function bodyHTML(m, news, buildsCount, buildsCurated) {
+  function bodyHTML(m, news, buildsCount, buildsCurated, buildsNotes) {
     return '<div class="wl-body">' +
       (m.state === 'new' ? stepsHTML() : '<div class="wl-row">' + continueHTML(m) + vaultHTML(m) + '</div>') +
-      modulesHTML(m, buildsCount, buildsCurated) +
+      modulesHTML(m, buildsCount, buildsCurated, buildsNotes) +
       '<div class="wl-row">' + newsHTML(news) + guidesHTML() + '</div>' +
       footHTML() +
       '</div>';
@@ -741,7 +750,7 @@
     ensureCSS();
     var m = buildModel(readEnv());
     renderHead(host, m);
-    body.innerHTML = bodyHTML(m, state.news, state.buildsCount, state.buildsCurated);
+    body.innerHTML = bodyHTML(m, state.news, state.buildsCount, state.buildsCurated, state.buildsNotes);
     applyContrast();
     if (!state.wired) {
       state.wired = true;
@@ -785,6 +794,14 @@
         if (c !== null) state.buildsCurated = c;
         if (state.active) render();
       });
+    root.fetch(NOTES_URL, { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (data) {
+        var n = countNotes(data);
+        if (n !== null) state.buildsNotes = n;
+        if (state.active) render();
+      });
   }
 
   function activate() {
@@ -824,7 +841,7 @@
     _debug: function () { return { version: VERSION, active: state.active, news: state.news ? state.news.length : null }; },
     orientation: function () { return orientation(buildModel(readEnv())); },
     applyContrast: applyContrast,
-    _pure: { buildModel: buildModel, pickNews: pickNews, countBuilds: countBuilds, curatedDate: curatedDate, headHTML: headHTML, bodyHTML: bodyHTML, modulesHTML: modulesHTML, orientation: orientation,
+    _pure: { buildModel: buildModel, pickNews: pickNews, countBuilds: countBuilds, countNotes: countNotes, curatedDate: curatedDate, headHTML: headHTML, bodyHTML: bodyHTML, modulesHTML: modulesHTML, orientation: orientation,
       keyStatus: keyStatus, relTime: relTime, moduleForHash: moduleForHash, trackVisit: trackVisit, markBackup: markBackup,
       MODULES: MODULES, SCOPES: SCOPES, CSS: CSS, LINKS: LINKS,
       contrastFixes: contrastFixes, parseColor: parseColor, contrast: contrast }

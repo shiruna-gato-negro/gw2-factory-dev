@@ -1,16 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-050 paso 1/3 — plan (Welcome: contador de builds con notas en castellano)
-Motivo: BL-049 cerrada. BL-050 tomada; plan anotado en backlog.md (3 pasos). Sin cambios de código en este ciclo.
-Etapa actual: Product (plan)
+Tarea actual: BL-050 paso 2/3 — implementación (welcome-panel.js: estado buildsNotes + fetch notes.json + helper countNotes + display «X de Y con notas en castellano»)
+Motivo: BL-050 paso 1 cerrado. Implementación del contador de builds con notas en castellano en la tarjeta de Builds.
+Etapa actual: Development
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 11:00Z
-Próxima acción: BL-050 paso 2/3 — implementación en welcome-panel.js (estado buildsNotes, fetch notes.json, countNotes, display).
+Última actualización: 2026-11-25 12:00Z
+Próxima acción: BL-050 paso 3/3 — adaptar tests/welcome-view.test.cjs (4º arg, countNotes, 3 URLs), review, docs, commit.
 
 Archivos:
-- js/bld-rows.js
-- tests/bld-rows.test.cjs
+- js/welcome-panel.js
+- tools/size-budget.json
+- tests/welcome-view.test.cjs
 - ai-memory/status.md
 
 ## Esperando a Pablo
@@ -19,7 +20,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-050 paso 1/3. READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: BL-050 paso 2/3. READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1234 total, 1228 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
