@@ -2,16 +2,16 @@
 
 Estado: EN ESPERA
 Tarea actual: (ninguna en curso)
-Motivo: BL-046 paso 1/1 (implementación): statsHTML de wv-objectives-dashboard.js suma un 5º indicador «Con pendientes» con «X de Y cuentas con objetivos sin reclamar» (readable - upToDate), «—»/«sin datos» sin datos. Grid de .wvd-stats pasado a 5 columnas. Test de regresión BL-046 en tests/wv-objectives-dashboard.test.cjs. Review riesgo BAJO. Suite 1224/1230 (6 skipped).
+Motivo: BL-047 paso 1/1 (implementación): statsHTML de wv-purchases-view.js suma un 5º indicador «AA total» con «X AA en todas las cuentas» (avail + marked), «—»/«sin datos» sin datos. Grid de .wvp-stats pasado a 5 columnas. Test de regresión BL-047 en tests/wv-purchases-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1225/1231 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-24
-Última actualización: 2026-11-25 07:30Z
-Próxima acción: tomar BL-047 (Cámara del Brujo: 5º indicador «AA total» en el panel de compras) por turno.
+Última actualización: 2026-11-25 08:05Z
+Próxima acción: explorar La Bóveda como jugadora y proponer 1 a 3 tareas nuevas en READY (READY vacía).
 
 Archivos:
 - ai-memory/backlog.md
-- js/wv-objectives-dashboard.js
-- tests/wv-objectives-dashboard.test.cjs
+- js/wv-purchases-view.js
+- tests/wv-purchases-view.test.cjs
 
 ## Esperando a Pablo
 
@@ -19,15 +19,10 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguno). READY: BL-047. BLOCKED: (vacío).
+- IN_PROGRESS: (ninguno). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1230 total, 1224 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1231 total, 1225 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
 ## Resumen de la sesión
 
-- BL-046 paso 1/1 (implementación): statsHTML de wv-objectives-dashboard.js suma un 5º indicador «Con pendientes» con «X de Y cuentas con objetivos sin reclamar» (readable - upToDate), «—»/«sin datos» sin datos. Grid de .wvd-stats pasado a 5 columnas. Test de regresión BL-046 en tests/wv-objectives-dashboard.test.cjs. Review riesgo BAJO. Suite 1224/1230 (6 skipped).
-- BL-045 paso 1/1 (implementación): statsHTML de bld-view.js suma un 5º indicador «Vigentes» con «X de Y builds vigentes» (builds vigentes del catálogo sobre el total, builds - revisar); grid de .bld-stats a 5 columnas. Test de regresión BL-045 en tests/bld-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1223/1229 (6 skipped).
-- S-9: exploración La Bóveda — 3 tareas nuevas en READY (BL-045 Builds vigentes en la cabecera, BL-046 WV objetivos cuentas con pendientes, BL-047 WV compras AA total). Sin cambios de código. Suite 1222/1228 (6 skipped).
-- BL-044 paso 1/1 (implementación): statsHTML de act-view.js ahora incluye un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—»/«sin datos» sin datos; grid de .av-stats pasado a 5 columnas. Test de regresión BL-044 en tests/act-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1222/1228 (6 skipped).
-- BL-043 paso 1/1 (implementación): statsHTML de inv-view.js ahora incluye un 5º indicador «Objetos distintos» con «X tipos distintos en el banco» (ids únicos en bankSlots); grid de .iv-stats pasado a 5 columnas. Test de regresión BL-043 en tests/inv-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1221/1227 (6 skipped).
-- BL-042 paso 1/1 (implementación): statsHTML de home-view.js ahora incluye un 5º indicador «Nodos que te faltan» con «X de Y nodos de la API sin desbloquear» (apiTotal - api); grid de .hs-stats pasado a 5 columnas. Test de regresión BL-042 en tests/home-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1220/1226 (6 skipped).
+- BL-047 paso 1/1 (implementación): statsHTML de wv-purchases-view.js suma un 5º indicador «AA total» con «X AA en todas las cuentas» (avail + marked), «—»/«sin datos» sin datos. Grid de .wvp-stats pasado a 5 columnas. Test de regresión BL-047 en tests/wv-purchases-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1225/1231 (6 skipped).

@@ -167,6 +167,8 @@
         (s.short ? 'les faltan ' + aa(s.shortAA) : 'todas llegan con su AA') + '</em></div>' +
       '<div class="wvp-st"><small>Fijados completos</small><b>' + s.done + ' <span>de ' + s.cells + '</span></b>' +
         '<div class="wvp-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></div></div>' +
+      '<div class="wvp-st"><small>AA total</small><b>' + (s.readable ? aa(s.avail + s.marked) + ' en todas las cuentas' : '—') + '</b><em>' +
+        (s.readable ? '' : 'sin datos') + '</em></div>' +
       '</div>';
   }
 
@@ -293,7 +295,7 @@
   var CSS = [
     '.wvp{padding:0 0 12px}',
     '.wvp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}',
-    '.wvp-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 12px}',
+    '.wvp-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 12px}',
     '.wvp-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-1);padding:10px 12px;min-width:0}',
     '.wvp-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.wvp-st b{font-size:1.25rem;color:var(--tx-1)}.wvp-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',

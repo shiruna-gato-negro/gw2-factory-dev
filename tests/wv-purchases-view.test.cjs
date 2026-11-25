@@ -184,6 +184,13 @@ test('vista: cargando, error con reintento, barra con búsqueda, «Gestionar» c
   assert.ok(!/aria-expanded="true"|role="menu"/.test(V.viewHTML(Object.assign({}, st, { menuOpen: false }), 12000)));
 });
 
+test('BL-047: AA total muestra el AA de todas las cuentas y sin datos muestra guión', () => {
+  const h = V.statsHTML(V.summarize(accounts()), 4);
+  assert.match(h, /<small>AA total<\/small><b>1\.500<span class="wvp-aa">AA<\/span> en todas las cuentas<\/b>/);
+  const h2 = V.statsHTML(V.summarize([]), 0);
+  assert.match(h2, /<small>AA total<\/small><b>—<\/b><em>sin datos<\/em>/);
+});
+
 test('reglas: solo pinta (sin almacenamiento, red ni globales viejos), tokens del GDS, celular a 2 columnas', () => {
   assert.ok(!/localStorage|sessionStorage|fetch\(|XMLHttpRequest|GW2Api|WVSeasonStore/.test(SRC));
   assert.ok(!/enhanceShopCards|wvpd-manual-input|MutationObserver/.test(SRC));
