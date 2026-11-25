@@ -3,6 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-051] [BAJO] Metas: filtro «Solo con drop» en la barra de filtros — añadir `onlyDrop` a filters/matches de meta.js (hasDrop) + switch `sw('onlyDrop', 'Solo con drop')` en mt-tools + reset (goTo/renderAll) incluye onlyDrop + test de regresión. Sigue el patrón de onlyPreview (BL-018) y onlyPinned (BL-024). — 2026-11-25
+  Qué ve el jugador: en Metas, un switch «Solo con drop» que deja solo las metas que tienen drop o infusión.
+- [BL-052] [BAJO] Inventario: switch «Solo con stock» en Materiales — ocultar grupos y materiales con held 0 cuando el switch está activo; añadir `onlyStock` al estado de inv-view + switch en materialsHTML + reset al cambiar de categoría/búsqueda + test de regresión. Sigue el patrón de onlyBench/onlyVigentes. — 2026-11-25
+  Qué ve el jugador: en Inventario → Materiales, un switch que oculta los materiales y categorías sin nada guardado.
+- [BL-053] [BAJO] Armería Legendaria: resumen global «X de Y legendarias» en la cabecera del catálogo — mostrar owned/total global con barra de progreso arriba del catálogo (render-catologo.js), usando getOwnershipCounts() del tracker; sin Key, mostrar solo el total del catálogo. Test de regresión. — 2026-11-25
+  Qué ve el jugador: en la Armería Legendaria, en la cabecera del catálogo, ve cuántas de las legendarias tiene del total, con una barra de progreso, además del desglose por expansión.
 
 ## IN_PROGRESS
 
