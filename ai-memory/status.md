@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (sin tarea en curso)
-Motivo: cerré BL-052 (switch «Solo con stock» en Inventario → Materiales: onlyStock en estado, filtrado de grupos vacíos, switch en materialsHTML, reset en cat/búsqueda/tab, test de regresión). READY: BL-053.
-Etapa actual: Documentation (cierre)
+Estado: EN CURSO
+Tarea actual: BL-053 Paso 1/3 — plan (Armería Legendaria: resumen global «X de Y legendarias»)
+Motivo: tomé la única tarea de READY (BL-053); Paso 1 es solo planificación (regla v4/v6). Sin cambios de código.
+Etapa actual: Product (plan)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 14:35Z
-Próxima acción: tomar BL-053 (Armería Legendaria: resumen global «X de Y legendarias») — Paso 1 plan.
+Última actualización: 2026-11-25 15:04Z
+Próxima acción: BL-053 Paso 2/3 — implementar resumen global en headerHTML usando getOwnershipCounts(); sin Key mostrar solo total.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-053. BLOCKED: (vacío).
+- IN_PROGRESS: BL-053 (Paso 1/3 plan). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1239 total, 1233 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
