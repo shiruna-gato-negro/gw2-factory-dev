@@ -1,17 +1,16 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: BL-050 paso 2/3 — implementación (welcome-panel.js: estado buildsNotes + fetch notes.json + helper countNotes + display «X de Y con notas en castellano»)
-Motivo: BL-050 paso 1 cerrado. Implementación del contador de builds con notas en castellano en la tarjeta de Builds.
-Etapa actual: Development
+Estado: EN ESPERA
+Tarea actual: — (sin tarea en curso)
+Motivo: BL-050 cerrada (paso 3/3). READY vacía.
+Etapa actual: —
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 12:00Z
-Próxima acción: BL-050 paso 3/3 — adaptar tests/welcome-view.test.cjs (4º arg, countNotes, 3 URLs), review, docs, commit.
+Última actualización: 2026-11-25 13:12Z
+Próxima acción: explorar La Bóveda como jugadora y anotar 1 a 3 tareas nuevas en READY (máx. 10).
 
 Archivos:
-- js/welcome-panel.js
-- tools/size-budget.json
 - tests/welcome-view.test.cjs
+- ai-memory/backlog.md
 - ai-memory/status.md
 
 ## Esperando a Pablo
@@ -20,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-050 paso 2/3. READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1234 total, 1228 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1235 total, 1229 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
 ## Resumen de la sesión
 
@@ -32,3 +31,4 @@ Archivos:
 - MAP-3 cerrada: mi parte del mapa (ai-memory/mapa.json) corregida y versionada (1.0.1). Suite 1228/1234 (6 skipped).
 - v8 cerrada (orden): reglas en AGENTS.md (no abrir navegador de Pablo; servidores puerto 8123 sin ventana; cortar PID al cerrar). Commit `orden: v8 explorar sin ventanas — tests 1228/1234`.
 - BL-049 cerrada: bld-rows.js dpsHTML unifica texto a «Sin bench publicado». Suite 1228/1234 (6 skipped).
+- BL-050 cerrada: Welcome tarjeta de Builds muestra «X de Y con notas en castellano» (countNotes + fetch notes.json). Suite 1229/1235 (6 skipped).

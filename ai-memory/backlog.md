@@ -5,12 +5,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 ## READY
 
 ## IN_PROGRESS
-- [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — extender countBuilds/curatedDate en welcome-panel para leer notes.json y mostrar «X de Y con notas en castellano» junto a la fecha de curación. Test welcome-view adaptado. Techo size-budget con motivo si hace falta. — 2026-11-25
-  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
-  Plan (3 pasos):
-  1. (este ciclo) Plan — anotar pasos y pasar a IN_PROGRESS.
-  2. Implementación en js/welcome-panel.js: estado buildsNotes + fetch de assets/data/builds/notes.json; helper countNotes(data) (Object.keys(data.notes).length, null si inválido); firma modulesHTML/bodyHTML/render pasa buildsNotes; tarjeta Builds muestra «X de Y con notas en castellano» junto a «Curadas el DD/MM» (X = builds con notas, Y = builds curadas). Exponer countNotes en _pure.
-  3. Adaptar tests/welcome-view.test.cjs (BL-050): firma modulesHTML con 4º arg; helper countNotes; fetch de notes en activate (3 URLs); actualizar techo size-budget welcome-panel con motivo; review + docs; commit.
 
 ## BLOCKED
 
@@ -20,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — cerrada. js/welcome-panel.js: estado buildsNotes + fetch notes.json; helper countNotes(data) (Object.keys(data.notes).length, null si inválido); firma modulesHTML/bodyHTML/render pasa buildsNotes; tarjeta Builds muestra «X de Y con notas en castellano» junto a «Curadas el DD/MM» (X = builds con notas, Y = builds curadas). Exponer countNotes en _pure. tests/welcome-view.test.cjs adaptado (4º arg, countNotes, 3 URLs). Techo size-budget welcome-panel 52497 B con motivo (regla v6). Review riesgo BAJO: aditivo, sin regresión. Suite 1229/1235 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
 - [BL-049] [BAJO] Builds: unificar el texto de falta de benchmark en las filas — cerrada. bld-rows.js dpsHTML ahora devuelve un único texto «Sin bench publicado» para cualquier build sin bench (WvW/PvP y PvE). Test bld-rows actualizado (regex «Sin bench publicado» para ambos casos). Versión bld-rows 1.0.0 → 1.0.1 y modules.json. Review riesgo BAJO: aditivo, sin regresión. Suite 1228/1234 (6 skipped). — 2026-11-25
   Qué ve el jugador: todas las filas de la Biblioteca dicen lo mismo cuando no hay benchmark publicado, sin variantes según modo.
 - [BL-048] [BAJO] Builds: filtro «Solo con notas en castellano» en la Biblioteca — cerrada. onlyNotes en filters/matches de bld-lib.js (filtra builds cuyo id está en el set de notas cargado desde notes.json en preload); switch sw('onlyNotes', 'Solo con notas') en el chiprow (solo si notes cargó); clearFilters resetea onlyNotes; estado por defecto onlyNotes:false. Test de regresión BL-048 en tests/bld-lib.test.cjs (filtro + switch en UI). Versión bld-lib 1.13.0 → 1.14.0 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyBench/onlyVigentes, sin regresión. Suite 1226/1232 (6 skipped). — 2026-11-25

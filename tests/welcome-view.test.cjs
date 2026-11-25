@@ -211,6 +211,20 @@ test('tarjeta de Builds muestra fecha de curación cuando el catálogo la trae (
   assert.equal(P.curatedDate(null), null);
 });
 
+test('tarjeta de Builds muestra cuántas tienen notas en castellano (BL-050)', () => {
+  const m = P.buildModel({ keys: [{ value: 'k', label: 'a' }] });
+  const html = P.modulesHTML(m, 5, '16/11', 3);
+  assert.match(html, /5 builds curadas · Curadas el 16\/11 · 3 de 5 con notas en castellano/);
+  const html2 = P.modulesHTML(m, 5, '16/11', null);
+  assert.doesNotMatch(html2, /con notas en castellano/);
+  assert.equal(P.countNotes({ notes: { a: 1, b: 2, c: 3 } }), 3);
+  assert.equal(P.countNotes({ notes: {} }), 0);
+  assert.equal(P.countNotes(null), null);
+  assert.equal(P.countNotes({}), null);
+  assert.equal(P.countNotes({ notes: [] }), null);
+  assert.equal(P.countNotes({ notes: 'x' }), null);
+});
+
 test('API pública compatible con 1.4.0 y versión en el encabezado', () => {
   const { W } = load();
   for (const k of ['initOnce', 'activate', 'deactivate', 'Route', '_debug']) assert.ok(W[k], k);
