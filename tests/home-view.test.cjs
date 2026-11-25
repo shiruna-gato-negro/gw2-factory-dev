@@ -134,7 +134,7 @@ test('mi voz: lo que te queda hoy; todo hecho; o que marques los de Janthir', ()
   assert.equal(P.pickVoice(P.buildModel({ loaded: true, hasToken: false }, CAT, {}, NOW)), null);
 });
 
-test('vista: cabecera con 4 indicadores, nodos con ícono y estado en texto, botones con nombre y los gatos', () => {
+test('vista: cabecera con 5 indicadores, nodos con ícono y estado en texto, botones con nombre y los gatos', () => {
   const m = P.buildModel(DATA(), CAT, {}, NOW);
   const h = P.viewHTML(m);
   assert.match(h, /<h2 id="hsTitle">Heredad<\/h2>/);
@@ -142,6 +142,7 @@ test('vista: cabecera con 4 indicadores, nodos con ícono y estado en texto, bot
   assert.match(h, /<small>Recolectados hoy<\/small><b>1 <span>\/ 4<\/span>/);
   assert.match(h, /<small>Gatos<\/small><b>2 <span>\/ 35<\/span>/);
   assert.match(h, /<small>Janthir y contratos<\/small><b>1 <span>\/ 10<\/span><\/b><em>los marcás vos<\/em>/);
+  assert.match(h, /<small>Nodos que te faltan<\/small><b>53 de 57 nodos de la API sin desbloquear<\/b>/);
   assert.match(h, /<b>Nodo de cuarzo<\/b><small>con «Regalo de cuarzo»<\/small><\/span><span class="hs-badge hs-badge--ok">Recolectado hoy/);
   assert.match(h, /data-hs-done="quartz_node" aria-pressed="true">.*?<span class="hs-sr"> Nodo de cuarzo<\/span>/);
   assert.match(h, /<b>Nodo de mithril<\/b>.*?hs-badge--nd">No lo tenés<\/span><span class="hs-acts"><\/span>/);
@@ -157,6 +158,15 @@ test('vista: cabecera con 4 indicadores, nodos con ícono y estado en texto, bot
   const nd = P.viewHTML(P.buildModel({ loaded: true, hasToken: false }, CAT, {}, NOW));
   assert.doesNotMatch(nd, /data-hs-own|data-hs-done/, 'sin Key no se marca nada');
   assert.match(nd, /Con tu API Key/);
+});
+
+test('BL-042: Nodos que te faltan muestra X de Y en la cabecera y sin datos muestra guión', () => {
+  const m = P.buildModel(DATA(), CAT, {}, NOW);
+  const h = P.viewHTML(m);
+  assert.match(h, /<small>Nodos que te faltan<\/small><b>53 de 57 nodos de la API sin desbloquear<\/b>/);
+  const m2 = P.buildModel({ loaded: true, hasToken: false }, CAT, {}, NOW);
+  const h2 = P.viewHTML(m2);
+  assert.match(h2, /<small>Nodos que te faltan<\/small><b>—<\/b><em>sin token o sin cargar<\/em>/);
 });
 
 test('CSS: un solo contenedor, solo el texto del theme, foco visible y 44 px en el celular', () => {

@@ -155,6 +155,7 @@
     h += s.api != null || s.manual ? stat('Recolectados hoy', frac(s.done, s.mine), s.mine && s.done === s.mine ? 'todo hecho hoy' : 'se reinician en ' + esc(m.reset), pct(s.done, s.mine)) : stat('Recolectados hoy', '—', m.hasToken ? nd : 'con tu API Key');
     h += s.cats != null ? stat('Gatos', frac(s.cats, s.catsTotal), '', pct(s.cats, s.catsTotal)) : stat('Gatos', '—', m.hasToken ? nd : 'con tu API Key');
     h += s.manual != null ? stat('Janthir y contratos', frac(s.manual, s.manualTotal), 'los marcás vos') : stat('Janthir y contratos', '—', 'con tu API Key');
+    h += s.api != null ? stat('Nodos que te faltan', (s.apiTotal - s.api) + ' de ' + s.apiTotal + ' nodos de la API sin desbloquear', '') : stat('Nodos que te faltan', '—', 'sin token o sin cargar');
     return h;
   }
 
@@ -238,7 +239,7 @@
     '.hs-btn,.hs-pill{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px;display:inline-flex;align-items:center;gap:6px}',
     '.hs-btn:hover,.hs-pill:hover{border-color:var(--acc-1)}',
     '.hs-pill[aria-pressed=true],.hs-btn[aria-pressed=true]{background:var(--bg-2);border-color:var(--hs-mod);font-weight:700}',
-    '.hs-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.hs-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.hs-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.hs-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.hs-st b{font-size:1.25rem;color:var(--tx-1)}.hs-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',

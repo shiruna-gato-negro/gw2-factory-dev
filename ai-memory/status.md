@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: (ninguna en curso)
-Motivo: S-8: exploración La Bóveda — 3 tareas nuevas en READY (BL-042..BL-044). Suite 1219/1225 (6 skipped).
+Motivo: BL-042 paso 1/1 cerrada — 5º indicador «Nodos que te faltan» en Heredad. Suite 1220/1226 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-24
-Última actualización: 2026-11-25 04:38Z
-Próxima acción: tomar BL-042 (Heredad: 5º indicador «Nodos que te faltan») por turno.
+Última actualización: 2026-11-25 05:03Z
+Próxima acción: tomar BL-043 (Inventario: 5º indicador «Objetos distintos en el banco») por turno.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,12 +18,13 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguno). READY: BL-042, BL-043, BL-044. BLOCKED: (vacío).
+- IN_PROGRESS: (ninguno). READY: BL-043, BL-044. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1225 total, 1219 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1226 total, 1220 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
 ## Resumen de la sesión
 
+- BL-042 paso 1/1 (implementación): statsHTML de home-view.js ahora incluye un 5º indicador «Nodos que te faltan» con «X de Y nodos de la API sin desbloquear» (apiTotal - api); grid de .hs-stats pasado a 5 columnas. Test de regresión BL-042 en tests/home-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1220/1226 (6 skipped).
 - S-8: exploración La Bóveda — 3 tareas nuevas en READY (BL-042 Heredad nodos que te faltan, BL-043 Inventario objetos distintos en el banco, BL-044 Actividades fractales recomendados hoy). Sin cambios de código. Suite 1219/1225 (6 skipped).
 - BL-041 paso 1/1 (implementación): statsHTML de raids-view.js ahora incluye un 5º indicador «Modo desafío» con «X de Y hechos» (encuentros con cm === true completados, sobre el catálogo); buildModel suma cmDone/cmTotal (y aliases) en stats; grid de .rv-stats pasado a 5 columnas. Test de regresión BL-041 en tests/raids-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1219/1225 (6 skipped).
 - BL-040 paso 1/1 (implementación): headHTML de wv-view.js ahora incluye un 5º indicador «Especiales» con «X de Y» (sobre counts.special, igual que Hoy y Esta semana), «—»/«sin datos todavía» sin datos; buildModel agrega special. Grid de .wvx-stats pasado a 5 columnas. Test de regresión BL-040 en tests/wv-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1218/1224 (6 skipped).
