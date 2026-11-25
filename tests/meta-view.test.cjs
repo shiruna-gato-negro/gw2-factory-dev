@@ -181,6 +181,26 @@ test('BL-024: switch «Solo fijadas» en la UI y onlyPinned en filtros', () => {
   assert.match(SRC, /fijadas/);
 });
 
+test('filtros: onlyDrop deja solo las metas con drop o infusión', () => {
+  const now = at('2026-10-22T23:37:00Z');
+  const inst = P.instanceAt(metas[0], now);
+  const rows = [
+    { meta: { name: 'A', type: 'meta', expansion: 'Core', highlightItemId: 123 }, inst, done: null },
+    { meta: { name: 'B', type: 'meta', expansion: 'Core' }, inst, done: null },
+    { meta: { name: 'C', type: 'meta', expansion: 'Core', _extItems: [{ itemName: 'Chak Infusion' }] }, inst, done: null },
+  ];
+  const base = { q: '', type: '', exp: '', when: 'all', hideDone: false, onlyPreview: false, onlyPinned: false };
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyDrop: false }))).length, 3);
+  assert.equal(rows.filter((r) => P.matches(r, Object.assign({}, base, { onlyDrop: true }))).length, 2);
+});
+
+test('BL-051: switch «Solo con infusión o drop» en la UI y onlyDrop en filtros', () => {
+  assert.match(SRC, /sw\('onlyDrop', 'Solo con infusión o drop'\)/);
+  assert.match(SRC, /onlyDrop: false/);
+  assert.match(SRC, /hasDrop: hasDrop/);
+  assert.match(SRC, /function hasDrop\(meta\)/);
+});
+
 test('tipos y expansiones salen de los datos (sin «Fractal» vacío) y suman 49', () => {
   const t = P.typeCounts(metas);
   assert.equal(t.reduce((n, x) => n + x.n, 0), 49);

@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: — (sin tarea en curso — exploración cerrada)
-Motivo: exploré La Bóveda como jugadora (Metas, Inventario, Armería Legendaria) y anoté 3 tareas nuevas en READY (BL-051 a BL-053), todas visibles para el jugador.
+Tarea actual: — (sin tarea en curso)
+Motivo: cerré BL-051 (test de regresión del filtro «Solo con infusión o drop» en Metas; código ya existía desde MET-1). READY: BL-052, BL-053.
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 13:39Z
-Próxima acción: tomar BL-051 (Metas: filtro «Solo con drop» en la barra de filtros) — Paso 1 plan.
+Última actualización: 2026-11-25 14:03Z
+Próxima acción: tomar BL-052 (Inventario: switch «Solo con stock» en Materiales) — Paso 1 plan.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-051, BL-052, BL-053. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-052, BL-053. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1235 total, 1229 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
+- Suite actual: 1237 total, 1231 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
 ## Resumen de la sesión
 
@@ -31,4 +31,5 @@ Archivos:
 - v8 cerrada (orden): reglas en AGENTS.md (no abrir navegador de Pablo; servidores puerto 8123 sin ventana; cortar PID al cerrar). Commit `orden: v8 explorar sin ventanas — tests 1228/1234`.
 - BL-049 cerrada: bld-rows.js dpsHTML unifica texto a «Sin bench publicado». Suite 1228/1234 (6 skipped).
 - BL-050 cerrada: Welcome tarjeta de Builds muestra «X de Y con notas en castellano» (countNotes + fetch notes.json). Suite 1229/1235 (6 skipped).
-- Exploración La Bóveda (Metas, Inventario, Armería Legendaria): 3 tareas nuevas en READY (BL-051 filtro «Solo con drop», BL-052 switch «Solo con stock» en Materiales, BL-053 resumen global de legendarias). Todas con «Qué ve el jugador».
+- BL-051 cerrada: test de regresión del filtro «Solo con infusión o drop» en Metas (matches hasDrop + switch en UI). Suite 1231/1237 (6 skipped).
+- Exploración La Bóveda (Metas, Inventario, Armería Legendaria): 3 tareas nuevas en READY (BL-051 cerrada, BL-052 switch «Solo con stock» en Materiales, BL-053 resumen global de legendarias). Todas con «Qué ve el jugador».
