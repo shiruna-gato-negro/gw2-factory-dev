@@ -3,6 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-048] [BAJO] Builds: filtro «Solo con notas en castellano» en la Biblioteca — añadir `onlyNotes` a filters/matches de bld-lib (nota existente en notes.json para esa build) + switch en el chiprow + reset en clearFilters + test de regresión. Sigue el patrón de onlyBench/onlyPreview/onlyVigentes. Versión bld-lib + modules.json. — 2026-11-25
+  Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds que tienen notas escritas en castellano.
+- [BL-049] [BAJO] Builds: unificar el texto de falta de benchmark en las filas — normalizar en bld-rows.js las variantes «Sin golem en WvW/PvP» y «Sin bench propio · referencia en la ficha» a un único texto «Sin bench publicado». Test de regresión bld-rows. — 2026-11-25
+  Qué ve el jugador: todas las filas de la Biblioteca dicen lo mismo cuando no hay benchmark publicado, sin variantes según modo.
+- [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — extender countBuilds/curatedDate en welcome-panel para leer notes.json y mostrar «X de Y con notas en castellano» junto a la fecha de curación. Test welcome-view adaptado. Techo size-budget con motivo si hace falta. — 2026-11-25
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
 
 ## IN_PROGRESS
 
