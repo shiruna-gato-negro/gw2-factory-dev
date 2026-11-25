@@ -3,8 +3,6 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-049] [BAJO] Builds: unificar el texto de falta de benchmark en las filas — normalizar en bld-rows.js las variantes «Sin golem en WvW/PvP» y «Sin bench propio · referencia en la ficha» a un único texto «Sin bench publicado». Test de regresión bld-rows. — 2026-11-25
-  Qué ve el jugador: todas las filas de la Biblioteca dicen lo mismo cuando no hay benchmark publicado, sin variantes según modo.
 - [BL-050] [BAJO] Welcome: en la tarjeta de Builds, mostrar cuántas builds tienen notas en castellano — extender countBuilds/curatedDate en welcome-panel para leer notes.json y mostrar «X de Y con notas en castellano» junto a la fecha de curación. Test welcome-view adaptado. Techo size-budget con motivo si hace falta. — 2026-11-25
   Qué ve el jugador: en la Bienvenida, la tarjeta de Builds dice cuántas de las builds curadas tienen notas en castellano, además de la fecha de curación.
 
@@ -17,6 +15,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-049] [BAJO] Builds: unificar el texto de falta de benchmark en las filas — cerrada. bld-rows.js dpsHTML ahora devuelve un único texto «Sin bench publicado» para cualquier build sin bench (WvW/PvP y PvE). Test bld-rows actualizado (regex «Sin bench publicado» para ambos casos). Versión bld-rows 1.0.0 → 1.0.1 y modules.json. Review riesgo BAJO: aditivo, sin regresión. Suite 1228/1234 (6 skipped). — 2026-11-25
+  Qué ve el jugador: todas las filas de la Biblioteca dicen lo mismo cuando no hay benchmark publicado, sin variantes según modo.
 - [BL-048] [BAJO] Builds: filtro «Solo con notas en castellano» en la Biblioteca — cerrada. onlyNotes en filters/matches de bld-lib.js (filtra builds cuyo id está en el set de notas cargado desde notes.json en preload); switch sw('onlyNotes', 'Solo con notas') en el chiprow (solo si notes cargó); clearFilters resetea onlyNotes; estado por defecto onlyNotes:false. Test de regresión BL-048 en tests/bld-lib.test.cjs (filtro + switch en UI). Versión bld-lib 1.13.0 → 1.14.0 y modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyBench/onlyVigentes, sin regresión. Suite 1226/1232 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la Biblioteca de Builds, un switch que deja solo las builds que tienen notas escritas en castellano.
 - [BL-047] [BAJO] Cámara del Brujo: 5º indicador «AA total» en el panel de compras — cerrada. statsHTML de wv-purchases-view.js suma un 5º indicador «AA total» con «X AA en todas las cuentas» (avail + marked); grid de .wvp-stats pasado a 5 columnas. Test de regresión BL-047 en tests/wv-purchases-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1225/1231 (6 skipped). — 2026-11-25

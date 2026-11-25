@@ -21,8 +21,8 @@ require('node:vm').runInNewContext(fs.readFileSync(path.join(ROOT, 'js', 'bld-vi
 globalThis.GNBld = SB.GNBld;
 
 test('versión en la cabecera y en modules.json, antes de la Biblioteca', () => {
-  assert.match(fs.readFileSync(path.join(ROOT, 'js', 'bld-rows.js'), 'utf8'), /Versión: 1\.0\.0 /);
-  assert.equal(R.version, '1.0.0');
+  assert.match(fs.readFileSync(path.join(ROOT, 'js', 'bld-rows.js'), 'utf8'), /Versión: 1\.0\.1 /);
+  assert.equal(R.version, '1.0.1');
   const mods = JSON.parse(fs.readFileSync(path.join(ROOT, 'js', 'modules.json'), 'utf8')).routes['#/builds'];
   const src = mods.map((m) => m.src);
   assert.ok(src.includes('js/bld-rows.js'));
@@ -55,9 +55,9 @@ test.skip('fila: toda la fila es un enlace a su ficha; armas, modo y dificultad;
   assert.match(h, /<span class="bld-rbar" aria-hidden="true"><i style="width:\d+%"><\/i><\/span>/);
   assert.match(h, /<span class="bld-rgo" aria-hidden="true">›<\/span><\/a>$/);
   const w = CAT.builds.find((b) => b.mode === 'wvw');
-  assert.match(RP.rowHTML(w, o), /Sin golem en WvW/);
+  assert.match(RP.rowHTML(w, o), /Sin bench publicado/);
   const pveNo = CAT.builds.find((b) => b.mode === 'pve' && !P.benchOf(b, idx));
-  if (pveNo) assert.match(RP.rowHTML(pveNo, o), /Sin bench propio · referencia en la ficha/);
+  if (pveNo) assert.match(RP.rowHTML(pveNo, o), /Sin bench publicado/);
   const boon = CAT.builds.find((b) => (b.roles || []).includes('alacrity'));
   assert.match(RP.rowHTML(boon, o), /<span class="bld-tag is-boon">Alacridad<\/span>/);
   const evil = Object.assign({}, withB, { id: 'x"><script>', name: '<img onerror=1>' });

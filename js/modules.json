@@ -52,7 +52,7 @@
       { "src": "js/bld-items.js", "v": "1.0.1" },
       { "src": "js/bld-view.js", "v": "1.6.1" },
       { "src": "js/bld-bench.js", "v": "1.0.0" },
-      { "src": "js/bld-rows.js", "v": "1.0.0" },
+      { "src": "js/bld-rows.js", "v": "1.0.1" },
       { "src": "js/bld-lib.js", "v": "1.14.0" },
       { "src": "js/bld-gearview.js", "v": "1.0.0" },
       { "src": "js/bld-traitview.js", "v": "1.0.1" },

@@ -1,6 +1,6 @@
 /*!
  * js/bld-rows.js — Builds: la lista de la Biblioteca en filas, agrupada por profesión y élite (BL-084 EQ-3b)
- * Versión: 1.0.0 (2026-10-30)
+ * Versión: 1.0.1 (2026-11-25)
  *
  * La estructura de Snow Crows con nuestro marco (maqueta docs/propuestas/bld2-biblioteca.html): un grupo por profesión
  * (con su color oficial), adentro una columna por élite y una fila por build: nombre, armas, modo y dificultad,
@@ -12,7 +12,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.0.0';
+  var VERSION = '1.0.1';
 
   function S() { return root.GNBldShow; }
   function esc(s) { return S() ? S().esc(s) : String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -47,7 +47,7 @@
         '<span class="bld-rbar" aria-hidden="true"><i style="width:' + pct + '%"></i></span></span>';
     }
     var M = P.MODES || {};
-    return '<span class="bld-rdps is-none">' + (b.mode !== 'pve' ? 'Sin golem en ' + esc(M[b.mode] || b.mode) : 'Sin bench propio · referencia en la ficha') + '</span>';
+    return '<span class="bld-rdps is-none">Sin bench publicado</span>';
   }
   function rowHTML(b, o) {
     var P = o.lib || {}, C = root.GNBldCode, W = (C && C.WEAPONS_ES) || {}, M = P.MODES || {}, SUB = P.SUB || {}, R = P.ROLES || {}, D = P.DAMAGE || {};
