@@ -3,7 +3,9 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-059] [BAJO] Cámara del Brujo: switch «Solo sin reclamar» en objetivos — añadir switch en wv-view siguiendo el patrón (data-wv-sw, «Solo sin reclamar») que oculta los objetivos ya reclamados dejando solo los pendientes; reset al cambiar de pestaña. Qué ve el jugador: en la Cámara del Brujo, un switch que deja solo los objetivos que todavía no reclamó.
+- [BL-060] [BAJO] Raids: switch «Solo sin completar» en Encuentros — añadir switch siguiendo el patrón (data-rv-sw, «Solo sin completar») que oculta los encuentros ya hechos (hecho/marcado) dejando solo los pendientes; reset al cambiar de pestaña. Qué ve el jugador: en Raids → Encuentros, un switch que deja solo los encuentros que todavía no completó.
+- [BL-061] [BAJO] Logros: switch «Solo sin completar» en el listado de la cuenta — añadir switch siguiendo el patrón (data-ach-sw, «Solo sin completar») que oculta los logros completados dejando solo los pendientes. Qué ve el jugador: en Logros, un switch que deja solo los logros que todavía no completó.
+- [BL-062] [BAJO] Cuentas: switch «Solo con Key» (inverso de «Solo sin Key») en Mis cuentas — añadir switch siguiendo el patrón (data-cv-sw, «Solo con Key») que oculta las cuentas sin Key dejando solo las que ya la tienen cargada. Qué ve el jugador: en Cuentas → Mis cuentas, un switch que deja solo las cuentas que ya tienen API Key cargada, para revisar las activas.
 
 ## IN_PROGRESS
 
@@ -15,6 +17,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+  - [BL-059] [BAJO] Cámara del Brujo: switch «Solo sin reclamar» en objetivos — cerrada. Switch data-wv-sw="onlyUnclaimed" («Solo sin reclamar») en wv-objectives-ui.js que oculta los objetivos ya reclamados (grupo «Reclamados») dejando solo los pendientes; onlyUnclaimed en st y viewHTML (opts.onlyUnclaimed), toggle por clic en wire, reset al cambiar de kind (lastKind). Tests wv-objectives-ui +2 (switch presente + filtrado; onlyUnclaimed en estado). Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyUnowned, sin regresión. Suite 1304/1310 (6 skipped). — 2026-11-25
+    Qué ve el jugador: en la Cámara del Brujo, un switch que deja solo los objetivos que todavía no reclamó.
   - [BL-058] [BAJO] Heredad: switch «Solo sin desbloquear» en los nodos — cerrada. Switch data-hs-sw="onlyUnowned" («Solo sin desbloquear») en home-view.js que oculta los nodos ya desbloqueados dejando solo los que faltan; onlyUnowned en buildModel (top-level y ui, con alias onlyLocked/onlyMissing) y st.ui con reset al cambiar de pestaña; clic alterna y repinta. Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyUnowned, sin regresión. Suite 1302/1308 (6 skipped). — 2026-11-25
     Qué ve el jugador: en Heredad, un switch que deja solo los nodos que todavía no desbloqueó.
   - [BL-057] [BAJO] Actividades: switch «Solo con pendientes» en la pestaña Semana — cerrada. Switch data-act-sw="onlyPending" («Solo con pendientes») en Semana (act-view.js) que oculta lo ya hecho (piedras compradas) dejando solo lo pendiente; onlyPending en buildModel/ui y st.ui con reset al cambiar de pestaña; act-week.js también filtra piedras compradas y toggle por clic. Review riesgo BAJO: aditivo, sigue el patrón de onlyStock/onlyUnowned, sin regresión. Suite 1300/1306 (6 skipped). — 2026-11-25

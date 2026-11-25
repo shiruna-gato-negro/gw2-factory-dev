@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-058 cerrada (switch «Solo sin desbloquear» en Heredad). READY: BL-059.
+Motivo: BL-059 cerrada (switch «Solo sin reclamar» en Cámara del Brujo). READY: BL-060, BL-061, BL-062 (exploración).
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-25 19:34Z
-Próxima acción: tomar BL-059 de READY en el próximo ciclo (paso 1 plan).
+Última actualización: 2026-11-25 17:35Z
+Próxima acción: tomar BL-060 de READY en el próximo ciclo (paso 1 plan).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-059. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-060, BL-061, BL-062. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1300 pass / 1306 total, 6 skipped (.test.cjs + .test.js).
+- Suite actual: 1304 pass / 1310 total, 6 skipped (.test.cjs + .test.js).
 
 ## Resumen de la sesión
 
@@ -38,4 +38,6 @@ Archivos:
 - BL-054 cerrada: switch «Solo sin tener» en el catálogo de la Armería (onlyUnowned + reset + tests). Techo size-budget render-catologo.js 63917 B. Suite 1235/1242 (6 skipped). Review BAJO.
 - BL-056 cerrada: Welcome actualiza novedades (10 entradas 2026-11-25, una por módulo) + test pickNews adaptado (3 más nuevas del 25/11, NUEVO en las 3). Suite 1301/1307 (6 skipped). Review BAJO.
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-057 switch «Solo con pendientes» en Actividades, BL-058 switch «Solo sin desbloquear» en Heredad, BL-059 switch «Solo sin reclamar» en Cámara del Brujo). Todas con «Qué ve el jugador».
+- BL-059 cerrada: switch «Solo sin reclamar» en objetivos de la Cámara (wv-objectives-ui.js, data-wv-sw, onlyUnclaimed, reset al cambiar de kind). Tests wv-objectives-ui +2. Suite 1304/1310 (6 skipped). Review BAJO.
+- Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
 - Exploración La Bóveda (Armería Legendaria, Cuentas, Welcome): 3 tareas nuevas en READY (BL-054 switch «Solo sin tener» en catálogo, BL-055 switch «Solo sin Key» en Cuentas, BL-056 actualizar novedades). Todas con «Qué ve el jugador».

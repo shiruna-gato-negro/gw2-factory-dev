@@ -27,7 +27,7 @@
   var HOST_ID = { daily: 'wvTabDaily', weekly: 'wvTabWeekly', special: 'wvTabSpecial' };
 
   // Filtro y plegado: viven en memoria mientras la página está abierta.
-  var st = { mode: 'all', claimedOpen: false, cache: {} };
+  var st = { mode: 'all', claimedOpen: false, onlyUnclaimed: false, lastKind: null, cache: {} };
 
   // ------------------------------------------------------------------ puro
   function esc(s) {
@@ -157,10 +157,12 @@
   function viewHTML(list, data, kind, opts) {
     opts = opts || {};
     var mode = effectiveMode(list, opts.mode);
+    var onlyUnclaimed = (opts.onlyUnclaimed != null ? !!opts.onlyUnclaimed : !!st.onlyUnclaimed);
     var g = groupObjectives(list, mode);
     var h = ['<div class="wvo">'];
     if (opts.zero) h.push('<p class="wvo-note">Reseteado: esperando el progreso nuevo…</p>');
     h.push(toolHTML(list, mode));
+    h.push('<div class="wvo-sw"><button type="button" class="wvo-btn" role="switch" data-wv-sw="onlyUnclaimed" aria-checked="' + (onlyUnclaimed ? 'true' : 'false') + '" aria-pressed="' + (onlyUnclaimed ? 'true' : 'false') + '">Solo sin reclamar</button></div>');
     h.push(metaHTML(metaInfo(data, kind)));
     if (g.ready.length) {
       h.push('<h3 class="wvo-grp wvo-grp--ready">Listos para reclamar · ' + g.ready.length +
@@ -171,12 +173,14 @@
       h.push('<h3 class="wvo-grp">En curso · ' + g.run.length + '</h3>');
       h.push(listHTML(g.run));
     }
-    if (!g.ready.length && !g.run.length && g.claimed.length) {
-      h.push('<p class="wvo-empty">Todo reclamado en esta pestaña.</p>');
-    }
-    if (g.claimed.length) {
-      h.push('<details class="wvo-done"' + (opts.claimedOpen ? ' open' : '') + '><summary class="wvo-grp wvo-grp--claimed">Reclamados · ' +
-        g.claimed.length + '</summary>' + listHTML(g.claimed) + '</details>');
+    if (!onlyUnclaimed) {
+      if (!g.ready.length && !g.run.length && g.claimed.length) {
+        h.push('<p class="wvo-empty">Todo reclamado en esta pestaña.</p>');
+      }
+      if (g.claimed.length) {
+        h.push('<details class="wvo-done"' + (opts.claimedOpen ? ' open' : '') + '><summary class="wvo-grp wvo-grp--claimed">Reclamados · ' +
+          g.claimed.length + '</summary>' + listHTML(g.claimed) + '</details>');
+      }
     }
     h.push('</div>');
     return h.join('');
@@ -186,6 +190,9 @@
     '.wvo{margin-top:4px}',
     '.wvo-note{margin:0 0 10px;font-size:.84rem;color:var(--tx-2)}',
     '.wvo-empty{margin:12px 0;font-size:.9rem;color:var(--tx-2)}',
+    '.wvo-sw{margin:0 0 10px}',
+    '.wvo-btn{font:inherit;font-size:.8rem;border:1px solid var(--bd-1);border-radius:999px;padding:4px 12px;background:transparent;color:var(--tx-2);cursor:pointer;min-height:32px}',
+    '.wvo-btn[aria-checked=true],.wvo-btn[aria-pressed=true]{background:var(--bg-2);color:var(--tx-1);border-color:var(--bd-2);font-weight:600}',
     '.wvo-tool{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}',
     '.wvo-chip{font:inherit;font-size:.8rem;border:1px solid var(--bd-1);border-radius:999px;padding:4px 12px;background:transparent;color:var(--tx-2);cursor:pointer;min-height:32px}',
     '.wvo-chip em{font-style:normal;margin-left:6px;opacity:.85}',
@@ -237,7 +244,7 @@
   function paint(kind) {
     var c = st.cache[kind];
     if (!c || !c.host) return;
-    c.host.innerHTML = viewHTML(c.list, c.data, kind, { mode: st.mode, claimedOpen: st.claimedOpen, zero: c.zero });
+    c.host.innerHTML = viewHTML(c.list, c.data, kind, { mode: st.mode, claimedOpen: st.claimedOpen, onlyUnclaimed: st.onlyUnclaimed, zero: c.zero });
   }
 
   function wire(host) {
@@ -246,12 +253,19 @@
     host.addEventListener('click', function (e) {
       for (var n = e.target, i = 0; n && i < 4; n = n.parentNode, i++) {
         var m = n.getAttribute && n.getAttribute('data-wvo-mode');
-        if (!m) continue;
-        st.mode = m;
-        Object.keys(st.cache).forEach(paint);
-        var b = host.querySelector && host.querySelector('[data-wvo-mode="' + m + '"]');
-        if (b && b.focus) b.focus();
-        return;
+        if (m) {
+          st.mode = m;
+          Object.keys(st.cache).forEach(paint);
+          var b = host.querySelector && host.querySelector('[data-wvo-mode="' + m + '"]');
+          if (b && b.focus) b.focus();
+          return;
+        }
+        var sw = n.getAttribute && n.getAttribute('data-wv-sw');
+        if (sw) {
+          st.onlyUnclaimed = !st.onlyUnclaimed;
+          Object.keys(st.cache).forEach(paint);
+          return;
+        }
       }
     });
     // «toggle» no burbujea: se escucha en captura.
@@ -264,6 +278,8 @@
   function renderTab(host, data, kind) {
     if (!host) return;
     ensureCss();
+    if (kind && kind !== st.lastKind) { st.onlyUnclaimed = false; }
+    if (kind) st.lastKind = kind;
     if (!data || !Array.isArray(data.objectives)) {
       host.innerHTML = '<p class="wvo-empty">Sin objetivos para mostrar.</p>';
       setObjState(kind, []);

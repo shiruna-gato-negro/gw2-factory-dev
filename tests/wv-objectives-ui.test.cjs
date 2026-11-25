@@ -185,3 +185,22 @@ test('escapa los títulos y no usa almacenamiento ni red', () => {
   assert.doesNotMatch(SRC, /localStorage|fetch\(/);
   assert.match(x.P.CSS, /@media \(max-width:900px\)\{\.wvo-row\{grid-template-columns:36px minmax\(0,1fr\) auto;grid-template-areas:"md t st" "\. bar rw"/);
 });
+
+test('BL-059: switch «Solo sin reclamar» oculta los objetivos ya reclamados', () => {
+  const x = load();
+  const host = x.nodes.wvTabDaily;
+  x.U.renderTab(host, DAILY, 'daily');
+  const h = host.innerHTML;
+  assert.match(h, /data-wv-sw="onlyUnclaimed"/, 'switch presente');
+  assert.match(h, /Solo sin reclamar/, 'etiqueta del switch');
+  const h2 = x.P.viewHTML(x.P.normalizeObjectives(DAILY), DAILY, 'daily', { onlyUnclaimed: true });
+  assert.doesNotMatch(h2, /Reclamados · 1/, 'reclamados ocultos');
+  assert.match(h2, /Completá 3 eventos/, 'pendientes visibles');
+});
+
+test('BL-059: onlyUnclaimed en el estado, reset al cambiar de pestaña', () => {
+  assert.match(SRC, /onlyUnclaimed/);
+  assert.match(SRC, /data-wv-sw="onlyUnclaimed"/);
+  assert.match(SRC, /Solo sin reclamar/);
+  assert.match(SRC, /onlyUnclaimed: false/);
+});
