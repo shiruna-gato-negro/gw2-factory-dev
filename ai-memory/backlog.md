@@ -5,12 +5,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 ## READY
 
 ## IN_PROGRESS
-- [BL-053] [BAJO] Armería Legendaria: resumen global «X de Y legendarias» en la cabecera del catálogo — mostrar owned/total global con barra de progreso arriba del catálogo (render-catologo.js), usando getOwnershipCounts() del tracker; sin Key, mostrar solo el total del catálogo. Test de regresión. — 2026-11-25
-  Qué ve el jugador: en la Armería Legendaria, en la cabecera del catálogo, ve cuántas de las legendarias tiene del total, con una barra de progreso, además del desglose por expansión.
-  Plan (3 pasos):
-  - Paso 1/3 (hecho): plan. Sin cambios de código.
-  - Paso 2/3 (hecho): en headerHTML, stat «Desbloqueadas»/resumen global usa getOwnershipCounts() del tracker (tengo/total) con barra de progreso; si !hasKey(), muestra solo el total del catálogo (sin owned/total ni barra engañosa). Techo size-budget render-catologo.js actualizado a 62458 B con motivo.
-  - Paso 3/3: test de regresión (con Key: «X de Y legendarias» + barra con width; sin Key: solo total, sin «0 de Y»); review BAJO; docs; cierre.
 
 ## BLOCKED
 
@@ -20,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+  - [BL-053] [BAJO] Armería Legendaria: resumen global «X de Y legendarias» en la cabecera del catálogo — cerrada. headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra de progreso; sin Key muestra solo el total del catálogo (sin «0 de Y» ni barra engañosa). Techo size-budget render-catologo.js 62458 B con motivo (regla v6). Test de regresión BL-053 en tests/armeria-shell.test.cjs (con Key: 50 de 206 + barra width 24.3%; sin Key: Catálogo 206, sin «0 de Y» ni arm-bar). Review riesgo BAJO: solo test, sin código de producción nuevo. Suite 1234/1240 (6 skipped). — 2026-11-25
+    Qué ve el jugador: en la Armería Legendaria, en la cabecera del catálogo, ve cuántas de las legendarias tiene del total, con una barra de progreso, además del desglose por expansión.
 - [BL-052] [BAJO] Inventario: switch «Solo con stock» en Materiales — cerrada. onlyStock en st.ui/buildModel (default false); materialsHTML renderiza grupos vacíos por defecto y los oculta con el switch (data-iv-sw="onlyStock", «Solo con stock»); reset en go()/ivQ/ivCat; test de regresión en tests/inv-view.test.cjs (grupo sin stock visible/oculto + switch + onlyStock). Versión inv-view 1.7.1 → 1.7.2. Review riesgo BAJO: aditivo, sigue el patrón de switches, sin regresión. Suite 1233/1239 (6 skipped). — 2026-11-25
   Qué ve el jugador: en Inventario → Materiales, un switch que oculta los materiales y categorías sin nada guardado.
 - [BL-051] [BAJO] Metas: filtro «Solo con drop» en la barra de filtros — cerrada. El filtro onlyDrop + switch ya existían desde MET-1 (label «Solo con infusión o drop»); este ciclo añade el test de regresión que faltaba: `filtros: onlyDrop deja solo las metas con drop o infusión` (matches con hasDrop, 3→2 sobre filas sintéticas) y `BL-051: switch … en la UI` (label, `onlyDrop: false` en resets, `hasDrop: hasDrop` y `function hasDrop(meta)` exportados). Etiqueta mantenida como «Solo con infusión o drop» (más precisa que «Solo con drop» del backlog, porque hasDrop incluye infusiones). Review riesgo BAJO: solo tests, sin cambio de código de producción. Suite 1231/1237 (6 skipped). — 2026-11-25

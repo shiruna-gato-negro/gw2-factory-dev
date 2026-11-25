@@ -30,7 +30,7 @@ function cargar(opts = {}) {
       QUEUE_MAX: 5,
       registerRender(map) { registro.r = map; return true; },
       registerItemModal() { return true; },
-      getOwnershipCounts() { return { tengo: 3, faltan: 203 }; },
+      getOwnershipCounts() { return opts.own || { tengo: 3, faltan: 203 }; },
       getQueue() { return (opts.queue || []).slice(); },
       getState() {
         return { mode: opts.mode || 'catalog', token: opts.token === undefined ? 'KEY' : opts.token,
@@ -152,4 +152,18 @@ test('estilos: una sola hoja, tokens para el texto, 12 px o más, foco visible y
   assert.ok(sizes.length && sizes.every((s) => s >= 0.75), 'tamaños: ' + sizes.join(', '));
   assert.match(css, /\.arm-btn:focus-visible,\.arm-tab:focus-visible,\.arm-search:focus-visible\{outline:2px solid var\(--acc-1\)/);
   assert.match(css, /@media \(max-width:900px\)\{[^\n]*\.arm-tab,\.arm-btn,\.arm-search\{min-height:44px\}/);
+});
+
+test('BL-053: con Key el resumen global usa getOwnershipCounts (X de Y + barra con width); sin Key solo el total del catálogo', () => {
+  // Con Key: el tracker dice 50 tengo / 156 faltan (total 206), distinto de los owned pasados (1).
+  // La cabecera debe mostrar los números del tracker, no los del resumen local, con barra de progreso.
+  const x = cargar({ owned: { 30684: 1 }, own: { tengo: 50, faltan: 156 } });
+  const html = x.r.filterBar({}, x.items);
+  assert.match(html, /Desbloqueadas<\/small><b>50 <span>de 206<\/span><\/b><div class="arm-bar" aria-hidden="true"><i style="width:24\.3%"><\/i>/);
+  // Sin Key: solo el total del catálogo, sin «0 de Y» ni barra engañosa.
+  const y = cargar({ token: null });
+  const html2 = y.r.filterBar({}, y.items);
+  assert.match(html2, /<small>Catálogo<\/small><b>206<\/b>/);
+  assert.doesNotMatch(html2, /0 de 206/);
+  assert.doesNotMatch(html2, /arm-bar/);
 });
