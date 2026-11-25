@@ -420,18 +420,38 @@
   }
 
   function headerHTML(sum, st) {
-    var pct = sum.total ? Math.round(sum.owned * 1000 / sum.total) / 10 : 0;
+    var key = hasKey();
+    // Resumen global: con Key uso el conteo del tracker (getOwnershipCounts),
+    // que es la misma fuente que los chips «Las tengo / Me faltan».
+    // Sin Key no sé cuáles tenés: muestro solo el total del catálogo, sin
+    // «0 de Y» ni barra engañosa.
+    var ownTengo = sum.owned;
+    var ownTotal = sum.total;
+    if (key) {
+      var T = root.LegendaryTracker;
+      if (T && typeof T.getOwnershipCounts === 'function') {
+        var c = T.getOwnershipCounts() || {};
+        if (typeof c.tengo === 'number') ownTengo = c.tengo;
+        if (typeof c.total === 'number' && c.total > 0) ownTotal = c.total;
+        else if (typeof c.faltan === 'number') ownTotal = c.tengo + c.faltan;
+      }
+      if (ownTotal <= 0) ownTotal = sum.total;
+    }
+    var pct = key && ownTotal ? Math.round(ownTengo * 1000 / ownTotal) / 10 : 0;
     var stat = function (label, n, of, bar) {
       return '<div class="arm-st"><small>' + label + '</small><b>' + fmtInt(n) + ' <span>de ' + fmtInt(of) + '</span></b>' +
         (bar ? '<div class="arm-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></div>' : '') + '</div>';
     };
+    var firstStat = key
+      ? stat('Desbloqueadas', ownTengo, ownTotal, true)
+      : '<div class="arm-st"><small>Catálogo</small><b>' + fmtInt(sum.total) + '</b></div>';
     return '<section class="arm-hero" aria-labelledby="armTitle">' +
       '<div class="arm-hrow"><img src="assets/icons/Cuentas/157085.png" alt="" width="56" height="56">' +
         '<div><h2 id="armTitle">Armería Legendaria</h2><p class="arm-sub">' + esc(subLine(st, sum)) + '</p></div>' +
         '<div class="arm-hbtns"><button type="button" class="arm-btn" data-arm-act="refresh">↻ Actualizar</button></div>' +
       '</div>' +
       '<div class="arm-stats">' +
-        stat('Desbloqueadas', sum.owned, sum.total, true) +
+        firstStat +
         stat('Armas', sum.weapon.n, sum.weapon.of) +
         stat('Armaduras', sum.armor.n, sum.armor.of) +
         stat('Abalorios y más', sum.other.n, sum.other.of) +

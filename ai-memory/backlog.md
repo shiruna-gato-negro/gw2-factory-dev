@@ -8,8 +8,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-053] [BAJO] Armería Legendaria: resumen global «X de Y legendarias» en la cabecera del catálogo — mostrar owned/total global con barra de progreso arriba del catálogo (render-catologo.js), usando getOwnershipCounts() del tracker; sin Key, mostrar solo el total del catálogo. Test de regresión. — 2026-11-25
   Qué ve el jugador: en la Armería Legendaria, en la cabecera del catálogo, ve cuántas de las legendarias tiene del total, con una barra de progreso, además del desglose por expansión.
   Plan (3 pasos):
-  - Paso 1/3 (este ciclo): plan. Sin cambios de código.
-  - Paso 2/3: en headerHTML, stat «Desbloqueadas»/resumen global usa getOwnershipCounts() del tracker (tengo/total) con barra de progreso; si !hasKey(), mostrar solo el total del catálogo (sin owned/total ni barra engañosa). Actualizar techo size-budget de render-catologo.js con motivo si crece.
+  - Paso 1/3 (hecho): plan. Sin cambios de código.
+  - Paso 2/3 (hecho): en headerHTML, stat «Desbloqueadas»/resumen global usa getOwnershipCounts() del tracker (tengo/total) con barra de progreso; si !hasKey(), muestra solo el total del catálogo (sin owned/total ni barra engañosa). Techo size-budget render-catologo.js actualizado a 62458 B con motivo.
   - Paso 3/3: test de regresión (con Key: «X de Y legendarias» + barra con width; sin Key: solo total, sin «0 de Y»); review BAJO; docs; cierre.
 
 ## BLOCKED

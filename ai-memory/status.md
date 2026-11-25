@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN CURSO
-Tarea actual: BL-053 Paso 1/3 — plan (Armería Legendaria: resumen global «X de Y legendarias»)
-Motivo: tomé la única tarea de READY (BL-053); Paso 1 es solo planificación (regla v4/v6). Sin cambios de código.
-Etapa actual: Product (plan)
+Tarea actual: BL-053 Paso 2/3 — implementado (Armería Legendaria: resumen global «X de Y legendarias»)
+Motivo: headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra de progreso; sin Key muestra solo el total del catálogo (sin «0 de Y» ni barra engañosa). Techo size-budget de render-catologo.js actualizado a 62458 B con motivo (regla v6). Suite 1233/1239 (6 skipped).
+Etapa actual: Development (Paso 3 pendiente)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 15:04Z
-Próxima acción: BL-053 Paso 2/3 — implementar resumen global en headerHTML usando getOwnershipCounts(); sin Key mostrar solo total.
+Última actualización: 2026-11-25 15:33Z
+Próxima acción: BL-053 Paso 3/3 — test de regresión (con Key: «X de Y» + barra con width; sin Key: solo total, sin «0 de Y»); review BAJO; docs; cierre.
 
 Archivos:
 - ai-memory/backlog.md

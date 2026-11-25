@@ -30,7 +30,7 @@ function cargar(opts = {}) {
       QUEUE_MAX: 5,
       registerRender(map) { registro.r = map; return true; },
       registerItemModal() { return true; },
-      getOwnershipCounts() { return { tengo: 0, faltan: 0 }; },
+      getOwnershipCounts() { return { tengo: 3, faltan: 203 }; },
       getQueue() { return (opts.queue || []).slice(); },
       getState() {
         return { mode: opts.mode || 'catalog', token: opts.token === undefined ? 'KEY' : opts.token,
