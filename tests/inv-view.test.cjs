@@ -298,3 +298,13 @@ test('humo: sin Key no pide nada y lo dice; fuera de su ruta no dibuja', async (
   await flush();
   assert.equal(b.D.els.ivRoot, undefined);
 });
+
+test('BL-037: contador de espacios ocupados por pestaña del Banco y Sin datos', () => {
+  const bank = P.viewHTML(P.buildModel(sample(), CATS, { tab: 'bank' }));
+  assert.match(bank, /<h3 id="ivB-1">Pestaña 1<\/h3><small>1 de 30 ocupados/);
+  assert.match(bank, /<h3 id="ivB-2">Pestaña 2<\/h3><small>1 de 30 ocupados/);
+  const empty = P.viewHTML(P.buildModel(sample({ bank: null }), CATS, { tab: 'bank' }));
+  assert.match(empty, /Sin datos de tu banco\./);
+  const listEmpty = P.listHTML(P.buildModel(sample({ bank: [] }), CATS, { tab: 'bank' }));
+  assert.match(listEmpty, /Sin datos de tu banco\./);
+});

@@ -165,7 +165,7 @@
 
   function bankHTML(m) {
     var slots = m.bankSlots;
-    if (!slots) return '<p class="iv-note">' + (m.loaded ? 'Sin datos de tu banco.' : 'Cargando…') + '</p>';
+    if (!slots || !slots.length) return '<p class="iv-note">' + (m.loaded ? 'Sin datos de tu banco.' : 'Cargando…') + '</p>';
     var P = M(), per = P ? P.BANK_TAB : 30, h = '';
     if (m.q) {
       var rows = [];
@@ -175,7 +175,7 @@
     for (var t = 0; t * per < slots.length; t++) {
       var part = slots.slice(t * per, (t + 1) * per), used = part.filter(function (s) { return s && s.id; }).length;
       h += '<section class="iv-grp" aria-labelledby="ivB-' + (t + 1) + '"><div class="iv-grp-h"><h3 id="ivB-' + (t + 1) + '">Pestaña ' + (t + 1) + '</h3>' +
-        '<small>' + used + ' de ' + part.length + ' ocupados</small></div><ul class="iv-slots">';
+        '<small>' + used + ' de ' + per + ' ocupados</small></div><ul class="iv-slots">';
       part.forEach(function (s) {
         if (!s || !s.id) { h += '<li class="iv-slot iv-slot--empty"><span class="iv-sr">vacío</span></li>'; return; }
         var meta = m.items[s.id], r = rarityOf(meta), n = s.count || 1, name = nameOf(meta, s.id);
