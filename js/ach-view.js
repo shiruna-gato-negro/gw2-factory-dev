@@ -164,15 +164,23 @@
   }
 
   function statsHTML(m) {
-    if (!m.loaded) {
-      return ['Puntos de logro', 'Al alcance', 'A un paso (≥ 95 %)', 'Con recompensa'].map(function (l) { return stat(l, '—', 'sin datos todavía'); }).join('');
+    var ok = !!(m && m.loaded && m.hasToken);
+    if (!m || !m.loaded) {
+      return ['Puntos de logro', 'Al alcance', 'A un paso (≥ 95 %)', 'Con recompensa'].map(function (l) { return stat(l, '—', 'sin datos todavía'); }).join('') +
+        stat('Logros completos', 'Sin datos', 'sin datos todavía');
     }
     var s = m.sum, parts = [];
     ['Item', 'Title', 'Mastery'].forEach(function (k) { if (s.rewards[k]) parts.push(fmtInt(s.rewards[k]) + ' ' + REWARD_WORD[k][s.rewards[k] === 1 ? 0 : 1]); });
+    var completed = (m && typeof m.completed === 'number') ? m.completed : 0;
+    var total = (m && typeof m.total === 'number') ? m.total : 0;
+    var compStat = ok
+      ? stat('Logros completos', fmtInt(completed) + ' de ' + fmtInt(total) + ' logros completos', 'cargados de la cuenta')
+      : stat('Logros completos', 'Sin datos', 'sin datos todavía');
     return stat('Puntos de logro', fmtInt(m.ap.perm + m.ap.daily), fmtInt(m.ap.perm) + ' permanentes · ' + fmtInt(m.ap.daily) + ' de diarios y mensuales') +
       stat('Al alcance', '+' + fmtInt(s.apLeft) + ' <span>AP</span>', 'en ' + plural(s.count, 'logro de la lista', 'logros de la lista')) +
       stat('A un paso (≥ 95 %)', fmtInt(s.step.length), s.step.length ? 'te falta muy poco en cada uno' : 'ninguno todavía') +
-      stat('Con recompensa', fmtInt(s.withReward), parts.length ? parts.join(' · ') : 'sin ítems, títulos ni maestrías');
+      stat('Con recompensa', fmtInt(s.withReward), parts.length ? parts.join(' · ') : 'sin ítems, títulos ni maestrías') +
+      compStat;
   }
 
   function headHTML(m) {
@@ -229,11 +237,27 @@
     var tab = activeTab(snap, chosen);
     var cat = snap && snap.cat && snap.catById ? snap.catById.get(String(snap.cat)) : null;
     var t = tally(snap, calc), sum = summarize(snap && snap.rows, calc);
+    // BL-038: logros completos sobre los logros cargados de la cuenta.
+    var total = (snap && Array.isArray(snap.acc)) ? snap.acc.length : 0;
+    var completed = 0;
+    if (snap && Array.isArray(snap.acc) && snap.metaById) {
+      snap.acc.forEach(function (r) {
+        var meta = snap.metaById.get(r.id);
+        var pr = (calc && typeof calc.computeProgress === 'function') ? calc.computeProgress(r, meta) : null;
+        if (!pr) {
+          var cur = Number(r && r.current) || 0, max = Number(r && r.max) || 0;
+          if (r && (r.done || (max > 0 && cur >= max))) completed++;
+        } else if (pr.pct >= 1) {
+          completed++;
+        }
+      });
+    }
     return {
       tab: tab, loaded: !!(snap && snap.loaded), hasToken: !!(snap && snap.hasToken),
       pct: snap ? Number(snap.pct) || 0 : NEAR, catName: tab === 'near' && cat ? cat.name : '',
       ap: { perm: Number(snap && snap.ap && snap.ap.perm) || 0, daily: Number(snap && snap.ap && snap.ap.daily) || 0 },
-      sum: sum, t: t, cats: t.cats, voice: pickVoice(sum, tab, tab === 'legendary' ? legOf(sum.first) : null)
+      sum: sum, t: t, cats: t.cats, voice: pickVoice(sum, tab, tab === 'legendary' ? legOf(sum.first) : null),
+      completed: completed, total: total
     };
   }
 
@@ -250,7 +274,7 @@
     '.achx-pill img{border-radius:3px}.achx-pill b{color:var(--tx-1);font-weight:600}.achx-pill--hot{border-color:var(--color-amber,#F2B94B)}.achx-pill--hot b{color:var(--color-amber,#F2B94B)}',
     '.achx-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px}',
     '.achx-btn:hover{border-color:var(--acc-1)}',
-    '.achx-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.achx-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.achx-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.achx-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.achx-st b{font-size:1.25rem;color:var(--tx-1)}.achx-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',

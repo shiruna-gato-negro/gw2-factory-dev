@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-038] [BAJO] Logros: contador de logros completados en la cabecera — en la cabecera de Logros mostrar «X de Y logros completos» (sobre los logros cargados de la cuenta) además de los 4 indicadores actuales; sin datos, «Sin datos». — 2026-11-24
-  Qué ve el jugador: en la cabecera de Logros ve cuántos logros tiene completos del total cargado, además de los puntos de logro.
-
 ## IN_PROGRESS
 
 ## BLOCKED
@@ -17,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-038] [BAJO] Logros: contador de logros completados en la cabecera — cerrada. statsHTML de ach-view.js ahora incluye un 5º indicador «Logros completos» con «X de Y logros completos» (sobre los logros cargados de la cuenta, completos = pct ≥ 1); sin datos (sin token o sin cargar) muestra «Sin datos». buildModel calcula completed/total a partir de snap.acc y snap.metaById. Grid de .achx-stats pasado a 5 columnas. Review riesgo BAJO: aditivo, sin regresión. Suite 1217/1223 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la cabecera de Logros ve cuántos logros tiene completos del total cargado, además de los puntos de logro.
 - [BL-037] [BAJO] Inventario: contador de espacios ocupados por pestaña en el Banco — cerrada. bankHTML ahora usa denominador fijo de 30 espacios por pestaña («X de 30 ocupados») y trata banco vacío/null como «Sin datos» (early return). Test de regresión BL-037 agregado en tests/inv-view.test.cjs (per-tab 30 + null/empty → Sin datos). Review riesgo BAJO: aditivo, sin regresión. Suite 1218/1224 (6 skipped). — 2026-11-25
   Qué ve el jugador: en cada pestaña del banco del Inventario ve cuántos espacios ocupó de los 30 sin abrir la pestaña.
 - [BL-036] [BAJO] Actividades: contador de fabricaciones diarias hechas en el indicador — cerrada. statsHTML del indicador «Fabricación diaria» ahora muestra «X de 5 hechas hoy · te falta N/te faltan N/todo hecho hoy» (sobre las 5 de la API, con el cristal de cuarzo cargado), manteniendo el estado actual; sin datos sigue «sin datos». Adaptado tests/act-view.test.cjs (regex stat card). Review riesgo BAJO: aditivo, sin regresión. Suite 1216/1222 (6 skipped). — 2026-11-24
