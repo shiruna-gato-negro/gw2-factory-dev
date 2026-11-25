@@ -140,6 +140,8 @@
     else h += stat('Llave semanal', '—', nd);
     if (m.stones != null) h += stat('Piedras vetustas', frac(m.stones, m.stonesTotal), m.stones >= m.stonesTotal ? 'las ' + m.stonesTotal + ' de la semana' : 'compradas esta semana', pct(m.stones, m.stonesTotal));
     else h += stat('Piedras vetustas', '—', nd);
+    if (ok && m.fr && Array.isArray(m.fr.recommended)) h += stat('Recomendados', m.fr.recommended.length + ' fractales recomendados hoy', '');
+    else h += stat('Recomendados', '—', 'sin datos');
     return h;
   }
 
@@ -270,7 +272,7 @@
     '.av-pill{font-size:.78rem;border:1px solid var(--bd-1);border-radius:999px;padding:4px 10px;color:var(--tx-2);background:var(--bg-0);white-space:nowrap}.av-pill b{color:var(--tx-1)}',
     '.av-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px}',
     '.av-btn:hover{border-color:var(--acc-1)}',
-    '.av-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.av-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.av-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.av-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.av-st b{font-size:1.25rem;color:var(--tx-1)}.av-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',

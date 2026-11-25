@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-044] [BAJO] Actividades: 5º indicador «Fractales recomendados hoy» en la cabecera — statsHTML de act-view.js suma un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—» sin datos. Grid de .av-stats pasado a 5 columnas. Test de regresión act-view (BL-044). Review riesgo BAJO: aditivo, sin regresión.
-  Qué ve el jugador: en la cabecera de Actividades ve cuántos fractales recomienda el juego hoy, de un vistazo.
-
 ## IN_PROGRESS
 
 ## BLOCKED
@@ -17,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-044] [BAJO] Actividades: 5º indicador «Fractales recomendados hoy» en la cabecera — cerrada. statsHTML de act-view.js suma un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—» sin datos. Grid de .av-stats pasado a 5 columnas. Test de regresión BL-044 en tests/act-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1222/1228 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en la cabecera de Actividades ve cuántos fractales recomienda el juego hoy, de un vistazo.
 - [BL-043] [BAJO] Inventario: 5º indicador «Objetos distintos en el banco» en la cabecera — cerrada. statsHTML de inv-view.js suma un 5º indicador «Objetos distintos» con «X tipos distintos en el banco» (ids únicos en bankSlots); grid de .iv-stats pasado a 5 columnas. Test de regresión BL-043 en tests/inv-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1221/1227 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la cabecera de Inventario ve cuántos tipos de objetos distintos tiene en el banco, además de los espacios ocupados.
 - [BL-042] [BAJO] Heredad: 5º indicador «Nodos que te faltan» en la cabecera — cerrada. statsHTML de home-view.js suma un 5º indicador «Nodos que te faltan» con «X de Y nodos de la API sin desbloquear» (apiTotal - api); grid de .hs-stats pasado a 5 columnas. Test de regresión BL-042 en tests/home-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1220/1226 (6 skipped). — 2026-11-25

@@ -150,6 +150,15 @@ test('vista: cabecera con los 3 relojes, 4 indicadores y pestañas accesibles co
   assert.doesNotMatch(bare, /avPsnaSlot|avStonesSlot|avNodesSlot/, 'sin la pantalla de siempre no quedan huecos');
 });
 
+test('BL-044: Recomendados muestra fractales recomendados hoy y sin datos muestra guión', () => {
+  const m = P.buildModel(sample(), CAT, {}, NOW);
+  const h = P.viewHTML(m);
+  assert.match(h, /<small>Recomendados<\/small><b>2 fractales recomendados hoy<\/b>/);
+  const m2 = P.buildModel({ loaded: true, hasToken: false }, CAT, {}, NOW);
+  const h2 = P.viewHTML(m2);
+  assert.match(h2, /<small>Recomendados<\/small><b>—<\/b><em>sin datos<\/em>/);
+});
+
 test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento reducido y 44 px', () => {
   assert.match(P.CSS, /#activitiesPanel\.av-on>\.panel__title,#activitiesPanel\.av-on>\.panel__body\{display:none!important\}/);
   assert.match(P.CSS, /prefers-reduced-motion:reduce/);
