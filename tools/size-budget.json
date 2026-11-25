@@ -12,7 +12,7 @@
     "css/main.css": { "base": 64637, "techo": 64637 },
     "js/legendary-tracker.js": { "base": 63971, "techo": 63971 },
     "js/meta.js": {"base": 65135, "techo": 65135, "nota": "BL-032: contador de drops/infusiones en mtCount (withDrop = seed.filter(hasDrop).length) junto a vista previa. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)."},
-    "js/render-catologo.js": { "base": 62458, "techo": 62458, "nota": "BL-053: resumen global en headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra; sin Key solo total. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)." },
+    "js/render-catologo.js": { "base": 63917, "techo": 63917, "nota": "BL-054: switch «Solo sin tener» en el catálogo (onlyUnowned) + estilos. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)." },
     "js/wallet-dashboard.js": { "base": 52505, "techo": 52505 },
     "js/welcome-panel.js": { "base": 52497, "techo": 52497, "nota": "BL-050: contador de builds con notas en castellano en la tarjeta de Builds (X de Y con notas en castellano) leyendo notes.json. Techo actualizado al nuevo tamaño (regla v6: no achicar código visible)." }
   },

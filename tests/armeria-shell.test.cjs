@@ -167,3 +167,33 @@ test('BL-053: con Key el resumen global usa getOwnershipCounts (X de Y + barra c
   assert.doesNotMatch(html2, /0 de 206/);
   assert.doesNotMatch(html2, /arm-bar/);
 });
+
+test('BL-054: switch «Solo sin tener» presente en la barra y oculta las que ya tenés', () => {
+  const owned = { 30684: 1, 30698: 1, 81908: 1 };
+  const x = cargar({ owned: owned });
+  const html = x.r.filterBar({}, x.items);
+  assert.match(html, /data-arm-sw="onlyUnowned"/, 'switch presente');
+  assert.match(html, /Solo sin tener/, 'etiqueta del switch');
+  // Sin el switch: las 206.
+  assert.equal(cards(x.r.catalogGrid(x.items, owned)), 206, 'sin switch, todas');
+  // Con el switch activo: se ocultan las 3 tenidas.
+  x.A.state.onlyUnowned = true;
+  assert.equal(cards(x.r.catalogGrid(x.items, owned)), 203, 'con switch, solo las que faltan');
+  // El switch refleja el estado en el HTML.
+  assert.match(x.r.filterBar({}, x.items), /data-arm-sw="onlyUnowned"[^>]*aria-checked="false"|aria-checked="true"/);
+});
+
+test('BL-054: onlyUnowned se resetea al buscar y al cambiar de pestaña', () => {
+  const x = cargar();
+  x.A.state.onlyUnowned = true;
+  x.A.state.mode = 'catalog';
+  // cambiar de pestaña (progress) resetea
+  x.win.LegendaryTracker.getState = () => ({ mode: 'progress', token: 'KEY', loading: false, error: null, owned: {} });
+  x.r.filterBar({}, x.items);
+  assert.equal(x.A.state.onlyUnowned, false, 'reset al cambiar de pestaña');
+  // buscar resetea
+  x.win.LegendaryTracker.getState = () => ({ mode: 'catalog', token: 'KEY', loading: false, error: null, owned: {} });
+  x.A.state.onlyUnowned = true;
+  x.A.search('zzz');
+  assert.equal(x.A.state.onlyUnowned, false, 'reset al buscar');
+});

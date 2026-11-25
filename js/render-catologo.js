@@ -248,6 +248,10 @@
     '.arm-select{min-height:32px;padding:4px 8px;border:1px solid var(--bd-1);border-radius:10px;background:var(--bg-1);' +
       'color:var(--tx-1);font:inherit;font-size:.8rem}',
     '.arm-clear{margin-left:auto}',
+    '.arm-sw{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:4px 12px;border:1px solid var(--bd-1);border-radius:999px;background:var(--bg-1);color:var(--tx-2);font:inherit;font-size:.8rem;font-weight:600;cursor:pointer}',
+    '.arm-sw i{width:14px;height:14px;border-radius:50%;background:var(--bd-2)}',
+    '.arm-sw.is-on{border-color:' + ARM_COLOR + ';color:var(--tx-1);background:rgba(229,69,202,.14)}',
+    '.arm-sw.is-on i{background:' + ARM_COLOR + '}',
     '.arm-note{margin:0 0 10px;font-size:.75rem;color:var(--tx-3)}',
     '.arm-section{margin:0 0 18px}',
     '.arm-sec{margin:0 0 8px;font-size:.95rem;font-weight:700;color:var(--tx-1)}',
@@ -317,7 +321,7 @@
     '@media (max-width:560px){.arm-qrow{flex-wrap:wrap}.arm-qacts{width:100%}.arm-qacts .arm-btn{flex:1;justify-content:center}}'
   ].join('\n');
 
-  var ui = { q: '', raw: '', lastItems: null, lastOwned: null };
+  var ui = { q: '', raw: '', lastItems: null, lastOwned: null, onlyUnowned: false, mode: null };
 
   function ensureArmCss() {
     var d = root.document;
@@ -470,9 +474,12 @@
   }
 
   function toolbarHTML() {
+    var on = !!ui.onlyUnowned;
+    var sw = '<button type="button" class="arm-sw' + (on ? ' is-on' : '') + '" role="switch" data-arm-sw="onlyUnowned" aria-checked="' + (on ? 'true' : 'false') + '"><i aria-hidden="true"></i>Solo sin tener</button>';
     return '<div class="arm-tool"><label class="arm-sr" for="armSearch">Buscar legendaria</label>' +
       '<input type="search" id="armSearch" class="arm-search" autocomplete="off" ' +
       'placeholder="Buscar por nombre, en español o en inglés…" value="' + esc(ui.raw) + '">' +
+      sw +
       '<span id="armSearchLive" class="arm-sr" role="status" aria-live="polite"></span></div>';
   }
 
@@ -483,6 +490,7 @@
     keepFocus();
     var st = trackerState();
     var mode = st && st.mode === 'progress' ? 'progress' : 'catalog';
+    if (ui.mode !== mode) { ui.onlyUnowned = false; ui.mode = mode; }
     var sum = armorySummary(catalog, (st && st.owned) || {}, colaActual());
     return headerHTML(sum, st) + tabsHTML(mode, sum) + (mode === 'catalog' ? toolbarHTML() : '');
   }
@@ -518,6 +526,15 @@
       if (tag === 'OPTION' || tag === 'SELECT') { if (e.stopPropagation) e.stopPropagation(); return; }
       while (t && t !== c) {
         if (t.getAttribute) {
+          var swk = t.getAttribute('data-arm-sw');
+          if (swk) {
+            ui[swk] = !ui[swk];
+            var host = root.document && root.document.getElementById ? root.document.getElementById('armGridHost') : null;
+            if (host) host.innerHTML = gridInner(ui.lastItems || [], ui.lastOwned || {});
+            t.setAttribute('aria-checked', ui[swk] ? 'true' : 'false');
+            if (ui[swk]) t.classList.add('is-on'); else t.classList.remove('is-on');
+            return;
+          }
           var tab = t.getAttribute('data-arm-tab');
           var act = t.getAttribute('data-arm-act');
           var T = root.LegendaryTracker;
@@ -537,6 +554,7 @@
   function searchFor(value) {
     ui.raw = String(value || '');
     ui.q = norm(ui.raw).trim();
+    ui.onlyUnowned = false;
     var d = root.document;
     var host = d && d.getElementById ? d.getElementById('armGridHost') : null;
     var html = gridInner(ui.lastItems || [], ui.lastOwned || {});
@@ -773,7 +791,10 @@
 
   function gridInner(all, owned) {
     owned = owned || {};
-    var items = (all || []).filter(function (it) { return matchesSearch(it, ui.q); });
+    var items = (all || []).filter(function (it) {
+      if (ui.onlyUnowned && owned && owned[it.id] > 0) return false;
+      return matchesSearch(it, ui.q);
+    });
     if (ui.q && items.length === 0 && all.length) {
       return emptyHTML('No encontré ninguna legendaria que se llame «' + esc(ui.raw) + '».',
         'Probá con otra parte del nombre, en español o en inglés.');
