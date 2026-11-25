@@ -3,6 +3,12 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
+- [BL-054] [BAJO] Armería Legendaria: switch «Solo sin tener» en el catálogo — añadir un switch en toolbarHTML/shellHTML (render-catologo.js) que, activo, oculta las legendarias que ya tenés (owned > 0) y deja solo las que te faltan, reusando getOwnershipCounts()/trackerState().owned; reset al cambiar de pestaña/búsqueda; test de regresión en tests/armeria-shell.test.cjs (switch presente + filtrado). Sigue el patrón de onlyStock/onlyVigentes. — 2026-11-25
+  Qué ve el jugador: en la Armería Legendaria, un switch que deja solo las legendarias que todavía no tiene, para ver de un vistazo lo que le falta.
+- [BL-055] [BAJO] Cuentas: switch «Solo sin Key» en Mis cuentas — añadir `onlyNoKey` al estado de acc-view (st.ui) y un botón switch en cv-filters (cv-btn) que oculta las cuentas que ya tienen Key cargada, dejando solo las que faltan; reset al cambiar de pestaña/búsqueda; test de regresión en tests/acc-view.test.cjs (switch + filtrado + reset). Sigue el patrón de onlyStock/cv-btn. — 2026-11-25
+  Qué ve el jugador: en Cuentas → Mis cuentas, un switch que deja solo las cuentas que todavía no tienen API Key cargada, para ver cuáles faltan.
+- [BL-056] [BAJO] Welcome: actualizar novedades con las mejoras recientes — añadir entradas en assets/welcome-news.json (fechas 2026-11-25) para los indicadores nuevos en cabeceras (Builds, Actividades, Inventario, Heredad, Raids, Cuentas, Logros, Cámara del Brujo, Armería) y los switches de filtros (Builds, Metas, Inventario), siguiendo el formato DEC-032 (solo el módulo, sin horarios ni datos del juego); test pickNews adaptado (NUEVO en las entradas del 25/11). — 2026-11-25
+  Qué ve el jugador: en la Bienvenida, la tarjeta de Novedades muestra las mejoras recientes (indicadores y filtros nuevos) con la marca «NUEVO».
 
 ## IN_PROGRESS
 

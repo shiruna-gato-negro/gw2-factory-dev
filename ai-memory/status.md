@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN ESPERA
-Tarea actual: (ninguna — BL-053 cerrada)
-Motivo: BL-053 cerrada — headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra; sin Key solo total. Test de regresión BL-053 en armeria-shell (50 de 206 + barra 24.3%; sin Key Catálogo 206). Suite 1234/1240 (6 skipped). Review BAJO.
-Etapa actual: (cerrada)
+Tarea actual: (ninguna — exploración cerrada)
+Motivo: exploré La Bóveda como jugadora (Armería Legendaria, Cuentas, Welcome) y anoté 3 tareas nuevas en READY (BL-054 a BL-056), todas visibles para el jugador.
+Etapa actual: Documentation (cierre)
 Inicio: 2026-11-25
-Última actualización: 2026-11-25 16:05Z
-Próxima acción: (ninguna — READY vacío; próximo ciclo explora La Bóveda como jugadora y propone tareas nuevas).
+Última actualización: 2026-11-25 16:35Z
+Próxima acción: tomar BL-054 (Armería Legendaria: switch «Solo sin tener» en el catálogo) — Paso 1 plan.
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,7 +18,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-054, BL-055, BL-056. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1240 total, 1234 pass, 0 fail, 6 skipped (.test.cjs); smoke notes-refs ×3 preexistentes.
 
@@ -35,3 +35,4 @@ Archivos:
 - BL-052 cerrada: switch «Solo con stock» en Inventario → Materiales (onlyStock + reset + test). Suite 1233/1239 (6 skipped).
 - Exploración La Bóveda (Metas, Inventario, Armería Legendaria): 3 tareas nuevas en READY (BL-051 cerrada, BL-052 switch «Solo con stock» en Materiales, BL-053 resumen global de legendarias). Todas con «Qué ve el jugador».
 - BL-053 cerrada: resumen global en headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra; sin Key solo total. Test de regresión BL-053 (50 de 206 + barra 24.3%; sin Key Catálogo 206). Suite 1234/1240 (6 skipped). Review BAJO.
+- Exploración La Bóveda (Armería Legendaria, Cuentas, Welcome): 3 tareas nuevas en READY (BL-054 switch «Solo sin tener» en catálogo, BL-055 switch «Solo sin Key» en Cuentas, BL-056 actualizar novedades). Todas con «Qué ve el jugador».
