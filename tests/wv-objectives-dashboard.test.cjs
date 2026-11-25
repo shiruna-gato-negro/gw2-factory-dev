@@ -216,6 +216,18 @@ test('sin cuentas lo dice y ofrece reintentar; todas al día; sin objetivos', as
   assert.equal(P.matrixHTML([], []), '<p class="wvd-empty">Ninguna cuenta tiene objetivos semanales todavía.</p>');
 });
 
+test('BL-046: Con pendientes muestra cuentas con objetivos sin reclamar y sin datos muestra guión', () => {
+  const { P } = load();
+  const accounts = ['K1', 'K2', 'K3'].map((k, i) => ({ name: KEYS[i].label, objectives: P.normalizeObjectives(WEEK[k]) }));
+  accounts.push({ name: 'Rota', error: '403', objectives: [] });
+  const objs = P.mergeObjectives(accounts);
+  const k = P.summarize(accounts, objs);
+  const h = P.statsHTML(k, accounts.length);
+  assert.match(h, /<small>Con pendientes<\/small><b>2 de 3 cuentas con objetivos sin reclamar<\/b>/);
+  const h2 = P.statsHTML(P.summarize([], objs), 0);
+  assert.match(h2, /<small>Con pendientes<\/small><b>—<\/b><em>sin datos<\/em>/);
+});
+
 test('reglas: escapa nombres; sin endpoints nuevos; la única lectura cruda es la tolerada de gw2_keys; celular', () => {
   const { P } = load();
   const h = P.cellHTML({ claimed: false, pct: 50, progress: 1, total: 2 }) + P.matrixHTML([{ name: '<b>x</b>', objectives: [] }], [{ id: 1, title: '<i>t</i>', mode: 'pve', acclaim: 0 }]);

@@ -4,8 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-046] [BAJO] Cámara del Brujo: 5º indicador «Cuentas con pendientes» en el panel de objetivos — statsHTML de wv-objectives-dashboard.js suma un 5º indicador «Con pendientes» con «X de Y cuentas con objetivos sin reclamar» (readable - upToDate), «—» sin datos. Grid de .wvd-stats pasado a 5 columnas. Test de regresión wv-objectives-dashboard (BL-046). Review riesgo BAJO: aditivo, sin regresión.
-  Qué ve el jugador: en el panel de objetivos de la Cámara del Brujo ve cuántas cuentas todavía tienen objetivos por reclamar, de un vistazo.
 - [BL-047] [BAJO] Cámara del Brujo: 5º indicador «AA total» en el panel de compras — statsHTML de wv-purchases-view.js suma un 5º indicador «AA total» con «X AA en todas las cuentas» (avail + marked), «—» sin datos. Grid de .wvp-stats pasado a 5 columnas. Test de regresión wv-purchases-view (BL-047). Review riesgo BAJO: aditivo, sin regresión.
   Qué ve el jugador: en el panel de compras de la Cámara del Brujo ve el AA total de todas las cuentas, antes de las reservas, de un vistazo.
 
@@ -19,6 +17,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+- [BL-046] [BAJO] Cámara del Brujo: 5º indicador «Cuentas con pendientes» en el panel de objetivos — cerrada. statsHTML de wv-objectives-dashboard.js suma un 5º indicador «Con pendientes» con «X de Y cuentas con objetivos sin reclamar» (readable - upToDate); grid de .wvd-stats pasado a 5 columnas. Test de regresión BL-046 en tests/wv-objectives-dashboard.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1224/1230 (6 skipped). — 2026-11-25
+  Qué ve el jugador: en el panel de objetivos de la Cámara del Brujo ve cuántas cuentas todavía tienen objetivos por reclamar, de un vistazo.
 - [BL-045] [BAJO] Builds: 5º indicador «Vigentes» en la cabecera — cerrada. statsHTML de bld-view.js suma un 5º indicador «Vigentes» con «X de Y builds vigentes» (builds vigentes del catálogo sobre el total, builds - revisar); grid de .bld-stats pasado a 5 columnas. Test de regresión BL-045 en tests/bld-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1223/1229 (6 skipped). — 2026-11-25
   Qué ve el jugador: en la cabecera de Builds ve cuántas builds están vigentes del parche actual, de un vistazo.
 - [BL-044] [BAJO] Actividades: 5º indicador «Fractales recomendados hoy» en la cabecera — cerrada. statsHTML de act-view.js suma un 5º indicador «Recomendados» con «X fractales recomendados hoy» (m.fr.recommended.length), «—» sin datos. Grid de .av-stats pasado a 5 columnas. Test de regresión BL-044 en tests/act-view.test.cjs. Review riesgo BAJO: aditivo, sin regresión. Suite 1222/1228 (6 skipped). — 2026-11-25

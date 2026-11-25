@@ -161,8 +161,9 @@
   // ------------------------------------------------------------------ HTML
   function aa(n) { return '+' + fmtInt(n) + '<span class="wvd-aa">AA</span>'; }
 
-  function statsHTML(k, accountsCount) {
+function statsHTML(k, accountsCount) {
     var pct = k.cells ? Math.round(k.claimed * 100 / k.cells) : 0;
+    var pending = (k.readable || 0) - (k.upToDate || 0);
     return '<div class="wvd-stats">' +
       '<div class="wvd-st"><small>Reclamados</small><b>' + k.claimed + ' <span>de ' + k.cells + '</span></b>' +
         '<div class="wvd-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></div></div>' +
@@ -171,6 +172,8 @@
       '<div class="wvd-st"><small>Cuenta más atrasada</small>' +
         (k.latest ? '<b class="wvd-sm">' + esc(k.latest.name) + '</b><em>' + k.latest.done + ' de ' + k.latest.total + '</em>' : '<b class="wvd-sm">—</b><em>todas al día</em>') + '</div>' +
       '<div class="wvd-st"><small>Cuentas al día</small><b>' + k.upToDate + ' <span>de ' + accountsCount + '</span></b><em>todo reclamado esta semana</em></div>' +
+      '<div class="wvd-st"><small>Con pendientes</small><b>' + (k.readable ? pending + ' de ' + k.readable + ' cuentas con objetivos sin reclamar' : '—') + '</b><em>' +
+        (k.readable ? '' : 'sin datos') + '</em></div>' +
       '</div>';
   }
 
@@ -250,7 +253,7 @@
   var CSS = [
     '.wvd{padding:0 0 12px}',
     '.wvd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}',
-    '.wvd-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 12px}',
+    '.wvd-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:0 0 12px}',
     '.wvd-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-1);padding:10px 12px;min-width:0}',
     '.wvd-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.wvd-st b{font-size:1.25rem;color:var(--tx-1)}.wvd-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',
