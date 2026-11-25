@@ -194,6 +194,16 @@ test('una semana sin objetivos todavía no muestra «0 de 0» ni una barra vací
   assert.doesNotMatch(h, /NaN/);
 });
 
+test('BL-040: Especiales muestra X de Y en la cabecera y sin datos muestra guión', () => {
+  const { P } = load();
+  const h1 = P.headHTML({ view: { tab: 'shop', sub: null }, season: 'Temporada actual', dailyLeft: '1 h 0 min', weeklyLeft: '1 d 0 h',
+    aa: 0, aaNote: '', daily: { total: 0, done: 0 }, weekly: { total: 2, done: 0 }, special: { total: 3, done: 1 }, spent: 0, counts: {}, ready: 0, pinned: 0, accounts: 0 });
+  assert.match(h1, /<small>Especiales<\/small><b>1 <span>de 3<\/span><\/b>/);
+  const h2 = P.headHTML({ view: { tab: 'shop', sub: null }, season: 'Temporada actual', dailyLeft: '1 h 0 min', weeklyLeft: '1 d 0 h',
+    aa: 0, aaNote: '', daily: { total: 0, done: 0 }, weekly: { total: 2, done: 0 }, spent: 0, counts: {}, ready: 0, pinned: 0, accounts: 0 });
+  assert.match(h2, /<small>Especiales<\/small><b>—<\/b><em>sin datos todavía<\/em>/);
+});
+
 test('con la Tienda cargada usa su AA y dice cuánto queda reservado para lo fijado', async () => {
   const shop = { aa: 900, merged: [{ id: 1, cost: 600, purchased: 1, purchase_limit: 3 }], pinned: { 1: true }, marks: {} };
   const x = load({ shop, tab: 'shop' });

@@ -259,6 +259,7 @@
     h.push(statCount('Hoy', m.daily));
     h.push(statCount('Esta semana', m.weekly));
     h.push('<div class="wvx-st"><small>' + kitIcon('stat.wv.gastada', 16) + 'Gastada en la temporada</small><b>' + (m.spent == null ? '—' : fmtInt(m.spent)) + '</b><em>según lo que la API ya vio</em></div>');
+    h.push(statCount('Especiales', m.special || (m.counts && m.counts.special)));
     h.push('</div>');
     h.push('<div id="wvxVoice" class="wvx-voice" aria-live="polite"></div>');
     h.push('<div class="wvx-why"><button type="button" class="wvx-link" data-wvx="why" aria-expanded="' + (m.whyOpen ? 'true' : 'false') + '" aria-controls="wvxWhy">ⓘ ¿Por qué tarda en actualizarse?</button>');
@@ -328,7 +329,7 @@
     '.wvx-pill b{color:var(--tx-1);font-weight:600}.wvx-pill--hot{border-color:var(--color-amber,#F2B94B)}',
     '.wvx-btn{font:inherit;font-size:.78rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px}',
     '.wvx-btn:hover{border-color:var(--acc-1)}',
-    '.wvx-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}',
+    '.wvx-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}',
     '.wvx-st{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-0);padding:10px 12px;min-width:0}',
     '.wvx-st small{display:block;font-size:.7rem;color:var(--tx-2);text-transform:uppercase;letter-spacing:.06em}',
     '.wvx-st b{font-size:1.25rem;color:var(--tx-1)}.wvx-st b span{font-size:.8rem;color:var(--tx-2);font-weight:500}',
@@ -430,7 +431,7 @@
       view: view, season: seasonLine(d.season, now),
       dailyLeft: fmtLeft(dl), dailyHot: dl <= 3 * 3600000, weeklyLeft: fmtLeft(nextWeeklyReset(now) - now),
       aa: aa, aaNote: reserved ? 'reservada para fijados: ' + fmtInt(reserved) : 'para gastar en la Tienda',
-      daily: c.daily, weekly: c.weekly, spent: rows ? spentAA(rows) : null,
+      daily: c.daily, weekly: c.weekly, special: c.special, spent: rows ? spentAA(rows) : null,
       counts: c, ready: ready, pinned: pinned, accounts: accountCount(), whyOpen: st.whyOpen
     };
   }
