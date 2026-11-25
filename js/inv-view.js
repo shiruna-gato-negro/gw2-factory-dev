@@ -23,7 +23,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.7.1';
+  var VERSION = '1.7.2';
   var LOG = '[InvView]';
   var PANEL = 'inventoryPanel';
   var ICON = 'assets/icons/Welcome/358409.png';
@@ -74,7 +74,7 @@
     ui = ui || {};
     var P = M(), d = data || {};
     var tab = isTab(ui.tab) ? ui.tab : defaultTab();
-    var m = { tab: tab, q: ui.q || '', cat: ui.cat || 'all', loaded: !!d.loaded, hasToken: !!d.hasToken,
+    var m = { tab: tab, q: ui.q || '', cat: ui.cat || 'all', onlyStock: !!ui.onlyStock, loaded: !!d.loaded, hasToken: !!d.hasToken,
       items: d.items || {}, unread: d.unread || [], voice: null,
       bank: P ? P.bankSummary(d.bank) : { used: null, total: null, free: null, tabs: null },
       matGroups: [], matHeld: null, armory: Array.isArray(d.armory) ? d.armory.slice() : null,
@@ -152,19 +152,27 @@
     if (!m.matGroups.length) return '<p class="iv-note">' + (m.loaded ? 'Sin datos de tus materiales.' : 'Cargando…') + '</p>';
     var totalTypes = m.matHeld != null ? m.matHeld : 0;
     var totalCats = m.matGroups.filter(function (g) { return g.held; }).length;
-    var h = '<p class="iv-note">' + fmtInt(totalTypes) + ' tipos de materiales · en ' + totalCats + (totalCats === 1 ? ' categoría' : ' categorías') + '</p>';
+    function sw(k, label) {
+      var on = !!m.onlyStock;
+      return '<button type="button" class="iv-sw' + (on ? ' is-on' : '') + '" role="switch" data-iv-sw="' + k + '" aria-checked="' + on + '"><i aria-hidden="true"></i>' + esc(label) + '</button>';
+    }
+    var h = '<div class="iv-mat-tools">' + sw('onlyStock', 'Solo con stock') + '</div>';
+    h += '<p class="iv-note">' + fmtInt(totalTypes) + ' tipos de materiales · en ' + totalCats + (totalCats === 1 ? ' categoría' : ' categorías') + '</p>';
     var any = false;
     m.matGroups.forEach(function (g) {
       if (m.cat !== 'all' && String(g.id) !== String(m.cat)) return;
+      if (m.onlyStock && !g.held) return;
       var rows = g.items.filter(function (it) { return matches(m, m.items[it.id], it.id); });
-      if (!rows.length) return;
+      // Los grupos sin stock se muestran por defecto (para ver qué falta) y se ocultan con el switch.
+      var showEmpty = !m.onlyStock && !m.q && g.held === 0;
+      if (!rows.length && !showEmpty) return;
       any = true;
       var pct = g.slots ? Math.round(g.held * 100 / g.slots) : 0;
       h += '<section class="iv-grp" aria-labelledby="ivC-' + g.id + '"><div class="iv-grp-h"><h3 id="ivC-' + g.id + '">' + esc(g.name) + '</h3>' +
         '<small>' + fmtInt(g.held) + ' de ' + fmtInt(g.slots) + ' con algo guardado</small><div class="iv-bar" aria-hidden="true"><i style="width:' + pct + '%"></i></div></div>' +
         '<ul class="iv-tiles">' + rows.map(function (it) { return tile(it.id, it.count, m.items[it.id]); }).join('') + '</ul></section>';
     });
-    return any ? h : '<p class="iv-note">Ningún material coincide con «' + esc(m.q) + '».</p>';
+    return any ? h : h + '<p class="iv-note">Ningún material coincide con «' + esc(m.q) + '».</p>';
   }
 
   function bankHTML(m) {
@@ -289,6 +297,10 @@
     '.iv-slot{position:relative;width:44px;height:44px}.iv-slot .iv-ic{width:44px;height:44px}.iv-slot .iv-ic img{width:44px;height:44px}',
     '.iv-slot--empty{border:1px dashed var(--bd-2);border-radius:8px;box-sizing:border-box}',
     '.iv-sc{position:absolute;right:2px;bottom:1px;font-size:.68rem;color:var(--tx-1);background:var(--bg-0);border-radius:6px;padding:0 3px;line-height:1.3}',
+    '.iv-mat-tools{display:flex;gap:8px;margin-bottom:8px}',
+    '.iv-sw{font:inherit;font-size:.82rem;border:1px solid var(--bd-2);border-radius:999px;padding:5px 12px;color:var(--tx-1);background:transparent;cursor:pointer;min-height:32px;display:inline-flex;align-items:center;gap:6px}',
+    '.iv-sw i{width:12px;height:12px;border-radius:999px;background:var(--bg-2);box-shadow:inset 0 0 0 1px var(--bd-2)}',
+    '.iv-sw.is-on{border-color:var(--acc-1)}.iv-sw.is-on i{background:var(--iv-mod)}',
     '.iv-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}',
     R + ' button:focus-visible,' + R + ' input:focus-visible,' + R + ' select:focus-visible{outline:2px solid var(--acc-1);outline-offset:2px}',
     '@media (prefers-reduced-motion:reduce){' + R + ' *{transition:none!important;animation:none!important}}',
@@ -301,7 +313,7 @@
 
   // ------------------------------------------------------------------ DOM
   var doc = root.document;
-  var st = { cats: null, catsP: null, data: null, ui: { tab: null, q: '', cat: 'all' }, voiceKey: null, seq: 0 };
+  var st = { cats: null, catsP: null, data: null, ui: { tab: null, q: '', cat: 'all', onlyStock: false }, voiceKey: null, seq: 0 };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -448,7 +460,7 @@
   function go(tab) {
     if (!isTab(tab)) return null;
     st.ui.chosen = true;
-    st.ui.tab = tab; st.ui.q = ''; st.ui.cat = 'all';
+    st.ui.tab = tab; st.ui.q = ''; st.ui.cat = 'all'; st.ui.onlyStock = false;
     var S = storage();
     if (S) S.set(TAB_KEY, tab);
     return render();
@@ -457,8 +469,8 @@
   function actOf(t) {
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
-      var a = { act: n.getAttribute('data-iv'), tab: n.getAttribute('data-iv-tab') };
-      if (a.act || a.tab) return a;
+      var a = { act: n.getAttribute('data-iv'), tab: n.getAttribute('data-iv-tab'), sw: n.getAttribute('data-iv-sw') };
+      if (a.act || a.tab || a.sw) return a;
     }
     return null;
   }
@@ -474,19 +486,23 @@
         load(true);
         if (pl && pl.refresh) pl.refresh(true);
       }
+      else if (a.sw) {
+        st.ui.onlyStock = !st.ui.onlyStock;
+        renderList();
+      }
       else if (a.tab) go(a.tab);
     });
     host.addEventListener('input', function (e) {
       var pl = pluginOf(st.ui.tab);
       if (pl && pl.onEvent && pl.onEvent(e)) return;
       var t = e.target;
-      if (t && t.id === 'ivQ') { st.ui.q = String(t.value || ''); renderList(); }
+      if (t && t.id === 'ivQ') { st.ui.q = String(t.value || ''); st.ui.onlyStock = false; renderList(); }
     });
     host.addEventListener('change', function (e) {
       var pl = pluginOf(st.ui.tab);
       if (pl && pl.onEvent && pl.onEvent(e)) return;
       var t = e.target;
-      if (t && t.id === 'ivCat') { st.ui.cat = String(t.value || 'all'); renderList(); }
+      if (t && t.id === 'ivCat') { st.ui.cat = String(t.value || 'all'); st.ui.onlyStock = false; renderList(); }
     });
     // Flechas, Inicio y Fin entre las pestañas (patrón tablist).
     host.addEventListener('keydown', function (e) {
@@ -523,7 +539,7 @@
 
   root.InvView = {
     version: VERSION, render: render, go: go, refresh: function () { return load(true); }, register: register, renderTab: renderTab,
-    getSnapshot: function () { return { data: st.data, ui: { tab: st.ui.tab, q: st.ui.q, cat: st.ui.cat } }; },
+    getSnapshot: function () { return { data: st.data, ui: { tab: st.ui.tab, q: st.ui.q, cat: st.ui.cat, onlyStock: st.ui.onlyStock } }; },
     _pure: { esc: esc, fmtInt: fmtInt, buildModel: buildModel, pickVoice: pickVoice, errorText: errorText, subtitle: subtitle,
       viewHTML: viewHTML, listHTML: listHTML, RARITY: RARITY, TABS: TABS, tabsAll: tabsAll, CSS: CSS }
   };

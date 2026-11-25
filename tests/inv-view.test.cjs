@@ -317,3 +317,21 @@ test('BL-043: Objetos distintos muestra tipos únicos en el banco y sin datos mu
   const h2 = P.viewHTML(m2);
   assert.match(h2, /<small>Objetos distintos<\/small><b>—<\/b><em>sin token o sin cargar<\/em>/);
 });
+
+test('BL-052: switch «Solo con stock» oculta grupos y materiales sin stock en Materiales', () => {
+  const data = Object.assign({}, sample(), { materials: sample().materials.concat([{ id: 19999, category: 30, count: 0 }]) });
+  const hAll = P.listHTML(P.buildModel(data, CATS, { onlyStock: false }));
+  assert.match(hAll, /Gemas y joyas/, 'sin filtro se ve el grupo sin stock');
+  assert.match(hAll, /data-iv-sw="onlyStock"/, 'switch presente');
+  assert.match(hAll, /Solo con stock/, 'etiqueta del switch');
+  const hStock = P.listHTML(P.buildModel(data, CATS, { onlyStock: true }));
+  assert.doesNotMatch(hStock, /Gemas y joyas/, 'con filtro se oculta el grupo sin stock');
+  assert.equal(P.buildModel(data, CATS, { onlyStock: true }).onlyStock, true);
+  assert.equal(P.buildModel(data, CATS, {}).onlyStock, false);
+});
+
+test('BL-052: onlyStock en el estado, reset y switch en materialsHTML', () => {
+  assert.match(SRC, /onlyStock/);
+  assert.match(SRC, /sw\('onlyStock', 'Solo con stock'\)/);
+  assert.match(SRC, /onlyStock: false/);
+});
