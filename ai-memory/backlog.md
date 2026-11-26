@@ -4,8 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-064] [MEDIO] Armería Legendaria: costo total de la cola de crafteo — el panel de la cola (legendary-tracker.js) lista los items encolados pero no suma el costo total de materiales; agregar un resumen con el total de unidades que faltan y el costo en oro/TP de todo lo encolado. — 2026-11-26
-    Qué ve el jugador: en la Armería Legendaria → Cola de crafteo, ve el costo total de materiales de todo lo encolado, además de cada item.
 - [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — en el panel de Materiales totales de una legendaria (legendary-tree-ui.js) agregar un botón «Copiar lo que falta» que copia al portapapeles la lista de materiales faltantes con cantidades, para pegar en el chat del juego o en una planilla. — 2026-11-26
     Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades.
 
@@ -20,6 +18,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+  - [BL-064] [MEDIO] Armería Legendaria: costo total de la cola de crafteo — cerrada. En «Mi cola» (render-catologo.js, queueViewHTML) se suma un resumen (p.arm-qsummary) con «Unidades que faltan: N.» (suma de missing de computeMaterials de cada encolado) y «Costo en el TP: …» (suma de tpSell de las legendarias que todavía no tenés, con el componente .coin). Techo size-budget render-catologo 63917 → 65078 B con motivo (regla v6). Test nuevo tests/armeria-cola-resumen.test.cjs (2/2). Review riesgo BAJO: aditivo, sin regresión. Suite 1251/1257 (6 skipped).
+    Qué ve el jugador: en la Armería Legendaria → Cola de crafteo, ve el total de unidades de materiales que le faltan y el costo en el TP de todo lo encolado, además de cada item.
   - [BL-063] [MEDIO] Cámara del Brujo: objetivos semanales de todas las cuentas legibles en el celular — cerrada. matrixHTML ahora envuelve la tabla en .wvd-wrap (escritorio) y agrega .wvd-cards con una tarjeta por cuenta (icono, nombre, tag, total y lista de objetivos con estado y progreso) para pantallas angostas; CSS oculta la tabla y muestra las tarjetas bajo @media (max-width:900px). Función pura cardsHTML exportada y test de regresión BL-063. Versión 2.0.0 sin cambio. Review riesgo BAJO: aditivo, sin regresión, sin endpoints nuevos. Suite 1311/1317 (6 skipped). — 2026-11-26
     Qué ve el jugador: en la Cámara → Objetivos semanales, en el celular ve una tarjeta por cuenta con sus objetivos en vez de una tabla que hay que deslizar.
   - [BL-061] [BAJO] Logros: switch «Solo sin completar» en el listado de la cuenta — cerrada. Switch data-ach-sw="onlyUncompleted" («Solo sin completar») en ach-view.js (cabecera) y ach-cards.js (barra de filtros y controles) que oculta los logros completados dejando solo los pendientes; onlyUncompleted en st de ambos módulos con filtrado de snap.rows, reset al cambiar de pestaña (ach-view go) y al buscar/vaciar (ach-cards input/reset). Tests ach-view +1 y ach-cards +1 (switch presente + toggle + reset). Versión ach-view 1.5.0 → 1.5.1 y ach-cards 1.2.0 → 1.2.1, modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyUnclaimed/onlyUncompleted (raids), sin regresión. Suite 1308/1314 (6 skipped). — 2026-11-26

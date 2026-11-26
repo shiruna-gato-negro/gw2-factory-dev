@@ -2,15 +2,18 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-063 cerrada: matriz de objetivos semanales ahora se ve como tarjetas por cuenta en el celular (tabla en escritorio). Suite 1311/1317 (6 skipped). Alternancia: próximo ciclo [B] BL-064.
+Motivo: BL-064 cerrada: resumen en «Mi cola» con unidades que faltan y costo en el TP (render-catologo.js queueViewHTML + .arm-qsummary). Suite 1251/1257 (6 skipped). Alternancia: próximo ciclo [N].
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 05:34Z
-Próxima acción: ciclo [B] — tomar BL-064 (costo total de la cola de crafteo) [MEDIO], paso 1/1 (plan y código) con suite completa.
+Última actualización: 2026-11-26 06:07Z
+Próxima acción: ciclo [N] — exploración T4 (organización personal y grupos chicos) o avanzar fichas OP (OP-001/002/003). BL-065 queda READY para el próximo [B].
 
 Archivos:
 - ai-memory/backlog.md
 - ai-memory/status.md
+- js/render-catologo.js
+- tools/size-budget.json
+- tests/armeria-cola-resumen.test.cjs
 
 ## Esperando a Pablo
 
@@ -18,7 +21,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-064, BL-065 (2 MEDIO, flujos). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-065 (1 MEDIO, flujo). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1311 pass / 1317 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).

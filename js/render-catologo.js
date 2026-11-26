@@ -647,8 +647,30 @@
       'Tu cola está completa: para sumar otra, quitá una.';
     var priced = items.some(function (it) { return !(owned[it.id] > 0) && it.tpTradeable && it.tpSell > 0; });
     var d = priceDate();
+    // Resumen de la cola: cuántas unidades de materiales faltan en total y el
+    // costo en oro/TP de todo lo encolado (BL-064). Las unidades salen de la
+    // receta de cada legendaria (computeMaterials); el costo, del precio de
+    // referencia del bazar (tpSell) de las que todavía no tenés.
+    var missingTotal = 0;
+    items.forEach(function (it) {
+      var T = root.LegendaryTracker;
+      if (!T || typeof T.computeMaterials !== 'function') return;
+      try {
+        var m = T.computeMaterials(it.id);
+        if (m && m.totals && typeof m.totals.missing === 'number') missingTotal += m.totals.missing;
+      } catch (e) { /* sin receta o sin stock: no suma */ }
+    });
+    var tpTotal = 0;
+    items.forEach(function (it) {
+      if (!(owned[it.id] > 0) && it.tpTradeable && it.tpSell > 0) tpTotal += it.tpSell;
+    });
+    var summary = '';
+    if (missingTotal > 0) summary += 'Unidades que faltan: ' + fmtInt(missingTotal) + '.';
+    if (tpTotal > 0) summary += (summary ? ' ' : '') + 'Costo en el TP: ' + tpCoinHTML(tpTotal) + '.';
+    var summaryHTML = summary ? '<p class="arm-qsummary">' + summary + '</p>' : '';
     return '<section class="arm-qview" aria-labelledby="armQTitle">' + head +
       '<ol class="arm-qlist">' + items.map(function (it, i) { return queueRow(it, i, owned); }).join('') + '</ol>' +
+      summaryHTML +
       '<p class="arm-note">' + foot + (priced && d ? ' ≈ Precio de referencia del bazar del ' + d + ', no en vivo.' : '') + '</p>' +
     '</section>';
   }
