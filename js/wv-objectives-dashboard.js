@@ -203,10 +203,41 @@ function statsHTML(k, accountsCount) {
     return '<td class="wvd-c wvd-c--' + st + '" title="' + esc(lbl) + '">' + mark + '<span class="wvd-sr">' + esc(lbl) + '</span></td>';
   }
 
+  function cardsHTML(rows, objectives) {
+    var h = ['<div class="wvd-cards">'];
+    if (!objectives.length) { h.push('<p class="wvd-empty">Ninguna cuenta tiene objetivos semanales todavía.</p></div>'); return h.join(''); }
+    if (!rows.length) { h.push('<p class="wvd-empty">Todas las cuentas tienen todo reclamado esta semana.</p></div>'); return h.join(''); }
+    (rows || []).forEach(function (a) {
+      var s = accountSummary(a, objectives);
+      h.push('<article class="wvd-card' + (a.error ? ' wvd-card--err' : '') + '">');
+      h.push('<header class="wvd-card-h"><img src="' + esc(accountIcon(a.tag, a.token)) + '" alt="" width="24" height="24" loading="lazy">');
+      h.push('<div class="wvd-card-name"><span>' + esc(a.name) + '</span>' + (TAG_LABEL[a.tag] ? '<small>' + TAG_LABEL[a.tag] + '</small>' : '') + '</div>');
+      h.push('<span class="wvd-card-tot">' + (a.error ? '—' : (s.claimed + ' / ' + s.total + (s.ready ? ' · ' + s.ready + (s.ready === 1 ? ' listo' : ' listos') : ''))) + '</span></header>');
+      h.push('<ul class="wvd-card-obj">');
+      (objectives || []).forEach(function (o) {
+        var c = a.error ? null : cellOf(a, o);
+        var st = statusOf(c);
+        var prog = (st === 'nodata') ? '—' : (c.total ? (c.progress + ' / ' + c.total) : String(c.progress));
+        var mark = (st === 'run')
+          ? '<i class="wvd-mini" aria-hidden="true"><i style="width:' + (c ? c.pct : 0) + '%"></i></i>'
+          : '<i class="wvd-dot wvd-dot--' + st + '" aria-hidden="true"></i>';
+        h.push('<li class="wvd-card-row wvd-card-row--' + st + '"><span class="wvd-card-mark">' + mark + '</span>' +
+          '<span class="wvd-card-title">' + esc(o.title) + '</span>' +
+          '<span class="wvd-card-prog">' + esc(prog) + '</span>' +
+          (o.acclaim ? '<span class="wvd-card-aa">' + aa(o.acclaim) + '</span>' : '') + '</li>');
+      });
+      h.push('</ul>');
+      if (a.error) h.push('<p class="wvd-warn">No se pudo leer</p>');
+      h.push('</article>');
+    });
+    h.push('</div>');
+    return h.join('');
+  }
+
   function matrixHTML(rows, objectives) {
     if (!objectives.length) return '<p class="wvd-empty">Ninguna cuenta tiene objetivos semanales todavía.</p>';
     if (!rows.length) return '<p class="wvd-empty">Todas las cuentas tienen todo reclamado esta semana.</p>';
-    var h = ['<div class="wvd-wrap"><table class="wvd-t"><caption class="wvd-sr">Objetivos semanales de todas las cuentas</caption><thead><tr><th scope="col" class="wvd-acc">Cuenta</th>'];
+    var h = ['<div class="wvd-matrix"><div class="wvd-wrap"><table class="wvd-t"><caption class="wvd-sr">Objetivos semanales de todas las cuentas</caption><thead><tr><th scope="col" class="wvd-acc">Cuenta</th>'];
     objectives.forEach(function (o) {
       h.push('<th scope="col" title="' + esc(o.title) + '"><span class="wvd-md wvd-md--' + o.mode + '">' + MODE_LABEL[o.mode] + '</span>' +
         '<span class="wvd-ot">' + esc(o.title) + '</span>' + (o.acclaim ? '<span class="wvd-oa">' + aa(o.acclaim) + '</span>' : '') + '</th>');
@@ -227,7 +258,7 @@ function statsHTML(k, accountsCount) {
       rows.forEach(function (a) { if (!a.error && statusOf(cellOf(a, o)) === 'ready') n++; });
       h.push('<td class="wvd-c">' + (n ? '<b class="wvd-gold">' + n + '</b>' : '<span aria-hidden="true">·</span><span class="wvd-sr">ninguno</span>') + '</td>');
     });
-    h.push('<td class="wvd-tot"></td></tr></tfoot></table></div>');
+    h.push('<td class="wvd-tot"></td></tr></tfoot></table></div>' + cardsHTML(rows, objectives) + '</div>');
     return h.join('');
   }
 
@@ -294,8 +325,25 @@ function statsHTML(k, accountsCount) {
     '.wvd-t tbody tr:hover>*{background:var(--bg-2)}',
     '.wvd-t tfoot th,.wvd-t tfoot td{border-bottom:0;font-size:.8rem;color:var(--tx-2)}',
     '.wvd button:focus-visible,.wvd select:focus-visible{outline:2px solid var(--acc-1);outline-offset:2px}',
+    '.wvd-cards{display:none;margin:0}',
+    '.wvd-card{border:1px solid var(--bd-1);border-radius:12px;background:var(--bg-1);padding:10px 12px;margin:0 0 10px}',
+    '.wvd-card--err{border-color:var(--color-amber,#F2B94B)}',
+    '.wvd-card-h{display:flex;align-items:center;gap:10px;margin:0 0 8px}',
+    '.wvd-card-h img{border-radius:6px;flex-shrink:0}',
+    '.wvd-card-name{flex:1;min-width:0;display:flex;flex-direction:column}',
+    '.wvd-card-name span{font-weight:600;color:var(--tx-1)}',
+    '.wvd-card-name small{font-size:.7rem;color:var(--tx-2)}',
+    '.wvd-card-tot{font-size:.8rem;font-weight:600;color:var(--tx-2);white-space:nowrap}',
+    '.wvd-card-obj{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}',
+    '.wvd-card-row{display:grid;grid-template-columns:20px 1fr auto auto;gap:8px;align-items:center;font-size:.82rem}',
+    '.wvd-card-title{color:var(--tx-1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
+    '.wvd-card-prog{color:var(--tx-2);font-variant-numeric:tabular-nums}',
+    '.wvd-card-aa{font-size:.7rem;color:var(--tx-2)}',
+    '.wvd-card-mark{display:inline-flex;align-items:center;justify-content:center}',
+    '.wvd-matrix{min-width:0}',
     '@media (max-width:900px){.wvd-stats{grid-template-columns:1fr 1fr;gap:6px}.wvd-st{padding:8px 10px}.wvd-st b{font-size:1.05rem}',
-    '.wvd-chip{min-height:40px}.wvd-sync{margin-left:0;flex-basis:100%}.wvd-acc{min-width:128px}.wvd-t thead th{min-width:84px}}'
+    '.wvd-chip{min-height:40px}.wvd-sync{margin-left:0;flex-basis:100%}.wvd-acc{min-width:128px}.wvd-t thead th{min-width:84px}',
+    '.wvd-wrap{display:none}.wvd-cards{display:block}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ estado y DOM
@@ -431,7 +479,7 @@ function statsHTML(k, accountsCount) {
     _debug: function () { return state; },
     _pure: { normalizeObjectives: normalizeObjectives, statusOf: statusOf, mergeObjectives: mergeObjectives, accountSummary: accountSummary,
       summarize: summarize, arrangeRows: arrangeRows, accountIcon: accountIcon, statsHTML: statsHTML, matrixHTML: matrixHTML,
-      cellHTML: cellHTML, viewHTML: viewHTML, CSS: CSS }
+      cardsHTML: cardsHTML, cellHTML: cellHTML, viewHTML: viewHTML, CSS: CSS }
   };
   if (root.console && root.console.info) root.console.info(LOG, 'ready v' + VERSION);
 })(typeof window !== 'undefined' ? window : this);
