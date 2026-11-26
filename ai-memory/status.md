@@ -1,17 +1,17 @@
 # Estado de Shiruna
 
-Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T1 cerrada sin ficha)
-Motivo: Exploración [N] T1 (segunda pasada) registró 3 señales (Hemingway Editor, cron expression generator, edad de mascota); ninguna pasa el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005). Sin código tocado.
-Etapa actual: Cierre
+Estado: EN_CURSO
+Tarea actual: BL-066 paso 1/3 — plan (Heredad: resumen de progreso por grupo de nodos)
+Motivo: Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Tomo BL-066 y hago su plan (paso 1/3). Carril [B] (alternancia: último fue [N]).
+Etapa actual: Product → Architecture (plan)
 Inicio: 2026-11-26
-Última actualización: 2026-11-26 08:33Z
-Próxima acción: próximo ciclo [B] (alternancia): exploración La Bóveda o tarea READY. Carril N: próxima exploración T2 (rotar). Laboratorio sigue pendiente de Pablo (Acción).
+Última actualización: 2026-11-26 23:30Z
+Próxima acción: BL-066 paso 2/3 — implementar resumen por grupo en nodesHTML (conteo «X de Y desbloqueados» + barra .hs-bar). Sin código en este ciclo.
 
 Archivos:
 - ai-memory/status.md
-- ai-memory/oportunidades/senales.md
-- ai-memory/oportunidades/ (OP-004, OP-005)
+- ai-memory/backlog.md
+- ai-memory/oportunidades/ (sin cambios)
 
 ## Esperando a Pablo
 
@@ -19,12 +19,12 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (ninguna). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: BL-066 paso 1/3 (plan). READY: BL-067, BL-068. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1314 pass / 1320 total, 6 skipped.
+- Suite actual: 1315 pass / 1321 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9). BL-065 cerrada (copiar materiales que faltan).
-- Exploración [B] cerrada: 3 tareas MEDIO cerradas (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Exploración [N] T3 cerrada: 3 fichas (OP-001, OP-002, OP-003). Exploración [N] T4 cerrada: 2 fichas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Exploración [N] T1 (segunda pasada) cerrada: 3 señales, ninguna pasa filtro/puntaje; sin ficha nueva. Próxima exploración [N]: T2.
-- Carril N: T1 (2 pasadas), T2, T3 y T4 cerradas. Señales descartadas: planificador de menús (hueco 1), calendario compartido (8 pts), ruleta de turnos (hueco 1), Hemingway Editor (hueco 1), cron expression generator (8 pts), edad de mascota (hueco 1). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Todas con «Qué ve el jugador».
+- Exploración [N] T4 cerrada: 2 fichas (OP-004, OP-005). Exploración [N] T1 (segunda pasada) cerrada: 3 señales, ninguna pasa filtro/puntaje. Carril N: T1 (2 pasadas), T2, T3 y T4 cerradas. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
 

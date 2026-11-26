@@ -4,7 +4,19 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-067] [BAJO] Heredad: mostrar el conteo desbloqueados/total en cada pill de filtro por grupo (ej. «Minería (5/12)»). — 2026-11-26
+  Qué ve el jugador: en los filtros por herramienta de la Heredad, cada pill dice cuántos nodos tiene desbloqueados del total de ese grupo, sin abrir la lista.
+- [BL-068] [MEDIO] Cámara del Brujo: en la pestaña Tienda, mostrar un resumen de cuántos items se pueden comprar con el AA disponible (costo total de los fijados vs AA disponible). — 2026-11-26
+  Qué ve el jugador: en la Cámara → Tienda, ve un resumen «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» para saber si le alcanza el AA.
+
 ## IN_PROGRESS
+
+- [BL-066] [MEDIO] Heredad: resumen de progreso por grupo de nodos (minería, tala, cosecha, cofres, contratos) con barra de progreso en cada grupo. — 2026-11-26
+  Qué ve el jugador: en la Heredad → Nodos de casa, cada grupo de herramientas muestra «X de Y desbloqueados» con una barra de progreso, para ver de un vistazo cuántos nodos tiene por tipo.
+  Pasos (3):
+  1. Plan (este ciclo): verificar cómo se agrupan los nodos en nodesHTML y cómo se calcula el progreso por grupo; decidir si el resumen va sobre la lista o en pills. Sin código.
+  2. Implementar: agregar un header por grupo en nodesHTML con conteo "X de Y desbloqueados" y barra de progreso (usando la clase .hs-bar existente). Si el grupo está filtrado, mostrar solo ese.
+  3. Test de regresión (contar grupos con barra + conteo) + size-budget + commit.
 
 ## BLOCKED
 
