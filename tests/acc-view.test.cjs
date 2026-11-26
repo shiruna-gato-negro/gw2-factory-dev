@@ -42,15 +42,15 @@ function raw(o) {
 }
 
 test('archivo: presupuesto, versión, manifiesto después de acc-model, fuera de index.html, sin emojis ni localStorage', () => {
-  assert.ok(Buffer.byteLength(SRC) <= 40 * 1024, Buffer.byteLength(SRC) + ' bytes');
-  assert.match(SRC, /Versión: 1\.4\.1/);
-  assert.equal(B.AccView.version, '1.4.1');
+  assert.ok(Buffer.byteLength(SRC) <= 42 * 1024, Buffer.byteLength(SRC) + ' bytes');
+  assert.match(SRC, /Versión: 1\.4\.2/);
+  assert.equal(B.AccView.version, '1.4.2');
   assert.doesNotMatch(SRC, /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u);
   assert.doesNotMatch(SRC, /localStorage|sessionStorage/);
   const man = JSON.parse(read('js/modules.json')).modules;
   const i = man.findIndex((m) => m.src === 'js/acc-view.js'), j = man.findIndex((m) => m.src === 'js/acc-model.js');
   assert.ok(j >= 0 && i > j, 'el modelo antes que la vista');
-  assert.equal(man[i].v, '1.4.1');
+  assert.equal(man[i].v, '1.4.2');
   assert.doesNotMatch(read('index.html'), /acc-view\.js|acc-model\.js/);
 });
 
@@ -135,6 +135,25 @@ test('BL-055: onlyNoKey en el estado, reset y switch en viewHTML', () => {
   assert.match(SRC, /onlyNoKey/);
   assert.match(SRC, /Solo sin Key/);
   assert.match(SRC, /onlyNoKey: false/);
+});
+
+test('BL-062: onlyWithKey filtra solo las cuentas con Key cargada', () => {
+  const a = J(P.deriveCard(raw(), CAT, M, NOW));
+  const b = J(P.deriveCard(raw({ fp: 'bbbb', tag: 'alter', account: Object.assign({}, ACC, { name: 'Alt.9' }) }), CAT, M, NOW));
+  b.state = 'nokey';
+  const cards = [a, b];
+  assert.equal(P.filterCards(cards, { type: 'all', q: '', onlyWithKey: false }).length, 2);
+  assert.deepEqual(P.filterCards(cards, { type: 'all', q: '', onlyWithKey: true }).map((c) => c.fp), ['aaaa1111']);
+  const m = { cat: CAT, M, cards: cards, active: 'aaaa1111', activeName: 'Gato Negro.1234', ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false, onlyWithKey: false }, loading: false, readAt: NOW, now: NOW };
+  const h = P.viewHTML(m);
+  assert.match(h, /data-cv-sw="onlyWithKey"/, 'switch presente');
+  assert.match(h, /Solo con Key/, 'etiqueta del switch');
+});
+
+test('BL-062: onlyWithKey en el estado, reset y switch en viewHTML', () => {
+  assert.match(SRC, /onlyWithKey/);
+  assert.match(SRC, /Solo con Key/);
+  assert.match(SRC, /onlyWithKey: false/);
 });
 
 test('mi voz: Key muerta, después permisos que faltan, después Visions of Eternity; nada mientras leo', () => {

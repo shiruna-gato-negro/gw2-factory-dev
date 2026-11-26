@@ -3,7 +3,6 @@
 Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite como máximo 10 tareas. Cada tarea nueva lleva una línea «Qué ve el jugador:»; si no se puede escribir, la tarea no entra en READY. Al menos 7 de cada 10 tareas cambian algo que el jugador vea en La Bóveda.
 
 ## READY
-- [BL-062] [BAJO] Cuentas: switch «Solo con Key» (inverso de «Solo sin Key») en Mis cuentas — añadir switch siguiendo el patrón (data-cv-sw, «Solo con Key») que oculta las cuentas sin Key dejando solo las que ya la tienen cargada. Qué ve el jugador: en Cuentas → Mis cuentas, un switch que deja solo las cuentas que ya tienen API Key cargada, para revisar las activas.
 
 ## IN_PROGRESS
 
@@ -15,6 +14,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-012] [MEDIO] Actualizar datos de builds (vigentes) — cancelada por orden v6: los datos de Builds se actualizan en BL-101 de Shiruvana, no a mano. — 2026-11-24
 
 ## DONE
+  - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cerrada. Switch data-cv-sw="onlyWithKey" («Solo con Key») en viewHTML de acc-view.js que oculta las cuentas sin Key (state === 'nokey') dejando solo las que ya la tienen cargada; onlyWithKey en st.ui (default false); reset al cambiar de pestaña (goTab) y al buscar (input cvQ); clic alterna y repinta. Tests acc-view +2 (filtro onlyWithKey + switch en viewHTML; onlyWithKey en estado). Versión acc-view 1.4.1 → 1.4.2 y modules.json. Registrado en advertencia de tools/size-budget.json (40.3 KB). Review riesgo BAJO: aditivo, sigue el patrón de onlyNoKey, sin regresión. Suite 1310/1316 (6 skipped). — 2026-11-26
+    Qué ve el jugador: en Cuentas → Mis cuentas, un switch que deja solo las cuentas que ya tienen API Key cargada, para revisar las activas.
   - [BL-061] [BAJO] Logros: switch «Solo sin completar» en el listado de la cuenta — cerrada. Switch data-ach-sw="onlyUncompleted" («Solo sin completar») en ach-view.js (cabecera) y ach-cards.js (barra de filtros y controles) que oculta los logros completados dejando solo los pendientes; onlyUncompleted en st de ambos módulos con filtrado de snap.rows, reset al cambiar de pestaña (ach-view go) y al buscar/vaciar (ach-cards input/reset). Tests ach-view +1 y ach-cards +1 (switch presente + toggle + reset). Versión ach-view 1.5.0 → 1.5.1 y ach-cards 1.2.0 → 1.2.1, modules.json. Review riesgo BAJO: aditivo, sigue el patrón de onlyUnclaimed/onlyUncompleted (raids), sin regresión. Suite 1308/1314 (6 skipped). — 2026-11-26
     Qué ve el jugador: en Logros, un switch que deja solo los logros que todavía no completó.
   - [BL-060] [BAJO] Raids: switch «Solo sin completar» en Encuentros — cerrada. Switch data-rv-sw="onlyUncompleted" («Solo sin completar») en raids-view.js que oculta los encuentros ya hechos/marcados dejando solo los pendientes; onlyUncompleted en buildModel (top-level y ui, con alias onlyPending/onlyUndone/onlyIncomplete/onlyNotDone) y st.ui con reset al cambiar de pestaña (go). Clic alterna y repinta. Tests raids-view sin regresión. Review riesgo BAJO: aditivo, sigue el patrón de onlyPending/onlyUnclaimed, sin regresión. Suite 1304/1310 (6 skipped). — 2026-11-26

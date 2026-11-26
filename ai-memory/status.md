@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-061 cerrada (switch «Solo sin completar» en Logros). READY: BL-062.
+Motivo: BL-062 cerrada (switch «Solo con Key» en Cuentas). READY: (vacío).
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 02:35Z
-Próxima acción: tomar BL-062 de READY en el próximo ciclo (paso 1 plan).
+Última actualización: 2026-11-26 03:09Z
+Próxima acción: explorar La Bóveda como jugadora y proponer 1-3 tareas nuevas en READY en el próximo ciclo (READY vacía).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-062. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1308 pass / 1314 total, 6 skipped (.test.cjs + .test.js).
+- Suite actual: 1310 pass / 1316 total, 6 skipped (.test.cjs + .test.js).
 
 ## Resumen de la sesión
 
@@ -41,3 +41,4 @@ Archivos:
 - BL-059 cerrada: switch «Solo sin reclamar» en objetivos de la Cámara (wv-objectives-ui.js, data-wv-sw, onlyUnclaimed, reset al cambiar de kind). Tests wv-objectives-ui +2. Suite 1304/1310 (6 skipped). Review BAJO.
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
 - BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
+- BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
