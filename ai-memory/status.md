@@ -28,6 +28,8 @@ Archivos:
 
 ## Resumen de la sesión
 
+- BL-066 paso 1/3 (plan): exploración [B] cerrada, 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Carril [B]. Suite 1315/1321 (6 skipped). — 2026-11-26 23:30Z
+
 - orden v7 procesos: reglas de procesos en AGENTS.md (sección «Procesos») y status.md. Commit `orden: v7 procesos — tests 1225/1231`.
 - Exploración La Bóveda (Builds, Metas): 3 tareas nuevas en READY (BL-048, BL-049, BL-050).
 - BL-048 cerrada: filtro «Solo con notas en castellano» en la Biblioteca. Suite 1226/1232 (6 skipped).
