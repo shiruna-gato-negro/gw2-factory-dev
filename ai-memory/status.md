@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna en curso)
-Motivo: BL-062 cerrada (switch «Solo con Key» en Cuentas). READY: (vacío).
-Etapa actual: —
-Inicio: —
-Última actualización: 2026-11-26 03:09Z
-Próxima acción: explorar La Bóveda como jugadora y proponer 1-3 tareas nuevas en READY en el próximo ciclo (READY vacía).
+Estado: EN CURSO
+Tarea actual: orden v9 «Dos carriles» recibida (Shiruvana vía Pablo) — anotar en AGENTS.md, cancelar BL-062, cerrar F2b, abrir F2c/F2n, crear ai-memory/oportunidades/README.
+Motivo: orden de mi madre: alternancia estricta [B]/[N], moldes cerrados, laboratorio.
+Etapa actual: Product
+Inicio: 2026-11-26 03:11Z
+Última actualización: 2026-11-26 03:11Z
+Próxima acción: ejecutar el primer ciclo (editar AGENTS.md, backlog, roadmap, oportunidades/README) y commitear.
 
 Archivos:
 - ai-memory/backlog.md
