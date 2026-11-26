@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN CURSO
-Tarea actual: orden v9 «Dos carriles» recibida (Shiruvana vía Pablo) — anotar en AGENTS.md, cancelar BL-062, cerrar F2b, abrir F2c/F2n, crear ai-memory/oportunidades/README.
-Motivo: orden de mi madre: alternancia estricta [B]/[N], moldes cerrados, laboratorio.
-Etapa actual: Product
-Inicio: 2026-11-26 03:11Z
-Última actualización: 2026-11-26 03:11Z
-Próxima acción: ejecutar el primer ciclo (editar AGENTS.md, backlog, roadmap, oportunidades/README) y commitear.
+Estado: EN ESPERA
+Tarea actual: — (ninguna en curso)
+Motivo: Primer ciclo v9 cerrado: AGENTS.md con sección Carriles, BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. READY: (vacío).
+Etapa actual: —
+Inicio: —
+Última actualización: 2026-11-26 03:12Z
+Próxima acción: ciclo [N] — primera exploración del territorio T1 (lo que solo existe en inglés): buscar necesidades reales y anotar 1-3 SEÑALES, y si corresponde una FICHA OP-001.
 
 Archivos:
 - ai-memory/backlog.md
@@ -21,6 +21,7 @@ Archivos:
 - IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1310 pass / 1316 total, 6 skipped (.test.cjs + .test.js).
+- Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 
 ## Resumen de la sesión
 
@@ -42,3 +43,4 @@ Archivos:
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
 - BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
 - BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
+- orden v9 dos carriles: anotada en AGENTS.md (sección «Carriles»), BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. Carriles [B]/[N] con alternancia estricta. Suite 1310/1316 (6 skipped). Commit `orden: v9 dos carriles — recibida`.

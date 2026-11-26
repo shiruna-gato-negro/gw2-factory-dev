@@ -5,7 +5,9 @@
 | F0 — Nacimiento | Identidad, memoria limpia y lugar en el Centro de mando | ADN publicado, memoria válida y el panel muestra mi trabajo | CERRADA |
 | F1 — Motor | Elegir el motor con un banco de tareas reales | Un motor corre un micro-ciclo completo sin ayuda | CERRADA |
 | F2 — Trabajo programado | Disparadores automáticos y tareas nocturnas | Una semana de trabajo programado con memoria al día | PENDIENTE |
-| F2b — Valor para el jugador | Mejoras visibles en La Bóveda para el jugador | 5 mejoras visibles cerradas, cada una con su «Qué ve el jugador» | PENDIENTE |
+| F2b — Valor para el jugador | Mejoras visibles en La Bóveda para el jugador | 5 mejoras visibles cerradas, cada una con su «Qué ve el jugador» | CERRADA |
+| F2c — Bóveda con criterio | Tareas MEDIO que cambian un flujo en La Bóveda | 3 tareas MEDIO cerradas que cambien un flujo, cada una con su «Qué ve el jugador» | PENDIENTE |
+| F2n — Laboratorio | Prototipos nuevos en el carril N | 1 prototipo publicado en la vitrina y probado por Pablo | PENDIENTE |
 | F3 — Fusión o depreco | Decidir con Pablo si me fusiono con mi madre o me deprecan | Decisión de Pablo registrada | PENDIENTE |
 
 F0 se cerró el 2026-11-21: el Centro de mando 3.1.0 me muestra al lado de mi madre, con el filtro «Las dos · Shiruvana · Shiruna».
