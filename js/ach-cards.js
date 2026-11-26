@@ -1,7 +1,7 @@
 /*!
  * js/ach-cards.js — Logros: filtros y tarjetas «te falta» (BL-067, LOG-2)
  * Proyecto: Bóveda del Gato Negro
- * Versión: 1.2.0 (2026-10-24)
+ * Versión: 1.2.1 (2026-11-26) — BL-061: switch «Solo sin completar»
  *  - 1.2.0 (LOG-5): el lector de pantalla oye cuántos logros quedan al filtrar (un aviso corto
  *    en role=status, en lugar de leer toda la grilla) y en el celular «Ver en la Armería →» y
  *    «Wiki ↗» tienen 44 px de alto para el dedo.
@@ -25,7 +25,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.2.0';
+  var VERSION = '1.2.1';
   var LOG = '[AchCards]';
   var ICON = 'assets/icons/155059.png';
   var ICON_AP = 'https://wiki.guildwars2.com/images/thumb/c/cd/AP.png/30px-AP.png';
@@ -177,6 +177,7 @@
     h.push('</div><label class="achc-sel"><span>Categoría</span><select id="achcCat"><option value="">Todas</option>');
     cats.forEach(function (c) { h.push('<option value="' + esc(c.id) + '"' + (String(snap.cat || '') === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>'); });
     h.push('</select></label>');
+    h.push('<button type="button" class="achc-sw" role="switch" data-ach-sw="onlyUncompleted" aria-checked="' + (st.onlyUncompleted ? 'true' : 'false') + '">Solo sin completar</button>');
     return h.join('');
   }
 
@@ -223,7 +224,7 @@
 
   // ------------------------------------------------------------------ DOM
   var doc = root.document;
-  var st = { cache: { Item: {}, Title: {}, Mastery: {} }, asked: { Item: {}, Title: {}, Mastery: {} }, open: false, timer: null, count: null };
+  var st = { cache: { Item: {}, Title: {}, Mastery: {} }, asked: { Item: {}, Title: {}, Mastery: {} }, open: false, timer: null, count: null, onlyUncompleted: false };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function api() { var A = root.Achievements; return A && A.cardsByModule && typeof A.getSnapshot === 'function' && typeof A.setFilter === 'function' ? A : null; }
@@ -244,6 +245,7 @@
     bar.setAttribute('aria-label', 'Filtros de Logros');
     bar.innerHTML = '<label class="achc-search"><span class="achc-sr">Buscar logro</span><input type="search" id="achcSearch" placeholder="Buscar logro…" autocomplete="off"></label>' +
       '<button type="button" class="achc-more" id="achcMore" data-achc-act="more" aria-expanded="false" aria-controls="achcCtrl">Filtros</button>' +
+      '<button type="button" class="achc-sw" role="switch" data-ach-sw="onlyUncompleted" aria-checked="false">Solo sin completar</button>' +
       '<div class="achc-ctrl" id="achcCtrl"></div><p class="achc-sr" id="achcCount" role="status" aria-live="polite"></p>';
     var parent = main.parentNode || byId('achievementsPanel');
     if (parent && parent.insertBefore) parent.insertBefore(bar, main);
@@ -262,6 +264,7 @@
     var A = api(), main = byId('achievementsMain');
     if (!A || !main) return null;
     var snap = A.getSnapshot(), bar = ensureBar(main);
+    if (st.onlyUncompleted && snap && Array.isArray(snap.rows)) snap.rows = snap.rows.filter(function (x) { return !x || !x.pr || Number(x.pr.pct) < 1; });
     var legendary = !!(snap.legendaryCatId && String(snap.cat || '') === String(snap.legendaryCatId));
     bar.hidden = !snap.hasToken;
     var ctrl = byId('achcCtrl'), more = byId('achcMore'), input = byId('achcSearch');
@@ -333,10 +336,11 @@
     bar.addEventListener('click', function (e) {
       var A = api();
       if (!A) return;
-      var p = attr(e.target, 'data-achc-pct', bar), r = attr(e.target, 'data-achc-reward', bar), act = attr(e.target, 'data-achc-act', bar);
+      var p = attr(e.target, 'data-achc-pct', bar), r = attr(e.target, 'data-achc-reward', bar), act = attr(e.target, 'data-achc-act', bar), sw = attr(e.target, 'data-ach-sw', bar);
       if (p != null) A.setFilter({ pct: Number(p) });
       else if (r != null) A.setFilter({ reward: r });
       else if (act === 'more') { st.open = !st.open; render(); }
+      else if (sw === 'onlyUncompleted') { st.onlyUncompleted = !st.onlyUncompleted; render(); }
     });
     bar.addEventListener('change', function (e) {
       var A = api();
@@ -345,12 +349,13 @@
     bar.addEventListener('input', function (e) {
       if (!e.target || e.target.id !== 'achcSearch') return;
       var v = e.target.value;
+      st.onlyUncompleted = false;
       clearTimeout(st.timer);
       st.timer = setTimeout(function () { var A = api(); if (A) A.setFilter({ q: v }); }, 200);
     });
     main.addEventListener('click', function (e) {
       var A = api();
-      if (A && attr(e.target, 'data-achc-act', main) === 'reset') A.setFilter({ pct: 0, reward: '', q: '', cat: '' });
+      if (A && attr(e.target, 'data-achc-act', main) === 'reset') { st.onlyUncompleted = false; A.setFilter({ pct: 0, reward: '', q: '', cat: '' }); }
     });
   }
 

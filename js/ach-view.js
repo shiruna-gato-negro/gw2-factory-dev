@@ -1,7 +1,7 @@
 /*!
  * js/ach-view.js — Logros: cabecera, pestañas y mi línea (BL-067, LOG-1)
  * Proyecto: Bóveda del Gato Negro
- * Versión: 1.5.0 (2026-10-28) — BL-078 UNI-4b: íconos del juego en las pestañas y en los puntos de logro; el ícono AP ya no viene de la wiki · antes 1.4.0 (2026-10-27) — BL-076 SHV-5b: sin mi globo, mi línea también dice «Lo sé por» · antes 1.3.0 (2026-10-24)
+ * Versión: 1.5.1 (2026-11-26) — BL-061: switch «Solo sin completar» — BL-078 UNI-4b: íconos del juego en las pestañas y en los puntos de logro; el ícono AP ya no viene de la wiki · antes 1.4.0 (2026-10-27) — BL-076 SHV-5b: sin mi globo, mi línea también dice «Lo sé por» · antes 1.3.0 (2026-10-24)
  *  - 1.3.0 (CAM-POLISH-001): si js/gn-surface.js está cargado, la guarda de contraste se calcula
  *    sobre la bandeja y la tarjeta reales (GNSurface.surfaceTokens), no sobre el fondo del theme.
  *  - 1.2.0 (LOG-4): en «Colecciones legendarias», mi línea dice cuál es la colección más
@@ -24,7 +24,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.5.0';
+  var VERSION = '1.5.1';
   var LOG = '[AchView]';
   var ICON = 'assets/icons/155059.png';
   var ICON_AP = 'assets/icons/155059.png'; // UNI-4b (stat.ach.ap): el de la wiki dejó de cargar
@@ -191,6 +191,7 @@
     h.push('<button type="button" class="achx-btn" data-achx="refresh">↻ Actualizar</button></div></div>');
     h.push('<div class="achx-stats">' + statsHTML(m) + '</div>');
     h.push('<div id="achxVoice" class="achx-voice" aria-live="polite"></div></div>');
+    h.push('<div class="achx-sw"><button type="button" class="achx-btn" role="switch" data-ach-sw="onlyUncompleted" aria-checked="' + (st.onlyUncompleted ? 'true' : 'false') + '">Solo sin completar</button></div>');
     h.push(navHTML(m));
     if (m.tab === 'cats') h.push(catsHTML(m));
     return h.join('');
@@ -300,7 +301,7 @@
 
   // ------------------------------------------------------------------ DOM
   var doc = root.document;
-  var st = { chosen: 'near', nearFilter: null, voiceKey: null, guarded: [] };
+  var st = { chosen: 'near', nearFilter: null, voiceKey: null, guarded: [], onlyUncompleted: false };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -338,7 +339,9 @@
     var A = api(), panel = byId('achievementsPanel');
     if (!A || !panel) return null;
     var host = ensureHost(panel);
-    var snap = A.getSnapshot(), m = buildModel(snap, A._calc, st.chosen), C = root.AchCategories;
+    var snap = A.getSnapshot();
+    if (st.onlyUncompleted && snap && Array.isArray(snap.rows)) snap.rows = snap.rows.filter(function (x) { return !x || !x.pr || Number(x.pr.pct) < 1; });
+    var m = buildModel(snap, A._calc, st.chosen), C = root.AchCategories;
     st.chosen = m.tab;
     if (m.tab === 'cats' && m.loaded && C && typeof C.html === 'function') {
       try { m.catsBody = C.html(snap, A._calc); } catch (e) { if (root.console) root.console.warn(LOG, 'categorías', e); }
@@ -399,6 +402,7 @@
     var snap = A.getSnapshot(), cur = activeTab(snap, st.chosen);
     if (cur === 'near' && tab !== 'near') st.nearFilter = { cat: snap.cat || '', pct: Number(snap.pct) || 0 };
     st.chosen = tab;
+    st.onlyUncompleted = false;
     if (tab === 'near') { if (cur !== 'near') A.setFilter(st.nearFilter || { cat: '', pct: NEAR }); st.nearFilter = null; }
     else if (tab === 'legendary') { if (cur !== 'legendary') A.setFilter({ cat: snap.legendaryCatId || '', pct: 0 }); }
     render();
@@ -426,8 +430,8 @@
   function actOf(t) {
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
-      var a = n.getAttribute('data-achx'), tab = n.getAttribute('data-achx-tab'), cat = n.getAttribute('data-achx-cat');
-      if (a || tab || cat) return { act: a, tab: tab, cat: cat };
+      var a = n.getAttribute('data-achx'), tab = n.getAttribute('data-achx-tab'), cat = n.getAttribute('data-achx-cat'), sw = n.getAttribute('data-ach-sw');
+      if (a || tab || cat || sw) return { act: a, tab: tab, cat: cat, sw: sw };
     }
     return null;
   }
@@ -439,6 +443,7 @@
       if (a.act === 'refresh') refreshNow();
       else if (a.tab) go(a.tab);
       else if (a.cat) openCat(a.cat);
+      else if (a.sw === 'onlyUncompleted') { st.onlyUncompleted = !st.onlyUncompleted; render(); }
     });
     // Flechas, Inicio y Fin entre las tres pestañas (patrón tablist).
     host.addEventListener('keydown', function (e) {

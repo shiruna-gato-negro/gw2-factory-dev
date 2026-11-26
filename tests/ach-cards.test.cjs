@@ -84,8 +84,8 @@ function load(opts = {}) {
 const tick = () => new Promise((r) => setTimeout(r, 5));
 const fire = (host, type, attrs, extra) => { const t = node('t', attrs); t.parentNode = host; Object.assign(t, extra || {}); (host.listeners[type] || []).forEach((f) => f({ target: t })); };
 
-test('versión 1.2.0, por js/modules.json y después de ach-view.js', () => {
-  assert.match(SRC, /\* Versión: 1\.2\.0 /);
+test('versión 1.2.1, por js/modules.json y después de ach-view.js', () => {
+  assert.match(SRC, /\* Versión: 1\.2\.1 /);
   const m = JSON.parse(fs.readFileSync(path.join(ROOT, 'js', 'modules.json'), 'utf8')).modules.map((x) => x.src);
   assert.ok(m.includes('js/ach-cards.js'));
   assert.ok(m.indexOf('js/ach-cards.js') > m.indexOf('js/ach-view.js'));
@@ -269,6 +269,27 @@ test('LOG-5: el lector oye cuántos logros quedan al filtrar, una vez y sin leer
 test('LOG-5: en el celular los enlaces de la tarjeta miden 44 px de alto', () => {
   const P = load().P;
   assert.match(P.CSS, /@media \(max-width:900px\)\{[^\n]*\.achc-wiki,\.achc-armory\{min-height:44px/);
+});
+
+test('BL-061: switch «Solo sin completar» en la barra y en los controles', () => {
+  const x = load();
+  const bar = x.bar();
+  assert.match(bar.innerHTML, /data-ach-sw="onlyUncompleted"/, 'switch presente en la barra');
+  assert.match(bar.innerHTML, /Solo sin completar/, 'etiqueta del switch');
+  const P = x.P;
+  const snap = x.win.Achievements.getSnapshot();
+  const cats = P.pendingCats(snap, CALC);
+  assert.match(P.controlsHTML(snap, cats), /data-ach-sw="onlyUncompleted"/, 'switch en los controles');
+  assert.equal(x.win.AchCards._state.onlyUncompleted, false);
+  fire(bar, 'click', { 'data-ach-sw': 'onlyUncompleted' });
+  assert.equal(x.win.AchCards._state.onlyUncompleted, true, 'clic alterna');
+});
+
+test('BL-061: onlyUncompleted en el estado, reset al buscar y al vaciar', () => {
+  assert.match(SRC, /onlyUncompleted/);
+  assert.match(SRC, /data-ach-sw="onlyUncompleted"/);
+  assert.match(SRC, /Solo sin completar/);
+  assert.match(SRC, /onlyUncompleted: false/);
 });
 
 test('reglas de la Bóveda: sin claves crudas ni endpoints con API Key', () => {

@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-060 cerrada (switch «Solo sin completar» en Raids → Encuentros). READY: BL-061, BL-062 (exploración).
+Motivo: BL-061 cerrada (switch «Solo sin completar» en Logros). READY: BL-062.
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 01:37Z
-Próxima acción: tomar BL-061 de READY en el próximo ciclo (paso 1 plan).
+Última actualización: 2026-11-26 02:35Z
+Próxima acción: tomar BL-062 de READY en el próximo ciclo (paso 1 plan).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,9 +18,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-061, BL-062. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-062. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1304 pass / 1310 total, 6 skipped (.test.cjs + .test.js).
+- Suite actual: 1308 pass / 1314 total, 6 skipped (.test.cjs + .test.js).
 
 ## Resumen de la sesión
 
@@ -40,4 +40,4 @@ Archivos:
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-057 switch «Solo con pendientes» en Actividades, BL-058 switch «Solo sin desbloquear» en Heredad, BL-059 switch «Solo sin reclamar» en Cámara del Brujo). Todas con «Qué ve el jugador».
 - BL-059 cerrada: switch «Solo sin reclamar» en objetivos de la Cámara (wv-objectives-ui.js, data-wv-sw, onlyUnclaimed, reset al cambiar de kind). Tests wv-objectives-ui +2. Suite 1304/1310 (6 skipped). Review BAJO.
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
-- BL-060 cerrada: switch «Solo sin completar» en Encuentros (raids-view.js, data-rv-sw="onlyUncompleted"). Suite 1304/1310 (6 skipped). Review BAJO.
+- BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
