@@ -4,6 +4,13 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+- [BL-063] [MEDIO] Cámara del Brujo: objetivos semanales de todas las cuentas legibles en el celular — la matriz cuentas × objetivos (wv-objectives-dashboard.js) exige deslizar horizontalmente en el teléfono; adaptar a tarjetas por cuenta en pantallas angostas, manteniendo la tabla en escritorio. — 2026-11-26
+    Qué ve el jugador: en la Cámara → Objetivos semanales, en el celular ve una tarjeta por cuenta con sus objetivos en vez de una tabla que hay que deslizar.
+- [BL-064] [MEDIO] Armería Legendaria: costo total de la cola de crafteo — el panel de la cola (legendary-tracker.js) lista los items encolados pero no suma el costo total de materiales; agregar un resumen con el total de unidades que faltan y el costo en oro/TP de todo lo encolado. — 2026-11-26
+    Qué ve el jugador: en la Armería Legendaria → Cola de crafteo, ve el costo total de materiales de todo lo encolado, además de cada item.
+- [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — en el panel de Materiales totales de una legendaria (legendary-tree-ui.js) agregar un botón «Copiar lo que falta» que copia al portapapeles la lista de materiales faltantes con cantidades, para pegar en el chat del juego o en una planilla. — 2026-11-26
+    Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades.
+
 ## IN_PROGRESS
 
 ## BLOCKED

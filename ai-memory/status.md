@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: Exploración carril [N] T1 cerrada: 3 señales anotadas en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro), ninguna cumple filtro de entrada. READY vacío.
+Motivo: Exploración [B] La Bóveda cerrada: 3 tareas MEDIO en READY (BL-063 matriz de objetivos semanales legible en el celular, BL-064 costo total de la cola de crafteo, BL-065 copiar la lista de materiales que faltan). Moldes (5º indicador, switches «Solo …») cerrados por v9; estas tareas cambian flujos.
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 03:34Z
-Próxima acción: ciclo [B] — exploración La Bóveda (criterio F2c: 3 tareas MEDIO que cambien un flujo). Alternancia v9: después de [N] toca [B].
+Última actualización: 2026-11-26 04:00Z
+Próxima acción: ciclo [N] — exploración carril Nuevas (alternancia v9: después de [B] toca [N]).
 
 Archivos:
 - ai-memory/backlog.md
@@ -18,11 +18,11 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-063, BL-064, BL-065 (3 MEDIO, flujos). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1310 pass / 1316 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [N] T1 cerrada: 3 señales en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro); ninguna cumple filtro de entrada. Próxima exploración [B].
+- Exploración [B] cerrada: 3 tareas MEDIO en READY (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Próxima exploración [N].
 
 ## Resumen de la sesión
 
@@ -45,4 +45,4 @@ Archivos:
 - BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
 - BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
 - orden v9 dos carriles: anotada en AGENTS.md (sección «Carriles»), BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. Carriles [B]/[N] con alternancia estricta. Suite 1310/1316 (6 skipped). Commit `orden: v9 dos carriles — recibida`.
-- Exploración [N] T1: 3 señales anotadas en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro), ninguna cumple filtro de entrada. Suite sin cambios (sin código tocado). Commit `[N] exploración T1 — 3 señales`.
+- Exploración [B] La Bóveda: 3 tareas MEDIO en READY (BL-063 matriz objetivos semanales en celular, BL-064 costo total cola de crafteo, BL-065 copiar materiales que faltan). Moldes cerrados (5º indicador, switches «Solo …») por v9; estas cambian flujos. Commit `[B] exploración La Bóveda — 3 tareas MEDIO en READY`.
