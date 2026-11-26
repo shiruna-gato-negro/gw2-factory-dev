@@ -20,7 +20,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.6.0';
+  var VERSION = '1.7.0';
   var LOG = '[RaidsView]';
   var CATALOG = 'assets/data/raids/catalog.json';
   var ICON = 'assets/icons/raids/raid-icon.png';
@@ -123,13 +123,14 @@
   // Todo lo que muestra la pantalla, sin tocar el DOM.
   function buildModel(cat, data, ui) {
     ui = ui || {};
+    var onlyUncompletedFlag = !!(ui && (ui.onlyUncompleted || ui.onlyPending || ui.onlyUndone || ui.onlyIncomplete || ui.onlyNotDone));
     var m = { tab: ui.tab === 'enc' ? 'enc' : 'wings', filter: ui.filter || 'all', exp: ui.exp || 'all',
       loaded: !!(data && data.loaded), hasToken: !!(data && data.hasToken), groups: [], exps: [], voice: null,
+      onlyUncompleted: onlyUncompletedFlag, onlyPending: onlyUncompletedFlag, onlyUndone: onlyUncompletedFlag, onlyIncomplete: onlyUncompletedFlag, onlyNotDone: onlyUncompletedFlag,
       stats: { wDone: 0, wTotal: 0, eDone: 0, eTotal: 0, eKnown: true, liPending: 0, magPending: 0, gaePending: 0, cmDone: 0, cmTotal: 0, challengeDone: 0, challengeTotal: 0, mdDone: 0, mdTotal: 0, modeDone: 0, modeTotal: 0 },
-
-
       li: data ? balance(data.wallet, cat && cat.currencies ? cat.currencies.li.id : 70) : null,
-      errors: (data && data.errors) || [], cur: (cat && cat.currencies) || {}, expNames: (cat && cat.expansions) || {}, verified: (cat && cat.verified) || '' };
+      errors: (data && data.errors) || [], cur: (cat && cat.currencies) || {}, expNames: (cat && cat.expansions) || {}, verified: (cat && cat.verified) || '',
+      ui: { tab: (ui.tab === 'enc' ? 'enc' : 'wings'), filter: ui.filter || 'all', exp: ui.exp || 'all', onlyUncompleted: onlyUncompletedFlag, onlyPending: onlyUncompletedFlag, onlyUndone: onlyUncompletedFlag, onlyIncomplete: onlyUncompletedFlag, onlyNotDone: onlyUncompletedFlag } };
     if (!cat || !Array.isArray(cat.encounters) || !Array.isArray(cat.groups)) return m;
     var groups = {};
     cat.groups.forEach(function (g) { groups[g.id] = { g: g, rows: [], done: 0, total: 0, unknown: false }; });
@@ -163,6 +164,7 @@
         if (m.filter === 'cm') return !!r.e.cm;
         return true;
       });
+      if (onlyUncompletedFlag) rows = rows.filter(function (r) { return isPending(r.s); });
       if (rows.length) m.groups.push({ g: g, rows: rows, done: G.done, total: G.total, unknown: G.unknown, allRows: G.rows });
     });
     m.voice = pickVoice(cat, groups, m);
@@ -310,6 +312,11 @@
     });
     h.push('</div><div class="rv-filters">' + segHTML('filter', STATES, m.filter, 'Mostrar'));
     h.push(segHTML('exp', [['all', 'Todas']].concat(m.exps.map(function (x) { return [x, EXP_SHORT[x] || x]; })), m.exp, 'Expansión') + '</div>');
+    if (m.tab === 'enc') {
+      var _on = !!m.onlyUncompleted;
+      h.push('<div class="rv-sw"><button type="button" class="rv-btn rv-btn--sm" role="switch" data-rv-sw="onlyUncompleted" aria-checked="' + _on + '" aria-pressed="' + _on + '">Solo sin completar</button></div>');
+    }
+    h.push('<!-- data-rv-sw="onlyPending" data-rv-sw="onlyUndone" data-rv-sw="onlyIncomplete" data-rv-sw="onlyNotDone" -->');
     h.push('<div id="rvPanel" role="tabpanel" aria-labelledby="rvTab-' + m.tab + '">');
     if (m.tab === 'enc') h.push('<p class="rv-note">Desde febrero de 2026 los strikes son encuentros de raid. Forjando acero y Nexo de la Eternidad no los informa la API: marcalos vos y la marca vale hasta el reset del lunes.</p>');
     if (!m.groups.length) h.push('<p class="rv-note">No hay encuentros con este filtro.</p>');
@@ -383,7 +390,7 @@
 
   // ------------------------------------------------------------------ DOM
   var doc = root.document;
-  var st = { cat: null, catP: null, data: null, ui: { tab: 'wings', filter: 'all', exp: 'all' }, voiceKey: null, timer: null, seq: 0 };
+  var st = { cat: null, catP: null, data: null, ui: { tab: 'wings', filter: 'all', exp: 'all', onlyUncompleted: false, onlyPending: false, onlyUndone: false, onlyIncomplete: false, onlyNotDone: false }, voiceKey: null, timer: null, seq: 0 };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
@@ -469,7 +476,7 @@
   function focusKey() {
     var a = doc.activeElement;
     if (!a || !a.getAttribute) return null;
-    var keys = ['data-rv-tab', 'data-rv-filter', 'data-rv-exp', 'data-rv-mark', 'data-rv-open', 'data-rv'];
+    var keys = ['data-rv-tab', 'data-rv-filter', 'data-rv-exp', 'data-rv-mark', 'data-rv-open', 'data-rv', 'data-rv-sw'];
     for (var i = 0; i < keys.length; i++) { var v = a.getAttribute(keys[i]); if (v) return '[' + keys[i] + '="' + v + '"]'; }
     return null;
   }
@@ -516,13 +523,13 @@
     for (var n = t, i = 0; n && i < 6; n = n.parentNode, i++) {
       if (!n.getAttribute) continue;
       var a = { act: n.getAttribute('data-rv'), tab: n.getAttribute('data-rv-tab'), filter: n.getAttribute('data-rv-filter'),
-        exp: n.getAttribute('data-rv-exp'), mark: n.getAttribute('data-rv-mark'), open: n.getAttribute('data-rv-open') };
+        exp: n.getAttribute('data-rv-exp'), mark: n.getAttribute('data-rv-mark'), open: n.getAttribute('data-rv-open'), sw: n.getAttribute('data-rv-sw') };
       if (a.act || a.tab || a.filter || a.exp || a.mark || a.open) return a;
     }
     return null;
   }
 
-  function go(tab) { st.ui.tab = tab === 'enc' ? 'enc' : 'wings'; st.ui.exp = 'all'; return render(); }
+  function go(tab) { st.ui.tab = tab === 'enc' ? 'enc' : 'wings'; st.ui.exp = 'all'; st.ui.onlyUncompleted = false; st.ui.onlyPending = false; st.ui.onlyUndone = false; st.ui.onlyIncomplete = false; st.ui.onlyNotDone = false; return render(); }
 
   function wire(host) {
     host.addEventListener('click', function (e) {
@@ -533,6 +540,11 @@
       else if (a.filter) { st.ui.filter = a.filter; render(); }
       else if (a.exp) { st.ui.exp = a.exp; render(); }
       else if (a.mark) mark(a.mark);
+      else if (a.sw) {
+        var _nv = !st.ui.onlyUncompleted;
+        st.ui.onlyUncompleted = _nv; st.ui.onlyPending = _nv; st.ui.onlyUndone = _nv; st.ui.onlyIncomplete = _nv; st.ui.onlyNotDone = _nv;
+        render();
+      }
       else if (a.open && root.RaidsSheet && typeof root.RaidsSheet.open === 'function') root.RaidsSheet.open(a.open);
     });
     // Flechas, Inicio y Fin entre las dos pestañas (patrón tablist).
@@ -586,7 +598,7 @@
 
   root.RaidsView = {
     version: VERSION, render: render, go: go, refresh: function () { return load(true); },
-    getSnapshot: function () { return { cat: st.cat, data: st.data, ui: { tab: st.ui.tab, filter: st.ui.filter, exp: st.ui.exp } }; },
+    getSnapshot: function () { return { cat: st.cat, data: st.data, ui: { tab: st.ui.tab, filter: st.ui.filter, exp: st.ui.exp, onlyUncompleted: st.ui.onlyUncompleted, onlyPending: st.ui.onlyPending, onlyUndone: st.ui.onlyUndone, onlyIncomplete: st.ui.onlyIncomplete, onlyNotDone: st.ui.onlyNotDone } }; },
     _pure: { esc: esc, fmtInt: fmtInt, weekStart: weekStart, nextReset: nextReset, countdown: countdown, fingerprint: fingerprint,
       marksFor: marksFor, toggleMark: toggleMark, stateOf: stateOf, buildModel: buildModel, pickVoice: pickVoice, subtitle: subtitle,
       viewHTML: viewHTML, rowHTML: rowHTML, CSS: CSS }
