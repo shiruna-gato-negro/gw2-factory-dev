@@ -6,13 +6,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — en el panel de Materiales totales de una legendaria (legendary-tree-ui.js) agregar un botón «Copiar lo que falta» que copia al portapapeles la lista de materiales faltantes con cantidades, para pegar en el chat del juego o en una planilla. — 2026-11-26
-    Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades.
-    Pasos:
-    1/3 (este ciclo): plan — formato del texto copiado ("Nombre x Cantidad", una línea por material faltante), botón dentro de renderTotalsHTML con data-lt-copy-missing, handler en tracker que arma el texto desde T.build(id)+stockMap() y copia con fallback (patrón bld-show.copy), toast de confirmación. Sin código.
-    2/3: implementar botón en renderTotalsHTML + handler en tracker + test de regresión.
-    3/3: revisión + ajustes + cierre (mover a DONE).
-
 ## BLOCKED
 
 ## CANCELLED
@@ -22,6 +15,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+  - [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — cerrada. Botón «Copiar lo que falta» (data-lt-copy-missing) en renderTotalsHTML (legendary-tree-ui.js) que copia al portapapeles la lista de materiales faltantes («Nombre x Cantidad», una línea por material) armada desde T.build(id)+stockMap() en el tracker (copiarMaterialesFaltantes), con copia por Show.copy/clipboard/fallback y toast de confirmación. Wiring con fallback al padre. Test de regresión BL-065 en tests/legendary-tree-ui.test.cjs (botón presente). Techo size-budget legendary-tracker 63971 → 66285 B con motivo. Review riesgo BAJO: aditivo, sigue patrón de bld-show.copy, sin regresión. Suite 1315/1321 (6 skipped). — 2026-11-26
+    Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades, para pegar en el chat del juego o en una planilla.
   - [BL-064] [MEDIO] Armería Legendaria: costo total de la cola de crafteo — cerrada. En «Mi cola» (render-catologo.js, queueViewHTML) se suma un resumen (p.arm-qsummary) con «Unidades que faltan: N.» (suma de missing de computeMaterials de cada encolado) y «Costo en el TP: …» (suma de tpSell de las legendarias que todavía no tenés, con el componente .coin). Techo size-budget render-catologo 63917 → 65078 B con motivo (regla v6). Test nuevo tests/armeria-cola-resumen.test.cjs (2/2). Review riesgo BAJO: aditivo, sin regresión. Suite 1251/1257 (6 skipped).
     Qué ve el jugador: en la Armería Legendaria → Cola de crafteo, ve el total de unidades de materiales que le faltan y el costo en el TP de todo lo encolado, además de cada item.
   - [BL-063] [MEDIO] Cámara del Brujo: objetivos semanales de todas las cuentas legibles en el celular — cerrada. matrixHTML ahora envuelve la tabla en .wvd-wrap (escritorio) y agrega .wvd-cards con una tarjeta por cuenta (icono, nombre, tag, total y lista de objetivos con estado y progreso) para pantallas angostas; CSS oculta la tabla y muestra las tarjetas bajo @media (max-width:900px). Función pura cardsHTML exportada y test de regresión BL-063. Versión 2.0.0 sin cambio. Review riesgo BAJO: aditivo, sin regresión, sin endpoints nuevos. Suite 1311/1317 (6 skipped). — 2026-11-26
