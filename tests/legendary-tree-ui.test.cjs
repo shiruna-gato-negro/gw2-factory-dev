@@ -188,3 +188,10 @@ test('pantalla: aviso de íconos — nada si están, "cargando" mientras llegan,
   assert.match(f, /<button type="button" data-lt-icons-retry="1">Reintentar<\/button>/);
   assert.match(f, /role="status"/);
 });
+
+
+test("BL-065: Materiales totales tiene boton Copiar lo que falta con data-lt-copy-missing", () => {
+  const h = UI.renderTotalsHTML(ejemplo(), { 21: 3, 31: 100 }, { esc, de });
+  assert.match(h, /data-lt-copy-missing/);
+  assert.match(h, /Copiar lo que falta/);
+});

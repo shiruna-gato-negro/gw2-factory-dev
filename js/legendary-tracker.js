@@ -241,6 +241,50 @@
     document.dispatchEvent(new CustomEvent('gn:toast', { detail: detail }));
   }
 
+  // BL-065: copia al portapapeles la lista de materiales que faltan (BL-065).
+  function legacyCopyText(text) {
+    var d = root.document;
+    if (!d || !d.createElement) return false;
+    var t = d.createElement('textarea');
+    t.value = text; t.setAttribute('readonly', ''); t.style.cssText = 'position:fixed;left:-9999px;top:0';
+    d.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = d.execCommand('copy'); } catch (_) {}
+    d.body.removeChild(t);
+    return ok;
+  }
+  function copiarTextoPortapapeles(text) {
+    var Show = root.GNBldShow;
+    if (Show && typeof Show.copy === 'function') return Show.copy(text);
+    var nav = root.navigator;
+    if (nav && nav.clipboard && typeof nav.clipboard.writeText === 'function') {
+      return nav.clipboard.writeText(text).then(function () { return true; }, function () { return legacyCopyText(text); });
+    }
+    return Promise.resolve(legacyCopyText(text));
+  }
+  function copiarMaterialesFaltantes(id) {
+    var T = root.LegendaryTree;
+    var itemId = Number(id) || state.openItemId;
+    if (!T || typeof T.build !== 'function') { toast('No pude armar la lista.', 'err'); return; }
+    var res = T.build(itemId);
+    var owned = stockMap();
+    var rows = (res && res.totals && res.totals.rows) || [];
+    var lines = [];
+    rows.forEach(function (r) {
+      var tengo = Number(owned[r.itemId]) || 0;
+      var necesito = Number(r.need) || 0;
+      var falta = Math.max(0, necesito - tengo);
+      if (falta <= 0) return;
+      var info = infoPieza(r.itemId);
+      var nombre = (info && info.name) || r.name || ('#' + r.itemId);
+      lines.push(nombre + ' x ' + falta);
+    });
+    var texto = lines.join('\n');
+    copiarTextoPortapapeles(texto).then(function (ok) {
+      toast(ok ? 'Lista de materiales faltantes copiada.' : 'No pude copiar: seleccioná los materiales a mano.', ok ? 'ok' : 'err');
+    });
+  }
+
   // ========================================================================
   // 3. SKELETON DOM — estructura vacía con toggle
   // ========================================================================
@@ -549,6 +593,17 @@
         if (!res.ok) return;
         pintarModalLegendaria();
         renderCurrentMode();
+        return;
+      }
+
+      // Copiar la lista de materiales que faltan al portapapeles (BL-065).
+      var cm = t.getAttribute('data-lt-copy-missing');
+      if (cm == null) {
+        var w = t;
+        while (w && w !== host) { w = w.parentNode; if (w && w.getAttribute) { cm = w.getAttribute('data-lt-copy-missing'); if (cm != null) break; } }
+      }
+      if (cm != null) {
+        copiarMaterialesFaltantes(cm);
         return;
       }
 

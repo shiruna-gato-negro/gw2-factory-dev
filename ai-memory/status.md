@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: IN_PROGRESS
-Tarea actual: BL-065 paso 1/3 — plan (Armería Legendaria: copiar materiales que faltan)
-Motivo: BL-065 tomada de READY (primer ciclo [B] post-exploración [N] T4). Paso 1 = planificación, sin código.
-Etapa actual: Product/Architecture (plan)
+Tarea actual: BL-065 paso 2/3 — implementar botón + handler + test (Armería Legendaria: copiar materiales que faltan)
+Motivo: Paso 2/3 implementado: botón data-lt-copy-missing en renderTotalsHTML, handler copiarMaterialesFaltantes en tracker (T.build+stockMap, copia con fallback, toast). Size-budget legendary-tracker techo 63971→66285 B con motivo. Suite 1314/1320 (6 skipped). Review riesgo BAJO: aditivo, sigue patrón de bld-show.copy.
+Etapa actual: Development/Review (implementado)
 Inicio: 2026-11-26
-Última actualización: 2026-11-26 06:40Z
-Próxima acción: BL-065 paso 2/3 — implementar botón + handler + test.
+Última actualización: 2026-11-26 07:35Z
+Próxima acción: BL-065 paso 3/3 — revisión final + ajustes + cierre (mover a DONE).
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-065 paso 1/3 (plan). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: BL-065 paso 2/3 (implementado). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1311 pass / 1317 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).

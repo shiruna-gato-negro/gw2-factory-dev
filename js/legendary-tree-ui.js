@@ -422,6 +422,8 @@
     h += '</tbody></table>';
     h += '<div class="lt-sum"><span>Completo: <strong>' + completos + '</strong> de ' + rows.length + ' materiales</span>' +
       '<span>Faltan <strong>' + _num(totF) + '</strong> unidades</span></div>';
+    var _ltId = (res && res.node && res.node.id) ? Number(res.node.id) : 0;
+    h += '<div class="lt-copy"><button type="button" class="lt-btn" data-lt-copy-missing="' + _ltId + '">Copiar lo que falta</button></div>';
     return h + '</div>';
   }
 
