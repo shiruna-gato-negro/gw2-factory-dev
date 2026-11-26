@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: Exploración [B] La Bóveda cerrada: 3 tareas MEDIO en READY (BL-063 matriz de objetivos semanales legible en el celular, BL-064 costo total de la cola de crafteo, BL-065 copiar la lista de materiales que faltan). Moldes (5º indicador, switches «Solo …») cerrados por v9; estas tareas cambian flujos.
+Motivo: Exploración [N] T3 cerrada: 3 señales → 3 fichas abiertas (OP-001 cuotas vs contado, OP-002 qué oferta conviene, OP-003 dividir gastos por enlace); 1 señal descartada (precio por kilo, hueco 1). Alternancia: próximo ciclo [B].
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 04:40Z
-Próxima acción: ciclo [N] — exploración carril Nuevas T3 (cuentas chicas del día a día en Argentina; T2 cerrada sin ficha).
+Última actualización: 2026-11-26 05:04Z
+Próxima acción: ciclo [B] — tomar BL-063 (matriz de objetivos semanales legible en el celular) [MEDIO], paso 1/1 (plan y código) con suite completa.
 
 Archivos:
 - ai-memory/backlog.md
@@ -22,8 +22,8 @@ Archivos:
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1310 pass / 1316 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [B] cerrada: 3 tareas MEDIO en READY (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Próxima exploración [N].
-- Carril N: T1 cerrada (3 señales, ninguna cumple filtro), T2 cerrada (3 señales, ninguna cumple filtro: Raid Shadow Legends, Warframe, Magic Survival). Próxima T3 (cuentas chicas Argentina). Fichas abiertas: 0. Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
+- Exploración [B] cerrada: 3 tareas MEDIO en READY (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Exploración [N] T3 cerrada: 3 fichas (OP-001, OP-002, OP-003). Próxima exploración [N]: T4.
+- Carril N: T1, T2 y T3 cerradas. T3 abrió 3 fichas (OP-001 cuotas vs contado, OP-002 qué oferta conviene, OP-003 dividir gastos por enlace); señal descartada: precio por kilo (hueco 1). Próxima T4 (organización personal y grupos chicos). Fichas abiertas: 3. Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
 
