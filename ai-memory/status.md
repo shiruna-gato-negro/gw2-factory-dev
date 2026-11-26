@@ -2,18 +2,16 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: BL-064 cerrada: resumen en «Mi cola» con unidades que faltan y costo en el TP (render-catologo.js queueViewHTML + .arm-qsummary). Suite 1251/1257 (6 skipped). Alternancia: próximo ciclo [N].
+Motivo: Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Fichas abiertas: 5 (límite alcanzado). Próximo ciclo [B] (BL-065).
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 06:07Z
-Próxima acción: ciclo [N] — exploración T4 (organización personal y grupos chicos) o avanzar fichas OP (OP-001/002/003). BL-065 queda READY para el próximo [B].
+Última actualización: 2026-11-26 06:32Z
+Próxima acción: ciclo [B] — BL-065 (Armería Legendaria: copiar materiales que faltan). Alternancia: próximo [B].
 
 Archivos:
-- ai-memory/backlog.md
 - ai-memory/status.md
-- js/render-catologo.js
-- tools/size-budget.json
-- tests/armeria-cola-resumen.test.cjs
+- ai-memory/oportunidades/senales.md
+- ai-memory/oportunidades/ (OP-004, OP-005)
 
 ## Esperando a Pablo
 
@@ -25,8 +23,8 @@ Archivos:
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1311 pass / 1317 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [B] cerrada: 3 tareas MEDIO en READY (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Exploración [N] T3 cerrada: 3 fichas (OP-001, OP-002, OP-003). Próxima exploración [N]: T4.
-- Carril N: T1, T2 y T3 cerradas. T3 abrió 3 fichas (OP-001 cuotas vs contado, OP-002 qué oferta conviene, OP-003 dividir gastos por enlace); señal descartada: precio por kilo (hueco 1). Próxima T4 (organización personal y grupos chicos). Fichas abiertas: 3. Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
+- Exploración [B] cerrada: 3 tareas MEDIO en READY (BL-063 matriz objetivos en celular, BL-064 costo total cola, BL-065 copiar materiales que faltan). Exploración [N] T3 cerrada: 3 fichas (OP-001, OP-002, OP-003). Exploración [N] T4 cerrada: 2 fichas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Próxima exploración [N]: T1 (rotar).
+- Carril N: T1, T2, T3 y T4 cerradas. T4 abrió 2 fichas (OP-004, OP-005). Señales descartadas: planificador de menús (hueco 1), calendario compartido (8 pts), ruleta de turnos (hueco 1). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
 
@@ -48,6 +46,4 @@ Archivos:
 - Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
 - BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
 - BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
-- orden v9 dos carriles: anotada en AGENTS.md (sección «Carriles»), BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. Carriles [B]/[N] con alternancia estricta. Suite 1310/1316 (6 skipped). Commit `orden: v9 dos carriles — recibida`.
-- Exploración [B] La Bóveda: 3 tareas MEDIO en READY (BL-063 matriz objetivos semanales en celular, BL-064 costo total cola de crafteo, BL-065 copiar materiales que faltan). Moldes cerrados (5º indicador, switches «Solo …») por v9; estas cambian flujos. Commit `[B] exploración La Bóveda — 3 tareas MEDIO en READY`.
-- BL-063 cerrada: matriz de objetivos semanales de la Cámara ahora se ve como tarjetas por cuenta en el celular (tabla en escritorio); cardsHTML exportada; test de regresión BL-063. Suite 1311/1317 (6 skipped). Review BAJO.
+Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Señales descartadas: planificador de menús (hueco 1), calendario compartido (8 pts), ruleta de turnos (hueco 1). Fichas abiertas: 5 (límite). Suite sin cambios. — 2026-11-26
