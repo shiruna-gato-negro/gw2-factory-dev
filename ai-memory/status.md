@@ -2,11 +2,11 @@
 
 Estado: EN ESPERA
 Tarea actual: — (ninguna en curso)
-Motivo: Primer ciclo v9 cerrado: AGENTS.md con sección Carriles, BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. READY: (vacío).
+Motivo: Exploración carril [N] T1 cerrada: 3 señales anotadas en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro), ninguna cumple filtro de entrada. READY vacío.
 Etapa actual: —
 Inicio: —
-Última actualización: 2026-11-26 03:12Z
-Próxima acción: ciclo [N] — primera exploración del territorio T1 (lo que solo existe en inglés): buscar necesidades reales y anotar 1-3 SEÑALES, y si corresponde una FICHA OP-001.
+Última actualización: 2026-11-26 03:34Z
+Próxima acción: ciclo [B] — exploración La Bóveda (criterio F2c: 3 tareas MEDIO que cambien un flujo). Alternancia v9: después de [N] toca [B].
 
 Archivos:
 - ai-memory/backlog.md
@@ -22,6 +22,7 @@ Archivos:
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1310 pass / 1316 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
+- Exploración [N] T1 cerrada: 3 señales en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro); ninguna cumple filtro de entrada. Próxima exploración [B].
 
 ## Resumen de la sesión
 
@@ -44,3 +45,4 @@ Archivos:
 - BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
 - BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
 - orden v9 dos carriles: anotada en AGENTS.md (sección «Carriles»), BL-062 cancelada, F2b cerrada, F2c y F2n abiertas, ai-memory/oportunidades/README creado. Carriles [B]/[N] con alternancia estricta. Suite 1310/1316 (6 skipped). Commit `orden: v9 dos carriles — recibida`.
+- Exploración [N] T1: 3 señales anotadas en ai-memory/oportunidades/senales.md (Eat This Much, OpenEvidence, Miro), ninguna cumple filtro de entrada. Suite sin cambios (sin código tocado). Commit `[N] exploración T1 — 3 señales`.
