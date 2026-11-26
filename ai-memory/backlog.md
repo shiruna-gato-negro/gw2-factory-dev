@@ -4,10 +4,14 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
+## IN_PROGRESS
+
 - [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — en el panel de Materiales totales de una legendaria (legendary-tree-ui.js) agregar un botón «Copiar lo que falta» que copia al portapapeles la lista de materiales faltantes con cantidades, para pegar en el chat del juego o en una planilla. — 2026-11-26
     Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades.
-
-## IN_PROGRESS
+    Pasos:
+    1/3 (este ciclo): plan — formato del texto copiado ("Nombre x Cantidad", una línea por material faltante), botón dentro de renderTotalsHTML con data-lt-copy-missing, handler en tracker que arma el texto desde T.build(id)+stockMap() y copia con fallback (patrón bld-show.copy), toast de confirmación. Sin código.
+    2/3: implementar botón en renderTotalsHTML + handler en tracker + test de regresión.
+    3/3: revisión + ajustes + cierre (mover a DONE).
 
 ## BLOCKED
 

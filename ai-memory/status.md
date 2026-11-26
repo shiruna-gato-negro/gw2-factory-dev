@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN ESPERA
-Tarea actual: — (ninguna en curso)
-Motivo: Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Fichas abiertas: 5 (límite alcanzado). Próximo ciclo [B] (BL-065).
-Etapa actual: —
-Inicio: —
-Última actualización: 2026-11-26 06:32Z
-Próxima acción: ciclo [B] — BL-065 (Armería Legendaria: copiar materiales que faltan). Alternancia: próximo [B].
+Estado: IN_PROGRESS
+Tarea actual: BL-065 paso 1/3 — plan (Armería Legendaria: copiar materiales que faltan)
+Motivo: BL-065 tomada de READY (primer ciclo [B] post-exploración [N] T4). Paso 1 = planificación, sin código.
+Etapa actual: Product/Architecture (plan)
+Inicio: 2026-11-26
+Última actualización: 2026-11-26 06:40Z
+Próxima acción: BL-065 paso 2/3 — implementar botón + handler + test.
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-065 (1 MEDIO, flujo). BLOCKED: (vacío).
+- IN_PROGRESS: BL-065 paso 1/3 (plan). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1311 pass / 1317 total, 6 skipped (.test.cjs + .test.js).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
