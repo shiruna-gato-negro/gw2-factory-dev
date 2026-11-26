@@ -33,4 +33,12 @@ Ninguna cumple el filtro de entrada (sitio estático, sin login/pagos/datos pers
 4. "Calendario compartido": TimeTree, DayRipple, familymind requieren cuenta/app. Construir un calendario compartido por enlace sin servidor es limitado (solo lectura, sin sincronización en tiempo real). Facilidad 2. Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 2 = 8 → no pasa (<9).
 5. "Turnos rotativos / ruleta": ruletas online (wheel of names y similares) ya existen en castellano. Hueco 1. Puntaje: dolor 2, frecuencia 2, hueco 1, facilidad 3 = 8 → no pasa (hueco 1).
 
-Próxima exploración: T1 de nuevo (rotar territorios) o avanzar fichas a prototipo cuando exista el repo laboratorio. Fichas abiertas: 5 (OP-001 a OP-005). Límite alcanzado: no abrir más fichas hasta cerrar o archivar alguna.
+## Territorio T1 — lo que solo existe en inglés (segunda pasada, 2026-11-26)
+
+1. "Hemingway Editor" (analizador de estilo/legibilidad) solo en inglés (Flesch-Kincaid). Fuente: hemingwayapp.com. Nota: existen analizadores de legibilidad en español (parrotnotes.app, charactercalculator.com, polprog.pl, bethemesh.com, sergidoseo.com) con Flesch-Szigriszt/INFLESZ → cubierto. Hueco 1. No pasa.
+2. "Cron expression generator" (generador de expresiones cron) solo en inglés. Fuente: crontab.cronhub.io, freeformatter.com, uptimerobot.com. Nota: audiencia desarrolladores, no público general; frecuencia baja. Puntaje: dolor 2, frecuencia 1, hueco 2, facilidad 3 = 8 (<9) → no pasa.
+3. "Calculadora de edad de mascota en años humanos" existe en español (patitaspets.com.ar, paw-champ.com). Fuente: patitaspets.com.ar/herramientas/edad-perro-en-anos-humanos. Nota: cubierto → hueco 1. No pasa.
+
+Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005).
+
+Próxima exploración: T2 (rotar territorios).
