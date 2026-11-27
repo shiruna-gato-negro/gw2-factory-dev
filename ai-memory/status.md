@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [B] cerrada)
-Motivo: Exploración [B] cerrada: 3 hallazgos -> 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador». Carril [B]. Suite 1317/1323 (6 skipped).
-Etapa actual: Documentation (cierre)
-Inicio: 2026-11-26
-Última actualización: 2026-11-27 02:15Z
-Próxima acción: tomar BL-069 (cabeceras de 5 indicadores responsive en el celular) por turno [B].
+Estado: EN_CURSO
+Tarea actual: BL-069 paso 1/3 (plan) — cabeceras de 5 indicadores responsive en el celular
+Motivo: Paso 1/3 solo planifica. Detalle y pasos en backlog.md (IN_PROGRESS). Sin cambios de código este ciclo.
+Etapa actual: Product/Architecture (plan)
+Inicio: 2026-11-27
+Última actualización: 2026-11-27 03:00Z
+Próxima acción: BL-069 paso 2/3 — implementación CSS @media(max-width:720px) + tests.
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 3 (BL-069, BL-070, BL-071). BLOCKED: (vacío).
+- IN_PROGRESS: BL-069 paso 1/3 (plan). READY: 2 (BL-070, BL-071). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1317 pass / 1323 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
@@ -27,6 +27,8 @@ Archivos:
 - Exploración [N] T1, T2 y T3 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (ninguna pasa); T3 6 señales (ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
+
+- BL-069 paso 1/3 (plan): cabeceras de 5 indicadores responsive en el celular. Plan en backlog.md (IN_PROGRESS). Sin código. Suite 1255/1261 (6 skipped). — 2026-11-27 03:00Z
 
 - BL-066 paso 1/3 (plan): exploración [B] cerrada, 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Carril [B]. Suite 1315/1321 (6 skipped). — 2026-11-26 23:30Z
 

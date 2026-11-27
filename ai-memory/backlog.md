@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — los grids `.xx-stats` de 8 módulos (Raids, Heredad, Inventario, Actividades, Builds, Cámara, Cuentas, Logros) y los 2 paneles de la Cámara (objetivos, compras) quedan en 5 columnas fijas sin colapso en pantallas angostas; en el celular los 5 indicadores se ven diminutos. Colapsar a 2 columnas bajo `@media (max-width:720px)` en cada módulo (CSS aditivo, sin cambiar la grilla de escritorio). — 2026-11-27
-    Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.
-
 - [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — el grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y, si hace falta, una tarjeta por fila bajo 480px), siguiendo el patrón de BL-063 (matriz de objetivos). — 2026-11-27
     Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
 
@@ -14,6 +11,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
     Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.
 
 ## IN_PROGRESS
+
+- [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — Paso 1/3 (plan): 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp). Cada uno ya colapsa `.xx-stats` a 2 cols bajo @media(max-width:900px); falta regla aditiva @media(max-width:720px) con `.xx-stats{grid-template-columns:1fr 1fr;gap:6px}` (y `.xx-st{padding:8px 10px}` + `b{font-size:1.05rem}`) en cada CSS inyectado, sin tocar la grilla de escritorio. Tests por módulo: aserción de P.CSS/V.CSS/CSS matchea el media query 720px con stats 2 cols (sigue patrón BL-063 / wv-purchases). Paso 2/3: implementación + tests. Paso 3/3: review + cierre. — 2026-11-27
+    Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.
 
 
 
