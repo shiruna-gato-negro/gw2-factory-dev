@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T3 segunda pasada cerrada)
-Motivo: Exploración [N] T3 (segunda pasada) cerrada: 6 señales (Hot Sale real?, propina delivery, pago mínimo tarjeta, costo viaje auto, inflación personal, costo de vida CABA), ninguna pasa filtro/puntaje (hueco 1 o fuera de filtro). No se crea FICHA. Límite 5 fichas vigente (OP-001..005). Carril [N]. Suite 1318/1324 (6 skipped).
+Tarea actual: (ninguna — exploración [B] cerrada)
+Motivo: Exploración [B] cerrada: 3 hallazgos -> 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador». Carril [B]. Suite 1317/1323 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-26
-Última actualización: 2026-11-27 02:05Z
-Próxima acción: próximo ciclo es [B] (alternancia): exploración o tarea de Bóveda (READY vacío).
+Última actualización: 2026-11-27 02:15Z
+Próxima acción: tomar BL-069 (cabeceras de 5 indicadores responsive en el celular) por turno [B].
 
 Archivos:
 - ai-memory/status.md
@@ -19,12 +19,12 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: 3 (BL-069, BL-070, BL-071). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1255 pass / 1261 total, 6 skipped.
-- Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9). BL-065 cerrada (copiar materiales que faltan).
-- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Todas con «Qué ve el jugador».
-- Exploración [N] T1 (segunda pasada), T2 (segunda pasada) y T3 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (MH Now, Stardew, PoE, Satisfactory; ninguna pasa); T3 6 señales (Hot Sale real?, propina delivery, pago mínimo tarjeta, costo viaje auto, inflación personal, costo de vida CABA; ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
+- Suite actual: 1317 pass / 1323 total, 6 skipped.
+- Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador».
+- Exploración [N] T1, T2 y T3 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (ninguna pasa); T3 6 señales (ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
 
@@ -53,4 +53,4 @@ Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar
 - BL-066 cerrada: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test BL-066, size-budget 37689 B. Suite 1253/1259 (6 skipped). — 2026-11-27 00:05Z
 - Exploración [N] T2 (segunda pasada) cerrada: 4 señales (MH Now, Stardew, PoE, Satisfactory), ninguna pasa filtro/puntaje; sin ficha nueva. Límite 5 fichas vigente. Suite 1316/1322 (6 skipped). — 2026-11-27 01:04Z
 - BL-068 cerrada: resumen AA compacto en la Tienda (aaLineHTML + helper shopSummary). Suite 1255/1261 (6 skipped). — 2026-11-27 01:30Z
-- Exploración [N] T3 (segunda pasada) cerrada: 6 señales, ninguna pasa filtro/puntaje; no se crea FICHA. Límite 5 fichas vigente. Suite 1318/1324 (6 skipped). — 2026-11-27 02:05Z
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Carril [B]. Suite 1317/1323 (6 skipped). — 2026-11-27 02:15Z

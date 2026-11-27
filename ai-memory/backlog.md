@@ -4,7 +4,14 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-(vacío)
+- [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — los grids `.xx-stats` de 8 módulos (Raids, Heredad, Inventario, Actividades, Builds, Cámara, Cuentas, Logros) y los 2 paneles de la Cámara (objetivos, compras) quedan en 5 columnas fijas sin colapso en pantallas angostas; en el celular los 5 indicadores se ven diminutos. Colapsar a 2 columnas bajo `@media (max-width:720px)` en cada módulo (CSS aditivo, sin cambiar la grilla de escritorio). — 2026-11-27
+    Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.
+
+- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — el grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y, si hace falta, una tarjeta por fila bajo 480px), siguiendo el patrón de BL-063 (matriz de objetivos). — 2026-11-27
+    Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
+
+- [BL-071] [BAJO] Inventario → Materiales: total de unidades guardadas — el resumen de arriba solo dice «X tipos de materiales · en Y categorías»; no muestra cuántas unidades hay en total. Sumar el total de unidades (suma de `count` sobre los grupos) a la línea de resumen. — 2026-11-27
+    Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.
 
 ## IN_PROGRESS
 
