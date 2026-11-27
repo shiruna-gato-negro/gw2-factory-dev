@@ -1,17 +1,16 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración T2 tercera pasada cerrada)
-Motivo: Exploración T2 tercera pasada: 3 señales evaluadas; señal 1 (calculadora genérica de probabilidad de cartas) pasa el puntaje (9) y queda candidata; señales 2 y 3 no pasan. Límite 5 fichas vigente. Próximo ciclo [B].
+Tarea actual: (ninguna — exploración [B] cerrada)
+Motivo: Exploración [B] cerrada: 3 hallazgos → 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Carril [B]. Suite 1329/1335 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 08:37Z
-Próxima acción: [B] (primera tarea READY o exploración Bóveda) — alternancia estricta; READY vacío.
+Última actualización: 2026-11-27 09:05Z
+Próxima acción: tomar BL-072 (Metas: marcar manualmente como Hecho) por turno [B].
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- ai-memory/oportunidades/senales.md
 
 ## Esperando a Pablo
 
@@ -20,13 +19,15 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 0. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: 3 (BL-072, BL-073, BL-074). BLOCKED: (vacío).
 - Balance carriles: [B] cerró BL-071; [N] hizo 3 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1329 pass / 1335 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [N] T2 tercera pasada: 3 señales evaluadas. Señal 1 (calculadora genérica de probabilidad de cartas, hipergeométrica) pasa el puntaje (9) y queda candidata a FICHA cuando haya cupo. Señal 2 (Monster Hunter armor sets) total 9 pero facilidad 1 → no pasa. Señal 3 (D&D 5e DPR simple) total 8 → no pasa. Límite 5 fichas vigente → Acción Pablo.
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Todas con «Qué ve el jugador». Carril [B]. Suite sin cambios (1329/1335, 6 skipped).
 
 ## Resumen de la sesión
+
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Carril [B]. Suite sin cambios (1329/1335, 6 skipped). — 2026-11-27 09:05Z
 
 - Exploración [N] T2 tercera pasada cerrada: 3 señales evaluadas; señal 1 (calculadora genérica de probabilidad de cartas, hipergeométrica) pasa el puntaje (9) y queda candidata a FICHA cuando haya cupo; señales 2 y 3 no pasan. Límite 5 fichas vigente → Acción Pablo. Suite sin cambios (1329/1335, 6 skipped). Próximo ciclo [B]. — 2026-11-27 08:37Z
 
