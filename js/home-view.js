@@ -179,7 +179,15 @@
   function nodesHTML(m) {
     var h = '<section class="hs-card" aria-labelledby="hsNodesT"><div class="hs-card-h"><h3 id="hsNodesT">Nodos de casa</h3><small>se recolectan una vez por día y por cuenta · en tu casa y en tu heredad</small></div>';
     h += '<div class="hs-filters"><div class="hs-pills" role="group" aria-label="Por herramienta">' +
-      [['all', 'Todos']].concat(m.groups).map(function (g) { return '<button type="button" class="hs-pill" data-hs-group="' + g[0] + '" aria-pressed="' + (m.ui.group === g[0]) + '">' + esc(g[1]) + '</button>'; }).join('') + '</div>' +
+      [['all', 'Todos']].concat(m.groups).map(function (g) {
+      var label = esc(g[1]);
+      if (g[0] !== 'all') {
+        var grpNodes = (m.nodes || []).filter(function (n) { return n.group === g[0]; });
+        var unlocked = grpNodes.filter(function (n) { return n.have === true; }).length;
+        label += ' (' + unlocked + '/' + grpNodes.length + ')';
+      }
+      return '<button type="button" class="hs-pill" data-hs-group="' + g[0] + '" aria-pressed="' + (m.ui.group === g[0]) + '">' + label + '</button>';
+    }).join('') + '</div>' +
       '<div class="hs-pills" role="group" aria-label="Mostrar">' + ONLY.map(function (o) { return '<button type="button" class="hs-pill" data-hs-only="' + o[0] + '" aria-pressed="' + (m.ui.only === o[0]) + '">' + o[1] + '</button>'; }).join('') + '</div>' +
       '<button type="button" class="hs-pill" role="switch" data-hs-sw="onlyUnowned" aria-checked="' + (m.ui.onlyUnowned ? 'true' : 'false') + '" aria-pressed="' + (m.ui.onlyUnowned ? 'true' : 'false') + '">Solo sin desbloquear</button>' +
       '<label class="hs-q"><span class="hs-sr">Buscar un nodo</span><input type="search" id="hsQ" placeholder="Buscar un nodo" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';

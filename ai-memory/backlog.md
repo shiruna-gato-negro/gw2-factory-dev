@@ -4,14 +4,13 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-067] [BAJO] Heredad: mostrar el conteo desbloqueados/total en cada pill de filtro por grupo (ej. «Minería (5/12)»). — 2026-11-26
-  Qué ve el jugador: en los filtros por herramienta de la Heredad, cada pill dice cuántos nodos tiene desbloqueados del total de ese grupo, sin abrir la lista.
 - [BL-068] [MEDIO] Cámara del Brujo: en la pestaña Tienda, mostrar un resumen de cuántos items se pueden comprar con el AA disponible (costo total de los fijados vs AA disponible). — 2026-11-26
   Qué ve el jugador: en la Cámara → Tienda, ve un resumen «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» para saber si le alcanza el AA.
 
 ## IN_PROGRESS
 
-(none)
+
+
 
 ## BLOCKED
 
@@ -22,6 +21,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-067] [BAJO] Heredad: mostrar el conteo desbloqueados/total en cada pill de filtro por grupo — cerrada. nodesHTML ahora suma "(unlocked/total)" al label de cada pill de grupo (ej. "Minería (5/12)"); el pill "Todos" queda sin conteo. unlocked = nodos del grupo con have === true; total = nodos del grupo. Test de regresión BL-067 (conteo en cada pill de grupo + pill "Todos" sin conteo). Adaptado test existente (regex con conteo). Review riesgo BAJO: aditivo, sigue patrón BL-066, sin regresión. Techo size-budget home-view 37689 → 38003 B (+314, advertencia regla v6). Suite 1254/1260 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en los filtros por herramienta de la Heredad, cada pill dice cuántos nodos tiene desbloqueados del total de ese grupo, sin abrir la lista.
 
   - [BL-066] [MEDIO] Heredad: resumen de progreso por grupo de nodos — cerrada. nodesHTML ahora agrupa los nodos por herramienta (minería, tala, cosecha, cofres, contratos, otros) y muestra en cada grupo «X de Y desbloqueados» con barra .hs-bar; si el grupo está filtrado muestra solo ese. Test de regresión BL-066 en tests/home-view.test.cjs (6 grupos con barra + conteo; grupo filtrado solo ese). Review riesgo BAJO: aditivo, sin regresión. Techo size-budget home-view 36847 → 37689 B (≤40960). Suite 1253/1259 (6 skipped). — 2026-11-27
     Qué ve el jugador: en la Heredad → Nodos de casa, cada grupo de herramientas muestra «X de Y desbloqueados» con una barra de progreso, para ver de un vistazo cuántos nodos tiene por tipo.

@@ -176,13 +176,27 @@ test('vista: cabecera con 5 indicadores, nodos con ícono y estado en texto, bot
   assert.doesNotMatch(h, /data-hs-done="mursaat_obsidian_node"/);
   assert.equal((h.match(/class="hs-cat( hs-cat--on)?"/g) || []).length, 35);
   assert.match(h, /<li class="hs-cat hs-cat--on"><b>Gato 1<\/b><small>pista: pollo<\/small><span class="hs-sr">, lo tenés<\/span>/);
-  assert.match(h, /data-hs-group="mining" aria-pressed="false">Minería<\/button>/);
+  assert.match(h, /data-hs-group="mining" aria-pressed="false">Minería \(\d+\/\d+\)<\/button>/);
   assert.match(h, /<input type="search" id="hsQ"/);
   assert.match(h, /role="tablist" aria-label="Secciones de la Heredad"/);
   const nd = P.viewHTML(P.buildModel({ loaded: true, hasToken: false }, CAT, {}, NOW));
   assert.doesNotMatch(nd, /data-hs-own|data-hs-done/, 'sin Key no se marca nada');
   assert.match(nd, /Con tu API Key/);
 });
+
+test('BL-067: cada pill de filtro por grupo muestra desbloqueados/total', () => {
+  const m = P.buildModel(DATA(), CAT, {}, NOW);
+  const h = P.viewHTML(m);
+  m.groups.forEach((g) => {
+    const grpNodes = m.nodes.filter((n) => n.group === g[0]);
+    const unlocked = grpNodes.filter((n) => n.have === true).length;
+    const re = new RegExp('data-hs-group="' + g[0] + '" aria-pressed="false">' + g[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ' \\(' + unlocked + '/' + grpNodes.length + '\\)</button>');
+    assert.match(h, re, g[1] + ' pill con conteo');
+  });
+  // El pill "Todos" no lleva conteo
+  assert.match(h, /data-hs-group="all" aria-pressed="true">Todos<\/button>/);
+});
+
 
 test('BL-042: Nodos que te faltan muestra X de Y en la cabecera y sin datos muestra guión', () => {
   const m = P.buildModel(DATA(), CAT, {}, NOW);

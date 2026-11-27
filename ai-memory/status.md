@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — BL-066 cerrada)
-Motivo: BL-066 paso 2/3+3/3 completados en un ciclo: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test de regresión y size-budget. Carril [B]. Suite 1253/1259 (6 skipped).
+Tarea actual: (ninguna — BL-067 cerrada)
+Motivo: BL-067 cerrada: conteo desbloqueados/total en pills de filtro por grupo (home-view.js). Test BL-067 + adaptado. Suite 1254/1260 (6 skipped). Techo home-view 37689 -> 38003 B (+314, advertencia). Carril [B].
 Etapa actual: Review → Documentation (cierre)
 Inicio: 2026-11-26
-Última actualización: 2026-11-27 00:05Z
-Próxima acción: Próximo ciclo toma BL-067 (Heredad: conteo en pills).
+Última actualización: 2026-11-27 00:37Z
+Próxima acción: próximo ciclo toma BL-068 (Cámara del Brujo: resumen AA en Tienda).
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-067, BL-068. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-068. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1253 pass / 1259 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9). BL-065 cerrada (copiar materiales que faltan).
