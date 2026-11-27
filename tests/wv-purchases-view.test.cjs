@@ -197,6 +197,10 @@ test('reglas: solo pinta (sin almacenamiento, red ni globales viejos), tokens de
   assert.ok(!/style="(?!width:)/.test(SRC), 'sin estilos en línea salvo el ancho de las barras');
   assert.match(V.CSS, /var\(--bd-1\)/);
   assert.match(V.CSS, /@media \(max-width:900px\)\{\.wvp-stats\{grid-template-columns:1fr 1fr/);
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(V.CSS, /@media \(max-width:720px\)\{\.wvp-stats\{grid-template-columns:1fr 1fr/);
+});
   assert.match(V.CSS, /\.wvp-acc\{position:sticky;left:0/);
   assert.match(V.CSS, /\.wvp-step button\{width:36px;height:36px\}/, 'botones de 36 px en el celular');
 });

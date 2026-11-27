@@ -350,7 +350,8 @@
     '.wvp button:focus-visible,.wvp select:focus-visible,.wvp input:focus-visible{outline:2px solid var(--acc-1);outline-offset:2px}',
     '@media (max-width:900px){.wvp-stats{grid-template-columns:1fr 1fr;gap:6px}.wvp-st{padding:8px 10px}.wvp-st b{font-size:1.05rem}',
     '.wvp-chip,.wvp-q{min-height:40px}.wvp-q{flex:1 1 100%}.wvp-sync{margin-left:0;flex-basis:100%}.wvp-acc{min-width:128px}',
-    '.wvp-step button{width:36px;height:36px}.wvp-menu{min-width:240px}}'
+    '.wvp-step button{width:36px;height:36px}.wvp-menu{min-width:240px}}',
+    '@media (max-width:720px){.wvp-stats{grid-template-columns:1fr 1fr;gap:6px}.wvp-st{padding:8px 10px}.wvp-st b{font-size:1.05rem}}'
   ].join('\n');
 
   root.WVPurchasesView = {

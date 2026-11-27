@@ -456,3 +456,8 @@ test('juntos: sin API Key la cabecera y la grilla lo dicen, sin números', async
   assert.match(x.main.innerHTML, /Cargá tu API Key para ver tus logros\./);
   assert.doesNotMatch(x.host().innerHTML + x.main.innerHTML, /NaN|undefined/);
 });
+
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(SRC, /@media \(max-width:720px\)\{\.achx-stats\{grid-template-columns:1fr 1fr/);
+});

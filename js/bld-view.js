@@ -198,7 +198,8 @@
     '@media (prefers-reduced-motion:reduce){' + P + ' *{transition:none!important;animation:none!important}}',
     '@media (max-width:900px){' + P + ' .bld-hero{padding:14px 12px 12px}' + P + ' .bld-tabs{margin:16px 12px 10px}' + P + ' .bld-body{padding:0 12px}' + P + ' .bld-ico{width:40px;height:40px;padding:4px}' + P + ' .bld-ttl h2{font-size:1.05rem}' +
       P + ' .bld-pills{margin-left:0;width:100%}' + P + ' .bld-stats{grid-template-columns:1fr 1fr;gap:6px}' + P + ' .bld-st{padding:8px 10px}' + P + ' .bld-st b{font-size:1.05rem}}',
-    '@media (max-width:720px){' + P + ' :is(button,.bld-btn,select,input,textarea){min-height:44px}}'
+    '@media (max-width:720px){' + P + ' :is(button,.bld-btn,select,input,textarea){min-height:44px}}',
+    '@media (max-width:720px){' + P + ' .bld-stats{grid-template-columns:1fr 1fr;gap:6px}' + P + ' .bld-st{padding:8px 10px}' + P + ' .bld-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ---------------------------------------------------------------- DOM

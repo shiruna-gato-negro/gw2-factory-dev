@@ -223,6 +223,10 @@ test('CSS: un solo contenedor, la cabecera vieja escondida, solo el texto del th
   assert.match(P.CSS, /#cvRoot :is\(button,input\):focus-visible\{outline:2px solid var\(--acc-1\)/);
   assert.match(P.CSS, /@media \(max-width:900px\)[^]*min-height:44px/);
   assert.match(P.CSS, /prefers-reduced-motion/);
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(P.CSS, /@media \(max-width:720px\)\{\.cv-stats\{grid-template-columns:1fr 1fr/);
+});
   assert.match(read('js/welcome-panel.js'), /id: 'accounts'[^}]*color: '#8E96A3'/, 'el color de su botón de la barra lateral');
 });
 

@@ -136,6 +136,10 @@ test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento re
   assert.match(P.CSS, /prefers-reduced-motion:reduce/);
   assert.match(P.CSS, /@media \(max-width:900px\)[\s\S]*min-height:44px/);
   assert.match(P.CSS, /focus-visible\{outline:2px solid var\(--acc-1\)/);
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(P.CSS, /@media \(max-width:720px\)\{\.iv-stats\{grid-template-columns:1fr 1fr/);
+});
   assert.doesNotMatch(P.CSS, /(^|[;{])\s*color:var\(--(acc-1|iv-mod|gn-mod)\)/m, 'ni el acento ni el color del módulo como texto');
 });
 

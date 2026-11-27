@@ -253,4 +253,8 @@ test('reglas: escapa nombres; sin endpoints nuevos; la única lectura cruda es l
   assert.deepEqual(SRC.match(/localStorage\.\w+\([^)]*\)/g), ["localStorage.getItem('gw2_keys')"]);
   assert.match(P.CSS, /\.wvd-acc\{position:sticky;left:0/, 'la columna de cuentas queda fija al desplazar');
   assert.match(P.CSS, /@media \(max-width:900px\)\{\.wvd-stats\{grid-template-columns:1fr 1fr/);
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(P.CSS, /@media \(max-width:720px\)\{\.wvd-stats\{grid-template-columns:1fr 1fr/);
+});
 });

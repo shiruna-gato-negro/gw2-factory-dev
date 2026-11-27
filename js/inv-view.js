@@ -308,7 +308,8 @@
     '.iv-acts{margin-left:0;width:100%}.iv-stats{grid-template-columns:1fr 1fr;gap:6px}.iv-st{padding:8px 10px}.iv-st b{font-size:1.05rem}',
     '.iv-tabs [role=tab],.iv-btn,.iv-tools input,.iv-tools select{min-height:44px}.iv-tiles{grid-template-columns:1fr 1fr}',
     '.iv-slots{grid-template-columns:repeat(auto-fill,minmax(40px,1fr))}.iv-slot,.iv-slot .iv-ic,.iv-slot .iv-ic img{width:40px;height:40px}}',
-    '@media (max-width:520px){.iv-tiles{grid-template-columns:1fr}}'
+    '@media (max-width:520px){.iv-tiles{grid-template-columns:1fr}}',
+    '@media (max-width:720px){.iv-stats{grid-template-columns:1fr 1fr;gap:6px}.iv-st{padding:8px 10px}.iv-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ DOM

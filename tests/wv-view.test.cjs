@@ -287,3 +287,8 @@ test('reglas de la Bóveda: Storage para las cuentas, nada de claves crudas ni e
   assert.match(SRC, /S\.get\(S\.STORAGE_KEYS\.ACCOUNT_KEYS\)/);
   assert.ok(Buffer.byteLength(SRC) <= 40 * 1024, 'archivo nuevo dentro del presupuesto de 40 KB');
 });
+
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(SRC, /@media \(max-width:720px\)\{\.wvx-stats\{grid-template-columns:1fr 1fr/);
+});

@@ -296,7 +296,8 @@
     '@media (prefers-reduced-motion:reduce){#achxHead *{transition-duration:.001ms!important;animation-duration:.001ms!important}}',
     '@media (max-width:900px){.achx-hero{padding:12px}.achx-row>img{width:40px;height:40px;padding:4px}.achx-title h2{font-size:1.05rem}',
     '.achx-pills{margin-left:0;width:100%}.achx-stats{grid-template-columns:1fr 1fr;gap:6px}.achx-st{padding:8px 10px}.achx-st b{font-size:1.05rem}',
-    '.achx-voice{display:none}.achx-tabs [role=tab]{padding:8px 10px;font-size:.86rem;min-height:44px}.achx-clist{grid-template-columns:1fr}}'
+    '.achx-voice{display:none}.achx-tabs [role=tab]{padding:8px 10px;font-size:.86rem;min-height:44px}.achx-clist{grid-template-columns:1fr}}',
+    '@media (max-width:720px){.achx-stats{grid-template-columns:1fr 1fr;gap:6px}.achx-st{padding:8px 10px}.achx-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ DOM

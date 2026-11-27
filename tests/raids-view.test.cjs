@@ -179,6 +179,10 @@ test('el CSS solo oculta lo viejo cuando la vista está activa y respeta movimie
   assert.match(P.CSS, /focus-visible/);
 });
 
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(P.CSS, /@media \(max-width:720px\)\{\.rv-stats\{grid-template-columns:1fr 1fr/);
+});
+
 // BL-041: contador de encuentros con modo desafío en la cabecera.
 test('BL-041: Modo desafío muestra X de Y en la cabecera y sin datos muestra guión', () => {
   const m = P.buildModel(CAT, sample(), {});

@@ -165,6 +165,10 @@ test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento re
   assert.match(P.CSS, /@media \(max-width:900px\)[\s\S]*min-height:44px/);
   assert.match(P.CSS, /\.av-chk li\{[^}]*min-height:44px/);
   assert.match(P.CSS, /focus-visible\{outline:2px solid var\(--acc-1\)/);
+
+test('BL-069: cabeceras de 5 indicadores colapsan a 2 cols en el celular', () => {
+  assert.match(P.CSS, /@media \(max-width:720px\)\{\.av-stats\{grid-template-columns:1fr 1fr/);
+});
   assert.doesNotMatch(P.CSS, /(^|[;{])\s*color:var\(--(acc-1|av-mod|gn-mod|color-[\w-]+)\)/m, 'ni el acento, ni el color del módulo, ni el de estado como texto');
   // RUN-057: un tinte verde detrás de «Hecho» dejaba el texto en 4.10:1 en one-dark; el estado va en el texto y el borde.
   assert.doesNotMatch(P.CSS, /\.av-badge[^{]*\{[^}]*background/, 'las marcas de estado no tiñen el fondo del texto');

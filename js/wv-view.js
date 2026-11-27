@@ -355,7 +355,8 @@
     '@media (prefers-reduced-motion:reduce){#wvPanel *{transition-duration:.001ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important}}',
     '@media (max-width:900px){.wvx-hero{padding:12px}.wvx-row>img{width:40px;height:40px;padding:4px}.wvx-title h2{font-size:1.05rem}',
     '.wvx-pills{margin-left:0;width:100%}.wvx-stats{grid-template-columns:1fr 1fr;gap:6px}.wvx-st{padding:8px 10px}.wvx-st b{font-size:1.05rem}',
-    '.wvx-tabs [role=tab]{padding:8px 10px;font-size:.86rem}.wvx-seg{display:flex}.wvx-seg button{flex:1;min-height:44px}}'
+    '.wvx-tabs [role=tab]{padding:8px 10px;font-size:.86rem}.wvx-seg{display:flex}.wvx-seg button{flex:1;min-height:44px}}',
+    '@media (max-width:720px){.wvx-stats{grid-template-columns:1fr 1fr;gap:6px}.wvx-st{padding:8px 10px}.wvx-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ DOM

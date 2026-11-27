@@ -314,7 +314,8 @@
     '@media (prefers-reduced-motion:reduce){' + R + ' *{transition:none!important;animation:none!important}}',
     '@media (max-width:900px){.av-hero{padding:12px}.av-ico{width:40px;height:40px;padding:4px}.av-title h2{font-size:1.05rem}',
     '.av-acts{margin-left:0;width:100%}.av-stats{grid-template-columns:1fr 1fr;gap:6px}.av-st{padding:8px 10px}.av-st b{font-size:1.05rem}',
-    '.av-tabs [role=tab],.av-btn{min-height:44px}.av-pill{white-space:normal}}'
+    '.av-tabs [role=tab],.av-btn{min-height:44px}.av-pill{white-space:normal}}',
+    '@media (max-width:720px){.av-stats{grid-template-columns:1fr 1fr;gap:6px}.av-st{padding:8px 10px}.av-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ DOM

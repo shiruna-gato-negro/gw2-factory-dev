@@ -290,7 +290,8 @@
     '@media (prefers-reduced-motion:reduce){' + R + ' *{transition:none!important;animation:none!important}}',
     '@media (max-width:900px){.cv-hero{padding:14px 12px 12px}' + P + '.cv-on>:not(#cvRoot),' + R + '>:not(.cv-hero){margin-left:12px;margin-right:12px}',
     '.cv-title h2{font-size:1.05rem}.cv-top,.cv-q{margin-left:0;width:100%}.cv-q input{width:100%}',
-    '.cv-stats{grid-template-columns:1fr 1fr;gap:6px}.cv-grid{grid-template-columns:1fr}.cv-av{width:40px;height:40px}.cv-btn,.cv-q input,.cv-tabs [role=tab]{min-height:44px}}'
+    '.cv-stats{grid-template-columns:1fr 1fr;gap:6px}.cv-grid{grid-template-columns:1fr}.cv-av{width:40px;height:40px}.cv-btn,.cv-q input,.cv-tabs [role=tab]{min-height:44px}}',
+    '@media (max-width:720px){.cv-stats{grid-template-columns:1fr 1fr;gap:6px}.cv-st{padding:8px 10px}.cv-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ estado y DOM

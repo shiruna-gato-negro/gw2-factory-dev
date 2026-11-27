@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_CURSO
-Tarea actual: BL-069 paso 1/3 (plan) — cabeceras de 5 indicadores responsive en el celular
-Motivo: Paso 1/3 solo planifica. Detalle y pasos en backlog.md (IN_PROGRESS). Sin cambios de código este ciclo.
-Etapa actual: Product/Architecture (plan)
+Tarea actual: BL-069 paso 3/3 (review + cierre) — cabeceras de 5 indicadores responsive en el celular
+Motivo: Paso 2/3 cerrado: regla aditiva @media(max-width:720px) con stats 2 cols en 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + tests por módulo. Suite 1327/1333 (6 skipped), 0 fail. Paso 3/3: review de riesgos/regresiones y cierre.
+Etapa actual: Review
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 03:00Z
-Próxima acción: BL-069 paso 2/3 — implementación CSS @media(max-width:720px) + tests.
+Última actualización: 2026-11-27 03:38Z
+Próxima acción: BL-069 paso 3/3 — review + cierre; luego BL-070 (catálogo de la Armería Legendaria responsive en el celular).
 
 Archivos:
 - ai-memory/status.md
@@ -19,14 +19,16 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-069 paso 1/3 (plan). READY: 2 (BL-070, BL-071). BLOCKED: (vacío).
+- IN_PROGRESS: BL-069 paso 3/3 (review + cierre). READY: 2 (BL-070, BL-071). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1317 pass / 1323 total, 6 skipped.
+- Suite actual: 1327 pass / 1333 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador».
 - Exploración [N] T1, T2 y T3 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (ninguna pasa); T3 6 señales (ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
+
+- BL-069 paso 2/3 (implementación + tests): regla aditiva @media(max-width:720px) con stats 2 cols en 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Suite 1327/1333 (6 skipped), 0 fail. Size-budget sin cambios de registro. — 2026-11-27 03:38Z
 
 - BL-069 paso 1/3 (plan): cabeceras de 5 indicadores responsive en el celular. Plan en backlog.md (IN_PROGRESS). Sin código. Suite 1255/1261 (6 skipped). — 2026-11-27 03:00Z
 

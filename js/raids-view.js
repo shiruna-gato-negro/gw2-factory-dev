@@ -385,7 +385,8 @@
     '@media (max-width:900px){.rv-hero{padding:12px}.rv-ico{width:40px;height:40px;padding:4px}.rv-title h2{font-size:1.05rem}',
     '.rv-pills{margin-left:0;width:100%}.rv-stats{grid-template-columns:1fr 1fr;gap:6px}.rv-st{padding:8px 10px}.rv-st b{font-size:1.05rem}',
     '.rv-wings{grid-template-columns:1fr}.rv-tabs [role=tab],.rv-seg button,.rv-btn{min-height:44px}.rv-enc{grid-template-columns:44px 1fr;padding:10px}',
-    '.rv-mini,.rv-mini img{width:44px;height:44px}.rv-state{grid-column:2;text-align:left}.rv-go{display:none}}'
+    '.rv-mini,.rv-mini img{width:44px;height:44px}.rv-state{grid-column:2;text-align:left}.rv-go{display:none}}',
+    '@media (max-width:720px){.rv-stats{grid-template-columns:1fr 1fr;gap:6px}.rv-st{padding:8px 10px}.rv-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ DOM

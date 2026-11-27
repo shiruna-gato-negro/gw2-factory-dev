@@ -296,7 +296,8 @@
     '@media (prefers-reduced-motion:reduce){' + R + ' *{transition:none!important;animation:none!important}}',
     '@media (max-width:900px){.hs-hero{padding:14px 12px 12px}' + P + '.hs-on>:not(#hsRoot),' + R + '>:not(.hs-hero){margin-left:12px;margin-right:12px}',
     '.hs-ico{width:40px;height:40px;padding:4px}.hs-title h2{font-size:1.05rem}.hs-top,.hs-q{margin-left:0;width:100%}.hs-q input{width:100%}',
-    '.hs-stats{grid-template-columns:1fr 1fr;gap:6px}.hs-nodes{grid-template-columns:1fr}.hs-btn,.hs-pill,.hs-q input{min-height:44px}}'
+    '.hs-stats{grid-template-columns:1fr 1fr;gap:6px}.hs-nodes{grid-template-columns:1fr}.hs-btn,.hs-pill,.hs-q input{min-height:44px}}',
+    '@media (max-width:720px){.hs-stats{grid-template-columns:1fr 1fr;gap:6px}.hs-st{padding:8px 10px}.hs-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ estado y DOM

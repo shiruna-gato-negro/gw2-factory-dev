@@ -343,7 +343,8 @@ function statsHTML(k, accountsCount) {
     '.wvd-matrix{min-width:0}',
     '@media (max-width:900px){.wvd-stats{grid-template-columns:1fr 1fr;gap:6px}.wvd-st{padding:8px 10px}.wvd-st b{font-size:1.05rem}',
     '.wvd-chip{min-height:40px}.wvd-sync{margin-left:0;flex-basis:100%}.wvd-acc{min-width:128px}.wvd-t thead th{min-width:84px}',
-    '.wvd-wrap{display:none}.wvd-cards{display:block}}'
+    '.wvd-wrap{display:none}.wvd-cards{display:block}}',
+    '@media (max-width:720px){.wvd-stats{grid-template-columns:1fr 1fr;gap:6px}.wvd-st{padding:8px 10px}.wvd-st b{font-size:1.05rem}}'
   ].join('\n');
 
   // ------------------------------------------------------------------ estado y DOM
