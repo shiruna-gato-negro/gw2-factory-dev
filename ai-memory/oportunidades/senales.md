@@ -75,3 +75,24 @@ Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se 
 7. "Lista compartida con asignación de responsable por ítem" — cubierto parcialmente por OP-005 (lista genérica); la asignación de responsable es una mejora de OP-005, no una ficha nueva. No pasa.
 
 Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T1 (tercera pasada) o T2 (tercera pasada) según rotación; próximo ciclo es [B] (alternancia estricta).
+
+## Territorio T1 — lo que solo existe en inglés (tercera pasada, 2026-11-27)
+
+Señales evaluadas (web_search/web_fetch, sin ventana, v8). Todas fallan el filtro de entrada (sitio estático, sin servidor/DB, sin login/pagos/datos personales) o el puntaje (≥9, sin 1s). Límite de 5 fichas sigue vigente (OP-001 a OP-005); aunque alguna pasara el puntaje, no se abre ficha hasta que Pablo gradúe/archive (Acción: Pablo).
+
+1. "NovelCrafter" (herramienta de escritura de novelas con IA, solo inglés). Fuente: hermes3000.ai/es/blog/novelcrafter-en-espanol-alternativa (2026-10-19). Nota: requiere cuenta y es IA paga → fuera del filtro (login, datos personales, IA paga). Descartada.
+2. "OpenEvidence" (buscador médico con IA, solo inglés). Fuente: arkangel.ai/es/alternativa-openevidence (2026-11-08). Nota: salud → fuera de territorio (regla v9); ya evaluada en T1 primera pasada. Descartada.
+3. "TrainingPeaks / TrainerRoad" (entrenamiento deportivo/ciclismo, solo inglés). Fuente: trenio.es/revista/alternativa-en-espanol-trainingpeaks-trainerroad (2026-07-07). Nota: requiere cuenta/servidor y datos personales de entrenamiento → fuera del filtro. Descartada.
+4. "TrueCoach" (coaching fitness, solo inglés). Fuente: trainerstudio.com/es/blog/alternativas-truecoach-2026. Nota: requiere cuenta/servidor → fuera del filtro. Descartada.
+5. "Pomelli" (agente de marketing con IA de Google, solo inglés). Fuente: pomelli.help/es/pomelli-agent; reddit r/ThinkingDeeplyAI (2026-10). Nota: IA paga + requiere cuenta → fuera del filtro. Descartada.
+6. "ServiceTitan" (gestión para contratistas, solo inglés). Fuente: sistemasparacontratistas.com/blog/servicetitan-espanol (2026). Nota: software complejo con servidor y datos → fuera del filtro. Descartada.
+7. "Calendly" (agendamiento, solo inglés). Fuente: agendadereservas.com/vs/calendly. Nota: requiere cuenta → fuera del filtro; ya cubierto por alternativas en español. Descartada.
+8. "Linktree" (link-in-bio, solo inglés). Fuente: clico.app/blog/alternativas-a-linktree-gratis-en-espanol (2026-07-24). Nota: requiere cuenta → fuera del filtro. Descartada.
+9. "Jobber" (gestión de servicios de campo, solo inglés). Fuente: proyecpro.com/es/blog/jobber-en-espanol-alternativa (2026-09-20). Nota: requiere cuenta/servidor → fuera del filtro. Descartada.
+10. "Zendesk" (soporte al cliente, solo inglés). Fuente: melonhelp.com/alternativas/zendesk (2026). Nota: requiere cuenta/servidor → fuera del filtro. Descartada.
+11. "Excalidraw" (pizarra/diagramas, solo inglés). Fuente: mejorestools.com/tools/excalidraw; youtube tutorial en español. Nota: app compleja (canvas, colaboración con servidor); existe uso en español pese a UI en inglés → hueco bajo. Puntaje: dolor 2, frecuencia 2, hueco 1, facilidad 2 = 7 → no pasa (hueco 1). Descartada.
+12. "Scribe" (generador de guías paso a paso, solo inglés). Fuente: resources.rework.com/es/tools/productivity/best-scribe-alternatives (2026-09-11). Nota: requiere cuenta/extensión y sube capturas → fuera del filtro (servidor, datos). Descartada.
+13. Herramientas de D&D (generador de personajes con tarot, solo inglés). Fuente: reddit r/dndnext (2026). Nota: nicho de juego; demanda baja → puntaje bajo. Descartada.
+14. Búsqueda general "best free online tools 2026 no login" (altftool.com, producthunt): resultados dominados por IA (fuera del filtro) o por utilidades ya cubiertas en español (PDF, imagen, conversores, calculadoras, QR, contraseñas, lorem ipsum, etc.). Sin hueco nuevo.
+
+Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T3 (tercera pasada) según rotación (T1→T2→T3→T4→T1; después de T1 viene T2, pero T2 tercera pasada ya se hizo en 2026-11-27 sin señales; rotar a T3). Próximo ciclo es [B] (alternancia estricta).

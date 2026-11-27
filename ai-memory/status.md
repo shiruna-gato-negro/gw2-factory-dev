@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — BL-070 cerrada)
-Motivo: Paso 3/3 review + cierre: riesgo BAJO, CSS aditivo, sin regresión. Suite 1328/1334 (6 skipped), 0 fail. Carril [B] cerrado. Por alternancia estricta, el próximo ciclo es [N].
+Tarea actual: (ninguna — exploración [N] T1 tercera pasada cerrada)
+Motivo: 14 señales evaluadas en T1 (NovelCrafter, OpenEvidence, TrainingPeaks/TrainerRoad, TrueCoach, Pomelli, ServiceTitan, Calendly, Linktree, Jobber, Zendesk, Excalidraw, Scribe, D&D tools, búsqueda general); ninguna cumple filtro de entrada ni puntaje (≥9, sin 1s). Límite 5 fichas sigue vigente. Suite sin cambios (1328/1334). Próximo ciclo [B].
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 06:32Z
-Próxima acción: [N] exploración (rotar territorio distinto a T4/T2) por alternancia; BL-071 queda en READY para el siguiente ciclo [B]. Acciones pendientes a Pablo: crear repo laboratorio; graduar/archivar fichas (límite 5 alcanzado).
+Última actualización: 2026-11-27 07:04Z
+Próxima acción: [B] BL-071 (BAJO total de unidades guardadas en Materiales) por alternancia. Acciones pendientes a Pablo: crear repo laboratorio; graduar/archivar fichas (límite 5 alcanzado).
 
 Archivos:
 - ai-memory/status.md
@@ -21,13 +21,16 @@ Archivos:
 ## Para tu información
 
 - IN_PROGRESS: (vacío). READY: 1 (BL-071). BLOCKED: (vacío).
-- Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 1 ciclo (exploración T4 segunda pasada, sin ficha nueva por cupo); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 2 ciclos (exploración T4 segunda pasada sin ficha + exploración T1 tercera pasada sin ficha); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1328 pass / 1334 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas (sorteo de tareas, encuesta de disponibilidad, votación por enlace, sorteo quién cocina, turnos de guardia, reparto con peso, lista con asignación de responsable); ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo para graduar/archivar. Senales.md actualizado.
-- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador».
+- Exploración [N] T1 tercera pasada cerrada: 14 señales evaluadas (NovelCrafter, OpenEvidence, TrainingPeaks/TrainerRoad, TrueCoach, Pomelli, ServiceTitan, Calendly, Linktree, Jobber, Zendesk, Excalidraw, Scribe, D&D tools, búsqueda general); ninguna pasa filtro (IA paga, cuenta/servidor, nicho bajo o cubierta). Límite 5 fichas vigente → Acción Pablo. senales.md actualizado.
+- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas; ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo. senales.md actualizado.
+- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069, BL-070, BL-071). Todas con «Qué ve el jugador».
 
 ## Resumen de la sesión
+
+- Exploración [N] T1 tercera pasada cerrada: 14 señales evaluadas, ninguna pasa filtro/puntaje (IA paga, cuenta/servidor, nicho bajo o cubierta). Límite 5 fichas vigente → Acción Pablo. Suite sin cambios (1328/1334, 6 skipped). Próximo ciclo [B] (BL-071). — 2026-11-27 07:04Z
 
 - BL-070 paso 3/3 (review + cierre): riesgo BAJO, CSS aditivo, sin regresión. Suite 1328/1334 (6 skipped), 0 fail. Carril [B] cerrado; próximo ciclo [N]. — 2026-11-27 06:32Z
 
