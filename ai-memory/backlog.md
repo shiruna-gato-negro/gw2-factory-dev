@@ -9,7 +9,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — paso 1/3 (plan). El grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)` skeleton; CSS real en `js/render-catologo.js` `.arm-grid`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y 1 columna bajo 480px/560px), siguiendo el patrón de BL-069 (cabeceras). — 2026-11-27
+- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — paso 2/3 (implementación). El grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)` skeleton; CSS real en `js/render-catologo.js` `.arm-grid`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y 1 columna bajo 480px/560px), siguiendo el patrón de BL-069 (cabeceras). — 2026-11-27
     Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
     Plan (3 pasos):
       Paso 1/3 (este ciclo): plan + mover a IN_PROGRESS. Sin código.

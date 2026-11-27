@@ -317,7 +317,11 @@
     '@media (max-width:900px){.arm-filters{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.arm-seg,.arm-fgroup{flex-wrap:nowrap}' +
       '.arm-chip,.arm-select,.arm-qbtn{min-height:44px}.arm-cname{line-height:44px}.arm-voice{display:none}}',
     '@media (max-width:900px){.arm-set>summary{min-height:44px}}',
+    '@media (max-width:720px){.arm-grid{grid-template-columns:1fr 1fr}}',
+    '@media (max-width:720px){.arm-grid{grid-template-columns:repeat(2,1fr)}}',
+    '@media (max-width:720px){.arm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}',
     '@media (max-width:560px){.arm-grid{grid-template-columns:1fr}}',
+    '@media (max-width:480px){.arm-grid{grid-template-columns:1fr}}',
     '@media (max-width:560px){.arm-qrow{flex-wrap:wrap}.arm-qacts{width:100%}.arm-qacts .arm-btn{flex:1;justify-content:center}}'
   ].join('\n');
 

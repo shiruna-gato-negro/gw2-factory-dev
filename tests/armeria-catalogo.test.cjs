@@ -165,3 +165,11 @@ test('estilos: grilla adaptable, una columna en el teléfono, 44 px, foco visibl
   assert.doesNotMatch(css, /(?:^|[;{])color:#/);
   assert.doesNotMatch(css, /repeat\(5/);
 });
+
+test('BL-070: catalogo colapsa a 2 cols en el celular', () => {
+  const { A } = cargar();
+  const css = A.CSS;
+  assert.match(css, /@media \(max-width:720px\)\{\.arm-grid\{grid-template-columns:1fr 1fr/);
+  assert.match(css, /@media \(max-width:720px\)\{\.arm-grid\{grid-template-columns:repeat\(2,1fr\)/);
+  assert.match(css, /@media \(max-width:480px\)\{\.arm-grid\{grid-template-columns:1fr\}\}/);
+});
