@@ -128,7 +128,12 @@ test('filtro por nombre: sin tildes ni mayúsculas; en el banco dice en qué pes
 
 test('BL-025: resumen de tipos y categorías arriba de los grupos de Materiales', () => {
   const h = P.listHTML(P.buildModel(sample(), CATS, {}));
-  assert.match(h, /2 tipos de materiales · en 2 categorías/);
+  assert.match(h, /2 tipos de materiales · 2\.450 unidades en total · en 2 categorías/);
+});
+
+test('BL-071: total de unidades guardadas en el resumen de Materiales', () => {
+  const h = P.listHTML(P.buildModel(sample(), CATS, {}));
+  assert.match(h, /2\.450 unidades en total/);
 });
 
 test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento reducido y 44 px en el celular', () => {

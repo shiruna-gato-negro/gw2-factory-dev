@@ -4,8 +4,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-071] [BAJO] Inventario → Materiales: total de unidades guardadas — el resumen de arriba solo dice «X tipos de materiales · en Y categorías»; no muestra cuántas unidades hay en total. Sumar el total de unidades (suma de `count` sobre los grupos) a la línea de resumen. — 2026-11-27
-    Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.
+(vacío)
 
 ## IN_PROGRESS
 
@@ -20,6 +19,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-071] [BAJO] Inventario → Materiales: total de unidades guardadas — cerrada. materialsHTML suma el total de unidades (suma de `count` sobre los grupos, vía `g.items`) a la línea de resumen: «X tipos de materiales · Y unidades en total · en Z categorías». Test de regresión BL-071 (2.450 unidades en total) + BL-025 adaptado. Review riesgo BAJO: aditivo, sin regresión. Suite 1329/1335 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.
 
   - [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — cerrada. Paso 2/3 añadió en ARM_CSS de js/render-catologo.js reglas responsive para `.arm-grid` (2 cols bajo 720px en tres variantes; 1 col bajo 560px/480px) + test BL-070 en tests/armeria-catalogo.test.cjs + techo size-budget render-catologo 65078 → 65392 B. Paso 3/3 review: riesgo BAJO — CSS aditivo, sin regresión; suite 1328/1334 (6 skipped), 0 fail. Carril [B]. — 2026-11-27
     Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.

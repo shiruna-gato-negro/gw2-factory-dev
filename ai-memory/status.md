@@ -1,17 +1,17 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T1 tercera pasada cerrada)
-Motivo: 14 señales evaluadas en T1 (NovelCrafter, OpenEvidence, TrainingPeaks/TrainerRoad, TrueCoach, Pomelli, ServiceTitan, Calendly, Linktree, Jobber, Zendesk, Excalidraw, Scribe, D&D tools, búsqueda general); ninguna cumple filtro de entrada ni puntaje (≥9, sin 1s). Límite 5 fichas sigue vigente. Suite sin cambios (1328/1334). Próximo ciclo [B].
+Tarea actual: (ninguna — BL-071 cerrada)
+Motivo: BL-071 cerrada (total de unidades guardadas en Materiales). READY vacío; próximo ciclo [N] exploración. Suite 1329/1335 (6 skipped).
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 07:04Z
-Próxima acción: [B] BL-071 (BAJO total de unidades guardadas en Materiales) por alternancia. Acciones pendientes a Pablo: crear repo laboratorio; graduar/archivar fichas (límite 5 alcanzado).
+Última actualización: 2026-11-27 07:32Z
+Próxima acción: [N] exploración (territorio T2) — buscar señales nuevas; límite de 5 fichas vigente (Acción Pablo para graduar/archivar).
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
-- ai-memory/oportunidades/ (sin cambios)
+- js/inv-view.js
 
 ## Esperando a Pablo
 
@@ -20,53 +20,16 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 1 (BL-071). BLOCKED: (vacío).
-- Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 2 ciclos (exploración T4 segunda pasada sin ficha + exploración T1 tercera pasada sin ficha); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1328 pass / 1334 total, 6 skipped.
+- IN_PROGRESS: (vacío). READY: 0. BLOCKED: (vacío).
+- Balance carriles: [B] cerró BL-071; [N] hizo 2 ciclos (T4 segunda pasada, T1 tercera pasada); próximo ciclo [N]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Suite actual: 1329 pass / 1335 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
-- Exploración [N] T1 tercera pasada cerrada: 14 señales evaluadas (NovelCrafter, OpenEvidence, TrainingPeaks/TrainerRoad, TrueCoach, Pomelli, ServiceTitan, Calendly, Linktree, Jobber, Zendesk, Excalidraw, Scribe, D&D tools, búsqueda general); ninguna pasa filtro (IA paga, cuenta/servidor, nicho bajo o cubierta). Límite 5 fichas vigente → Acción Pablo. senales.md actualizado.
-- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas; ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo. senales.md actualizado.
-- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069, BL-070, BL-071). Todas con «Qué ve el jugador».
+- BL-071 cerrada: total de unidades guardadas en Materiales («X tipos · Y unidades en total · en Z categorías»). Suite 1329/1335 (6 skipped). Carril [B].
 
 ## Resumen de la sesión
+
+- BL-071 paso 1/1 (review + cierre): total de unidades guardadas en Materiales. Suite 1329/1335 (6 skipped), 0 fail. Carril [B] cerrado; próximo ciclo [N]. — 2026-11-27 07:32Z
 
 - Exploración [N] T1 tercera pasada cerrada: 14 señales evaluadas, ninguna pasa filtro/puntaje (IA paga, cuenta/servidor, nicho bajo o cubierta). Límite 5 fichas vigente → Acción Pablo. Suite sin cambios (1328/1334, 6 skipped). Próximo ciclo [B] (BL-071). — 2026-11-27 07:04Z
 
 - BL-070 paso 3/3 (review + cierre): riesgo BAJO, CSS aditivo, sin regresión. Suite 1328/1334 (6 skipped), 0 fail. Carril [B] cerrado; próximo ciclo [N]. — 2026-11-27 06:32Z
-
-- BL-070 paso 2/3 (implementación + tests): reglas responsive en ARM_CSS (.arm-grid 2 cols bajo 720px; 1 col bajo 560/480px) + test BL-070 + size-budget actualizado (65392 B). Suite 1329/1335 (6 skipped), 0 fail. Carril [B]. — 2026-11-27 06:00Z
-
-- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas, ninguna pasa (hueco 1 o cubierta por ficha existente). Límite 5 fichas alcanzado → Acción Pablo para graduar/archivar. Suite 1327/1333 (6 skipped), 0 fail. Carril [N] cierra; próximo ciclo [B]. — 2026-11-27 05:10Z
-
-- BL-069 paso 2/3 (implementación + tests): regla aditiva @media(max-width:720px) con stats 2 cols en 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Suite 1327/1333 (6 skipped), 0 fail. Size-budget sin cambios de registro. — 2026-11-27 03:38Z
-
-- BL-069 paso 3/3 (review + cierre): riesgo BAJO, CSS aditivo sin regresión. Suite 1327/1333 (6 skipped), 0 fail. Carril [B] se pasó; próximo ciclo [N]. — 2026-11-27 04:32Z
-
-- BL-069 paso 1/3 (plan): cabeceras de 5 indicadores responsive en el celular. Plan en backlog.md (IN_PROGRESS). Sin código. Suite 1255/1261 (6 skipped). — 2026-11-27 03:00Z
-
-- BL-066 paso 1/3 (plan): exploración [B] cerrada, 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Carril [B]. Suite 1315/1321 (6 skipped). — 2026-11-26 23:30Z
-
-- orden v7 procesos: reglas de procesos en AGENTS.md (sección «Procesos») y status.md. Commit `orden: v7 procesos — tests 1225/1231`.
-- Exploración La Bóveda (Builds, Metas): 3 tareas nuevas en READY (BL-048, BL-049, BL-050).
-- BL-048 cerrada: filtro «Solo con notas en castellano» en la Biblioteca. Suite 1226/1232 (6 skipped).
-- MAP-3 cerrada: mi parte del mapa (ai-memory/mapa.json) corregida y versionada (1.0.1). Suite 1228/1234 (6 skipped).
-- v8 cerrada (orden): reglas en AGENTS.md (no abrir navegador de Pablo; servidores puerto 8123 sin ventana; cortar PID al cerrar). Commit `orden: v8 explorar sin ventanas — tests 1228/1234`.
-- BL-049 cerrada: bld-rows.js dpsHTML unifica texto a «Sin bench publicado». Suite 1228/1234 (6 skipped).
-- BL-050 cerrada: Welcome tarjeta de Builds muestra «X de Y con notas en castellano» (countNotes + fetch notes.json). Suite 1229/1235 (6 skipped).
-- BL-051 cerrada: test de regresión del filtro «Solo con infusión o drop» en Metas (matches hasDrop + switch en UI). Suite 1231/1237 (6 skipped).
-- BL-052 cerrada: switch «Solo con stock» en Inventario → Materiales (onlyStock + reset + test). Suite 1233/1239 (6 skipped).
-- Exploración La Bóveda (Metas, Inventario, Armería Legendaria): 3 tareas nuevas en READY (BL-051 cerrada, BL-052 switch «Solo con stock» en Materiales, BL-053 resumen global de legendarias). Todas con «Qué ve el jugador».
-- BL-053 cerrada: resumen global en headerHTML usa getOwnershipCounts() del tracker (tengo/total) con barra; sin Key solo total. Test de regresión BL-053 (50 de 206 + barra 24.3%; sin Key Catálogo 206). Suite 1234/1240 (6 skipped). Review BAJO.
-- BL-054 cerrada: switch «Solo sin tener» en el catálogo de la Armería (onlyUnowned + reset + tests). Techo size-budget render-catologo.js 63917 B. Suite 1235/1242 (6 skipped). Review BAJO.
-- BL-056 cerrada: Welcome actualiza novedades (10 entradas 2026-11-25, una por módulo) + test pickNews adaptado (3 más nuevas del 25/11, NUEVO en las 3). Suite 1301/1307 (6 skipped). Review BAJO.
-- Exploración La Bóveda: 3 tareas nuevas en READY (BL-057 switch «Solo con pendientes» en Actividades, BL-058 switch «Solo sin desbloquear» en Heredad, BL-059 switch «Solo sin reclamar» en Cámara del Brujo). Todas con «Qué ve el jugador».
-- BL-059 cerrada: switch «Solo sin reclamar» en objetivos de la Cámara (wv-objectives-ui.js, data-wv-sw, onlyUnclaimed, reset al cambiar de kind). Tests wv-objectives-ui +2. Suite 1304/1310 (6 skipped). Review BAJO.
-- Exploración La Bóveda: 3 tareas nuevas en READY (BL-060 switch «Solo sin completar» en Raids → Encuentros, BL-061 switch «Solo sin completar» en Logros, BL-062 switch «Solo con Key» en Cuentas). Todas con «Qué ve el jugador».
-- BL-061 cerrada: switch «Solo sin completar» en Logros (ach-view.js + ach-cards.js). Tests +2 (ach-view, ach-cards). Suite 1308/1314 (6 skipped). Review BAJO.
-- BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
-Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Señales descartadas: planificador de menús (hueco 1), calendario compartido (8 pts), ruleta de turnos (hueco 1). Fichas abiertas: 5 (límite). Suite sin cambios. — 2026-11-26
-- BL-065 cerrada: botón «Copiar lo que falta» en Materiales totales (legendary-tree-ui.js + handler en tracker) copia la lista de materiales faltantes al portapapeles. Test de regresión BL-065. Techo legendary-tracker 63971 → 66285 B. Review BAJO. Suite 1315/1321 (6 skipped). — 2026-11-26
-- BL-066 cerrada: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test BL-066, size-budget 37689 B. Suite 1253/1259 (6 skipped). — 2026-11-27 00:05Z
-- Exploración [N] T2 (segunda pasada) cerrada: 4 señales (MH Now, Stardew, PoE, Satisfactory), ninguna pasa filtro/puntaje; sin ficha nueva. Límite 5 fichas vigente. Suite 1316/1322 (6 skipped). — 2026-11-27 01:04Z
-- BL-068 cerrada: resumen AA compacto en la Tienda (aaLineHTML + helper shopSummary). Suite 1255/1261 (6 skipped). — 2026-11-27 01:30Z
-- Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Carril [B]. Suite 1317/1323 (6 skipped). — 2026-11-27 02:15Z

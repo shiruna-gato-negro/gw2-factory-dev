@@ -152,12 +152,15 @@
     if (!m.matGroups.length) return '<p class="iv-note">' + (m.loaded ? 'Sin datos de tus materiales.' : 'Cargando…') + '</p>';
     var totalTypes = m.matHeld != null ? m.matHeld : 0;
     var totalCats = m.matGroups.filter(function (g) { return g.held; }).length;
+    var totalUnits = m.matGroups.reduce(function (s, g) {
+      return s + g.items.reduce(function (t, it) { return t + (it.count || 0); }, 0);
+    }, 0);
     function sw(k, label) {
       var on = !!m.onlyStock;
       return '<button type="button" class="iv-sw' + (on ? ' is-on' : '') + '" role="switch" data-iv-sw="' + k + '" aria-checked="' + on + '"><i aria-hidden="true"></i>' + esc(label) + '</button>';
     }
     var h = '<div class="iv-mat-tools">' + sw('onlyStock', 'Solo con stock') + '</div>';
-    h += '<p class="iv-note">' + fmtInt(totalTypes) + ' tipos de materiales · en ' + totalCats + (totalCats === 1 ? ' categoría' : ' categorías') + '</p>';
+    h += '<p class="iv-note">' + fmtInt(totalTypes) + ' tipos de materiales · ' + fmtInt(totalUnits) + ' unidades en total · en ' + totalCats + (totalCats === 1 ? ' categoría' : ' categorías') + '</p>';
     var any = false;
     m.matGroups.forEach(function (g) {
       if (m.cat !== 'all' && String(g.id) !== String(m.cat)) return;
