@@ -11,12 +11,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-066] [MEDIO] Heredad: resumen de progreso por grupo de nodos (minería, tala, cosecha, cofres, contratos) con barra de progreso en cada grupo. — 2026-11-26
-  Qué ve el jugador: en la Heredad → Nodos de casa, cada grupo de herramientas muestra «X de Y desbloqueados» con una barra de progreso, para ver de un vistazo cuántos nodos tiene por tipo.
-  Pasos (3):
-  1. Plan (este ciclo): verificar cómo se agrupan los nodos en nodesHTML y cómo se calcula el progreso por grupo; decidir si el resumen va sobre la lista o en pills. Sin código.
-  2. Implementar: agregar un header por grupo en nodesHTML con conteo "X de Y desbloqueados" y barra de progreso (usando la clase .hs-bar existente). Si el grupo está filtrado, mostrar solo ese.
-  3. Test de regresión (contar grupos con barra + conteo) + size-budget + commit.
+(none)
 
 ## BLOCKED
 
@@ -27,6 +22,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-066] [MEDIO] Heredad: resumen de progreso por grupo de nodos — cerrada. nodesHTML ahora agrupa los nodos por herramienta (minería, tala, cosecha, cofres, contratos, otros) y muestra en cada grupo «X de Y desbloqueados» con barra .hs-bar; si el grupo está filtrado muestra solo ese. Test de regresión BL-066 en tests/home-view.test.cjs (6 grupos con barra + conteo; grupo filtrado solo ese). Review riesgo BAJO: aditivo, sin regresión. Techo size-budget home-view 36847 → 37689 B (≤40960). Suite 1253/1259 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en la Heredad → Nodos de casa, cada grupo de herramientas muestra «X de Y desbloqueados» con una barra de progreso, para ver de un vistazo cuántos nodos tiene por tipo.
   - [BL-065] [MEDIO] Armería Legendaria: copiar la lista de materiales que faltan — cerrada. Botón «Copiar lo que falta» (data-lt-copy-missing) en renderTotalsHTML (legendary-tree-ui.js) que copia al portapapeles la lista de materiales faltantes («Nombre x Cantidad», una línea por material) armada desde T.build(id)+stockMap() en el tracker (copiarMaterialesFaltantes), con copia por Show.copy/clipboard/fallback y toast de confirmación. Wiring con fallback al padre. Test de regresión BL-065 en tests/legendary-tree-ui.test.cjs (botón presente). Techo size-budget legendary-tracker 63971 → 66285 B con motivo. Review riesgo BAJO: aditivo, sigue patrón de bld-show.copy, sin regresión. Suite 1315/1321 (6 skipped). — 2026-11-26
     Qué ve el jugador: en la ficha de una legendaria, con un clic copia la lista de materiales que le faltan con cantidades, para pegar en el chat del juego o en una planilla.
   - [BL-064] [MEDIO] Armería Legendaria: costo total de la cola de crafteo — cerrada. En «Mi cola» (render-catologo.js, queueViewHTML) se suma un resumen (p.arm-qsummary) con «Unidades que faltan: N.» (suma de missing de computeMaterials de cada encolado) y «Costo en el TP: …» (suma de tpSell de las legendarias que todavía no tenés, con el componente .coin). Techo size-budget render-catologo 63917 → 65078 B con motivo (regla v6). Test nuevo tests/armeria-cola-resumen.test.cjs (2/2). Review riesgo BAJO: aditivo, sin regresión. Suite 1251/1257 (6 skipped).

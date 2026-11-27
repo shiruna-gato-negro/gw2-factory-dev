@@ -184,7 +184,20 @@
       '<button type="button" class="hs-pill" role="switch" data-hs-sw="onlyUnowned" aria-checked="' + (m.ui.onlyUnowned ? 'true' : 'false') + '" aria-pressed="' + (m.ui.onlyUnowned ? 'true' : 'false') + '">Solo sin desbloquear</button>' +
       '<label class="hs-q"><span class="hs-sr">Buscar un nodo</span><input type="search" id="hsQ" placeholder="Buscar un nodo" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
     if (!m.shown.length) h += '<p class="hs-txt">' + (m.ui.only === 'pending' && m.stats.mine ? 'No te queda nada por recolectar hoy con estos filtros.' : 'No hay nodos con estos filtros.') + '</p>';
-    else h += '<ul class="hs-nodes">' + m.shown.map(function (n) { return nodeHTML(n, m.hasToken); }).join('') + '</ul>';
+    else {
+      var groups = (m.groups || []).filter(function (g) { return m.ui.group === 'all' || g[0] === m.ui.group; });
+      groups.forEach(function (g) {
+        var allNodes = (m.nodes || []).filter(function (n) { return n.group === g[0]; });
+        var shownNodes = (m.shown || []).filter(function (n) { return n.group === g[0]; });
+        if (!shownNodes.length) return;
+        var unlocked = allNodes.filter(function (n) { return n.have === true; }).length;
+        var total = allNodes.length;
+        var bar = total ? Math.round(unlocked * 100 / total) : 0;
+        h += '<div class="hs-group"><div class="hs-group-h"><b>' + esc(g[1]) + '</b><span>' + unlocked + ' de ' + total + ' desbloqueados</span></div>' +
+          '<div class="hs-bar" aria-hidden="true"><i style="--p:' + bar + '%"></i></div>' +
+          '<ul class="hs-nodes">' + shownNodes.map(function (n) { return nodeHTML(n, m.hasToken); }).join('') + '</ul></div>';
+      });
+    }
     return h + '<p class="hs-note">«Recolectado» es tu marca: vale hasta las 00:00 UTC. Los contratos llegan por correo al reset.</p></section>';
   }
 

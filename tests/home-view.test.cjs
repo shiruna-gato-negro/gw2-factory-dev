@@ -338,3 +338,20 @@ test('humo: sin panel en index.html lo creo al lado de Actividades; sin Key no p
   assert.match(c.D.els.hsRoot.innerHTML, /<small>Nodos<\/small><b>—<\/b><em>sin datos<\/em>/);
   assert.match(c.D.els.hsRoot.innerHTML, /<small>Gatos<\/small><b>1 <span>\/ 35/, 'lo que sí se leyó, se ve');
 });
+
+test('BL-066: resumen por grupo muestra X de Y desbloqueados con barra de progreso', () => {
+  const m = P.buildModel(DATA(), CAT, {}, NOW);
+  const h = P.nodesHTML(m);
+  m.groups.forEach((g) => {
+    const all = m.nodes.filter((n) => n.group === g[0]);
+    const unlocked = all.filter((n) => n.have === true).length;
+    assert.match(h, new RegExp(g[1] + '.*' + unlocked + ' de ' + all.length + ' desbloqueados', 's'), g[1] + ' resumen');
+  });
+  assert.ok((h.match(/class="hs-bar"/g) || []).length >= m.groups.length, 'una barra por grupo');
+  const m2 = P.buildModel(DATA(), CAT, { group: 'mining' }, NOW);
+  const h2 = P.nodesHTML(m2);
+  const mining = m2.nodes.filter((n) => n.group === 'mining');
+  const unlockedM = mining.filter((n) => n.have === true).length;
+  assert.match(h2, new RegExp('Minería.*' + unlockedM + ' de ' + mining.length + ' desbloqueados', 's'));
+  assert.doesNotMatch(h2, /<b>Tala<\/b><span>[^<]*desbloqueados/, 'grupo no filtrado sin resumen');
+});

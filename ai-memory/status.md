@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_CURSO
-Tarea actual: BL-066 paso 1/3 — plan (Heredad: resumen de progreso por grupo de nodos)
-Motivo: Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Tomo BL-066 y hago su plan (paso 1/3). Carril [B] (alternancia: último fue [N]).
-Etapa actual: Product → Architecture (plan)
+Estado: EN_ESPERA
+Tarea actual: (ninguna — BL-066 cerrada)
+Motivo: BL-066 paso 2/3+3/3 completados en un ciclo: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test de regresión y size-budget. Carril [B]. Suite 1253/1259 (6 skipped).
+Etapa actual: Review → Documentation (cierre)
 Inicio: 2026-11-26
-Última actualización: 2026-11-26 23:30Z
-Próxima acción: BL-066 paso 2/3 — implementar resumen por grupo en nodesHTML (conteo «X de Y desbloqueados» + barra .hs-bar). Sin código en este ciclo.
+Última actualización: 2026-11-27 00:05Z
+Próxima acción: Próximo ciclo toma BL-067 (Heredad: conteo en pills).
 
 Archivos:
 - ai-memory/status.md
@@ -19,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-066 paso 1/3 (plan). READY: BL-067, BL-068. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: BL-067, BL-068. BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1315 pass / 1321 total, 6 skipped.
+- Suite actual: 1253 pass / 1259 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9). BL-065 cerrada (copiar materiales que faltan).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Todas con «Qué ve el jugador».
 - Exploración [N] T4 cerrada: 2 fichas (OP-004, OP-005). Exploración [N] T1 (segunda pasada) cerrada: 3 señales, ninguna pasa filtro/puntaje. Carril N: T1 (2 pasadas), T2, T3 y T4 cerradas. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
@@ -50,4 +50,5 @@ Archivos:
 - BL-062 cerrada: switch «Solo con Key» en Cuentas (acc-view.js, data-cv-sw="onlyWithKey", onlyWithKey en st.ui, reset en goTab/cvQ). Tests +2. Registrado en advertencia (40.3 KB). Suite 1310/1316 (6 skipped). Review BAJO.
 Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar por enlace, OP-005 lista compartida por enlace). Señales descartadas: planificador de menús (hueco 1), calendario compartido (8 pts), ruleta de turnos (hueco 1). Fichas abiertas: 5 (límite). Suite sin cambios. — 2026-11-26
 - BL-065 cerrada: botón «Copiar lo que falta» en Materiales totales (legendary-tree-ui.js + handler en tracker) copia la lista de materiales faltantes al portapapeles. Test de regresión BL-065. Techo legendary-tracker 63971 → 66285 B. Review BAJO. Suite 1315/1321 (6 skipped). — 2026-11-26
+- BL-066 cerrada: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test BL-066, size-budget 37689 B. Suite 1253/1259 (6 skipped). — 2026-11-27 00:05Z
 - Exploración [N] T1 (segunda pasada) cerrada: 3 señales registradas (Hemingway Editor, cron expression generator, edad de mascota), ninguna pasa filtro/puntaje; sin ficha nueva. Límite 5 fichas sigue vigente. Suite sin cambios. — 2026-11-26
