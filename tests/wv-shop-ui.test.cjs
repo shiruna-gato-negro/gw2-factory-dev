@@ -373,6 +373,16 @@ test('refresh: carga la Tienda de la cuenta, relee marcas y fijados; sin cuenta 
   assert.equal(x.D.reg.wvTabShop._h, '<p class="wvs-empty">Elegí una cuenta para ver la Tienda.</p>');
 });
 
+test('BL-068: resumen AA en la Tienda (AA disponible · Costo de lo fijado · Te sobran)', () => {
+  const { P } = load();
+  const s = P.aaSummary(ROWS, 2340, { 1: true, 2: true }, { 1: 1 });
+  const h = P.aaLineHTML(s, 'aa.png', '12:05');
+  assert.match(h, /AA disponible: 1\.740 · Costo de lo fijado: 1\.200 · Te sobran 540/);
+  assert.equal(P.shopSummary(s), 'AA disponible: 1.740 · Costo de lo fijado: 1.200 · Te sobran 540');
+  const f = P.aaLineHTML(P.aaSummary(ROWS, 500, { 1: true }, {}), null, '');
+  assert.match(f, /AA disponible: 500 · Costo de lo fijado: 1\.200 · Te faltan 700/);
+});
+
 test('reglas: escapa nombres, sin endpoints nuevos; la única lectura cruda es la tolerada de gw2_keys', () => {
   const { P } = load();
   const h = P.cardHTML({ id: 9, cost: 1, purchased: 0, purchase_limit: 1 }, { name: '<img src=x onerror=1>' }, { marks: {}, pinned: {} });

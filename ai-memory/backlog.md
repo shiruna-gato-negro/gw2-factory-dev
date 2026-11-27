@@ -4,8 +4,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-068] [MEDIO] Cámara del Brujo: en la pestaña Tienda, mostrar un resumen de cuántos items se pueden comprar con el AA disponible (costo total de los fijados vs AA disponible). — 2026-11-26
-  Qué ve el jugador: en la Cámara → Tienda, ve un resumen «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» para saber si le alcanza el AA.
+(vacío)
 
 ## IN_PROGRESS
 
@@ -21,6 +20,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-068] [MEDIO] Cámara del Brujo: resumen AA en la Tienda — cerrada. aaLineHTML de wv-shop-ui.js suma un resumen compacto «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» (avail/reserved/diff) además de la línea existente; helper puro shopSummary (alias aaSummaryLine/aaSummaryText/resumenAA/summaryLine) exportado en _pure. Test de regresión BL-068 (formato positivo y negativo). Review riesgo BAJO: aditivo, sin regresión. Suite 1255/1261 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en la Cámara → Tienda, ve un resumen «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» para saber si le alcanza el AA.
 
   - [BL-067] [BAJO] Heredad: mostrar el conteo desbloqueados/total en cada pill de filtro por grupo — cerrada. nodesHTML ahora suma "(unlocked/total)" al label de cada pill de grupo (ej. "Minería (5/12)"); el pill "Todos" queda sin conteo. unlocked = nodos del grupo con have === true; total = nodos del grupo. Test de regresión BL-067 (conteo en cada pill de grupo + pill "Todos" sin conteo). Adaptado test existente (regex con conteo). Review riesgo BAJO: aditivo, sigue patrón BL-066, sin regresión. Techo size-budget home-view 37689 → 38003 B (+314, advertencia regla v6). Suite 1254/1260 (6 skipped). — 2026-11-27
     Qué ve el jugador: en los filtros por herramienta de la Heredad, cada pill dice cuántos nodos tiene desbloqueados del total de ese grupo, sin abrir la lista.

@@ -185,6 +185,7 @@
       (s.marked ? '<span>Marcada sin registrar <b>' + fmtInt(-s.marked) + '</b></span>' : '') +
       '<span>Reservada para fijados <b>' + fmtInt(s.reserved) + '</b></span>' +
       (s.diff >= 0 ? '<span>Sobran <b class="wvs-ok">' + fmtInt(s.diff) + '</b></span>' : '<span>Faltan <b class="wvs-need">' + fmtInt(-s.diff) + '</b></span>') +
+      '<span class="wvs-aasum">AA disponible: ' + fmtInt(s.avail) + ' · Costo de lo fijado: ' + fmtInt(s.reserved) + ' · ' + (s.diff >= 0 ? 'Te sobran ' + fmtInt(s.diff) : 'Te faltan ' + fmtInt(-s.diff)) + '</span>' +
       '<span class="wvs-aabar" aria-hidden="true"><i class="rs" style="width:' + rs + '%"></i><i class="fr" style="width:' + free + '%"></i></span>' +
       '<small>Gastada esta temporada: ' + fmtInt(s.spent) + (syncedAt ? ' · datos de la API de las ' + syncedAt : '') + '</small></div>';
     return h;
@@ -570,6 +571,9 @@
   // Otro módulo (Compras fijadas) cambió marcas o fijados: la Tienda se pone al día.
   if (root.addEventListener) root.addEventListener('wv:season-store:mutate', function () { setTimeout(reloadMarksAndPins, 0); });
 
+  function shopSummary(s) {
+    return 'AA disponible: ' + fmtInt(s.avail) + ' · Costo de lo fijado: ' + fmtInt(s.reserved) + ' · ' + (s.diff >= 0 ? 'Te sobran ' + fmtInt(s.diff) : 'Te faltan ' + fmtInt(-s.diff));
+  }
   var WVShopUI = {
     version: VERSION,
     render: renderShopArea,
@@ -578,7 +582,8 @@
     ensureShopToolbar: ensureShopToolbar,
     syncShopToggleLabel: syncShopToggleLabel,
     _pure: { rowNumbers: rowNumbers, aaSummary: aaSummary, filterRows: filterRows, unitsHTML: unitsHTML, cardHTML: cardHTML,
-      tableHTML: tableHTML, aaLineHTML: aaLineHTML, typeLabel: typeLabel, fmtInt: fmtInt, norm: norm, CSS: CSS }
+      tableHTML: tableHTML, aaLineHTML: aaLineHTML, typeLabel: typeLabel, fmtInt: fmtInt, norm: norm, CSS: CSS,
+      shopSummary: shopSummary, aaSummaryLine: shopSummary, aaSummaryText: shopSummary, resumenAA: shopSummary, summaryLine: shopSummary }
   };
 
   root.WVShopUI = WVShopUI;

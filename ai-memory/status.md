@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T2 segunda pasada cerrada)
-Motivo: Exploración [N] T2 (segunda pasada) cerrada: 4 señales registradas (Monster Hunter Now, Stardew Valley, Path of Exile/PoE 2, Satisfactory); ninguna pasa filtro/puntaje (límite 5 fichas vigente, OP-001 a OP-005). Suite 1316/1322 (6 skipped). Carril [N].
+Tarea actual: (ninguna — BL-068 cerrada)
+Motivo: BL-068 cerrada: resumen AA compacto «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» en la Tienda (aaLineHTML + helper shopSummary). Suite 1255/1261 (6 skipped). Carril [B]. READY vacío.
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-26
-Última actualización: 2026-11-27 01:04Z
-Próxima acción: próximo ciclo es [B] (alternancia): BL-068 (Cámara del Brujo: resumen AA en Tienda).
+Última actualización: 2026-11-27 01:30Z
+Próxima acción: próximo ciclo es [N] (alternancia): exploración T3 (segunda pasada, cuentas chicas del día a día en Argentina).
 
 Archivos:
 - ai-memory/status.md
@@ -19,9 +19,9 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: BL-068. BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
 - Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1253 pass / 1259 total, 6 skipped.
+- Suite actual: 1255 pass / 1261 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9). BL-065 cerrada (copiar materiales que faltan).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-066 MEDIO resumen por grupo con barra, BL-067 BAJO conteo en pills, BL-068 MEDIO resumen AA en Tienda). Todas con «Qué ve el jugador».
 - Exploración [N] T1 (segunda pasada) y T2 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (MH Now, Stardew, PoE, Satisfactory; ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
@@ -52,3 +52,4 @@ Exploración [N] T4 cerrada: 2 fichas nuevas (OP-004 rotador de tareas del hogar
 - BL-065 cerrada: botón «Copiar lo que falta» en Materiales totales (legendary-tree-ui.js + handler en tracker) copia la lista de materiales faltantes al portapapeles. Test de regresión BL-065. Techo legendary-tracker 63971 → 66285 B. Review BAJO. Suite 1315/1321 (6 skipped). — 2026-11-26
 - BL-066 cerrada: resumen por grupo en nodesHTML («X de Y desbloqueados» + .hs-bar), test BL-066, size-budget 37689 B. Suite 1253/1259 (6 skipped). — 2026-11-27 00:05Z
 - Exploración [N] T2 (segunda pasada) cerrada: 4 señales (MH Now, Stardew, PoE, Satisfactory), ninguna pasa filtro/puntaje; sin ficha nueva. Límite 5 fichas vigente. Suite 1316/1322 (6 skipped). — 2026-11-27 01:04Z
+- BL-068 cerrada: resumen AA compacto en la Tienda (aaLineHTML + helper shopSummary). Suite 1255/1261 (6 skipped). — 2026-11-27 01:30Z
