@@ -74,7 +74,17 @@ Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se 
 6. "Reparto de tareas con peso/esfuerzo" — cubierto por OP-004 (rotador con peso opcional). No es hueco nuevo. No pasa.
 7. "Lista compartida con asignación de responsable por ítem" — cubierto parcialmente por OP-005 (lista genérica); la asignación de responsable es una mejora de OP-005, no una ficha nueva. No pasa.
 
-Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T1 (tercera pasada) o T2 (tercera pasada) según rotación; próximo ciclo es [B] (alternancia estricta).
+## Territorio T2 — jugadores de otros juegos (tercera pasada, 2026-11-27)
+
+Señales evaluadas (web_search/web_fetch, sin ventana, v8). Límite de 5 fichas sigue vigente (OP-001 a OP-005); aunque alguna pase el puntaje, no se abre ficha hasta que Pablo gradúe/archive (Acción: Pablo).
+
+1. **Calculadora genérica de probabilidad de cartas (hipergeométrica)** — calcula la probabilidad de robar cartas clave en la mano inicial, para cualquier juego de cartas (Magic, Pokémon TCG, Yu-Gi-Oh!, Lorcana, Flesh and Blood, Star Wars Unlimited, etc.). Fuente: reddit.com/r/rpg (hilo «busco una calculadora web... he probado Anydice»); reddit.com/r/masterduel (calculadora Yu-Gi-Oh! hipergeométrica). Existen calculadoras específicas por juego (opcartas.com One Piece, themanagrove.com MTG Commander, cardsrealm.com Pokémon TCG, yugioh.fyi Yu-Gi-Oh!), pero no hay una calculadora genérica en castellano que sirva para cualquier juego de cartas. Filtro: cumple (sitio estático, sin login, una fórmula, entendible en una frase). Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 3 = 9 → pasa (≥9, sin 1s). **Candidata a FICHA cuando haya cupo.**
+
+2. **Calculadora de sets de armadura para Monster Hunter** — busca la combinación óptima de piezas para activar skills deseados. Fuente: reddit.com/r/MonsterHunter («¿Hay alguna calculadora de fabricación?»); atlasforge.gg (inglés). No existe herramienta web en castellano (Athena's Armor Set Search es en inglés). Filtro: cumple parcialmente (sitio estático con data de piezas/skills/decoraciones). Puntaje: dolor 3, frecuencia 2, hueco 3, facilidad 1 = 9 pero facilidad 1 → no pasa (ningún 1 requerido).
+
+3. **Calculadora simple de daño por ronda (DPR) para D&D 5e** — daño promedio de un ataque dado bono de impacto, CA, dados de daño y número de ataques. Fuente: reddit.com/r/dndnext («DPR Tactics Calculator»). No existe herramienta web en castellano dedicada (miniwebtool.com/es cubre probabilidad de dados, pero no DPR con CA y ataques). Filtro: cumple (sitio estático con data de armas). Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 2 = 8 → no pasa (<9).
+
+Ninguna nueva ficha se crea en este ciclo (límite de 5 fichas alcanzado; la señal 1 pasa el puntaje y queda como candidata). Límite de 5 fichas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T3 (tercera pasada) según rotación (T1→T2→T3→T4→T1; después de T2 viene T3). Próximo ciclo es [B] (alternancia estricta).
 
 ## Territorio T1 — lo que solo existe en inglés (tercera pasada, 2026-11-27)
 
