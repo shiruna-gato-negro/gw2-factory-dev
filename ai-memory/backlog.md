@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-072] [MEDIO] Metas: marcar manualmente como «Hecho» las metas que la API no trackea — hoy «Hecho hoy» solo se sabe donde la API informa (world bosses, cofres de mapa); las metas sin seguimiento (templos, eventos, instancias, fractales) quedan siempre «pendientes» aunque el jugador ya las hizo. Permitir marcar «Hecho» por meta con un toggle persistido localmente (gn:meta:done:<id>, por día UTC), que alimente el filtro «Solo pendientes» y el contador de «hechas hoy», sin tocar lo que la API informa (separar «hecho por la API» de «hecho por vos»). — 2026-11-27
-    Qué ve el jugador: en Metas, puede marcar como hecha una meta que la API no trackea (templos, eventos, instancias) y el filtro «Solo pendientes» la oculta, sin esperar a la API.
-
 - [BL-073] [BAJO] Inventario → Banco: borde del slot según la rareza del ítem — los slots del banco muestran el ícono y la cantidad, pero el borde del slot no refleja la rareza del ítem (como en el juego, donde el borde se colorea por rareza). Pintar el borde de `.iv-slot` con el color de la rareza del ítem que contiene (chatarra gris, básico blanco, bueno azul, etc.), sin cambiar el anillo del ícono. — 2026-11-27
     Qué ve el jugador: en el Banco, cada slot tiene un borde del color de la rareza del ítem que guarda, como en el juego, para distinguir rarezas de un vistazo.
 
@@ -15,7 +12,12 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-(vacío)
+- [BL-072] [MEDIO] Metas: marcar manualmente como «Hecho» las metas que la API no trackea — 2026-11-27
+    Pasos:
+    1/3 (este ciclo): plan. Toggle persistido por día UTC en `gn:meta:done:<id>`; `doneOf` (API) no cambia; se añade `manualDone` y un «hecho combinado» para UI (chip, hideDone, contador). El toggle solo tiene sentido donde la API no informa (`doneOf === null`), pero se permite en cualquier meta sin pisar lo que la API dice.
+    2/3: implementar persistencia (`gn:meta:done:<id>` = día UTC `YYYY-MM-DD`), carga y toggle en la tarjeta, chip «Hecho (vos)» distinto del «Hecho hoy» de la API, botón `data-mt-act="done"`.
+    3/3: conectar hideDone y el contador de hechas hoy, tests de regresión y review.
+    Qué ve el jugador: en Metas, puede marcar como hecha una meta que la API no trackea (templos, eventos, instancias) y el filtro «Solo pendientes» la oculta, sin esperar a la API.
 
 ## BLOCKED
 

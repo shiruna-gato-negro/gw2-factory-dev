@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [B] cerrada)
-Motivo: Exploración [B] cerrada: 3 hallazgos → 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Carril [B]. Suite 1329/1335 (6 skipped).
-Etapa actual: Documentation (cierre)
+Estado: EN_CURSO
+Tarea actual: BL-072 paso 1/3 — plan (toggle manual «Hecho» en Metas)
+Motivo: Tomada por turno [B]. Plan escrito en backlog.md; sin código este ciclo.
+Etapa actual: Product/Architecture (plan)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 09:05Z
-Próxima acción: tomar BL-072 (Metas: marcar manualmente como Hecho) por turno [B].
+Última actualización: 2026-11-27 09:35Z
+Próxima acción: implementar paso 2/3: persistencia `gn:meta:done:<id>` (día UTC), carga y toggle en la tarjeta.
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 3 (BL-072, BL-073, BL-074). BLOCKED: (vacío).
+- IN_PROGRESS: BL-072 paso 1/3. READY: 2 (BL-073, BL-074). BLOCKED: (vacío).
 - Balance carriles: [B] cerró BL-071; [N] hizo 3 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1329 pass / 1335 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
