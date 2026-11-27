@@ -189,7 +189,7 @@
     if (f.exp && m.expansion !== f.exp) return false;
     if (f.when === 'hour' && !(i.state === 'active' || (i.mins != null && i.mins <= 60))) return false;
     if (f.when === 'pending' && row.done !== false) return false;
-    if (f.hideDone && row.done === true) return false;
+    if (f.hideDone && (row.done === true || row.manualDone === true || row.markedDone === true || row.doneManual === true)) return false;
     if (f.onlyDrop && !hasDrop(m)) return false;
     if (f.onlyPreview) {
       var extPv = Array.isArray(m._extItems) ? m._extItems[0] : null;
@@ -237,6 +237,49 @@
   function nextResetUTC(now) {
     var d = new Date(now ? +now : Date.now());
     return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + 1));
+  }
+
+  // ── BL-072: marca manual «Hecho» por meta, por día UTC, clave gn:meta:done:<id> ──
+  // No toca lo que la API informa: doneOf() sigue siendo solo API.
+  function utcDayKey(now) {
+    var d = new Date(now == null ? Date.now() : now);
+    return d.getUTCFullYear() + '-' + pad2(d.getUTCMonth() + 1) + '-' + pad2(d.getUTCDate());
+  }
+  function manualDoneKey(id) { return 'gn:meta:done:' + String(id == null ? '' : id); }
+  function readManualDone(id, now) {
+    try {
+      var S = (typeof Storage !== 'undefined' && Storage) ? Storage : null;
+      var key = manualDoneKey(id);
+      var v = (S && typeof S.get === 'function') ? S.get(key) : null;
+      if (v == null) return false;
+      var today = utcDayKey(now == null ? Date.now() : now);
+      if (typeof v === 'boolean') return v;
+      if (typeof v === 'number') return v === 1;
+      if (typeof v === 'string') {
+        if (v === 'true' || v === '1') return true;
+        return v === today;
+      }
+      if (typeof v === 'object') {
+        if (v.day != null) return String(v.day) === today;
+        if (v.date != null) return String(v.date) === today;
+        if (v.done != null) return !!v.done;
+      }
+      return false;
+    } catch (_) { return false; }
+  }
+  function toggleManualDone(id) {
+    var key = manualDoneKey(id);
+    var now = new Date();
+    try {
+      var S = (typeof Storage !== 'undefined' && Storage) ? Storage : null;
+      if (readManualDone(id, now)) {
+        if (S && typeof S.remove === 'function') S.remove(key);
+        else if (S && typeof S.set === 'function') S.set(key, null);
+      } else {
+        if (S && typeof S.set === 'function') S.set(key, utcDayKey(now));
+      }
+    } catch (_) {}
+    renderAll();
   }
 
   // ── ESTADO ──
@@ -418,8 +461,9 @@
     if (inst.state === 'later') return '<span class="mt-st"><i aria-hidden="true">○</i>Próxima ' + hhmm(inst.start) + ' · en ' + inText(inst.mins) + '</span>';
     return '<span class="mt-st"><i aria-hidden="true">○</i>Sin horario fijo</span>';
   }
-  function doneChip(done) {
+  function doneChip(done, manual) {
     if (done === true) return '<span class="mt-dn mt-dn--ok" title="La API dice que hoy ya la hiciste">✓ Hecho hoy</span>';
+    if (manual) return '<span class="mt-dn mt-dn--ok" title="Lo marcaste vos como hecho hoy">✓ Hecho (vos)</span>';
     if (done === false) return '<span class="mt-dn" title="La API dice que hoy todavía no la hiciste">Pendiente hoy</span>';
     return '';
   }
@@ -495,14 +539,16 @@
     var head = big
       ? '<div class="mt-big"><b>' + i.mins + '</b><small>min</small><span>' + (i.state === 'active' ? 'para que termine' : 'empieza a las ' + hhmm(i.start)) + '</span></div>'
       : '';
-    return '<article class="mt-card mt-card--' + i.state + (r.done === true ? ' mt-card--done' : '') + (big ? ' mt-card--big' : '') + (open ? ' mt-card--open' : '') + '"' +
+    return '<article class="mt-card mt-card--' + i.state + (r.done === true || r.manualDone ? ' mt-card--done' : '') + (big ? ' mt-card--big' : '') + (open ? ' mt-card--open' : '') + '"' +
       (where === 'grid' ? ' id="mt-card-' + esc(m.id) + '"' : '') + ' data-id="' + esc(m.id) + '" data-where="' + where + '" style="--mt-x:' + tint(m) + '">' +
       '<div class="mt-top">' + expIcon(m, big ? 48 : 40) +
         '<div class="mt-id"><h4>' + esc(m.name) + '</h4><div class="mt-sub">' + esc(m.map || '') + ' · ' + esc(typeOne(m.type)) + (big ? ' · ' + esc(expName(m.expansion)) : '') + '</div></div>' +
         head +
         '<button type="button" class="mt-pin' + (r.pin ? ' is-on' : '') + '" data-mt-act="pin" aria-pressed="' + r.pin + '" title="' + (r.pin ? 'Quitar de Fijadas' : 'Fijar') + '" aria-label="' + (r.pin ? 'Quitar de Fijadas: ' : 'Fijar: ') + esc(m.name) + '">★</button>' +
       '</div>' + bar +
-      '<div class="mt-sts">' + stateChip(i) + doneChip(r.done) + '</div>' +
+      '<div class="mt-sts">' + stateChip(i) + doneChip(r.done, r.manualDone) +
+        ((!isTracked(m) || r.manualDone) ? ' <button type="button" class="mt-act mt-act--ic" data-mt-act="done" aria-pressed="' + (r.manualDone ? 'true' : 'false') + '" title="Marcar como hecha hoy (vos)">' + (r.manualDone ? 'Deshacer' : 'Marcar hecha') + '</button>' : '') +
+      '</div>' +
       dropHTML(m) +
       (!big && i.upcoming.length ? '<div class="mt-next"><span>Próximas:</span> ' + i.upcoming.map(hhmm).join(' · ') + '</div>' : '') +
       (open ? detailsHTML(r) : '') +
@@ -513,7 +559,7 @@
 
   function computeRows(now) {
     return seed.map(function (m) {
-      return { meta: m, inst: instanceAt(m, now), pin: favs.indexOf(m.id) >= 0, done: doneOf(m, flags) };
+      return { meta: m, inst: instanceAt(m, now), pin: favs.indexOf(m.id) >= 0, done: doneOf(m, flags), manualDone: readManualDone(m.id, now) };
     });
   }
 
@@ -583,9 +629,10 @@
     var cnt = $('#mtCount', root);
     var withPreview = seed.filter(hasPreview).length;
     var withDrop = seed.filter(hasDrop).length;
+    var manualDoneCount = rows.filter(function (r) { return r.manualDone; }).length;
     if (cnt) {
       if (filters.onlyPinned) cnt.textContent = list.length + ' fijadas';
-      else cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa · ' + withDrop + ' con drop o infusión' : 'Mostrando ' + list.length + ' de ' + rows.length;
+      else cnt.textContent = list.length === rows.length ? rows.length + ' metas · ' + withPreview + ' con vista previa · ' + withDrop + ' con drop o infusión' + (manualDoneCount ? ' · ' + manualDoneCount + ' marcadas por vos' : '') : 'Mostrando ' + list.length + ' de ' + rows.length;
     }
     if (!list.length) {
       box.innerHTML = '<div class="mt-empty">Ninguna meta coincide con lo que elegiste. <button type="button" class="mt-link" data-mt-act="reset">Ver todas</button></div>';
@@ -605,10 +652,12 @@
   function renderFlags() {
     var box = $('#mtFlags', root); if (!box) return;
     var tracked = seed.filter(isTracked), n = tracked.length;
+    var manualTotal = seed.filter(function (m) { return readManualDone(m.id, new Date()); }).length;
     var html;
     if (flags.state === 'ok') {
       var done = tracked.filter(function (m) { return doneOf(m, flags) === true; }).length;
-      html = '<b>Hoy en tu cuenta: ' + done + ' de ' + n + '</b> <span>que la API puede seguir · leído ' + esc(flags.lastHuman) + '</span>';
+      html = '<b>Hoy en tu cuenta: ' + done + ' de ' + n + '</b> <span>que la API puede seguir · leído ' + esc(flags.lastHuman) + '</span>' +
+        (manualTotal ? ' <span>· ' + manualTotal + ' marcadas por vos</span>' : '');
     } else if (flags.state === 'loading') html = '<span>Leyendo lo que hiciste hoy…</span>';
     else if (flags.state === 'noperm') html = '<span>Tu API Key no tiene el permiso <code>progression</code>: no puedo saber qué hiciste hoy. Los horarios funcionan igual.</span>';
     else if (flags.state === 'error') html = '<span>No se pudo leer qué hiciste hoy.</span>';
@@ -782,6 +831,7 @@
     if ((b = t.closest('[data-mt-act]'))) {
       var act = b.getAttribute('data-mt-act'), card = b.closest('.mt-card'), id = card && card.getAttribute('data-id');
       if (act === 'pin' && id) togglePin(id);
+      else if (act === 'done' && id) toggleManualDone(id);
       else if (act === 'more' && id) { if (openIds.has(id)) openIds.delete(id); else openIds.add(id); renderAll(); }
       else if (act === 'copy') copy(b.getAttribute('data-copy') || '', 'Waypoint copiado: ' + (b.getAttribute('data-copy') || ''));
       else if (act === 'share' && id) {
@@ -1034,6 +1084,8 @@
       console.warn('[Meta.refresh] error', e);
     }
   };
+  window.Meta.toggleManualDone = toggleManualDone;
+  window.Meta.markDone = toggleManualDone;
   // Estado para la cabecera y mis mensajes (MET-2): datos, sin HTML.
   window.Meta.snapshot = function () {
     var now = new Date();
@@ -1051,9 +1103,10 @@
   window.Meta._pure = {
     instanceAt: instanceAt, startsWithin: startsWithin, agendaOf: agendaOf, matches: matches, typeCounts: typeCounts,
     expCounts: expCounts, groupByExp: groupByExp, isTracked: isTracked, doneOf: doneOf, hasDrop: hasDrop, hasPreview: hasPreview, fold: fold,
-    nextResetUTC: nextResetUTC, typeOne: typeOne, expName: expName
+    nextResetUTC: nextResetUTC, typeOne: typeOne, expName: expName,
+    utcDayKey: utcDayKey, dayKey: utcDayKey, manualDoneKey: manualDoneKey, manualDoneOf: readManualDone, isManualDone: readManualDone, manualDone: readManualDone, readManualDone: readManualDone
   };
-  window.Meta._view = { dropHTML: dropHTML, previewOf: previewOf, showPreview: showPreview, hidePreview: hidePreview, badPreviews: badPreviews };
+  window.Meta._view = { dropHTML: dropHTML, previewOf: previewOf, showPreview: showPreview, hidePreview: hidePreview, badPreviews: badPreviews, toggleManualDone: toggleManualDone };
   window.Meta._debug = function () { return { inited: inited, flags: flags.state, rows: rows.length, open: Array.from(openIds), filters: Object.assign({}, filters) }; };
   window._metaFlags = flags;
 

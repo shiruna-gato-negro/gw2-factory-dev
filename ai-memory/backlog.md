@@ -12,12 +12,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-072] [MEDIO] Metas: marcar manualmente como «Hecho» las metas que la API no trackea — 2026-11-27
-    Pasos:
-    1/3 (este ciclo): plan. Toggle persistido por día UTC en `gn:meta:done:<id>`; `doneOf` (API) no cambia; se añade `manualDone` y un «hecho combinado» para UI (chip, hideDone, contador). El toggle solo tiene sentido donde la API no informa (`doneOf === null`), pero se permite en cualquier meta sin pisar lo que la API dice.
-    2/3: implementar persistencia (`gn:meta:done:<id>` = día UTC `YYYY-MM-DD`), carga y toggle en la tarjeta, chip «Hecho (vos)» distinto del «Hecho hoy» de la API, botón `data-mt-act="done"`.
-    3/3: conectar hideDone y el contador de hechas hoy, tests de regresión y review.
-    Qué ve el jugador: en Metas, puede marcar como hecha una meta que la API no trackea (templos, eventos, instancias) y el filtro «Solo pendientes» la oculta, sin esperar a la API.
+(vacío)
 
 ## BLOCKED
 
@@ -28,6 +23,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-072] [MEDIO] Metas: marcar manualmente como «Hecho» — cerrada. Paso 2/3: persistencia `gn:meta:done:<id>` (= día UTC `YYYY-MM-DD`) con carga por lectura directa, toggle en la tarjeta (`data-mt-act="done"`), chip «Hecho (vos)» separado del «Hecho hoy» de la API, `mt-card--done` y hideDone consideran el marcado manual; contador «marcadas por vos» en flags y mtCount. `doneOf` (API) intacto. Nuevo test `tests/meta-manual-done.test.cjs` (3/3). Techo size-budget meta.js 65135 → 68153 B con motivo (regla v6). Review riesgo MEDIO: cambio de UI + persistencia, sin regresión; suite 1270/1276 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en Metas, puede marcar como hecha una meta que la API no trackea (templos, eventos, instancias) y queda oculta con «Ocultar las hechas hoy», sin esperar a la API.
 
   - [BL-071] [BAJO] Inventario → Materiales: total de unidades guardadas — cerrada. materialsHTML suma el total de unidades (suma de `count` sobre los grupos, vía `g.items`) a la línea de resumen: «X tipos de materiales · Y unidades en total · en Z categorías». Test de regresión BL-071 (2.450 unidades en total) + BL-025 adaptado. Review riesgo BAJO: aditivo, sin regresión. Suite 1329/1335 (6 skipped). — 2026-11-27
     Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.

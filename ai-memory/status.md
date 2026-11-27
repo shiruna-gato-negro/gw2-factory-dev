@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_CURSO
-Tarea actual: BL-072 paso 1/3 — plan (toggle manual «Hecho» en Metas)
-Motivo: Tomada por turno [B]. Plan escrito en backlog.md; sin código este ciclo.
-Etapa actual: Product/Architecture (plan)
+Estado: EN_ESPERA
+Tarea actual: (ninguna — BL-072 cerrada)
+Motivo: BL-072 cerrada: toggle manual «Hecho» en Metas (gn:meta:done:<id>, por día UTC), chip «Hecho (vos)», hideDone y contador. Suite 1270/1276 (6 skipped). Carril [B].
+Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 09:35Z
-Próxima acción: implementar paso 2/3: persistencia `gn:meta:done:<id>` (día UTC), carga y toggle en la tarjeta.
+Última actualización: 2026-11-27 10:00Z
+Próxima acción: próximo ciclo [N]: exploración (territorio a rotar).
 
 Archivos:
 - ai-memory/status.md
@@ -19,13 +19,15 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-072 paso 1/3. READY: 2 (BL-073, BL-074). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: 2 (BL-073, BL-074). BLOCKED: (vacío).
 - Balance carriles: [B] cerró BL-071; [N] hizo 3 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1329 pass / 1335 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Todas con «Qué ve el jugador». Carril [B]. Suite sin cambios (1329/1335, 6 skipped).
 
 ## Resumen de la sesión
+
+- BL-072 cerrada: toggle manual «Hecho» en Metas (gn:meta:done:<id>, por día UTC), chip «Hecho (vos)», hideDone y contador. Suite 1270/1276 (6 skipped). Carril [B]. Próximo ciclo [N]. — 2026-11-27 10:00Z
 
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Carril [B]. Suite sin cambios (1329/1335, 6 skipped). — 2026-11-27 09:05Z
 
