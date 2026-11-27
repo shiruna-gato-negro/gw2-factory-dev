@@ -74,6 +74,19 @@ Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se 
 6. "Reparto de tareas con peso/esfuerzo" — cubierto por OP-004 (rotador con peso opcional). No es hueco nuevo. No pasa.
 7. "Lista compartida con asignación de responsable por ítem" — cubierto parcialmente por OP-005 (lista genérica); la asignación de responsable es una mejora de OP-005, no una ficha nueva. No pasa.
 
+
+## Territorio T3 — cuentas chicas del día a día en Argentina (tercera pasada, 2026-11-27)
+
+Señales evaluadas (web_search/web_fetch, sin ventana, v8). Límite de 5 fichas sigue vigente (OP-001 a OP-005); aunque alguna pase el puntaje, no se abre ficha hasta que Pablo gradúe/archive (Acción: Pablo).
+
+1. **Impuestos de compras online en Argentina (Shein/Tiendamia/AliExpress) — precio final en pesos.** Fuente: reddit.com/r/AskArgentina (hilo «Como calculo gastos en Shein?») y («Que tan realista son los calculos de Tiendamia?»). Existe calcusite.com.ar (genérico) e impuestito.org (gamer). Filtro: cumple (sitio estático, sin login, valores del usuario). Puntaje: dolor 3, frecuencia 3, hueco 1 (calcusite ya cubre compras físicas), facilidad 3 = 10 pero hueco 1 → no pasa (ningún 1 requerido). Descartada.
+
+2. **Costo de un viaje en auto propio vs remis/Uber para una ruta dada, y división entre pasajeros.** Fuente: reddit.com/r/AskArgentina (hilo «Es mejor moverse en Uber que tener un auto propio?») y reddit.com/r/argentina («Auto propio o Uber?»). Tollguru/parrotnotes/tripcostcalc cubren auto+peajes, pero no comparan con remis ni dividen entre pasajeros. Filtro: cumple (sitio estático, sin login, valores del usuario). Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 3 = 9 → pasa (≥9, sin 1s). **Candidata a FICHA cuando haya cupo.**
+
+3. **Costo de un asado/parrillada por persona.** Fuente: reddit.com/r/argentina (hilo «3 kilos de asado + 1 kilo de chorizos + 1 kilo de vacío») y panoramadirecto.com. Ya cubierto por servidos.ar, calculaasado.com, asadito.com.ar y calcusite.com.ar. Filtro: cumple parcialmente. Puntaje: dolor 2, frecuencia 2, hueco 1, facilidad 3 = 8 → no pasa (hueco 1). Descartada.
+
+Ninguna nueva ficha se crea en este ciclo (límite de 5 fichas alcanzado; la señal 2 pasa el puntaje y queda como candidata). Límite de 5 fichas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T4 (tercera pasada) según rotación (T1→T2→T3→T4→T1; después de T3 viene T4). Próximo ciclo es [B] (alternancia estricta).
+
 ## Territorio T2 — jugadores de otros juegos (tercera pasada, 2026-11-27)
 
 Señales evaluadas (web_search/web_fetch, sin ventana, v8). Límite de 5 fichas sigue vigente (OP-001 a OP-005); aunque alguna pase el puntaje, no se abre ficha hasta que Pablo gradúe/archive (Acción: Pablo).
