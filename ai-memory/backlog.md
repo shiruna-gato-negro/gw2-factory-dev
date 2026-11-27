@@ -12,10 +12,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — Paso 2/3 cerrado: regla aditiva @media(max-width:720px) con `.xx-stats{grid-template-columns:1fr 1fr;gap:6px}` (+ padding/font) en los 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Paso 3/3: review + cierre. Suite 1327/1333 (6 skipped). — 2026-11-27
-    Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.
-
-
+(vacío)
 
 
 ## BLOCKED
@@ -27,6 +24,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — cerrada. Paso 2/3 implementó regla aditiva @media(max-width:720px) con `.xx-stats{grid-template-columns:1fr 1fr;gap:6px}` (+ padding/font) en los 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Paso 3/3 review: riesgo BAJO — CSS aditivo, sin regresión; en home/acc/inv/bld el 720px añade compactación de padding/font que el 900px no tenía; en los demás es redundante pero inofensivo. Suite 1327/1333 (6 skipped). — 2026-11-27
+    Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.
 
   - [BL-068] [MEDIO] Cámara del Brujo: resumen AA en la Tienda — cerrada. aaLineHTML de wv-shop-ui.js suma un resumen compacto «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» (avail/reserved/diff) además de la línea existente; helper puro shopSummary (alias aaSummaryLine/aaSummaryText/resumenAA/summaryLine) exportado en _pure. Test de regresión BL-068 (formato positivo y negativo). Review riesgo BAJO: aditivo, sin regresión. Suite 1255/1261 (6 skipped). — 2026-11-27
     Qué ve el jugador: en la Cámara → Tienda, ve un resumen «AA disponible: X · Costo de lo fijado: Y · Te sobran Z» para saber si le alcanza el AA.
