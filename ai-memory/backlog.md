@@ -9,14 +9,7 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## IN_PROGRESS
 
-- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — paso 2/3 (implementación). El grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)` skeleton; CSS real en `js/render-catologo.js` `.arm-grid`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y 1 columna bajo 480px/560px), siguiendo el patrón de BL-069 (cabeceras). — 2026-11-27
-    Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
-    Plan (3 pasos):
-      Paso 1/3 (este ciclo): plan + mover a IN_PROGRESS. Sin código.
-      Paso 2/3: implementación + tests: agregar en ARM_CSS de js/render-catologo.js reglas responsive para `.arm-grid` (2 cols bajo 720px; 1 col bajo 560px/480px), manteniendo la regla existente a 560px; test de regresión en tests/armeria-catalogo.test.cjs siguiendo el patrón BL-069.
-      Paso 3/3: review + cierre (riesgo BAJO: CSS aditivo, sin regresión; suite completa).
-    Inicio: 2026-11-27.
-
+(vacío)
 
 ## BLOCKED
 
@@ -27,6 +20,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — cerrada. Paso 2/3 añadió en ARM_CSS de js/render-catologo.js reglas responsive para `.arm-grid` (2 cols bajo 720px en tres variantes; 1 col bajo 560px/480px) + test BL-070 en tests/armeria-catalogo.test.cjs + techo size-budget render-catologo 65078 → 65392 B. Paso 3/3 review: riesgo BAJO — CSS aditivo, sin regresión; suite 1328/1334 (6 skipped), 0 fail. Carril [B]. — 2026-11-27
+    Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
 
   - [BL-069] [MEDIO] Cabeceras de 5 indicadores responsive en el celular — cerrada. Paso 2/3 implementó regla aditiva @media(max-width:720px) con `.xx-stats{grid-template-columns:1fr 1fr;gap:6px}` (+ padding/font) en los 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Paso 3/3 review: riesgo BAJO — CSS aditivo, sin regresión; en home/acc/inv/bld el 720px añade compactación de padding/font que el 900px no tenía; en los demás es redundante pero inofensivo. Suite 1327/1333 (6 skipped). — 2026-11-27
     Qué ve el jugador: en el celular, las cabeceras de los módulos muestran los 5 indicadores en 2 columnas legibles en vez de 5 diminutas, sin zoom.

@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_CURSO
-Tarea actual: BL-070 paso 2/3 (implementación) — Catálogo de la Armería Legendaria legible en el celular (colapso responsive de .arm-grid)
-Motivo: Paso 2/3: reglas responsive añadidas en ARM_CSS (2 cols bajo 720px; 1 col bajo 560/480px) + test BL-070 + size-budget actualizado. Suite 1329/1335 (6 skipped), 0 fail.
-Etapa actual: Development/Review (implementación)
+Estado: EN_ESPERA
+Tarea actual: (ninguna — BL-070 cerrada)
+Motivo: Paso 3/3 review + cierre: riesgo BAJO, CSS aditivo, sin regresión. Suite 1328/1334 (6 skipped), 0 fail. Carril [B] cerrado. Por alternancia estricta, el próximo ciclo es [N].
+Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 06:00Z
-Próxima acción: BL-070 paso 3/3 — review + cierre (riesgo BAJO: CSS aditivo, sin regresión; suite completa). Carril [B].
+Última actualización: 2026-11-27 06:32Z
+Próxima acción: [N] exploración (rotar territorio distinto a T4/T2) por alternancia; BL-071 queda en READY para el siguiente ciclo [B]. Acciones pendientes a Pablo: crear repo laboratorio; graduar/archivar fichas (límite 5 alcanzado).
 
 Archivos:
 - ai-memory/status.md
@@ -20,14 +20,16 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-070 paso 2/3 (implementación). READY: 1 (BL-071). BLOCKED: (vacío).
+- IN_PROGRESS: (vacío). READY: 1 (BL-071). BLOCKED: (vacío).
 - Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 1 ciclo (exploración T4 segunda pasada, sin ficha nueva por cupo); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1329 pass / 1335 total, 6 skipped.
+- Suite actual: 1328 pass / 1334 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas (sorteo de tareas, encuesta de disponibilidad, votación por enlace, sorteo quién cocina, turnos de guardia, reparto con peso, lista con asignación de responsable); ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo para graduar/archivar. Senales.md actualizado.
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador».
 
 ## Resumen de la sesión
+
+- BL-070 paso 3/3 (review + cierre): riesgo BAJO, CSS aditivo, sin regresión. Suite 1328/1334 (6 skipped), 0 fail. Carril [B] cerrado; próximo ciclo [N]. — 2026-11-27 06:32Z
 
 - BL-070 paso 2/3 (implementación + tests): reglas responsive en ARM_CSS (.arm-grid 2 cols bajo 720px; 1 col bajo 560/480px) + test BL-070 + size-budget actualizado (65392 B). Suite 1329/1335 (6 skipped), 0 fail. Carril [B]. — 2026-11-27 06:00Z
 
