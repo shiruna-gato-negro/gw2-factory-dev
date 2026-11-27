@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T4 segunda pasada cerrada)
-Motivo: Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas, ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo para graduar/archivar. Suite 1327/1333 (6 skipped), 0 fail. Carril [N] cierra; próximo ciclo [B].
-Etapa actual: Documentation (cierre)
+Estado: EN_CURSO
+Tarea actual: BL-070 paso 1/3 (plan) — Catálogo de la Armería Legendaria legible en el celular (colapso responsive de .arm-grid)
+Motivo: Paso 1/3: plan escrito en backlog.md, BL-070 movida a IN_PROGRESS. Sin código. Carril [B]. Suite 1327/1333 (6 skipped), 0 fail.
+Etapa actual: Product (plan)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 05:10Z
-Próxima acción: próximo ciclo [B] — BL-070 (MEDIO catálogo de la Armería Legendaria responsive en el celular) o BL-071 (BAJO total de unidades guardadas en Materiales). IN_PROGRESS vacío. Carril [N] no tiene ficha nueva por límite de cupo.
+Última actualización: 2026-11-27 05:30Z
+Próxima acción: BL-070 paso 2/3 — implementación + tests de las reglas responsive en ARM_CSS (js/render-catologo.js) y test en armeria-catalogo.test.cjs. Carril [B].
 
 Archivos:
 - ai-memory/status.md
@@ -20,7 +20,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 2 (BL-070, BL-071). BLOCKED: (vacío).
+- IN_PROGRESS: BL-070 paso 1/3 (plan). READY: 1 (BL-071). BLOCKED: (vacío).
 - Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 1 ciclo (exploración T4 segunda pasada, sin ficha nueva por cupo); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1327 pass / 1333 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).

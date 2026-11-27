@@ -4,15 +4,18 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — el grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y, si hace falta, una tarjeta por fila bajo 480px), siguiendo el patrón de BL-063 (matriz de objetivos). — 2026-11-27
-    Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
-
 - [BL-071] [BAJO] Inventario → Materiales: total de unidades guardadas — el resumen de arriba solo dice «X tipos de materiales · en Y categorías»; no muestra cuántas unidades hay en total. Sumar el total de unidades (suma de `count` sobre los grupos) a la línea de resumen. — 2026-11-27
     Qué ve el jugador: en Inventario → Materiales, arriba de la lista ve cuántas unidades de materiales tiene guardadas en total, además de los tipos y las categorías.
 
 ## IN_PROGRESS
 
-(vacío)
+- [BL-070] [MEDIO] Catálogo de la Armería Legendaria legible en el celular — paso 1/3 (plan). El grid del catálogo (`legendary-tracker.js`, `repeat(5,1fr)` skeleton; CSS real en `js/render-catologo.js` `.arm-grid`) no colapsa en pantallas angostas; en el celular las tarjetas de legendarias quedan diminutas. Agregar colapso a 2 columnas bajo `@media (max-width:720px)` (y 1 columna bajo 480px/560px), siguiendo el patrón de BL-069 (cabeceras). — 2026-11-27
+    Qué ve el jugador: en el celular, el catálogo de la Armería Legendaria muestra 2 columnas (o 1 en pantallas muy angostas) en vez de 5 diminutas, para elegir qué legendaria armar sin zoom.
+    Plan (3 pasos):
+      Paso 1/3 (este ciclo): plan + mover a IN_PROGRESS. Sin código.
+      Paso 2/3: implementación + tests: agregar en ARM_CSS de js/render-catologo.js reglas responsive para `.arm-grid` (2 cols bajo 720px; 1 col bajo 560px/480px), manteniendo la regla existente a 560px; test de regresión en tests/armeria-catalogo.test.cjs siguiendo el patrón BL-069.
+      Paso 3/3: review + cierre (riesgo BAJO: CSS aditivo, sin regresión; suite completa).
+    Inicio: 2026-11-27.
 
 
 ## BLOCKED
