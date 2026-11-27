@@ -63,3 +63,15 @@ Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se 
 4. Satisfactory: ya existe «la herramienta definitiva» compartida en r/SatisfactoryGame. Cubierto. No pasa.
 
 Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005). Próxima exploración: T3 (segunda pasada, rotar territorios).
+
+## Territorio T4 — organización personal y grupos chicos (segunda pasada, 2026-11-27)
+
+1. "Sorteo de tareas del hogar al azar" — cubierto en castellano por decidefor.me, seizenn.com, randomselect.net, zortyx.com y gospinwheel.com (sin registro). Hueco 1. No pasa.
+2. "Encuesta de disponibilidad de horarios para un grupo" — cubierto por timeaccord.com, rallly.co, whennot.com y empirio.ai (sin registro). Hueco 1. No pasa.
+3. "Votación/encuesta por enlace sin cuenta" — cubierto por poll-maker.com, whocan.org, pollunit.com y fragab.com (sin registro). Hueco 1. No pasa.
+4. "Sorteo de quién cocina/paga hoy" — cubierto por zortyx.com y randomselect.net. Hueco 1. No pasa.
+5. "Lista de turnos de guardia/oficina compartida" — cubierto por zortyx.com y apps de piso compartido (groupio, housekeepr). Hueco 1. No pasa.
+6. "Reparto de tareas con peso/esfuerzo" — cubierto por OP-004 (rotador con peso opcional). No es hueco nuevo. No pasa.
+7. "Lista compartida con asignación de responsable por ítem" — cubierto parcialmente por OP-005 (lista genérica); la asignación de responsable es una mejora de OP-005, no una ficha nueva. No pasa.
+
+Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T1 (tercera pasada) o T2 (tercera pasada) según rotación; próximo ciclo es [B] (alternancia estricta).

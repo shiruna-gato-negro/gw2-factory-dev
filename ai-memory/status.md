@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — BL-069 cerrada)
-Motivo: BL-069 cerrada: cabeceras de 5 indicadores responsive en el celular (review BAJO, sin regresión). Suite 1327/1333 (6 skipped), 0 fail. Carril [B].
+Tarea actual: (ninguna — exploración [N] T4 segunda pasada cerrada)
+Motivo: Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas, ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo para graduar/archivar. Suite 1327/1333 (6 skipped), 0 fail. Carril [N] cierra; próximo ciclo [B].
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 04:32Z
-Próxima acción: próximo ciclo [N] (alternancia estricta: [B] se pasó con 5 ciclos seguidos) — exploración T4 segunda pasada (cuentas chicas del día a día en Argentina). BL-070/BL-071 ([B]) quedan en READY para cuando toque [B].
+Última actualización: 2026-11-27 05:10Z
+Próxima acción: próximo ciclo [B] — BL-070 (MEDIO catálogo de la Armería Legendaria responsive en el celular) o BL-071 (BAJO total de unidades guardadas en Materiales). IN_PROGRESS vacío. Carril [N] no tiene ficha nueva por límite de cupo.
 
 Archivos:
 - ai-memory/status.md
@@ -16,18 +16,20 @@ Archivos:
 ## Esperando a Pablo
 
 - Acción: crear repo `shiruna-gato-negro/laboratorio` (necesario para el primer PROTOTIPO del carril N). Mientras tanto el carril N avanza con SEÑALES y FICHAS en este repo.
+- Acción: graduar o archivar alguna de las 5 fichas abiertas (OP-001..OP-005) para liberar cupo y poder abrir nuevas en el carril N (límite 5 fichas alcanzado). Exploración T4 segunda pasada no pudo abrir ficha por cupo.
 
 ## Para tu información
 
 - IN_PROGRESS: (vacío). READY: 2 (BL-070, BL-071). BLOCKED: (vacío).
-- Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); próximo ciclo [N]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
-- Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Balance carriles: [B] se pasó (5 ciclos seguidos: BL-068, exploración [B], BL-069 ×3); [N] hizo 1 ciclo (exploración T4 segunda pasada, sin ficha nueva por cupo); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1327 pass / 1333 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
+- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas (sorteo de tareas, encuesta de disponibilidad, votación por enlace, sorteo quién cocina, turnos de guardia, reparto con peso, lista con asignación de responsable); ninguna pasa (hueco 1 o cubierta por ficha existente). Límite de 5 fichas alcanzado → Acción Pablo para graduar/archivar. Senales.md actualizado.
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-069 MEDIO cabeceras de 5 indicadores responsive en el celular, BL-070 MEDIO catálogo de la Armería Legendaria responsive en el celular, BL-071 BAJO total de unidades guardadas en Materiales). Todas con «Qué ve el jugador».
-- Exploración [N] T1, T2 y T3 (segunda pasada) cerradas: T1 3 señales (ninguna pasa); T2 4 señales (ninguna pasa); T3 6 señales (ninguna pasa). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo).
 
 ## Resumen de la sesión
+
+- Exploración [N] T4 segunda pasada cerrada: 7 señales evaluadas, ninguna pasa (hueco 1 o cubierta por ficha existente). Límite 5 fichas alcanzado → Acción Pablo para graduar/archivar. Suite 1327/1333 (6 skipped), 0 fail. Carril [N] cierra; próximo ciclo [B]. — 2026-11-27 05:10Z
 
 - BL-069 paso 2/3 (implementación + tests): regla aditiva @media(max-width:720px) con stats 2 cols en 10 módulos (raids, home, inv, act, bld, wv, acc, ach, wvd, wvp) + test por módulo. Suite 1327/1333 (6 skipped), 0 fail. Size-budget sin cambios de registro. — 2026-11-27 03:38Z
 
