@@ -1,7 +1,7 @@
 /*!
  * js/inv-view.js — Inventario y Personajes renovado: cabecera, pestañas Materiales, Banco y Armería legendaria (BL-070, INV-2)
  * Proyecto: Bóveda del Gato Negro
- * Versión: 1.7.0 (2026-10-28) — BL-078 UNI-4b: íconos del juego en las 6 pestañas y en los 4 indicadores · antes 1.6.0 (2026-10-27) — BL-076 SHV-5b: sin mi globo, mi línea también dice «Lo sé por» · antes 1.5.0 (2026-10-25) — INV-7b: sin los caminos a las pantallas viejas (se retiraron)
+ * Versión: 1.7.3 (2026-11-27) — BL-073: borde del slot del banco según la rareza del ítem · antes 1.7.2 (2026-11-25) — BL-052 switch «Solo con stock»
  *          1.4.0 (2026-10-25) — INV-6: cada ítem es un botón (data-inv-item) que abre su ficha (js/inv-sheet.js)
  *          1.3.0 (2026-10-25) — INV-5: las pestañas sumadas con order de 100 o más van después de las propias (Personajes)
  *          1.2.0 (2026-10-25) — INV-4: una pestaña sumada puede traer su propio campo (tools) y recibe lo que se escribe; la segunda, Buscar
@@ -23,7 +23,7 @@
 (function (root) {
   'use strict';
 
-  var VERSION = '1.7.2';
+  var VERSION = '1.7.3';
   var LOG = '[InvView]';
   var PANEL = 'inventoryPanel';
   var ICON = 'assets/icons/Welcome/358409.png';
@@ -194,7 +194,7 @@
       part.forEach(function (s) {
         if (!s || !s.id) { h += '<li class="iv-slot iv-slot--empty"><span class="iv-sr">vacío</span></li>'; return; }
         var meta = m.items[s.id], r = rarityOf(meta), n = s.count || 1, name = nameOf(meta, s.id);
-        h += '<li class="iv-slot" title="' + esc(name + (n > 1 ? ' ×' + n : '') + ' · ' + r[0]) + '"><button type="button" class="iv-open" data-inv-item="' + s.id + '" aria-haspopup="dialog">' + icon(meta, s.id, 40) +
+        h += '<li class="iv-slot" style="border-color:' + r[1] + '" title="' + esc(name + (n > 1 ? ' ×' + n : '') + ' · ' + r[0]) + '"><button type="button" class="iv-open" data-inv-item="' + s.id + '" aria-haspopup="dialog">' + icon(meta, s.id, 40) +
           (n > 1 ? '<b class="iv-sc" aria-hidden="true">' + fmtInt(n) + '</b>' : '') + '<span class="iv-sr">' + esc(name) + ', ' + fmtInt(n) + ', ' + esc(r[0]) + '</span></button></li>';
       });
       h += '</ul></section>';
@@ -297,7 +297,7 @@
     '.iv-ic{position:relative;display:inline-block;flex-shrink:0;border-radius:8px;background:var(--bg-2);box-shadow:inset 0 0 0 2px var(--iv-r),0 0 0 1px var(--bd-1);line-height:0}',
     '.iv-ic img{display:block;border-radius:8px;padding:2px;box-sizing:border-box}.iv-tile .iv-ic{width:32px;height:32px}.iv-tile .iv-ic img{width:32px;height:32px}',
     '.iv-slots{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(10,minmax(0,44px));gap:4px}',
-    '.iv-slot{position:relative;width:44px;height:44px}.iv-slot .iv-ic{width:44px;height:44px}.iv-slot .iv-ic img{width:44px;height:44px}',
+    '.iv-slot{position:relative;width:44px;height:44px;border:1px solid var(--bd-2);border-radius:8px;box-sizing:border-box}.iv-slot .iv-ic{width:44px;height:44px}.iv-slot .iv-ic img{width:44px;height:44px}',
     '.iv-slot--empty{border:1px dashed var(--bd-2);border-radius:8px;box-sizing:border-box}',
     '.iv-sc{position:absolute;right:2px;bottom:1px;font-size:.68rem;color:var(--tx-1);background:var(--bg-0);border-radius:6px;padding:0 3px;line-height:1.3}',
     '.iv-mat-tools{display:flex;gap:8px;margin-bottom:8px}',

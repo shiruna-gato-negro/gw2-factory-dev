@@ -1,11 +1,11 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: (ninguna — BL-072 cerrada)
-Motivo: BL-072 cerrada: toggle manual «Hecho» en Metas (gn:meta:done:<id>, por día UTC), chip «Hecho (vos)», hideDone y contador. Suite 1270/1276 (6 skipped). Carril [B].
+Tarea actual: (ninguna — BL-073 cerrada)
+Motivo: BL-073 cerrada: borde del slot del banco según rareza del ítem (border-color por RARITY), anillo del ícono sin cambios. Suite 1271/1277 (6 skipped). Carril [B].
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-27
-Última actualización: 2026-11-27 10:00Z
+Última actualización: 2026-11-27 10:30Z
 Próxima acción: próximo ciclo [N]: exploración (territorio a rotar).
 
 Archivos:
@@ -19,13 +19,15 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 2 (BL-073, BL-074). BLOCKED: (vacío).
-- Balance carriles: [B] cerró BL-071; [N] hizo 3 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1329 pass / 1335 total, 6 skipped.
+- IN_PROGRESS: (vacío). READY: 1 (BL-074). BLOCKED: (vacío).
+- Balance carriles: [B] cerró BL-073; [N] hizo 3 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada); próximo ciclo [N]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Suite actual: 1271 pass / 1277 total, 6 skipped.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Todas con «Qué ve el jugador». Carril [B]. Suite sin cambios (1329/1335, 6 skipped).
 
 ## Resumen de la sesión
+
+- BL-073 paso 1/1 (review + cierre): borde del slot del banco según rareza del ítem. Suite 1271/1277 (6 skipped), 0 fail. Carril [B] cerrado; próximo ciclo [N]. — 2026-11-27 10:30Z
 
 - BL-072 cerrada: toggle manual «Hecho» en Metas (gn:meta:done:<id>, por día UTC), chip «Hecho (vos)», hideDone y contador. Suite 1270/1276 (6 skipped). Carril [B]. Próximo ciclo [N]. — 2026-11-27 10:00Z
 

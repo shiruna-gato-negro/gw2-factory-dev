@@ -4,9 +4,6 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-073] [BAJO] Inventario → Banco: borde del slot según la rareza del ítem — los slots del banco muestran el ícono y la cantidad, pero el borde del slot no refleja la rareza del ítem (como en el juego, donde el borde se colorea por rareza). Pintar el borde de `.iv-slot` con el color de la rareza del ítem que contiene (chatarra gris, básico blanco, bueno azul, etc.), sin cambiar el anillo del ícono. — 2026-11-27
-    Qué ve el jugador: en el Banco, cada slot tiene un borde del color de la rareza del ítem que guarda, como en el juego, para distinguir rarezas de un vistazo.
-
 - [BL-074] [BAJO] Cuentas: permitir cambiar el criterio de orden de la lista — hoy `sortCards` ordena siempre por tipo y luego por nombre; el jugador no puede ordenar por antigüedad de la cuenta, puntos de logro o nivel de fractal. Agregar un selector de orden (Tipo, Nombre, Antigüedad, Puntos de logro, Fractal) en la barra de filtros de «Mis cuentas», persistido en gn:accounts:sort, sin cambiar el filtrado por tipo. — 2026-11-27
     Qué ve el jugador: en Cuentas → Mis cuentas, puede elegir cómo ordenar la lista (por nombre, antigüedad, puntos de logro o nivel de fractal) además del filtro por tipo.
 
@@ -23,6 +20,9 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-062] [BAJO] Cuentas: switch «Solo con Key» en Mis cuentas — cancelada por orden v9: es el inverso de BL-055 y repite el molde (switch «Solo …»). El código ya desplegado queda como está (moldes cerrados a partir de v9). — 2026-11-26
 
 ## DONE
+
+  - [BL-073] [BAJO] Inventario → Banco: borde del slot según la rareza del ítem — cerrada. bankHTML pinta `border-color` del `.iv-slot` con el color de la rareza del ítem (RARITY); CSS base `.iv-slot` gana borde 1px solid var(--bd-2) + radius; el anillo del ícono (`.iv-ic` box-shadow inset `--iv-r`) no cambia. Test de regresión BL-073 (border-color #FCD00B Raro y #FFA405 Exótico; 58 slots vacíos siguen dashed). Review riesgo BAJO: aditivo, sin regresión. Suite 1271/1277 (6 skipped). Versión inv-view 1.7.2 → 1.7.3, modules.json 1.7.3. — 2026-11-27
+    Qué ve el jugador: en el Banco, cada slot tiene un borde del color de la rareza del ítem que guarda, como en el juego, para distinguir rarezas de un vistazo.
 
   - [BL-072] [MEDIO] Metas: marcar manualmente como «Hecho» — cerrada. Paso 2/3: persistencia `gn:meta:done:<id>` (= día UTC `YYYY-MM-DD`) con carga por lectura directa, toggle en la tarjeta (`data-mt-act="done"`), chip «Hecho (vos)» separado del «Hecho hoy» de la API, `mt-card--done` y hideDone consideran el marcado manual; contador «marcadas por vos» en flags y mtCount. `doneOf` (API) intacto. Nuevo test `tests/meta-manual-done.test.cjs` (3/3). Techo size-budget meta.js 65135 → 68153 B con motivo (regla v6). Review riesgo MEDIO: cambio de UI + persistencia, sin regresión; suite 1270/1276 (6 skipped). — 2026-11-27
     Qué ve el jugador: en Metas, puede marcar como hecha una meta que la API no trackea (templos, eventos, instancias) y queda oculta con «Ocultar las hechas hoy», sin esperar a la API.

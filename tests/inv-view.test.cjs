@@ -136,6 +136,13 @@ test('BL-071: total de unidades guardadas en el resumen de Materiales', () => {
   assert.match(h, /2\.450 unidades en total/);
 });
 
+test('BL-073: borde del slot del banco según la rareza del ítem', () => {
+  const h = P.listHTML(P.buildModel(sample(), CATS, { tab: 'bank' }));
+  assert.match(h, /class="iv-slot" style="border-color:#FCD00B"/, 'Moneda mística (Raro) pinta el borde');
+  assert.match(h, /class="iv-slot" style="border-color:#FFA405"/, 'Pegote (Exótico) pinta el borde');
+  assert.equal((h.match(/iv-slot--empty/g) || []).length, 58, 'los slots vacíos siguen siendo 58');
+});
+
 test('CSS: solo oculta lo viejo con la vista activa; foco visible, movimiento reducido y 44 px en el celular', () => {
   assert.match(P.CSS, /#inventoryPanel\.iv-on>\.panel__title,#inventoryPanel\.iv-on>\.panel__body\{display:none!important\}/);
   assert.match(P.CSS, /prefers-reduced-motion:reduce/);
