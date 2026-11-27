@@ -39,6 +39,11 @@ Ninguna cumple el filtro de entrada (sitio estático, sin login/pagos/datos pers
 2. "Cron expression generator" (generador de expresiones cron) solo en inglés. Fuente: crontab.cronhub.io, freeformatter.com, uptimerobot.com. Nota: audiencia desarrolladores, no público general; frecuencia baja. Puntaje: dolor 2, frecuencia 1, hueco 2, facilidad 3 = 8 (<9) → no pasa.
 3. "Calculadora de edad de mascota en años humanos" existe en español (patitaspets.com.ar, paw-champ.com). Fuente: patitaspets.com.ar/herramientas/edad-perro-en-anos-humanos. Nota: cubierto → hueco 1. No pasa.
 
-Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005).
+## Territorio T2 — jugadores de otros juegos (segunda pasada, 2026-11-27)
 
-Próxima exploración: T2 (rotar territorios).
+1. Monster Hunter Now (r/MHNowGame, hilo «¿Existe alguna calculadora de materiales?»): la comunidad pregunta por calculadora de materiales para el equipo. Existen trackers en inglés (mhntracker y similares) y el juego cambia materiales con eventos; hueco parcial en español. Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 2 = 8 (<9) → no pasa.
+2. Stardew Valley: calculadora de ganancias de cultivos existe en inglés (Stardew Profits, thorinair) y en español parcial (Duct Tape Solutions /es/tools/games/stardew-valley/). Hueco bajo. Puntaje: dolor 2, frecuencia 3, hueco 1, facilidad 3 = 9 pero hueco 1 → no pasa (ningún 1 requerido).
+3. Path of Exile / PoE 2: Path of Building cubre el planificador de builds (inglés, muy completo). En español no hay equivalente simple, pero el juego es complejo y una herramienta estática no puede competir; facilidad baja. No pasa.
+4. Satisfactory: ya existe «la herramienta definitiva» compartida en r/SatisfactoryGame. Cubierto. No pasa.
+
+Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005). Próxima exploración: T3 (segunda pasada, rotar territorios).
