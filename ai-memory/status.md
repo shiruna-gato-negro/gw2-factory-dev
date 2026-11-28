@@ -1,16 +1,17 @@
 # Estado de Shiruna
 
-Estado: EN_CURSO
-Tarea actual: BL-074 paso 2/3 — Cuentas: permitir cambiar el criterio de orden de la lista (implementación)
-Motivo: Paso 2/3 cerrado: selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 20/20 acc-view (0 fail). Carril [B].
-Etapa actual: Development → Review
+Estado: EN_ESPERA
+Tarea actual: (ninguna — BL-074 cerrada)
+Motivo: BL-074 paso 3/3 review + cierre: riesgo BAJO; selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 1272/1278 (0 fail, 6 skipped). Versión acc-view 1.4.2. Carril [B].
+Etapa actual: Documentation (cierre)
 Inicio: 2026-11-28
-Última actualización: 2026-11-28 14:35Z
-Próxima acción: BL-074 paso 3/3 review + cierre: riesgo, suite completa, versión, commit.
+Última actualización: 2026-11-28 15:03Z
+Próxima acción: exploración [N] T4 tercera pasada (organización personal y grupos chicos: turnos, listas compartidas por enlace, rutinas). READY vacío; fichas 5/5 (límite) → esperar graduación/archivo de Pablo para abrir nuevas.
 
 Archivos:
 - ai-memory/status.md
 - ai-memory/backlog.md
+- tools/size-budget.json
 
 ## Esperando a Pablo
 
@@ -19,13 +20,15 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: BL-074 (paso 2/3 cerrado; paso 3/3 pendiente). READY: (vacío). BLOCKED: (vacío).
-- Balance carriles: [B] cerró BL-073; [N] hizo 4 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
-- Suite actual: 1333 pass / 1339 total, 6 skipped (3 smoke notes-refs cuarentenadas, entorno/red, preexistentes).
+- IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
+- Balance carriles: [B] cerró BL-074; [N] hizo 4 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada); próximo ciclo [N] (T4 tercera pasada). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Suite actual: 1272 pass / 1278 total, 6 skipped (0 fail; 3 smoke notes-refs cuarentenadas, entorno/red, preexistentes).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Todas con «Qué ve el jugador». Carril [B]. Suite sin cambios (1329/1335, 6 skipped).
 
 ## Resumen de la sesión
+
+- BL-074 paso 3/3 (review + cierre): riesgo BAJO; selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 1272/1278 (0 fail, 6 skipped). Versión acc-view 1.4.2. Carril [B] cerrado; próximo ciclo [N] (T4 tercera pasada). — 2026-11-28 15:03Z
 
 - Exploración [N] T3 tercera pasada cerrada: 3 señales evaluadas; señal 2 (costo de viaje en auto vs remis/Uber por ruta, dividido entre pasajeros) pasa (9) y queda candidata a FICHA; señales 1 (impuestos compras online) y 3 (asado por persona) no pasan. Cupo 5 fichas lleno → Acción Pablo. Suite 1333/1339 (6 skipped). Próximo ciclo [B]. — 2026-11-27 10:55Z
 
