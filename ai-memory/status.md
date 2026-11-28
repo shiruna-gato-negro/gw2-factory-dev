@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
-Estado: EN_ESPERA
-Tarea actual: (ninguna — exploración [N] T3 tercera pasada cerrada)
-Motivo: Exploración [N] T3 tercera pasada cerrada: 3 señales evaluadas; señal 2 (costo de viaje en auto vs remis/Uber por ruta, dividido entre pasajeros) pasa (9) y queda candidata a FICHA; señales 1 y 3 no pasan. Cupo de 5 fichas sigue lleno → Acción Pablo. Próximo ciclo [B]. Suite 1333/1339 (6 skipped).
-Etapa actual: Documentation (cierre)
-Inicio: 2026-11-27
-Última actualización: 2026-11-27 10:55Z
-Próxima acción: próximo ciclo [B]: BL-074 (orden de lista en Cuentas) si READY, o exploración [B].
+Estado: EN_CURSO
+Tarea actual: BL-074 paso 1/3 — Cuentas: permitir cambiar el criterio de orden de la lista (plan)
+Motivo: Tarea [B] BAJO tomada de READY. Paso 1 solo plan: alcance, diseño y persistencia; sin tocar código. Carril [B].
+Etapa actual: Product → Architecture (plan)
+Inicio: 2026-11-28
+Última actualización: 2026-11-28 14:05Z
+Próxima acción: BL-074 paso 2/3 implementación (selector + sortCards por criterio + persistencia gn:accounts:sort + test).
 
 Archivos:
 - ai-memory/status.md

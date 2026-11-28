@@ -4,12 +4,29 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 
 ## READY
 
-- [BL-074] [BAJO] Cuentas: permitir cambiar el criterio de orden de la lista — hoy `sortCards` ordena siempre por tipo y luego por nombre; el jugador no puede ordenar por antigüedad de la cuenta, puntos de logro o nivel de fractal. Agregar un selector de orden (Tipo, Nombre, Antigüedad, Puntos de logro, Fractal) en la barra de filtros de «Mis cuentas», persistido en gn:accounts:sort, sin cambiar el filtrado por tipo. — 2026-11-27
-    Qué ve el jugador: en Cuentas → Mis cuentas, puede elegir cómo ordenar la lista (por nombre, antigüedad, puntos de logro o nivel de fractal) además del filtro por tipo.
+(vacío)
 
 ## IN_PROGRESS
 
-(vacío)
+- [BL-074] [BAJO] Cuentas: permitir cambiar el criterio de orden de la lista — hoy `sortCards` ordena siempre por tipo y luego por nombre; el jugador no puede ordenar por antigüedad de la cuenta, puntos de logro o nivel de fractal. Agregar un selector de orden (Tipo, Nombre, Antigüedad, Puntos de logro, Fractal) en la barra de filtros de «Mis cuentas», persistido en gn:accounts:sort, sin cambiar el filtrado por tipo. — 2026-11-27
+    Qué ve el jugador: en Cuentas → Mis cuentas, puede elegir cómo ordenar la lista (por nombre, antigüedad, puntos de logro o nivel de fractal) además del filtro por tipo.
+    Pasos:
+    1/3 plan: alcance, diseño y persistencia (este ciclo, sin tocar código).
+    2/3 implementación: selector + sortCards por criterio + persistencia gn:accounts:sort + test de regresión.
+    3/3 review + cierre: riesgo, suite, versión, commit.
+
+    Diseño (BL-074):
+    - Sort key en st.ui.sort (default 'type'), persistido en SORT_KEY='gn:accounts:sort' vía storage().
+    - sortCards(cards, sort) con firma compatible: sortCards(cards) sigue = 'type'. Criterios:
+      * 'type' (Tipo): por tipo (main,alter,f2p,sin tipo) y luego nombre (actual).
+      * 'name' (Nombre): por nombre (localeCompare es).
+      * 'age' (Antigüedad): por created ascendente (más antigua primero; null al final, luego nombre).
+      * 'ap' (Puntos de logro): por ap.value descendente (mayor primero; sin datos al final).
+      * 'fractal' (Fractal): por fractals.value descendente (mayor primero; sin datos al final).
+    - UI: <select id="cvSort"> en .cv-filters con 5 opciones, wiring por change (st.ui.sort + persist + render).
+    - Carga inicial del sort guardado en onShow (first) y en load().
+    - Riesgo: tamaño acc-view.js (41451 B, límite test 42 KB) puede exceder; actualizar umbral con motivo si hace falta (regla v6).
+    - Test de regresión: sortCards por cada criterio + selector en viewHTML + persistencia.
 
 ## BLOCKED
 
