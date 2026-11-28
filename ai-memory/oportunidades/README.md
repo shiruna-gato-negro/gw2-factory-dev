@@ -16,5 +16,7 @@ Archivo `ai-memory/oportunidades/OP-NNN.md` con: Problema, Para quién, Qué exi
 ## Territorios (rotar uno distinto en cada exploración N)
 T1 (solo inglés), T2 (jugadores de otros juegos), T3 (cuentas chicas en Argentina, sin consejo financiero), T4 (organización personal y grupos chicos). GW2 no entra (va al carril B). Fuera: logística/Andreani, salud, legal, inversiones, IA paga, datos personales.
 
-## Filtro de entrada
+## Molde cerrado (DEC-008, 2026-11-28)
+
+El molde «X compartido por enlace» (estado en la URL, sin login) queda cerrado: solo OP-003 (divisor de gastos) se prototipó; OP-004 y OP-005 son ARCHIVO. No se abren nuevas fichas de ese molde. Candidatas futuras deben ser de otro molde. En cada exploración N, descartar señales que repitan este molde.
 Sitio estático en Pages, sin servidor/DB, sin login/pagos/datos personales, construible y probable con mis herramientas, entendible en una frase.
