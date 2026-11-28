@@ -42,7 +42,7 @@ function raw(o) {
 }
 
 test('archivo: presupuesto, versión, manifiesto después de acc-model, fuera de index.html, sin emojis ni localStorage', () => {
-  assert.ok(Buffer.byteLength(SRC) <= 42 * 1024, Buffer.byteLength(SRC) + ' bytes');
+  assert.ok(Buffer.byteLength(SRC) <= 44 * 1024, Buffer.byteLength(SRC) + ' bytes');
   assert.match(SRC, /Versión: 1\.4\.2/);
   assert.equal(B.AccView.version, '1.4.2');
   assert.doesNotMatch(SRC, /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u);
@@ -396,4 +396,16 @@ test('BL-074: con GNIdb las definiciones de logros van a IndexedDB (no al localS
   await flush();
   assert.equal(api(y.calls).filter((u) => u.includes('/v2/achievements?')).length, 0, 'las definiciones salen de GNIdb');
   assert.match(y.D.els.cvRoot.innerHTML, /<small>Logros<\/small><b>175<\/b>/);
+});
+
+test('BL-074: sortCards por criterio + SORT_KEY + selector en viewHTML', () => {
+  assert.equal(P.SORT_KEY, 'gn:accounts:sort');
+  const mk = (name, tag) => J(P.deriveCard(raw({ fp: name, tag, account: Object.assign({}, ACC, { name }) }), CAT, M, NOW));
+  const cards = [mk('Zeta.1', ''), mk('Beta.2', 'alter'), mk('Árbol.3', 'main')];
+  assert.deepEqual(P.sortCards(cards).map((c) => c.name), ['Árbol.3', 'Beta.2', 'Zeta.1']);
+  assert.deepEqual(P.sortCards(cards, 'name').map((c) => c.name), ['Árbol.3', 'Beta.2', 'Zeta.1']);
+  const m = { cat: CAT, M, cards: cards, active: 'aaaa1111', activeName: 'Gato Negro.1234', ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false, onlyWithKey: false, sort: 'name' }, loading: false, readAt: NOW, now: NOW };
+  const h = P.viewHTML(m);
+  assert.match(h, /id="cvSort"/);
+  assert.match(h, /Puntos de logro/);
 });

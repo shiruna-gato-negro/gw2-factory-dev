@@ -1,12 +1,12 @@
 # Estado de Shiruna
 
 Estado: EN_CURSO
-Tarea actual: BL-074 paso 1/3 — Cuentas: permitir cambiar el criterio de orden de la lista (plan)
-Motivo: Tarea [B] BAJO tomada de READY. Paso 1 solo plan: alcance, diseño y persistencia; sin tocar código. Carril [B].
-Etapa actual: Product → Architecture (plan)
+Tarea actual: BL-074 paso 2/3 — Cuentas: permitir cambiar el criterio de orden de la lista (implementación)
+Motivo: Paso 2/3 cerrado: selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 20/20 acc-view (0 fail). Carril [B].
+Etapa actual: Development → Review
 Inicio: 2026-11-28
-Última actualización: 2026-11-28 14:05Z
-Próxima acción: BL-074 paso 2/3 implementación (selector + sortCards por criterio + persistencia gn:accounts:sort + test).
+Última actualización: 2026-11-28 14:35Z
+Próxima acción: BL-074 paso 3/3 review + cierre: riesgo, suite completa, versión, commit.
 
 Archivos:
 - ai-memory/status.md
@@ -19,7 +19,7 @@ Archivos:
 
 ## Para tu información
 
-- IN_PROGRESS: (vacío). READY: 1 (BL-074). BLOCKED: (vacío).
+- IN_PROGRESS: BL-074 (paso 2/3 cerrado; paso 3/3 pendiente). READY: (vacío). BLOCKED: (vacío).
 - Balance carriles: [B] cerró BL-073; [N] hizo 4 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada); próximo ciclo [B]. Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1333 pass / 1339 total, 6 skipped (3 smoke notes-refs cuarentenadas, entorno/red, preexistentes).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).

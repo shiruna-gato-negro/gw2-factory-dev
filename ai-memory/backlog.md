@@ -11,8 +11,8 @@ Formato: `- [BL-NNN] [PRIORIDAD] Título — detalle — fecha`. READY admite co
 - [BL-074] [BAJO] Cuentas: permitir cambiar el criterio de orden de la lista — hoy `sortCards` ordena siempre por tipo y luego por nombre; el jugador no puede ordenar por antigüedad de la cuenta, puntos de logro o nivel de fractal. Agregar un selector de orden (Tipo, Nombre, Antigüedad, Puntos de logro, Fractal) en la barra de filtros de «Mis cuentas», persistido en gn:accounts:sort, sin cambiar el filtrado por tipo. — 2026-11-27
     Qué ve el jugador: en Cuentas → Mis cuentas, puede elegir cómo ordenar la lista (por nombre, antigüedad, puntos de logro o nivel de fractal) además del filtro por tipo.
     Pasos:
-    1/3 plan: alcance, diseño y persistencia (este ciclo, sin tocar código).
-    2/3 implementación: selector + sortCards por criterio + persistencia gn:accounts:sort + test de regresión.
+    1/3 plan: alcance, diseño y persistencia (cerrado).
+    2/3 implementación: selector + sortCards por criterio + persistencia gn:accounts:sort + test de regresión (cerrado: cvSort 5 criterios, sortCards(cards,sort) compatible, gn:accounts:sort, wiring change; acc-view 20/20).
     3/3 review + cierre: riesgo, suite, versión, commit.
 
     Diseño (BL-074):

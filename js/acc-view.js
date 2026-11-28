@@ -33,7 +33,7 @@
   var ICON = 'assets/icons/3601748.png';
   var DATA_URL = 'assets/data/accounts/catalog.json';
   var API = 'https://api.guildwars2.com';
-  var CARDS_KEY = 'gn:accounts:cards', META_KEY = 'gn:accounts:achmeta';
+  var CARDS_KEY = 'gn:accounts:cards', META_KEY = 'gn:accounts:achmeta', SORT_KEY = 'gn:accounts:sort';
   var CARD_TTL = 6 * 3600000, META_TTL = 7 * 86400000, TIMEOUT = 20000, CHUNK = 200;
   var TYPES = [['all', 'Todas'], ['main', 'Principal'], ['alter', 'Alternativa'], ['f2p', 'Gratuita'], ['none', 'Sin tipo']];
   var TYPE_ORDER = { main: 0, alter: 1, f2p: 2 };
@@ -116,11 +116,35 @@
     return { fp: fingerprint(key.value), label: key.label || '', state: 'loading', name: '', tags: tags, type: M.accountType(tags), exps: [], guilds: [] };
   }
 
-  function sortCards(cards) {
+  function sortCards(cards, sort) {
+    sort = sort || 'type';
     return cards.slice().sort(function (a, b) {
+      var na = String(a.name || a.label), nb = String(b.name || b.label);
+      if (sort === 'name') return na.localeCompare(nb, 'es');
+      if (sort === 'age') {
+        var ca = a.created ? Date.parse(a.created) : NaN, cb = b.created ? Date.parse(b.created) : NaN;
+        var an = !isFinite(ca), bn = !isFinite(cb);
+        if (an !== bn) return an ? 1 : -1;
+        if (!an && ca !== cb) return ca - cb;
+        return na.localeCompare(nb, 'es');
+      }
+      if (sort === 'ap') {
+        var va = a.ap && a.ap.state === 'ok' ? a.ap.value : null, vb = b.ap && b.ap.state === 'ok' ? b.ap.value : null;
+        var an2 = va == null, bn2 = vb == null;
+        if (an2 !== bn2) return an2 ? 1 : -1;
+        if (!an2 && va !== vb) return vb - va;
+        return na.localeCompare(nb, 'es');
+      }
+      if (sort === 'fractal') {
+        var fa = a.fractals && a.fractals.state === 'ok' ? a.fractals.value : null, fb = b.fractals && b.fractals.state === 'ok' ? b.fractals.value : null;
+        var an3 = fa == null, bn3 = fb == null;
+        if (an3 !== bn3) return an3 ? 1 : -1;
+        if (!an3 && fa !== fb) return fb - fa;
+        return na.localeCompare(nb, 'es');
+      }
       var oa = a.type in TYPE_ORDER ? TYPE_ORDER[a.type] : 3, ob = b.type in TYPE_ORDER ? TYPE_ORDER[b.type] : 3;
       if (oa !== ob) return oa - ob;
-      return String(a.name || a.label).localeCompare(String(b.name || b.label), 'es');
+      return na.localeCompare(nb, 'es');
     });
   }
 
@@ -234,11 +258,12 @@
     if (m.ui.tab === 'vault') return h + '<div id="cvPanel-vault" role="tabpanel" aria-labelledby="cvTab-vault"><p class="cv-note">Tus contraseñas, Twitch, GeForce NOW, notas y etiquetas, cifradas en tu archivo. Este es el Llavero de siempre: el renovado llega en el próximo paso, sin perder ningún dato.</p></div>';
     h += '<div id="cvPanel-mine" role="tabpanel" aria-labelledby="cvTab-mine">';
     if (!m.cards.length) return h + '<section class="cv-empty"><p>Cargá la API Key de cada cuenta y te muestro todas juntas: expansiones, logros, legendarias, fractales, McM, JcJ y clanes. Sin archivo ni contraseña.</p><button type="button" class="cv-btn" data-cv="keys">Agregar API Key</button></section></div>';
-    var shown = filterCards(sortCards(m.cards), m.ui);
+    var _sort = (m.ui && m.ui.sort) || 'type';
+    var shown = filterCards(sortCards(m.cards, _sort), m.ui);
     function sw(k,l){var on=k==='onlyNoKey'?!!(m.ui&&m.ui.onlyNoKey):!!(m.ui&&m.ui.onlyWithKey);return '<button type="button" class="cv-btn" data-cv-sw="'+k+'" aria-pressed="'+on+'">'+esc(l)+'</button>';}
     h += '<div class="cv-filters"><div class="cv-pills" role="group" aria-label="Por tipo">' + TYPES.map(function (t) {
       return '<button type="button" class="cv-btn" data-cv-type="' + t[0] + '" aria-pressed="' + (m.ui.type === t[0]) + '">' + t[1] + '</button>';
-    }).join('') + '</div>' + sw('onlyNoKey', 'Solo sin Key') + sw('onlyWithKey', 'Solo con Key') + '<label class="cv-q"><span class="cv-sr">Buscar una cuenta</span><input type="search" id="cvQ" placeholder="Buscar una cuenta" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
+    }).join('') + '</div>' + sw('onlyNoKey', 'Solo sin Key') + sw('onlyWithKey', 'Solo con Key') + '<label class="cv-sort"><span class="cv-sr">Ordenar por</span><select id="cvSort">' + [['type','Tipo'],['name','Nombre'],['age','Antigüedad'],['ap','Puntos de logro'],['fractal','Fractal']].map(function (o) { return '<option value="' + o[0] + '"' + (_sort === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' + '<label class="cv-q"><span class="cv-sr">Buscar una cuenta</span><input type="search" id="cvQ" placeholder="Buscar una cuenta" value="' + esc(m.ui.q) + '" autocomplete="off"></label></div>';
     h += shown.length ? '<div class="cv-grid">' + shown.map(function (c) { return cardHTML(c, m.cat, m.M, m.active); }).join('') + '</div>' : '<p class="cv-note">No hay cuentas con estos filtros.</p>';
     return h + '<p class="cv-src">Datos en vivo de la API oficial con tus Keys; lo leído se guarda 6 horas en tu navegador, nunca la Key. Las etiquetas farming, llaves, semanal y taxi viven en tu Llavero: se suman acá mientras lo tenés abierto.</p></div>';
   }
@@ -296,12 +321,14 @@
 
   // ------------------------------------------------------------------ estado y DOM
   var doc = root.document;
-  var st = { cat: null, catP: null, cards: {}, keys: [], tokens: {}, meta: null, guilds: {}, ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false, onlyWithKey: false }, shown: false, loading: false, seq: 0, voiceKey: null, readAt: 0 };
+  var st = { cat: null, catP: null, cards: {}, keys: [], tokens: {}, meta: null, guilds: {}, ui: { tab: 'mine', type: 'all', q: '', onlyNoKey: false, onlyWithKey: false, sort: 'type' }, shown: false, loading: false, seq: 0, voiceKey: null, readAt: 0 };
 
   function byId(id) { return doc && doc.getElementById ? doc.getElementById(id) : null; }
   function isHidden(n) { return !n || n.hidden || (n.getAttribute && n.getAttribute('hidden') != null); }
   function hash() { return String((root.location && root.location.hash) || '').split('?')[0]; }
   function storage() { var S = root.Storage; return S && typeof S.get === 'function' && typeof S.set === 'function' ? S : null; }
+  function loadSort() { var S = storage(), v = S ? S.get(SORT_KEY) : null; if (typeof v === 'string' && v) st.ui.sort = v; }
+  function persistSort() { var S = storage(); if (S) S.set(SORT_KEY, st.ui.sort); }
   function model() { var M = root.AccModel; return M && M._pure ? M._pure : null; }
   function vault() { var X = root.AccVaultView; return X && typeof X.html === 'function' ? X : null; }
   function keys() {
@@ -404,6 +431,7 @@
 
   // Lee de a una cuenta (cuida el límite de la API) y dibuja a medida que llegan.
   function load(nocache) {
+    loadSort();
     var M = model(), cat = st.cat, seq = ++st.seq;
     if (!M || !cat) return Promise.resolve(null);
     st.keys = keys(); st.tokens = {};
@@ -546,7 +574,12 @@
       if (e.preventDefault) e.preventDefault();
       goTab(next, true);
     });
-    host.addEventListener('change', function (e) { var X = vault(); if (X && st.ui.tab === 'vault') X.onChange(e); });
+    host.addEventListener('change', function (e) {
+      var X = vault();
+      if (X && st.ui.tab === 'vault') { X.onChange(e); return; }
+      var t = e && e.target;
+      if (t && t.id === 'cvSort') { st.ui.sort = String(t.value || 'type'); persistSort(); render(); }
+    });
     host.addEventListener('input', function (e) {
       var t = e && e.target, X = vault();
       if (X && st.ui.tab === 'vault' && X.onInput(e)) return;
@@ -564,7 +597,7 @@
     if (!visible()) { st.shown = false; return; }
     var first = !st.shown;
     st.shown = true;
-    loadCat().then(function () { if (first) { st.ui.tab = 'mine'; load(false); } else render(); });
+    loadCat().then(function () { if (first) { st.ui.tab = 'mine'; loadSort(); load(false); } else render(); });
   }
 
   function init() {
@@ -586,7 +619,7 @@
     getSnapshot: function () { return { cards: list(), ui: Object.assign({}, st.ui), loading: st.loading }; },
     _pure: { esc: esc, fold: fold, fmt: fmt, date: date, ago: ago, fingerprint: fingerprint, compactMeta: compactMeta, expandMeta: expandMeta, allPerms: allPerms,
       deriveCard: deriveCard, placeholder: placeholder, sortCards: sortCards, filterCards: filterCards, permList: permList, pickVoice: pickVoice,
-      statsHTML: statsHTML, cardHTML: cardHTML, tabsHTML: tabsHTML, viewHTML: viewHTML, CSS: CSS, ROUTE: ROUTE, PANEL: PANEL, CARDS_KEY: CARDS_KEY, META_KEY: META_KEY, CARD_TTL: CARD_TTL }
+      statsHTML: statsHTML, cardHTML: cardHTML, tabsHTML: tabsHTML, viewHTML: viewHTML, CSS: CSS, ROUTE: ROUTE, PANEL: PANEL, CARDS_KEY: CARDS_KEY, META_KEY: META_KEY, SORT_KEY: SORT_KEY, CARD_TTL: CARD_TTL }
   };
 
   if (doc && doc.readyState === 'loading' && doc.addEventListener) doc.addEventListener('DOMContentLoaded', init);
