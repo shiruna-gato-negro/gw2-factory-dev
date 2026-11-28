@@ -5,8 +5,8 @@ Tarea actual: (ninguna — BL-074 cerrada)
 Motivo: BL-074 paso 3/3 review + cierre: riesgo BAJO; selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 1272/1278 (0 fail, 6 skipped). Versión acc-view 1.4.2. Carril [B].
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-28
-Última actualización: 2026-11-28 15:03Z
-Próxima acción: exploración [N] T4 tercera pasada (organización personal y grupos chicos: turnos, listas compartidas por enlace, rutinas). READY vacío; fichas 5/5 (límite) → esperar graduación/archivo de Pablo para abrir nuevas.
+Última actualización: 2026-11-28 15:35Z
+Próxima acción: exploración [N] T1 cuarta pasada (lo que solo existe en inglés). READY vacío; fichas 5/5 (límite) → esperar graduación/archivo de Pablo para abrir nuevas.
 
 Archivos:
 - ai-memory/status.md
@@ -21,12 +21,14 @@ Archivos:
 ## Para tu información
 
 - IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
-- Balance carriles: [B] cerró BL-074; [N] hizo 4 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada); próximo ciclo [N] (T4 tercera pasada). Fichas abiertas: 5 (límite). Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Balance carriles: [B] cerró BL-074; [N] hizo 5 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada, T4 tercera pasada); próximo ciclo [B] (alternancia). Fichas abiertas: 5 (límite). Candidatas nuevas: rutina semanal compartida por enlace, turnos de guardia nocturna entre cuidadores. Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
 - Suite actual: 1272 pass / 1278 total, 6 skipped (0 fail; 3 smoke notes-refs cuarentenadas, entorno/red, preexistentes).
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
 - Exploración [B] cerrada: 3 tareas nuevas en READY (BL-072 MEDIO Metas marcar manualmente como Hecho, BL-073 BAJO borde de slot por rareza en Banco, BL-074 BAJO orden de lista en Cuentas). Todas con «Qué ve el jugador». Carril [B]. Suite sin cambios (1329/1335, 6 skipped).
 
 ## Resumen de la sesión
+
+- Exploración [N] T4 tercera pasada cerrada: 3 señales evaluadas; señales 1 (planificador de rutina semanal compartida por enlace) y 2 (turnos de guardia nocturna entre cuidadores de bebé compartidos por enlace) pasan (9) y quedan candidatas a FICHA cuando haya cupo; señal 3 (lista de equipaje compartida por enlace) no pasa (hueco 1). Cupo 5 fichas lleno → Acción Pablo. Suite sin cambios (1272/1278, 6 skipped). Próximo ciclo [B]. — 2026-11-28 15:35Z
 
 - BL-074 paso 3/3 (review + cierre): riesgo BAJO; selector cvSort (5 criterios), sortCards(cards, sort) compatible, persistencia gn:accounts:sort, wiring change + loadSort/persistSort. Suite 1272/1278 (0 fail, 6 skipped). Versión acc-view 1.4.2. Carril [B] cerrado; próximo ciclo [N] (T4 tercera pasada). — 2026-11-28 15:03Z
 

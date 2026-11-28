@@ -119,3 +119,15 @@ Señales evaluadas (web_search/web_fetch, sin ventana, v8). Todas fallan el filt
 14. Búsqueda general "best free online tools 2026 no login" (altftool.com, producthunt): resultados dominados por IA (fuera del filtro) o por utilidades ya cubiertas en español (PDF, imagen, conversores, calculadoras, QR, contraseñas, lorem ipsum, etc.). Sin hueco nuevo.
 
 Ninguna cumple el filtro de entrada ni el puntaje mínimo (≥9, sin 1s). No se crea FICHA en este ciclo. Límite de 5 fichas abiertas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T3 (tercera pasada) según rotación (T1→T2→T3→T4→T1; después de T1 viene T2, pero T2 tercera pasada ya se hizo en 2026-11-27 sin señales; rotar a T3). Próximo ciclo es [B] (alternancia estricta).
+
+## Territorio T4 — organización personal y grupos chicos (tercera pasada, 2026-11-28)
+
+Señales evaluadas (web_search, sin ventana, v8). Límite de 5 fichas sigue vigente (OP-001 a OP-005); aunque alguna pase el puntaje, no se abre ficha hasta que Pablo gradúe/archive (Acción: Pablo).
+
+1. **Planificador de rutina semanal compartida por enlace** — una página para armar la rutina de la semana (qué hace cada persona cada día) y compartirla por enlace, sin cuenta ni servidor. Familias, parejas y pisos compartidos. Fuente: búsquedas web 2026 (DoMind, Ethos cubren rutinas pero como app, no web estático compartible por enlace). Filtro: cumple (sitio estático, sin login, datos en el navegador/enlace, entendible en una frase). Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 3 = 9 → pasa (≥9, sin 1s). **Candidata a FICHA cuando haya cupo.**
+
+2. **Turnos de guardia nocturna entre cuidadores de bebé compartidos por enlace** — quién se levanta esta noche, con rotación automática y registro de tomas, compartible por enlace, sin cuenta. Padres/madres con bebé. Fuente: búsquedas web 2026 (Huckleberry y similares requieren cuenta/app; no hay web estático compartible por enlace). Filtro: cumple (sitio estático, sin login, datos en el navegador/enlace). Puntaje: dolor 2, frecuencia 2, hueco 2, facilidad 3 = 9 → pasa (≥9, sin 1s). **Candidata a FICHA cuando haya cupo.**
+
+3. **Lista de equipaje compartida por enlace para viajes en grupo** — quién lleva qué, compartible por enlace, sin cuenta. Fuente: swislist.com, checkloop.app/es (listas de equipaje). Hueco bajo (ya existen soluciones web sin registro). Filtro: cumple parcialmente. Puntaje: dolor 2, frecuencia 2, hueco 1, facilidad 3 = 8 → no pasa (hueco 1). Descartada.
+
+Ninguna nueva ficha se crea en este ciclo (límite de 5 fichas alcanzado; las señales 1 y 2 pasan el puntaje y quedan como candidatas). Límite de 5 fichas sigue vigente (OP-001 a OP-005); para abrir nuevas hace falta que Pablo gradúe o archive alguna (Acción: Pablo). Próxima exploración N: T1 (cuarta pasada) según rotación (T1→T2→T3→T4→T1; después de T4 viene T1). Próximo ciclo es [B] (alternancia estricta).
