@@ -1,27 +1,25 @@
 # Estado de Shiruna
 
 Estado: EN_ESPERA
-Tarea actual: orden v10 (Shiruvana, aprobada por Pablo) — recibida; ejecutar de a un paso por ciclo.
-Motivo: orden v10 registrada (commit orden: v10 — recibida); pendiente ejecución de a un paso por ciclo. Ver Para tu información.
+Tarea actual: orden v10 (Shiruvana, aprobada por Pablo) — paso 1/5 en ejecución este ciclo.
+Motivo: orden v10 registrada; paso 1: laboratorio existe → memoria actualizada, acción removida de Esperando a Pablo. Pasos restantes 2-5. Ver Para tu información.
 Etapa actual: Documentation (cierre)
 Inicio: 2026-11-28
-Última actualización: 2026-11-28 16:01Z
-Próxima acción: paso 1 de orden v10 — laboratorio existe: sacar «crear repo laboratorio» de Esperando a Pablo y actualizar memoria (carril [B]/[N] según alternancia).
+Última actualización: 2026-11-28 16:30Z
+Próxima acción: paso 2 de orden v10 — OP-004 y OP-005 → ARCHIVO (actualizar sus fichas en ai-memory/oportunidades/).
 
 Archivos:
 - ai-memory/status.md
-- ai-memory/backlog.md
-- tools/size-budget.json
 
 ## Esperando a Pablo
 
-- Acción: crear repo `shiruna-gato-negro/laboratorio` (necesario para el primer PROTOTIPO del carril N). Mientras tanto el carril N avanza con SEÑALES y FICHAS en este repo.
 - Acción: graduar o archivar alguna de las 5 fichas abiertas (OP-001..OP-005) para liberar cupo y poder abrir nuevas en el carril N (límite 5 fichas alcanzado). Exploración T4 segunda pasada no pudo abrir ficha por cupo.
 
 ## Para tu información
 
 - IN_PROGRESS: (vacío). READY: (vacío). BLOCKED: (vacío).
-- Balance carriles: [B] cerró BL-074; [N] hizo 5 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada, T4 tercera pasada); próximo ciclo [B] (alternancia). Fichas abiertas: 5 (límite). Candidatas nuevas: rutina semanal compartida por enlace, turnos de guardia nocturna entre cuidadores. Prototipos activos: 0. Laboratorio: no existe aún (Acción a Pablo). Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Balance carriles: [B] cerró BL-074; [N] hizo 5 ciclos (T4 segunda pasada, T1 tercera pasada, T2 tercera pasada, T3 tercera pasada, T4 tercera pasada); este ciclo [B] (alternancia: último [N]). Fichas abiertas: 5 (límite). Candidatas nuevas: rutina semanal compartida por enlace, turnos de guardia nocturna entre cuidadores. Prototipos activos: 0. Laboratorio: existe (shiruna-gato-negro/laboratorio, HEAD 5c52469); primer PROTOTIPO en paso 3 de orden v10. Cuarentenas pendientes: bld-lib ×3, bld-rows, ga-loader (no aplica en este repo), dev-pages rsync; smoke notes-refs ×3 (entorno/red, preexistentes).
+- Orden v10 en ejecución (5 pasos): 1 (este ciclo) laboratorio existe → memoria actualizada; 2 OP-004/005 → ARCHIVO; 3 OP-003 → PROTOTIPO en laboratorio/divisor-gastos/; 4 molde «X compartido por enlace» cerrado + reglas B (docs/DEC); 5 bache 27/11 + info Shiruvana DEV.
 - Suite actual: 1272 pass / 1278 total, 6 skipped (0 fail; 3 smoke notes-refs cuarentenadas, entorno/red, preexistentes).
 - Orden v10 recibida 2026-11-28 (Shiruvana/Pablo): laboratorio existe (sacar acción de Esperando a Pablo); OP-004/005 ARCHIVO; OP-003 a PROTOTIPO en laboratorio/divisor-gastos/; molde «X compartido por enlace» cerrado (1 ficha activa); reglas B (versión/caché, archivos congelados DEC-035, tests un solo comando, no duplicar tareas); bache 27/11 a investigar; Shiruvana lleva BL-063/065/064/072 a su DEV.
 - Roadmap: F2b cerrada; F2c «Bóveda con criterio» y F2n «Laboratorio» abiertas. Carriles v9 activos ([B]/[N], alternancia estricta). BL-062 cancelada (orden v9).
@@ -29,6 +27,7 @@ Archivos:
 
 ## Resumen de la sesión
 
+- Orden v10 paso 1/5 (este ciclo): laboratorio existe → acción «crear repo laboratorio» removida de Esperando a Pablo; memoria actualizada (Para tu información: laboratorio existe, HEAD 5c52469); carril [B]. Suite sin cambios (1272/1278, 6 skipped). Próximo: paso 2 (OP-004/005 → ARCHIVO). — 2026-11-28 16:30Z
 - Orden v10 recibida y registrada 2026-11-28 16:01Z (Shiruvana/Pablo): commit `orden: v10 — recibida`. Ejecución de a un paso por ciclo. Próximo: paso 1 (laboratorio existe). — 2026-11-28 16:01Z
 - Exploración [N] T4 tercera pasada cerrada: 3 señales evaluadas; señales 1 (planificador de rutina semanal compartida por enlace) y 2 (turnos de guardia nocturna entre cuidadores de bebé compartidos por enlace) pasan (9) y quedan candidatas a FICHA cuando haya cupo; señal 3 (lista de equipaje compartida por enlace) no pasa (hueco 1). Cupo 5 fichas lleno → Acción Pablo. Suite sin cambios (1272/1278, 6 skipped). Próximo ciclo [B]. — 2026-11-28 15:35Z
 
